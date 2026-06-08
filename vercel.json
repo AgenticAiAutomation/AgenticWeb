@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "outputDirectory": ".next",
+  "regions": ["iad1", "lhr1", "sin1", "bom1"],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "https://agenticaiautomation.co" },
+        { "key": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "https://agenticaiautomation.co"
+  }
+}
