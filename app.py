@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-WA = "919999999999"  # Replace with your WhatsApp number
+WA = "917982881739"
 
 
 @app.route("/")
