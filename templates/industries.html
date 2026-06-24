@@ -1,0 +1,372 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero section">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="chapter-label">Industries</div>
+      <h1>AI automation built<br><span class="grad">for your industry.</span></h1>
+      <p class="page-hero-sub">Generic automation delivers generic results. We build AI employees that understand the specific workflows, compliance requirements and customer expectations of your industry.</p>
+      <div class="hero-actions">
+        <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">Book Free Audit</a>
+        <a href="#industries-list" class="btn btn-ghost">Jump to My Industry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Industry nav tiles -->
+<section style="background:var(--bg2); padding:48px 0">
+  <div class="container">
+    <div class="industry-hero-grid reveal">
+      <a href="#ecommerce" class="industry-hero-tile"><div style="font-size:1.6rem;margin-bottom:8px">🛒</div><strong>E-commerce</strong></a>
+      <a href="#healthcare" class="industry-hero-tile"><div style="font-size:1.6rem;margin-bottom:8px">🏥</div><strong>Healthcare</strong></a>
+      <a href="#legal" class="industry-hero-tile"><div style="font-size:1.6rem;margin-bottom:8px">⚖️</div><strong>Law Firms</strong></a>
+      <a href="#manufacturing" class="industry-hero-tile"><div style="font-size:1.6rem;margin-bottom:8px">🏭</div><strong>Manufacturing</strong></a>
+      <a href="#logistics" class="industry-hero-tile"><div style="font-size:1.6rem;margin-bottom:8px">🚚</div><strong>Logistics</strong></a>
+      <a href="#finance" class="industry-hero-tile"><div style="font-size:1.6rem;margin-bottom:8px">🏦</div><strong>BFSI</strong></a>
+      <a href="#realestate" class="industry-hero-tile"><div style="font-size:1.6rem;margin-bottom:8px">🏢</div><strong>Real Estate</strong></a>
+      <a href="#professional" class="industry-hero-tile"><div style="font-size:1.6rem;margin-bottom:8px">💼</div><strong>Professional Services</strong></a>
+    </div>
+  </div>
+</section>
+
+<div id="industries-list">
+
+<!-- E-commerce -->
+<div class="industry-section-block" id="ecommerce">
+  <div class="container">
+    <div class="industry-block-inner">
+      <div>
+        <div class="chapter-label reveal">01 / E-commerce &amp; D2C</div>
+        <h2 class="reveal">Win every customer interaction at scale.</h2>
+        <p class="reveal" style="margin-bottom:24px">D2C brands compete on speed and personalisation. AI automation gives you the ability to respond instantly to thousands of customers simultaneously — without adding customer service headcount proportionally.</p>
+        <div class="industry-use-cases">
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>WhatsApp AI responds to product enquiries, checks stock, and closes sales 24/7</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Automated order confirmation, dispatch notification and delivery tracking via WhatsApp</p></div>
+          <div class="industry-use-case reveal reveal-delay-2"><div class="industry-check">✓</div><p>Returns and exchange automation — approve, log, and notify without human involvement</p></div>
+          <div class="industry-use-case reveal reveal-delay-3"><div class="industry-check">✓</div><p>Abandoned cart recovery via WhatsApp with personalised follow-up sequences</p></div>
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Inventory reconciliation between Shopify, warehouse management, and accounting</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Review request automation after confirmed delivery — increases rating volume 4x</p></div>
+        </div>
+        <div class="industry-roi-example reveal">
+          <div class="industry-roi-example-label">Real Result</div>
+          <p>Fashion D2C brand — WhatsApp AI deployment → lead response from 4 hours to 60 seconds → 3.2x conversion rate increase → ₹8L/month additional revenue. 2 weeks to deploy.</p>
+        </div>
+      </div>
+      <div>
+        <div class="stat-chip reveal" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="3.2" data-suffix="x" data-duration="2000">0</span>
+          <span class="stat-label">Average conversion lift</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-1" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="60" data-suffix="s" data-duration="1500">0</span>
+          <span class="stat-label">Response time target</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-2">
+          <span class="stat-num" data-counter data-target="80" data-suffix="%" data-duration="2000">0</span>
+          <span class="stat-label">Support queries auto-resolved</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Healthcare -->
+<div class="industry-section-block" id="healthcare">
+  <div class="container">
+    <div class="industry-block-inner">
+      <div>
+        <div class="chapter-label reveal">02 / Healthcare &amp; Clinics</div>
+        <h2 class="reveal">Spend more time on patients, less on admin.</h2>
+        <p class="reveal" style="margin-bottom:24px">Healthcare professionals lose 30–40% of their time to administrative tasks. AI automation handles the scheduling, reminders, follow-ups, and documentation so clinical staff can focus on care.</p>
+        <div class="industry-use-cases">
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Automated appointment reminders via WhatsApp and voice — 71% fewer no-shows</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>WhatsApp AI for appointment booking, available 24/7 in Hindi and English</p></div>
+          <div class="industry-use-case reveal reveal-delay-2"><div class="industry-check">✓</div><p>Pre-consultation form collection automatically before each appointment</p></div>
+          <div class="industry-use-case reveal reveal-delay-3"><div class="industry-check">✓</div><p>Post-consultation follow-up sequences — medication reminders, feedback collection</p></div>
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Insurance pre-authorisation workflows — forms, follow-ups, status tracking automated</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Inventory management for medical supplies with automatic reorder triggers</p></div>
+        </div>
+        <div class="industry-roi-example reveal">
+          <div class="industry-roi-example-label">Real Result</div>
+          <p>Multi-specialty clinic — n8n + WhatsApp automation → 600+ appointment reminders/week automated → 71% reduction in no-shows → recovered ₹4.5L/month in previously lost appointment revenue.</p>
+        </div>
+      </div>
+      <div>
+        <div class="stat-chip reveal" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="71" data-suffix="%" data-duration="2000">0</span>
+          <span class="stat-label">Fewer no-shows</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-1" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="600" data-suffix="+" data-duration="2000">0</span>
+          <span class="stat-label">Automated messages/week</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-2">
+          <span class="stat-num" data-counter data-target="40" data-suffix="%" data-duration="1800">0</span>
+          <span class="stat-label">Admin time recovered</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Law Firms -->
+<div class="industry-section-block" id="legal">
+  <div class="container">
+    <div class="industry-block-inner">
+      <div>
+        <div class="chapter-label reveal">03 / Law Firms &amp; Legal</div>
+        <h2 class="reveal">Automate the admin. Bill the hours that matter.</h2>
+        <p class="reveal" style="margin-bottom:24px">Law firms lose billable hours to admin — client intake, document processing, court date tracking, and routine correspondence. AI automation recaptures those hours.</p>
+        <div class="industry-use-cases">
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Client intake automation — WhatsApp AI collects case details, conflict check triggers, CRM populated</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Contract review assistance — AI flags non-standard clauses and summarises obligations for lawyer review</p></div>
+          <div class="industry-use-case reveal reveal-delay-2"><div class="industry-check">✓</div><p>Court date and deadline tracking with automated reminders to clients and internal team</p></div>
+          <div class="industry-use-case reveal reveal-delay-3"><div class="industry-check">✓</div><p>Document generation from templates — retainer agreements, NDAs, demand letters from CRM data</p></div>
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Invoice generation and collections automation — billable hours pulled from time tracking → invoice → follow-up</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>MCA, court portal filings automated with UiPath — no manual form filling</p></div>
+        </div>
+        <div class="industry-roi-example reveal">
+          <div class="industry-roi-example-label">Real Result</div>
+          <p>7-partner law firm — document automation + client intake AI → 60% reduction in non-billable admin time → recovered 40 billable hours per partner per month → ₹12L/month additional billings.</p>
+        </div>
+      </div>
+      <div>
+        <div class="stat-chip reveal" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="60" data-suffix="%" data-duration="1800">0</span>
+          <span class="stat-label">Less non-billable admin</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-1" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="40" data-suffix=" hrs" data-duration="1800">0</span>
+          <span class="stat-label">Recovered billable hours/partner/mo</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-2">
+          <span class="stat-num" data-counter data-target="3" data-suffix=" hrs" data-duration="1400">0</span>
+          <span class="stat-label">Saved per contract reviewed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Manufacturing -->
+<div class="industry-section-block" id="manufacturing">
+  <div class="container">
+    <div class="industry-block-inner">
+      <div>
+        <div class="chapter-label reveal">04 / Manufacturing</div>
+        <h2 class="reveal">Automate the factory floor admin.</h2>
+        <p class="reveal" style="margin-bottom:24px">Manufacturing operations generate enormous volumes of data and paperwork. AI automation connects your production, inventory, procurement and finance systems — eliminating the manual coordination that slows operations.</p>
+        <div class="industry-use-cases">
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Real-time inventory monitoring with automatic reorder triggers — 90% fewer stockouts</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Production report generation — pull from shop floor, consolidate, email to management daily</p></div>
+          <div class="industry-use-case reveal reveal-delay-2"><div class="industry-check">✓</div><p>Purchase order automation — stock threshold triggered → PO generated → sent to approved supplier</p></div>
+          <div class="industry-use-case reveal reveal-delay-3"><div class="industry-check">✓</div><p>Quality control data capture and anomaly flagging — automated alerts on out-of-spec readings</p></div>
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Supplier invoice processing — extract, validate against PO, approve and queue for payment</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Compliance and safety inspection logging with automated report generation</p></div>
+        </div>
+        <div class="industry-roi-example reveal">
+          <div class="industry-roi-example-label">Real Result</div>
+          <p>Auto parts manufacturer — inventory + procurement automation → stockouts reduced 90% → ₹6L/month in emergency procurement costs eliminated → report generation time cut from 8 hours to 12 minutes.</p>
+        </div>
+      </div>
+      <div>
+        <div class="stat-chip reveal" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="90" data-suffix="%" data-duration="2000">0</span>
+          <span class="stat-label">Fewer stockouts</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-1" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="12" data-suffix=" min" data-duration="1500">0</span>
+          <span class="stat-label">Daily production report time</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-2">
+          <span class="stat-num" data-counter data-target="100" data-suffix="%" data-duration="1800">0</span>
+          <span class="stat-label">Automated PO generation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Logistics -->
+<div class="industry-section-block" id="logistics">
+  <div class="container">
+    <div class="industry-block-inner">
+      <div>
+        <div class="chapter-label reveal">05 / Logistics &amp; Supply Chain</div>
+        <h2 class="reveal">End-to-end visibility without manual tracking.</h2>
+        <p class="reveal" style="margin-bottom:24px">Logistics operations live and die by communication speed and data accuracy. AI automation delivers real-time updates to customers and internal teams — without anyone manually checking and forwarding status.</p>
+        <div class="industry-use-cases">
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Automated shipment tracking updates to customers via WhatsApp — dispatch, in-transit, delivered</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>POD (proof of delivery) collection and processing — automated photo capture and database update</p></div>
+          <div class="industry-use-case reveal reveal-delay-2"><div class="industry-check">✓</div><p>Driver communication automation — route updates, delay alerts, ETA recalculations</p></div>
+          <div class="industry-use-case reveal reveal-delay-3"><div class="industry-check">✓</div><p>Customs documentation preparation — data extraction from shipping docs and form population</p></div>
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Customer complaint handling via WhatsApp AI — track, escalate, resolve delay queries</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Freight invoice validation — carrier invoice vs agreed rate vs actual shipment data</p></div>
+        </div>
+        <div class="industry-roi-example reveal">
+          <div class="industry-roi-example-label">Real Result</div>
+          <p>3PL company — WhatsApp automation for customer updates + UiPath for documentation → customer service calls reduced 65% → ₹3.5L/month in customer service overhead eliminated.</p>
+        </div>
+      </div>
+      <div>
+        <div class="stat-chip reveal" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="65" data-suffix="%" data-duration="1800">0</span>
+          <span class="stat-label">Fewer inbound support calls</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-1" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="100" data-suffix="%" data-duration="1800">0</span>
+          <span class="stat-label">Shipments with automated updates</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-2">
+          <span class="stat-num" data-counter data-target="4" data-suffix="x" data-duration="1500">0</span>
+          <span class="stat-label">Faster documentation processing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Finance / BFSI -->
+<div class="industry-section-block" id="finance">
+  <div class="container">
+    <div class="industry-block-inner">
+      <div>
+        <div class="chapter-label reveal">06 / BFSI &amp; Finance</div>
+        <h2 class="reveal">Zero-error processing at any volume.</h2>
+        <p class="reveal" style="margin-bottom:24px">Financial services require perfect accuracy, regulatory compliance, and processing at scale. AI automation delivers all three — replacing manual data entry, reconciliation, and reporting with automated systems that don't make mistakes.</p>
+        <div class="industry-use-cases">
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Invoice processing — extract, validate, match to PO, post to accounting in 18 seconds</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Bank reconciliation automation — match statements to ledger entries, flag unmatched items</p></div>
+          <div class="industry-use-case reveal reveal-delay-2"><div class="industry-check">✓</div><p>Loan application processing — document collection, verification, data extraction automated</p></div>
+          <div class="industry-use-case reveal reveal-delay-3"><div class="industry-check">✓</div><p>GST and regulatory filing automation — pull data, calculate, file, confirm receipt</p></div>
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Collections automation — payment reminders via WhatsApp and email with escalation logic</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Compliance monitoring — continuous check against RBI, SEBI, and IRDAI requirements</p></div>
+        </div>
+        <div class="industry-roi-example reveal">
+          <div class="industry-roi-example-label">Real Result</div>
+          <p>CA firm — UiPath invoice processing → 2,000 invoices/month processed with zero manual entry → error rate dropped from 3.2% to 0.01% → ₹5L/year in correction work eliminated.</p>
+        </div>
+      </div>
+      <div>
+        <div class="stat-chip reveal" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="0.01" data-suffix="%" data-duration="2000">0</span>
+          <span class="stat-label">Error rate (vs 3–8% manual)</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-1" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="18" data-suffix="s" data-duration="1500">0</span>
+          <span class="stat-label">Per invoice processing time</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-2">
+          <span class="stat-num" data-counter data-target="2000" data-suffix="+" data-duration="2000">0</span>
+          <span class="stat-label">Invoices processed/month automated</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Real Estate -->
+<div class="industry-section-block" id="realestate">
+  <div class="container">
+    <div class="industry-block-inner">
+      <div>
+        <div class="chapter-label reveal">07 / Real Estate</div>
+        <h2 class="reveal">More site visits. Less time on the phone.</h2>
+        <p class="reveal" style="margin-bottom:24px">Real estate businesses are flooded with enquiries — most of which are not seriously qualified buyers. AI automation qualifies enquiries, books site visits, and follows up — so your agents focus on real prospects.</p>
+        <div class="industry-use-cases">
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>WhatsApp AI qualifies property enquiries — budget, timeline, requirements — in under 2 minutes</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Site visit booking automation — calendar integration, confirmation, day-before reminder, directions</p></div>
+          <div class="industry-use-case reveal reveal-delay-2"><div class="industry-check">✓</div><p>Lead nurture sequences — 12-week automated WhatsApp and email follow-up for non-ready buyers</p></div>
+          <div class="industry-use-case reveal reveal-delay-3"><div class="industry-check">✓</div><p>Document collection automation — KYC, income proof, application forms via WhatsApp</p></div>
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Tenant management — rent reminders, maintenance request routing, renewal automation</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Channel partner automation — lead distribution, site visit confirmation, commission tracking</p></div>
+        </div>
+        <div class="industry-roi-example reveal">
+          <div class="industry-roi-example-label">Real Result</div>
+          <p>Real estate developer — WhatsApp AI + site visit automation → 5x increase in qualified site visits per agent per week → 40% faster lead-to-booking conversion → agent productivity doubled.</p>
+        </div>
+      </div>
+      <div>
+        <div class="stat-chip reveal" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="5" data-suffix="x" data-duration="1500">0</span>
+          <span class="stat-label">More qualified site visits</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-1" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="40" data-suffix="%" data-duration="1800">0</span>
+          <span class="stat-label">Faster lead-to-booking</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-2">
+          <span class="stat-num" data-counter data-target="2" data-suffix="x" data-duration="1400">0</span>
+          <span class="stat-label">Agent productivity</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Professional Services -->
+<div class="industry-section-block" id="professional">
+  <div class="container">
+    <div class="industry-block-inner">
+      <div>
+        <div class="chapter-label reveal">08 / Professional Services</div>
+        <h2 class="reveal">Scale your expertise without scaling your overhead.</h2>
+        <p class="reveal" style="margin-bottom:24px">Consulting firms, HR companies, marketing agencies, and other professional services businesses sell expertise — but spend half their time on admin. AI automation recaptures that time.</p>
+        <div class="industry-use-cases">
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Client intake and onboarding automation — form collection, contract generation, project setup</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>Proposal and quote automation — templates populated from CRM data, sent and tracked automatically</p></div>
+          <div class="industry-use-case reveal reveal-delay-2"><div class="industry-check">✓</div><p>Timesheet and billing automation — hours tracked → invoice generated → sent → followed up</p></div>
+          <div class="industry-use-case reveal reveal-delay-3"><div class="industry-check">✓</div><p>Client reporting automation — pull data, generate PDF report, email to client on schedule</p></div>
+          <div class="industry-use-case reveal"><div class="industry-check">✓</div><p>Renewal and upsell automation — CRM-triggered sequences at 90/60/30 days before contract end</p></div>
+          <div class="industry-use-case reveal reveal-delay-1"><div class="industry-check">✓</div><p>WhatsApp AI for client queries — available 24/7, escalates to consultant when needed</p></div>
+        </div>
+        <div class="industry-roi-example reveal">
+          <div class="industry-roi-example-label">Real Result</div>
+          <p>HR consulting firm — billing automation + client onboarding AI → 40% reduction in non-billable overhead → billing cycle cut from 8 days to 24 hours → ₹7L/year in recovered billable time.</p>
+        </div>
+      </div>
+      <div>
+        <div class="stat-chip reveal" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="40" data-suffix="%" data-duration="1800">0</span>
+          <span class="stat-label">Lower overhead</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-1" style="margin-bottom:16px">
+          <span class="stat-num" data-counter data-target="24" data-suffix="hr" data-duration="1500">0</span>
+          <span class="stat-label">Billing cycle (was 8 days)</span>
+        </div>
+        <div class="stat-chip reveal reveal-delay-2">
+          <span class="stat-num" data-counter data-target="7" data-prefix="₹" data-suffix="L" data-duration="1800">0</span>
+          <span class="stat-label">Recovered billable time/year</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /industries-list -->
+
+<!-- CTA -->
+<div class="container">
+  <div class="page-cta-banner reveal">
+    <div class="chapter-label">Your Industry, Your Automation</div>
+    <h2>Get a free industry-specific automation roadmap.</h2>
+    <p>We audit your current workflows, benchmark against what we've seen across your industry, and give you a prioritised plan — specific to your business, not a template.</p>
+    <div class="final-actions">
+      <a href="{{ calendly }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Book Free Audit →</a>
+      <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%27d%20like%20to%20discuss%20automation%20for%20my%20industry." class="btn btn-wa btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+{% endblock %}

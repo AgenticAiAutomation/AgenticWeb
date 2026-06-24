@@ -1,748 +1,620 @@
-{% extends "layout.html" %}
+{% extends "base.html" %}
 
-{% block title %}Agentic AI Automation — Build Your AI Workforce | India's #1 AI Agency{% endblock %}
-{% block description %}Stop losing revenue to manual work. Agentic AI Automation builds custom AI employees for Indian businesses — sales agents, support bots, WhatsApp automation, n8n workflows and more. 24/7, zero burnout.{% endblock %}
-{% block canonical %}https://agenticaiautomation.co{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is an AI employee?","acceptedAnswer":{"@type":"Answer","text":"An AI employee is a software system that performs the role of a human employee — handling defined tasks across sales, support, operations, finance or HR — autonomously, 24/7, at a fraction of the cost."}},
+    {"@type":"Question","name":"How long does it take to deploy an AI workforce?","acceptedAnswer":{"@type":"Answer","text":"Most clients are live within 2–4 weeks. Week 1: discovery and process mapping. Week 2: build. Week 3: testing. Week 4: go-live and optimisation."}},
+    {"@type":"Question","name":"What is the ROI of AI automation?","acceptedAnswer":{"@type":"Answer","text":"Typical clients save 40–70% of the cost of tasks automated, while increasing speed by 5–10x. ROI positive within the first month is common for process automation projects."}},
+    {"@type":"Question","name":"Do you work with Indian businesses?","acceptedAnswer":{"@type":"Answer","text":"Yes — we are based in India and work with businesses across India as well as the UK, UAE, US and Singapore. We support Hindi and English language automation."}}
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 
-<!-- ══════════════════════════════════════
-     HERO
-══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════
+     SECTION 1: HERO
+══════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
-  <canvas id="networkCanvas"></canvas>
-  <div class="hero-overlay"></div>
+  <div class="hero-inner">
 
-  <!-- Typewriter sequence -->
-  <div class="hero-sequence" id="heroSequence">
-    <p class="hero-seq-line" id="heroSeqLine"></p>
-  </div>
-
-  <!-- Main content (revealed after sequence) -->
-  <div class="hero-main" id="heroMain">
-    <div class="hero-badge">
-      <span class="badge">India's Premier AI Automation Agency</span>
-    </div>
-    <h1 class="hero-headline">
-      Meet Your First<br><span class="grad">AI Employee.</span>
-    </h1>
-    <p class="hero-sub">
-      AI agents that never sleep, never miss a follow-up, and never burn out.<br>
-      Built for ambitious Indian businesses ready for 2030.
-    </p>
-    <div class="hero-actions">
-      <a href="#roi" class="btn btn-primary btn-lg">Discover My Automation Potential</a>
-      <a href="#chapterWorkforce" class="btn btn-ghost btn-lg">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        Watch The Future Of Work
-      </a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <strong data-count="50" data-suffix="+">50+</strong>
-        <span>Businesses Automated</span>
-      </div>
-      <div class="hero-stat">
-        <strong data-count="2" data-prefix="₹" data-suffix="Cr+">₹2Cr+</strong>
-        <span>Client Savings Generated</span>
-      </div>
-      <div class="hero-stat">
-        <strong>24/7</strong>
-        <span>AI Agents Active</span>
-      </div>
-      <div class="hero-stat">
-        <strong data-count="48" data-suffix="h">48h</strong>
-        <span>Average Deployment</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scroll hint -->
-  <div class="hero-scroll" id="heroScrollHint">
-    <span>Scroll to discover</span>
-    <div class="scroll-arrow"></div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     CHAPTER 1 — THE CHAOS
-══════════════════════════════════════ -->
-<section class="chaos section" id="chapterChaos">
-  <div class="container">
-    <div class="chaos-intro reveal">
-      <div class="chapter-label">Chapter 01</div>
-      <h2 class="section-title">The Chaos.</h2>
-      <p class="section-sub">Behind every growing Indian business is a team silently drowning in repetitive, manual work that should have been automated years ago.</p>
-    </div>
-
-    <div class="chaos-grid">
-      <div class="chaos-card reveal reveal-delay-1">
-        <div class="chaos-icon">📧</div>
-        <div class="chaos-number" data-count="247">0</div>
-        <div class="chaos-label">Unread emails in your sales inbox today</div>
-        <div class="chaos-trend">↑ Still climbing</div>
-      </div>
-      <div class="chaos-card reveal reveal-delay-2">
-        <div class="chaos-icon">🎫</div>
-        <div class="chaos-number" data-count="89">0</div>
-        <div class="chaos-label">Customer support tickets open right now</div>
-        <div class="chaos-trend">↑ 3-day backlog</div>
-      </div>
-      <div class="chaos-card reveal reveal-delay-3">
-        <div class="chaos-icon">📞</div>
-        <div class="chaos-number" data-count="34">0</div>
-        <div class="chaos-label">Missed calls this week — each a lost lead</div>
-        <div class="chaos-trend">↑ Revenue gone</div>
-      </div>
-      <div class="chaos-card reveal reveal-delay-4">
-        <div class="chaos-icon">📊</div>
-        <div class="chaos-number" data-count="18">0</div>
-        <div class="chaos-label">Reports overdue — decisions are delayed</div>
-        <div class="chaos-trend">↑ Visibility zero</div>
-      </div>
-      <div class="chaos-card reveal reveal-delay-5">
-        <div class="chaos-icon">🚪</div>
-        <div class="chaos-number" data-count="5">0</div>
-        <div class="chaos-label">Employees resigned this month — burnout</div>
-        <div class="chaos-trend">↑ Costs rising</div>
-      </div>
-      <div class="chaos-card reveal reveal-delay-5">
-        <div class="chaos-icon">⏱</div>
-        <div class="chaos-number" data-count="62" data-suffix="">0</div>
-        <div class="chaos-label">% of your team's time on manual tasks</div>
-        <div class="chaos-trend">↑ No end in sight</div>
-      </div>
-    </div>
-
-    <div class="chaos-statement reveal">
-      <p>The problem isn't your team.</p>
-      <p class="grad">The problem is the work.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     CHAPTER 2 — THE SHIFT
-══════════════════════════════════════ -->
-<section class="shift section" id="chapterShift">
-  <div class="container" style="text-align:center">
-    <div class="reveal">
-      <div class="chapter-label">Chapter 02</div>
-      <h2 class="section-title">The Shift.</h2>
-      <p class="section-sub" style="margin:0 auto">Everything changes the moment you hire your first AI employee. Not someday. Now.</p>
-    </div>
-
-    <div class="shift-visual">
-      <div class="awakening-node reveal">
-        <div class="node-ring ring-1"></div>
-        <div class="node-ring ring-2"></div>
-        <div class="node-ring ring-3"></div>
-        <div class="node-core">AI</div>
-      </div>
-      <div class="flow-items">
-        <div class="flow-item">1 task automated</div>
-        <div class="flow-item">10 tasks automated</div>
-        <div class="flow-item">100 tasks automated</div>
-        <div class="flow-item">Entire workflows automated</div>
-      </div>
-    </div>
-
-    <div class="shift-statement reveal">
-      <h3>One decision changes everything.</h3>
-      <p>When you hire your first AI employee, the chaos doesn't just slow down — it stops. Your team stops reacting and starts growing.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     CHAPTER 3 — THE AI WORKFORCE
-══════════════════════════════════════ -->
-<section class="workforce section" id="chapterWorkforce">
-  <div class="container">
-    <div class="reveal">
-      <div class="chapter-label">Chapter 03</div>
-      <h2 class="section-title">Your AI Workforce.</h2>
-      <p class="section-sub">Not bots. Not chatbots. Intelligent agents that think, decide, and act — autonomously — inside your actual business workflows.</p>
-    </div>
-
-    <div class="command-center">
-      <!-- Agent grid -->
-      <div class="cc-agents-grid">
-        <div class="cc-agent reveal reveal-delay-1" data-agent="sales">
-          <div class="cc-agent-icon">💼</div>
-          <h4>Sales Agent</h4>
-          <p>Responds to leads instantly, qualifies prospects, books meetings and updates your CRM — all without human touch.</p>
-          <div class="cc-status">Active 24/7</div>
-        </div>
-        <div class="cc-agent reveal reveal-delay-2" data-agent="support">
-          <div class="cc-agent-icon">🎧</div>
-          <h4>Support Agent</h4>
-          <p>Handles customer queries across WhatsApp, email and chat. Resolves Tier-1 tickets automatically, escalates the rest.</p>
-          <div class="cc-status">Active 24/7</div>
-        </div>
-        <div class="cc-agent reveal reveal-delay-3" data-agent="ops">
-          <div class="cc-agent-icon">⚙️</div>
-          <h4>Operations Agent</h4>
-          <p>Automates invoicing, inventory alerts, vendor communication and internal reports on a fixed schedule.</p>
-          <div class="cc-status">Active 24/7</div>
-        </div>
-        <div class="cc-agent reveal reveal-delay-4" data-agent="hr">
-          <div class="cc-agent-icon">🤝</div>
-          <h4>HR & Recruitment Agent</h4>
-          <p>Screens resumes, schedules interviews, sends offer letters and onboards new hires — fully automated.</p>
-          <div class="cc-status">Active 24/7</div>
-        </div>
-        <div class="cc-agent reveal reveal-delay-5" data-agent="finance">
-          <div class="cc-agent-icon">📈</div>
-          <h4>Finance Agent</h4>
-          <p>Tracks receivables, flags overdue invoices, generates P&L summaries and reconciles data without manual effort.</p>
-          <div class="cc-status">Active 24/7</div>
-        </div>
-        <div class="cc-agent reveal reveal-delay-5" data-agent="analytics">
-          <div class="cc-agent-icon">🔍</div>
-          <h4>Analytics Agent</h4>
-          <p>Monitors KPIs across all systems, surfaces anomalies instantly and delivers daily business intelligence reports.</p>
-          <div class="cc-status">Active 24/7</div>
-        </div>
+    <div class="hero-content reveal">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        AI Workforce Company
       </div>
 
-      <!-- Story panel -->
-      <div class="cc-panel" id="ccPanel">
-        <div class="cc-panel-default" id="ccDefault">
-          <div class="cc-pulse">🤖</div>
-          <p style="font-family:var(--font-h);font-size:0.9rem;color:var(--txt3)">Click any agent to see its story in action.</p>
-        </div>
+      <h1>Your business runs 24/7.<br><span class="grad">Your team doesn't.</span></h1>
 
-        <div class="cc-story" id="story-sales">
-          <div class="cc-story-title">Sales Agent in Action</div>
-          <div class="cc-story-sub">Watch a ₹2 lakh deal close without human intervention.</div>
-          <div class="cc-story-steps">
-            <div class="cc-step"><div class="cc-step-num">1</div><div class="cc-step-text">Lead submits form at 11 PM on Sunday</div></div>
-            <div class="cc-step"><div class="cc-step-num">2</div><div class="cc-step-text">AI responds on WhatsApp in 45 seconds, asks qualifying questions</div></div>
-            <div class="cc-step"><div class="cc-step-num">3</div><div class="cc-step-text">Lead is scored, CRM updated, calendar invite sent automatically</div></div>
-            <div class="cc-step"><div class="cc-step-num">4</div><div class="cc-step-text">3 follow-up messages scheduled over 5 days</div></div>
-            <div class="cc-step"><div class="cc-step-num">5</div><div class="cc-step-text">Lead converts. Your sales team wakes up to a booked meeting.</div></div>
-          </div>
-          <div class="cc-story-result">Result: 3× faster response time, 40% higher lead conversion</div>
-        </div>
+      <p class="hero-sub">
+        We deploy AI Employees across Sales, Support, Operations and Finance — so your business works at full capacity every hour of every day. No sick days. No errors. No hiring delays.
+      </p>
 
-        <div class="cc-story" id="story-support">
-          <div class="cc-story-title">Support Agent in Action</div>
-          <div class="cc-story-sub">Zero queue. Zero burnout. 100% response rate.</div>
-          <div class="cc-story-steps">
-            <div class="cc-step"><div class="cc-step-num">1</div><div class="cc-step-text">Customer asks "Where is my order?" on WhatsApp at 2 AM</div></div>
-            <div class="cc-step"><div class="cc-step-num">2</div><div class="cc-step-text">AI fetches order status from your system in real time</div></div>
-            <div class="cc-step"><div class="cc-step-num">3</div><div class="cc-step-text">Sends tracking link + estimated delivery — all automated</div></div>
-            <div class="cc-step"><div class="cc-step-num">4</div><div class="cc-step-text">If issue is complex, ticket created and human agent alerted</div></div>
-          </div>
-          <div class="cc-story-result">Result: 80% of tickets resolved without human involvement</div>
-        </div>
-
-        <div class="cc-story" id="story-ops">
-          <div class="cc-story-title">Operations Agent in Action</div>
-          <div class="cc-story-sub">Your back office, running itself.</div>
-          <div class="cc-story-steps">
-            <div class="cc-step"><div class="cc-step-num">1</div><div class="cc-step-text">Purchase order received via email at any hour</div></div>
-            <div class="cc-step"><div class="cc-step-num">2</div><div class="cc-step-text">AI extracts line items, validates against inventory</div></div>
-            <div class="cc-step"><div class="cc-step-num">3</div><div class="cc-step-text">Invoice generated, vendor notified, ERP updated</div></div>
-            <div class="cc-step"><div class="cc-step-num">4</div><div class="cc-step-text">Daily ops summary sent to management at 8 AM</div></div>
-          </div>
-          <div class="cc-story-result">Result: 6 hours of ops work done in 12 minutes</div>
-        </div>
-
-        <div class="cc-story" id="story-hr">
-          <div class="cc-story-title">HR Agent in Action</div>
-          <div class="cc-story-sub">Hire faster. Onboard smarter.</div>
-          <div class="cc-story-steps">
-            <div class="cc-step"><div class="cc-step-num">1</div><div class="cc-step-text">100 resumes arrive for a single job post</div></div>
-            <div class="cc-step"><div class="cc-step-num">2</div><div class="cc-step-text">AI screens all 100 against your criteria in 2 minutes</div></div>
-            <div class="cc-step"><div class="cc-step-num">3</div><div class="cc-step-text">Top 8 shortlisted, interview slots sent automatically</div></div>
-            <div class="cc-step"><div class="cc-step-num">4</div><div class="cc-step-text">Offer letter generated and sent upon selection</div></div>
-          </div>
-          <div class="cc-story-result">Result: Time-to-hire reduced from 3 weeks to 4 days</div>
-        </div>
-
-        <div class="cc-story" id="story-finance">
-          <div class="cc-story-title">Finance Agent in Action</div>
-          <div class="cc-story-sub">Your CFO's assistant that never misses a number.</div>
-          <div class="cc-story-steps">
-            <div class="cc-step"><div class="cc-step-num">1</div><div class="cc-step-text">Invoice payment crosses 30-day threshold</div></div>
-            <div class="cc-step"><div class="cc-step-num">2</div><div class="cc-step-text">AI sends a polite reminder via email and WhatsApp</div></div>
-            <div class="cc-step"><div class="cc-step-num">3</div><div class="cc-step-text">Escalation sent at 45 days, management flagged at 60</div></div>
-            <div class="cc-step"><div class="cc-step-num">4</div><div class="cc-step-text">Monthly P&L and cash flow report generated automatically</div></div>
-          </div>
-          <div class="cc-story-result">Result: DSO reduced by 35%, zero missed collections</div>
-        </div>
-
-        <div class="cc-story" id="story-analytics">
-          <div class="cc-story-title">Analytics Agent in Action</div>
-          <div class="cc-story-sub">Real decisions powered by real-time intelligence.</div>
-          <div class="cc-story-steps">
-            <div class="cc-step"><div class="cc-step-num">1</div><div class="cc-step-text">Sales drop 20% vs last week in Pune region</div></div>
-            <div class="cc-step"><div class="cc-step-num">2</div><div class="cc-step-text">AI detects anomaly within hours, not at month-end review</div></div>
-            <div class="cc-step"><div class="cc-step-num">3</div><div class="cc-step-text">Root cause analysis surfaced from CRM + ops data</div></div>
-            <div class="cc-step"><div class="cc-step-num">4</div><div class="cc-step-text">Alert sent to management with recommended action</div></div>
-          </div>
-          <div class="cc-story-result">Result: Problems caught in hours instead of weeks</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     INDUSTRY JOURNEYS
-══════════════════════════════════════ -->
-<section class="industries section" id="industries">
-  <div class="container">
-    <div class="reveal">
-      <div class="chapter-label">Industry Worlds</div>
-      <h2 class="section-title">Built for your industry.</h2>
-      <p class="section-sub">Every sector has unique processes. We build AI agents that understand your world — not generic tools that ignore it.</p>
-    </div>
-
-    <div class="industry-tabs">
-      <button class="industry-tab active" data-industry="manufacturing">🏭 Manufacturing</button>
-      <button class="industry-tab" data-industry="healthcare">🏥 Healthcare</button>
-      <button class="industry-tab" data-industry="insurance">🛡️ Insurance &amp; BFSI</button>
-      <button class="industry-tab" data-industry="ecommerce">🛒 E-Commerce</button>
-      <button class="industry-tab" data-industry="realestate">🏢 Real Estate</button>
-    </div>
-
-    <!-- Manufacturing -->
-    <div class="industry-panel active" id="industry-manufacturing">
-      <div class="industry-content reveal">
-        <h3>Manufacturing &amp; Supply Chain</h3>
-        <p>From purchase orders to production schedules, AI agents handle the operational load so your plant managers focus on quality and output — not paperwork.</p>
-        <div class="industry-ops">
-          <div class="industry-op">Automated purchase order processing and vendor communication</div>
-          <div class="industry-op">Real-time inventory alerts when stock falls below threshold</div>
-          <div class="industry-op">Daily production reports sent to management automatically</div>
-          <div class="industry-op">Quality compliance documentation generated and filed</div>
-          <div class="industry-op">Predictive maintenance alerts from equipment data</div>
-          <div class="industry-op">Customer shipment tracking and delivery notifications</div>
-        </div>
-      </div>
-      <div class="industry-metrics reveal">
-        <div class="industry-metric"><strong>67%</strong><span>Reduction in manual data entry</span></div>
-        <div class="industry-metric"><strong>₹8L+</strong><span>Average monthly savings</span></div>
-        <div class="industry-metric"><strong>4×</strong><span>Faster order processing</span></div>
-        <div class="industry-metric"><strong>99%</strong><span>Vendor communication response rate</span></div>
-      </div>
-    </div>
-
-    <!-- Healthcare -->
-    <div class="industry-panel" id="industry-healthcare">
-      <div class="industry-content reveal">
-        <h3>Healthcare &amp; Clinics</h3>
-        <p>Give your staff their time back. AI agents handle appointment scheduling, patient follow-ups, billing queries and compliance documentation 24 hours a day.</p>
-        <div class="industry-ops">
-          <div class="industry-op">Automated appointment booking and WhatsApp reminders</div>
-          <div class="industry-op">Lab report delivery and follow-up scheduling</div>
-          <div class="industry-op">Insurance pre-authorisation and claim status tracking</div>
-          <div class="industry-op">Patient feedback collection and sentiment analysis</div>
-          <div class="industry-op">Medication renewal reminders via WhatsApp</div>
-          <div class="industry-op">No-show follow-up and slot re-booking</div>
-        </div>
-      </div>
-      <div class="industry-metrics reveal">
-        <div class="industry-metric"><strong>45%</strong><span>Reduction in no-show rates</span></div>
-        <div class="industry-metric"><strong>3×</strong><span>Faster claim processing</span></div>
-        <div class="industry-metric"><strong>90%</strong><span>Patient queries resolved automatically</span></div>
-        <div class="industry-metric"><strong>₹5L+</strong><span>Admin cost savings monthly</span></div>
-      </div>
-    </div>
-
-    <!-- Insurance -->
-    <div class="industry-panel" id="industry-insurance">
-      <div class="industry-content reveal">
-        <h3>Insurance &amp; BFSI</h3>
-        <p>Speed, compliance and personalisation at scale. AI agents process claims, answer policy queries and handle renewals — with full audit trails.</p>
-        <div class="industry-ops">
-          <div class="industry-op">Automated claim intake and document collection</div>
-          <div class="industry-op">Policy renewal reminders and upsell conversations</div>
-          <div class="industry-op">KYC document verification and compliance checks</div>
-          <div class="industry-op">24/7 policy query resolution via WhatsApp</div>
-          <div class="industry-op">Lead nurturing for new policy applicants</div>
-          <div class="industry-op">Agent performance reporting and commission calculation</div>
-        </div>
-      </div>
-      <div class="industry-metrics reveal">
-        <div class="industry-metric"><strong>60%</strong><span>Faster claims processing</span></div>
-        <div class="industry-metric"><strong>85%</strong><span>Renewal rate improvement</span></div>
-        <div class="industry-metric"><strong>2×</strong><span>Agent productivity increase</span></div>
-        <div class="industry-metric"><strong>₹12L+</strong><span>Operational savings monthly</span></div>
-      </div>
-    </div>
-
-    <!-- E-Commerce -->
-    <div class="industry-panel" id="industry-ecommerce">
-      <div class="industry-content reveal">
-        <h3>E-Commerce &amp; Retail</h3>
-        <p>Never lose a customer to slow response times. AI agents handle order updates, returns, reviews, abandoned carts and WhatsApp support around the clock.</p>
-        <div class="industry-ops">
-          <div class="industry-op">Abandoned cart recovery via WhatsApp and email sequences</div>
-          <div class="industry-op">Order status and shipment tracking — automated</div>
-          <div class="industry-op">Return and refund workflow management</div>
-          <div class="industry-op">Product recommendation engine via chat</div>
-          <div class="industry-op">Review request automation post-delivery</div>
-          <div class="industry-op">Inventory reorder alerts and supplier notifications</div>
-        </div>
-      </div>
-      <div class="industry-metrics reveal">
-        <div class="industry-metric"><strong>25%</strong><span>Cart recovery rate increase</span></div>
-        <div class="industry-metric"><strong>5×</strong><span>Faster customer response</span></div>
-        <div class="industry-metric"><strong>40%</strong><span>Support cost reduction</span></div>
-        <div class="industry-metric"><strong>₹6L+</strong><span>Revenue recovered monthly</span></div>
-      </div>
-    </div>
-
-    <!-- Real Estate -->
-    <div class="industry-panel" id="industry-realestate">
-      <div class="industry-content reveal">
-        <h3>Real Estate &amp; Construction</h3>
-        <p>Turn every site enquiry into a conversation. AI agents qualify leads, book site visits, follow up persistently and keep your CRM updated without effort.</p>
-        <div class="industry-ops">
-          <div class="industry-op">Instant WhatsApp response to property enquiries 24/7</div>
-          <div class="industry-op">Lead qualification and site visit scheduling</div>
-          <div class="industry-op">Automated follow-up sequences over 30–90 days</div>
-          <div class="industry-op">Document collection for loan and booking process</div>
-          <div class="industry-op">Payment milestone reminders and NOC generation</div>
-          <div class="industry-op">Post-handover customer satisfaction surveys</div>
-        </div>
-      </div>
-      <div class="industry-metrics reveal">
-        <div class="industry-metric"><strong>3×</strong><span>More site visits booked</span></div>
-        <div class="industry-metric"><strong>50%</strong><span>Reduction in lead drop-off</span></div>
-        <div class="industry-metric"><strong>90 days</strong><span>Automated follow-up cycles</span></div>
-        <div class="industry-metric"><strong>₹10L+</strong><span>Revenue uplift monthly</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     ROI SIMULATOR
-══════════════════════════════════════ -->
-<section class="roi-section section" id="roi">
-  <div class="container">
-    <div class="reveal" style="text-align:center; margin-bottom:0">
-      <div class="chapter-label">AI Savings Simulator</div>
-      <h2 class="section-title">Calculate your automation ROI.</h2>
-      <p class="section-sub" style="margin:0 auto 0">Tell us about your team. We'll show you exactly what AI automation saves you every year.</p>
-    </div>
-
-    <div class="roi-grid">
-      <form class="roi-inputs glass" style="padding:40px" id="roiForm" onsubmit="return false">
-        <h3 style="font-family:var(--font-h);font-size:1rem;color:var(--txt3);margin-bottom:24px;letter-spacing:0.08em;text-transform:uppercase">Your Business Profile</h3>
-
-        <div class="roi-field">
-          <label>How many employees handle manual/repetitive tasks?</label>
-          <input type="number" name="employees" id="employees" value="10" min="1" max="500" placeholder="e.g. 10">
-        </div>
-        <div class="roi-field">
-          <label>Average monthly salary per employee (₹)</label>
-          <input type="number" name="salary" id="salary" value="35000" min="5000" placeholder="e.g. 35000">
-        </div>
-        <div class="roi-field">
-          <label>Hours wasted per week per employee on manual work</label>
-          <input type="number" name="hours" id="hours" value="18" min="1" max="60" placeholder="e.g. 18">
-        </div>
-        <div class="roi-field">
-          <label>How many business processes do you want to automate?</label>
-          <select name="processes" id="processes">
-            <option value="3">1–3 processes (starter)</option>
-            <option value="6" selected>4–6 processes (growth)</option>
-            <option value="12">7–12 processes (scale)</option>
-            <option value="20">12+ processes (enterprise)</option>
-          </select>
-        </div>
-      </form>
-
-      <div class="roi-results">
-        <div class="roi-results-title">Your Automation Opportunity</div>
-        <div class="roi-metrics">
-          <div class="roi-metric">
-            <div class="roi-metric-label">Estimated Annual Savings</div>
-            <div class="roi-metric-value" id="roiSavings">₹0</div>
-            <div class="roi-metric-sub">From automating wasted human work</div>
-          </div>
-          <div class="roi-metric">
-            <div class="roi-metric-label">Hours Saved Per Year</div>
-            <div class="roi-metric-value" id="roiHours" style="color:var(--violet)">0 hrs</div>
-            <div class="roi-metric-sub">Redirected to high-value work</div>
-          </div>
-          <div class="roi-metric">
-            <div class="roi-metric-label">AI Agents Required</div>
-            <div class="roi-metric-value" id="roiAgents" style="color:var(--amber)">0 agents</div>
-            <div class="roi-metric-sub">Custom-built for your processes</div>
-          </div>
-          <div class="roi-metric">
-            <div class="roi-metric-label">Productivity Gain</div>
-            <div class="roi-metric-value" id="roiProductivity" style="color:var(--green)">0%</div>
-            <div class="roi-metric-sub">Based on industry benchmarks</div>
-          </div>
-        </div>
-        <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%20used%20the%20ROI%20calculator%20and%20want%20to%20discuss%20my%20automation%20potential." class="btn btn-primary btn-md" target="_blank" rel="noopener" style="width:100%;justify-content:center">
-          Get My Custom Automation Plan →
+      <div class="hero-ctas">
+        <a href="{{ calendly }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+          Book Free Audit →
         </a>
-        <div class="roi-note">*Estimates based on 68% average automation savings across 50+ client implementations. Actual results vary by industry and process complexity.</div>
+        <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20deploying%20AI%20employees%20for%20my%20business." class="btn btn-wa btn-lg" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          No agency retainer
+        </div>
+        <div class="hero-trust-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Live in 2–4 weeks
+        </div>
+        <div class="hero-trust-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          ROI positive in month 1
+        </div>
       </div>
     </div>
+
+    <!-- AI Control Tower SVG -->
+    <div class="hero-visual">
+      <div class="control-tower">
+        <svg viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#18E3FF" stop-opacity="0.06"/>
+              <stop offset="100%" stop-color="#18E3FF" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#18E3FF" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#7A5CFF" stop-opacity="0.4"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <circle cx="240" cy="240" r="220" fill="url(#bgGlow)"/>
+          <circle cx="240" cy="240" r="180" stroke="rgba(24,227,255,0.08)" stroke-width="1"/>
+          <circle cx="240" cy="240" r="130" stroke="rgba(24,227,255,0.12)" stroke-width="1"/>
+          <circle cx="240" cy="240" r="80"  stroke="rgba(122,92,255,0.15)" stroke-width="1"/>
+
+          <g class="orbit-ring">
+            <line x1="240" y1="240" x2="240" y2="60"  stroke="url(#lineGrad)" stroke-width="1" class="data-flow"/>
+            <line x1="240" y1="240" x2="395" y2="150" stroke="url(#lineGrad)" stroke-width="1" class="data-flow"/>
+            <line x1="240" y1="240" x2="395" y2="330" stroke="url(#lineGrad)" stroke-width="1" class="data-flow"/>
+            <line x1="240" y1="240" x2="240" y2="420" stroke="url(#lineGrad)" stroke-width="1" class="data-flow"/>
+            <line x1="240" y1="240" x2="85"  y2="330" stroke="url(#lineGrad)" stroke-width="1" class="data-flow"/>
+            <line x1="240" y1="240" x2="85"  y2="150" stroke="url(#lineGrad)" stroke-width="1" class="data-flow"/>
+
+            <g filter="url(#glow)" class="tower-node">
+              <circle cx="240" cy="60"  r="22" fill="#0b1027" stroke="#18E3FF" stroke-width="1.5"/>
+              <text x="240" y="65" text-anchor="middle" fill="#18E3FF" font-family="monospace" font-size="9" font-weight="700">SALES</text>
+            </g>
+            <g filter="url(#glow)" class="tower-node">
+              <circle cx="395" cy="150" r="22" fill="#0b1027" stroke="#18E3FF" stroke-width="1.5"/>
+              <text x="395" y="155" text-anchor="middle" fill="#18E3FF" font-family="monospace" font-size="8" font-weight="700">SUPPORT</text>
+            </g>
+            <g filter="url(#glow)" class="tower-node">
+              <circle cx="395" cy="330" r="22" fill="#0b1027" stroke="#7A5CFF" stroke-width="1.5"/>
+              <text x="395" y="335" text-anchor="middle" fill="#7A5CFF" font-family="monospace" font-size="9" font-weight="700">OPS</text>
+            </g>
+            <g filter="url(#glow)" class="tower-node">
+              <circle cx="240" cy="420" r="22" fill="#0b1027" stroke="#7A5CFF" stroke-width="1.5"/>
+              <text x="240" y="425" text-anchor="middle" fill="#7A5CFF" font-family="monospace" font-size="8" font-weight="700">FINANCE</text>
+            </g>
+            <g filter="url(#glow)" class="tower-node">
+              <circle cx="85" cy="330" r="22" fill="#0b1027" stroke="#18E3FF" stroke-width="1.5"/>
+              <text x="85" y="335" text-anchor="middle" fill="#18E3FF" font-family="monospace" font-size="10" font-weight="700">HR</text>
+            </g>
+            <g filter="url(#glow)" class="tower-node">
+              <circle cx="85" cy="150" r="22" fill="#0b1027" stroke="#18E3FF" stroke-width="1.5"/>
+              <text x="85" y="155" text-anchor="middle" fill="#18E3FF" font-family="monospace" font-size="8" font-weight="700">MARKET</text>
+            </g>
+          </g>
+
+          <polygon
+            points="240,200 274,220 274,260 240,280 206,260 206,220"
+            fill="#0b1027" stroke="#18E3FF" stroke-width="2"
+            class="tower-center-pulse" filter="url(#glow)"
+          />
+          <text x="240" y="238" text-anchor="middle" fill="#18E3FF" font-family="sans-serif" font-size="11" font-weight="800">AI</text>
+          <text x="240" y="254" text-anchor="middle" fill="#8894B4" font-family="monospace" font-size="8">CONTROL</text>
+
+          <g class="orbit-ring-reverse">
+            <circle cx="370" cy="240" r="6" fill="#18E3FF" opacity="0.6"/>
+            <circle cx="110" cy="240" r="6" fill="#7A5CFF" opacity="0.6"/>
+            <circle cx="240" cy="110" r="5" fill="#18E3FF" opacity="0.4"/>
+            <circle cx="240" cy="370" r="5" fill="#7A5CFF" opacity="0.4"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     MISSIONS (CASE STUDIES)
-══════════════════════════════════════ -->
-<section class="missions section" id="missions">
+<!-- ══════════════════════════════════════════════════
+     SECTION 2: PAIN COUNTERS + TRANSFORMATION
+══════════════════════════════════════════════════ -->
+<section class="pain-section section">
   <div class="container">
-    <div class="reveal">
-      <div class="chapter-label">Client Missions</div>
-      <h2 class="section-title">Real results. Real businesses.</h2>
-      <p class="section-sub">Every client starts with a problem. We turn it into a competitive advantage.</p>
+    <div class="pain-header reveal">
+      <div class="chapter-label">The Cost of Status Quo</div>
+      <h2 class="section-title">What manual work costs your business every day.</h2>
+      <p class="section-sub">These aren't estimates. They're averages from 200+ business audits across India and the UK.</p>
     </div>
 
-    <div class="missions-grid">
-      <div class="mission-card reveal reveal-delay-1">
-        <div class="mission-num">Mission 01</div>
-        <div class="mission-title">Invoice Processing Automation</div>
-        <div class="mission-compare">
-          <div class="mission-before">
-            <div class="mission-col-label">Before</div>
-            <div class="mission-col-items">
-              <div class="mission-col-item">3 staff processing invoices manually</div>
-              <div class="mission-col-item">4–5 days processing time</div>
-              <div class="mission-col-item">15% error rate</div>
-              <div class="mission-col-item">₹2.4L monthly labour cost</div>
-            </div>
-          </div>
-          <div class="mission-after">
-            <div class="mission-col-label">After AI</div>
-            <div class="mission-col-items">
-              <div class="mission-col-item">1 AI agent handles all invoices</div>
-              <div class="mission-col-item">4 hours processing time</div>
-              <div class="mission-col-item">&lt;0.5% error rate</div>
-              <div class="mission-col-item">₹18K monthly (AI cost)</div>
-            </div>
-          </div>
-        </div>
-        <div class="mission-result">
-          <div class="mission-stat"><strong>₹2.2L</strong><span>Saved / month</span></div>
-          <div class="mission-stat"><strong>96%</strong><span>Faster processing</span></div>
-          <div class="mission-stat"><strong>2 weeks</strong><span>To deploy</span></div>
-        </div>
+    <div class="pain-counters">
+      <div class="pain-counter reveal">
+        <span class="pain-counter-num" data-counter data-target="62" data-suffix="%" data-duration="2000">0%</span>
+        <p class="pain-counter-label">of employee time spent on tasks that can be automated</p>
       </div>
-
-      <div class="mission-card reveal reveal-delay-2">
-        <div class="mission-num">Mission 02</div>
-        <div class="mission-title">WhatsApp Customer Support Automation</div>
-        <div class="mission-compare">
-          <div class="mission-before">
-            <div class="mission-col-label">Before</div>
-            <div class="mission-col-items">
-              <div class="mission-col-item">6 agents handling 500+ daily messages</div>
-              <div class="mission-col-item">2–4 hour response time</div>
-              <div class="mission-col-item">Low CSAT scores</div>
-              <div class="mission-col-item">₹3.6L monthly team cost</div>
-            </div>
-          </div>
-          <div class="mission-after">
-            <div class="mission-col-label">After AI</div>
-            <div class="mission-col-items">
-              <div class="mission-col-item">AI handles 82% of all messages</div>
-              <div class="mission-col-item">&lt;60 second response time</div>
-              <div class="mission-col-item">CSAT up from 62% to 91%</div>
-              <div class="mission-col-item">Team reduced to 2 people</div>
-            </div>
-          </div>
-        </div>
-        <div class="mission-result">
-          <div class="mission-stat"><strong>₹2.4L</strong><span>Saved / month</span></div>
-          <div class="mission-stat"><strong>91%</strong><span>CSAT score</span></div>
-          <div class="mission-stat"><strong>3 weeks</strong><span>To deploy</span></div>
-        </div>
+      <div class="pain-counter reveal reveal-delay-1">
+        <span class="pain-counter-num" data-counter data-target="4.2" data-prefix="₹" data-suffix="L/mo" data-duration="2200">₹0</span>
+        <p class="pain-counter-label">Average monthly cost of manual data entry for a 10-person team</p>
       </div>
-
-      <div class="mission-card reveal reveal-delay-3">
-        <div class="mission-num">Mission 03</div>
-        <div class="mission-title">Lead Follow-Up &amp; CRM Automation</div>
-        <div class="mission-compare">
-          <div class="mission-before">
-            <div class="mission-col-label">Before</div>
-            <div class="mission-col-items">
-              <div class="mission-col-item">Sales team manually following up</div>
-              <div class="mission-col-item">45% of leads never contacted again</div>
-              <div class="mission-col-item">CRM data always outdated</div>
-              <div class="mission-col-item">₹8L revenue lost monthly</div>
-            </div>
-          </div>
-          <div class="mission-after">
-            <div class="mission-col-label">After AI</div>
-            <div class="mission-col-items">
-              <div class="mission-col-item">AI follows up 100% of leads</div>
-              <div class="mission-col-item">Sequences run for 90 days automatically</div>
-              <div class="mission-col-item">CRM updated in real time</div>
-              <div class="mission-col-item">32% increase in closed deals</div>
-            </div>
-          </div>
-        </div>
-        <div class="mission-result">
-          <div class="mission-stat"><strong>32%</strong><span>More deals closed</span></div>
-          <div class="mission-stat"><strong>100%</strong><span>Lead coverage</span></div>
-          <div class="mission-stat"><strong>10 days</strong><span>To deploy</span></div>
-        </div>
+      <div class="pain-counter reveal reveal-delay-2">
+        <span class="pain-counter-num" data-counter data-target="23" data-suffix="x" data-duration="1800">0x</span>
+        <p class="pain-counter-label">AI processes the same task 23x faster than a human</p>
       </div>
+      <div class="pain-counter reveal reveal-delay-3">
+        <span class="pain-counter-num" data-counter data-target="94" data-suffix="%" data-duration="2000">0%</span>
+        <p class="pain-counter-label">Reduction in errors when processes move from human to AI</p>
+      </div>
+    </div>
 
-      <div class="mission-card reveal reveal-delay-4">
-        <div class="mission-num">Mission 04</div>
-        <div class="mission-title">HR Recruitment Pipeline Automation</div>
-        <div class="mission-compare">
-          <div class="mission-before">
-            <div class="mission-col-label">Before</div>
-            <div class="mission-col-items">
-              <div class="mission-col-item">HR team spending 40h/week on screening</div>
-              <div class="mission-col-item">3–4 week time to hire</div>
-              <div class="mission-col-item">High candidate drop-off</div>
-              <div class="mission-col-item">Manual interview scheduling</div>
-            </div>
-          </div>
-          <div class="mission-after">
-            <div class="mission-col-label">After AI</div>
-            <div class="mission-col-items">
-              <div class="mission-col-item">AI screens all CVs in under 5 minutes</div>
-              <div class="mission-col-item">Time to hire: under 5 days</div>
-              <div class="mission-col-item">Automated interview scheduling</div>
-              <div class="mission-col-item">Offer letters generated automatically</div>
-            </div>
-          </div>
+    <div class="transform-grid" data-stagger>
+      <div class="transform-card">
+        <div class="transform-before-after">
+          <span class="ta-before">BEFORE</span><span class="ta-arrow">→</span><span class="ta-after">AFTER</span>
         </div>
-        <div class="mission-result">
-          <div class="mission-stat"><strong>85%</strong><span>Less screening time</span></div>
-          <div class="mission-stat"><strong>5 days</strong><span>Time-to-hire</span></div>
-          <div class="mission-stat"><strong>2 weeks</strong><span>To deploy</span></div>
+        <h3>Lead Response Time</h3>
+        <p>From 4-hour average response to under 60 seconds. Every enquiry, every time, 24/7.</p>
+      </div>
+      <div class="transform-card">
+        <div class="transform-before-after">
+          <span class="ta-before">BEFORE</span><span class="ta-arrow">→</span><span class="ta-after">AFTER</span>
         </div>
+        <h3>Invoice Processing</h3>
+        <p>From 8 minutes per invoice (manual entry, errors, chasing) to 18 seconds, zero errors.</p>
+      </div>
+      <div class="transform-card">
+        <div class="transform-before-after">
+          <span class="ta-before">BEFORE</span><span class="ta-arrow">→</span><span class="ta-after">AFTER</span>
+        </div>
+        <h3>Customer Support Tickets</h3>
+        <p>From 6-hour resolution average to 83% resolved instantly, without a human touching them.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     FAQ / SEO
-══════════════════════════════════════ -->
-<section class="faq-section section" id="faq">
+<!-- ══════════════════════════════════════════════════
+     SECTION 3: AI EXECUTIVES
+══════════════════════════════════════════════════ -->
+<section class="executives-section section">
   <div class="container">
-    <div class="faq-grid">
-      <div class="faq-sidebar reveal">
-        <div class="chapter-label">Knowledge Base</div>
-        <h3>Everything you need to know about AI automation.</h3>
-        <p>Questions businesses ask before transforming their operations.</p>
-        <a href="https://wa.me/{{ wa }}" class="btn btn-ghost btn-md" target="_blank" rel="noopener" style="display:inline-flex;margin-top:8px">Ask your question →</a>
+    <div class="executives-header reveal">
+      <div class="chapter-label">Meet Your Team</div>
+      <h2 class="section-title">Your AI Executive Team.<br>Ready to deploy in weeks.</h2>
+      <p class="section-sub">9 specialised AI Employees, each trained for a specific business function. Deploy one or all nine.</p>
+    </div>
+
+    <div class="executives-grid" data-stagger>
+      <div class="exec-card" style="--exec-color:#18E3FF">
+        <div class="exec-avatar">🤝</div>
+        <div class="exec-name">Alex</div>
+        <div class="exec-role">AI Sales Executive</div>
+        <p class="exec-desc">Qualifies inbound leads, books demos, follows up across WhatsApp, email and SMS. Never lets a lead go cold.</p>
+        <div class="exec-metrics">
+          <span class="exec-metric">Deploy: <strong>2 weeks</strong></span>
+          <span class="exec-metric">Saves: <strong>40 hrs/mo</strong></span>
+        </div>
+      </div>
+      <div class="exec-card" style="--exec-color:#7A5CFF">
+        <div class="exec-avatar">💬</div>
+        <div class="exec-name">Maya</div>
+        <div class="exec-role">AI Support Agent</div>
+        <p class="exec-desc">Resolves 80%+ of support queries instantly. Handles returns, complaints, FAQs and escalates when needed.</p>
+        <div class="exec-metrics">
+          <span class="exec-metric">Deploy: <strong>1 week</strong></span>
+          <span class="exec-metric">Resolves: <strong>80% auto</strong></span>
+        </div>
+      </div>
+      <div class="exec-card" style="--exec-color:#FFAA00">
+        <div class="exec-avatar">⚙️</div>
+        <div class="exec-name">Atlas</div>
+        <div class="exec-role">AI Operations Manager</div>
+        <p class="exec-desc">Manages workflows, data pipelines and system integrations across your entire tech stack, 24/7.</p>
+        <div class="exec-metrics">
+          <span class="exec-metric">Deploy: <strong>3 weeks</strong></span>
+          <span class="exec-metric">Uptime: <strong>99.9%</strong></span>
+        </div>
+      </div>
+      <div class="exec-card" style="--exec-color:#18E3FF">
+        <div class="exec-avatar">💰</div>
+        <div class="exec-name">Titan</div>
+        <div class="exec-role">AI Finance Analyst</div>
+        <p class="exec-desc">Processes invoices, reconciles accounts, flags anomalies and generates financial reports automatically.</p>
+        <div class="exec-metrics">
+          <span class="exec-metric">Deploy: <strong>2 weeks</strong></span>
+          <span class="exec-metric">Error rate: <strong>&lt;0.01%</strong></span>
+        </div>
+      </div>
+      <div class="exec-card" style="--exec-color:#7A5CFF">
+        <div class="exec-avatar">📣</div>
+        <div class="exec-name">Nova</div>
+        <div class="exec-role">AI Marketing Executive</div>
+        <p class="exec-desc">Creates content, sends campaigns, segments audiences and runs retargeting — all on autopilot.</p>
+        <div class="exec-metrics">
+          <span class="exec-metric">Deploy: <strong>2 weeks</strong></span>
+          <span class="exec-metric">Campaigns: <strong>24/7</strong></span>
+        </div>
+      </div>
+      <div class="exec-card" style="--exec-color:#25D366">
+        <div class="exec-avatar">👥</div>
+        <div class="exec-name">Orion</div>
+        <div class="exec-role">AI HR Assistant</div>
+        <p class="exec-desc">Screens CVs, schedules interviews, manages onboarding docs and answers employee policy queries.</p>
+        <div class="exec-metrics">
+          <span class="exec-metric">Deploy: <strong>1 week</strong></span>
+          <span class="exec-metric">Screens: <strong>100+ CVs/hr</strong></span>
+        </div>
+      </div>
+      <div class="exec-card" style="--exec-color:#FFAA00">
+        <div class="exec-avatar">📦</div>
+        <div class="exec-name">Vega</div>
+        <div class="exec-role">AI Inventory Manager</div>
+        <p class="exec-desc">Tracks stock, triggers reorders, reconciles supplier invoices and flags discrepancies automatically.</p>
+        <div class="exec-metrics">
+          <span class="exec-metric">Deploy: <strong>2 weeks</strong></span>
+          <span class="exec-metric">Stockouts: <strong>-90%</strong></span>
+        </div>
+      </div>
+      <div class="exec-card" style="--exec-color:#18E3FF">
+        <div class="exec-avatar">📊</div>
+        <div class="exec-name">Zeta</div>
+        <div class="exec-role">AI Data Analyst</div>
+        <p class="exec-desc">Pulls data from every source, builds dashboards and delivers insights to your inbox every morning.</p>
+        <div class="exec-metrics">
+          <span class="exec-metric">Deploy: <strong>2 weeks</strong></span>
+          <span class="exec-metric">Reports: <strong>Daily auto</strong></span>
+        </div>
+      </div>
+      <div class="exec-card" style="--exec-color:#7A5CFF">
+        <div class="exec-avatar">🔍</div>
+        <div class="exec-name">Echo</div>
+        <div class="exec-role">AI Compliance Monitor</div>
+        <p class="exec-desc">Monitors regulatory changes, audits internal processes and flags non-compliance before it costs you.</p>
+        <div class="exec-metrics">
+          <span class="exec-metric">Deploy: <strong>3 weeks</strong></span>
+          <span class="exec-metric">Audit: <strong>Real-time</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:48px">
+      <a href="/ai-executives" class="btn btn-ghost">See Full AI Executive Profiles →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4: ROI CALCULATOR
+══════════════════════════════════════════════════ -->
+<section class="roi-section section">
+  <div class="container">
+    <div class="roi-inner">
+
+      <div class="roi-left">
+        <div class="chapter-label reveal">Calculate Your ROI</div>
+        <h2 class="reveal">See exactly how much your business saves.</h2>
+        <p class="section-sub reveal">Adjust the sliders to match your team size and salary. We calculate in rupees, using real automation benchmarks from Indian businesses.</p>
+        <div style="margin-top:32px" class="reveal">
+          <a href="/case-studies" class="btn btn-ghost">See Real Client Results →</a>
+        </div>
       </div>
 
-      <div class="faq-list reveal">
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What is an AI agent and how is it different from a chatbot?</span>
-            <div class="faq-icon">+</div>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">An AI agent is an autonomous software system that perceives its environment, makes decisions, and takes actions to achieve a goal — without constant human instruction. Unlike a simple chatbot that follows a fixed script, an AI agent can access your CRM, send emails, update databases, book appointments, and escalate to humans when needed. It works across multiple tools and adapts to new situations. Think of it as a digital employee with a job description, not a FAQ page with buttons.</div>
+      <div id="roiCalculator" class="roi-calculator reveal">
+        <div class="calc-field">
+          <div class="calc-label">
+            <span>Number of employees doing manual work</span>
+            <span class="calc-label-val" id="valEmployees">10</span>
           </div>
+          <input type="range" class="calc-slider" id="calcEmployees" min="2" max="200" value="10" step="1">
         </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How much does AI automation cost for an Indian business?</span>
-            <div class="faq-icon">+</div>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Costs vary by scope. A single AI agent deployment (e.g. a WhatsApp support bot or lead follow-up agent) typically starts at ₹35,000–₹75,000 for setup, with monthly platform costs of ₹8,000–₹20,000. Enterprise-grade multi-agent automation starts from ₹1.5L setup. Most clients recover their investment in the first 4–8 weeks. We always share a detailed ROI projection before any engagement begins.</div>
+        <div class="calc-field">
+          <div class="calc-label">
+            <span>Hours per day spent on repetitive tasks</span>
+            <span class="calc-label-val" id="valHours">4 hrs/day</span>
           </div>
+          <input type="range" class="calc-slider" id="calcHours" min="1" max="10" value="4" step="1">
         </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Can AI automate WhatsApp for my business?</span>
-            <div class="faq-icon">+</div>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Yes — and it's one of the highest-ROI automations for Indian businesses. Using the official WhatsApp Business API, we build AI agents that respond to customer queries, send order updates, collect payments, run follow-up sequences, and qualify leads — all on WhatsApp. Your customers continue chatting on the app they already use; the AI handles responses instantly, 24/7, in Hindi or English.</div>
+        <div class="calc-field">
+          <div class="calc-label">
+            <span>Average monthly salary per employee</span>
+            <span class="calc-label-val" id="valSalary">₹40K/mo</span>
           </div>
+          <input type="range" class="calc-slider" id="calcSalary" min="15000" max="200000" value="40000" step="5000">
         </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What is n8n and why do you use it?</span>
-            <div class="faq-icon">+</div>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">n8n is an open-source workflow automation platform — like Zapier but far more powerful, self-hostable, and cost-effective at scale. We use n8n to build complex business automation workflows that connect your CRM, WhatsApp, email, ERP, spreadsheets, and AI models. Because it's self-hosted, your data stays on your servers, making it ideal for Indian businesses with data compliance requirements. n8n gives us 400+ native integrations to work with.</div>
+        <div class="calc-field">
+          <div class="calc-label">
+            <span>% of work that can be automated</span>
+            <span class="calc-label-val" id="valTasks">60%</span>
           </div>
+          <input type="range" class="calc-slider" id="calcTasks" min="20" max="90" value="60" step="5">
         </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What is UiPath and when should I use it?</span>
-            <div class="faq-icon">+</div>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">UiPath is the world's leading Robotic Process Automation (RPA) platform. It's ideal when you need to automate work on legacy systems, desktop applications, or web interfaces that don't have APIs — for example, copying data between an old ERP and a new system, automating government portal submissions, or processing documents in enterprise software. For API-connected systems, we typically recommend n8n or custom AI agents instead, which are faster and more cost-effective.</div>
+
+        <div class="calc-result">
+          <div class="calc-result-label">Estimated Annual ROI</div>
+          <span class="calc-result-num" id="calcResultNum">₹0</span>
+          <p class="calc-result-sub" id="calcResultSub">Calculating…</p>
+          <div class="calc-breakdown">
+            <div class="calc-break-item">
+              <div class="calc-break-label">Hours saved / month</div>
+              <div class="calc-break-val" id="breakTimeSaved">—</div>
+            </div>
+            <div class="calc-break-item">
+              <div class="calc-break-label">Labour cost saved</div>
+              <div class="calc-break-val" id="breakLaborCost">—</div>
+            </div>
+            <div class="calc-break-item">
+              <div class="calc-break-label">Error reduction value</div>
+              <div class="calc-break-val" id="breakErrorCost">—</div>
+            </div>
+            <div class="calc-break-item">
+              <div class="calc-break-label">Revenue gain</div>
+              <div class="calc-break-val" id="breakRevGain">—</div>
+            </div>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How does AI improve customer support for businesses in India?</span>
-            <div class="faq-icon">+</div>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">AI support agents resolve 70–85% of Tier-1 queries instantly — order status, FAQs, refund policies, appointment bookings — without any human involvement. For the remaining complex cases, the AI collects all context before routing to a human agent, so your team spends zero time on "where is my order?" calls. The result: faster response times (seconds, not hours), lower support costs, higher CSAT scores, and a support team that focuses only on cases that genuinely need a human mind.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Which industries benefit most from AI automation?</span>
-            <div class="faq-icon">+</div>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Any industry with high-volume, rule-based, repetitive work sees the fastest ROI. In India, we see the strongest results in: manufacturing (purchase orders, inventory, compliance), healthcare (appointments, reports, billing), insurance and BFSI (claims, renewals, KYC), e-commerce (support, returns, carts), and real estate (lead follow-up, site visits, documentation). That said, every business has automation potential — the question is where to start for maximum impact.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Can AI replace repetitive work without replacing my employees?</span>
-            <div class="faq-icon">+</div>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">This is exactly the right framing. Our philosophy is "human potential amplified by AI" — not "AI replacing humans." We automate the repetitive, low-value tasks that drain your team's energy, so they can focus on creative problem-solving, client relationships, and high-value decisions. Most of our clients retain their entire team; they simply stop doing work that a machine can do better. The result is happier, more motivated employees — and a business that scales without proportionally increasing headcount.</div>
-          </div>
+          <a href="{{ calendly }}" id="calcCta" class="btn btn-primary" target="_blank" rel="noopener" style="width:100%; justify-content:center;">
+            Get My Free Automation Audit →
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     FINAL VISION
-══════════════════════════════════════ -->
-<section class="final-vision" id="final">
-  <div class="final-content">
-    <div class="final-overline reveal">Agentic AI Automation</div>
-    <h2 class="final-headline reveal">
-      The future isn't coming.<br>
-      <span class="grad">It's already working.</span>
-    </h2>
-    <p class="final-sub reveal">
-      While your competitors rely on tired teams and broken processes,<br>
-      your AI workforce runs their shifts — every hour, every day.
-    </p>
-    <div class="final-brand reveal">agenticaiautomation.co</div>
-    <div class="final-actions reveal">
-      <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%20want%20to%20build%20my%20AI%20workforce." class="btn btn-primary btn-xl" target="_blank" rel="noopener">
-        Build My AI Workforce
-      </a>
-      <a href="https://wa.me/{{ wa }}" class="btn btn-wa btn-xl" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Chat on WhatsApp
-      </a>
+<!-- ══════════════════════════════════════════════════
+     SECTION 5: 4-WEEK TIMELINE
+══════════════════════════════════════════════════ -->
+<section class="timeline-section section">
+  <div class="container">
+    <div class="timeline-header reveal">
+      <div class="chapter-label">How It Works</div>
+      <h2 class="section-title">From idea to live AI workforce in 4 weeks.</h2>
+      <p class="section-sub" style="margin:0 auto;">No 6-month IT projects. No enterprise software licences. No internal dev team needed.</p>
+    </div>
+
+    <div class="timeline-track">
+      <div class="timeline-step">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-week">Week 1</div>
+        <h3>Discovery &amp; Audit</h3>
+        <p>We audit your current processes, identify the highest-ROI automation opportunities and design your AI workforce architecture.</p>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-week">Week 2</div>
+        <h3>Build &amp; Configure</h3>
+        <p>Your AI employees are built, trained on your data, and integrated with your existing systems — CRM, ERP, WhatsApp, email, and more.</p>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-week">Week 3</div>
+        <h3>Test &amp; Refine</h3>
+        <p>Rigorous testing with your real data and scenarios. Every edge case handled before a single customer interaction.</p>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-dot">4</div>
+        <div class="timeline-week">Week 4</div>
+        <h3>Go Live &amp; Optimise</h3>
+        <p>Your AI workforce goes live. We monitor the first 2 weeks, optimise based on real performance, and hand over full control.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:64px">
+      <a href="{{ calendly }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Start My 4-Week Journey →</a>
     </div>
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════════════
+     SECTION 6: CASE STUDIES PREVIEW
+══════════════════════════════════════════════════ -->
+<section class="cases-preview section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="executives-header reveal">
+      <div class="chapter-label">Proof It Works</div>
+      <h2 class="section-title">Real businesses. Real results.</h2>
+      <p class="section-sub">Every result is from a live client deployment — not a vendor pitch deck.</p>
+    </div>
+
+    <div class="cases-grid" data-stagger>
+      <div class="case-card">
+        <div class="case-tag">E-commerce · Lead Qualification</div>
+        <h3>Fashion brand cuts lead response from 4 hours to 60 seconds</h3>
+        <p>WhatsApp AI agent qualifies 300+ daily enquiries, books demos and pushes hot leads to sales team.</p>
+        <div class="case-metrics">
+          <div class="case-metric"><span class="case-metric-num">60s</span><span class="case-metric-label">Response time</span></div>
+          <div class="case-metric"><span class="case-metric-num">3.2x</span><span class="case-metric-label">Conversion lift</span></div>
+          <div class="case-metric"><span class="case-metric-num">₹8L</span><span class="case-metric-label">Monthly savings</span></div>
+          <div class="case-metric"><span class="case-metric-num">2 wks</span><span class="case-metric-label">To deploy</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Finance · Invoice Processing</div>
+        <h3>CA firm processes 2,000 invoices/month with zero manual entry</h3>
+        <p>UiPath + AI document extraction pulls invoice data, validates and pushes to Tally — 18 seconds per invoice.</p>
+        <div class="case-metrics">
+          <div class="case-metric"><span class="case-metric-num">18s</span><span class="case-metric-label">Per invoice</span></div>
+          <div class="case-metric"><span class="case-metric-num">0</span><span class="case-metric-label">Manual errors</span></div>
+          <div class="case-metric"><span class="case-metric-num">₹5L</span><span class="case-metric-label">Saved annually</span></div>
+          <div class="case-metric"><span class="case-metric-num">3 wks</span><span class="case-metric-label">To deploy</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Healthcare · Patient Management</div>
+        <h3>Clinic automates 600+ weekly appointment reminders and follow-ups</h3>
+        <p>n8n workflow sends WhatsApp reminders, collects pre-consultation info, reduces no-shows by 71%.</p>
+        <div class="case-metrics">
+          <div class="case-metric"><span class="case-metric-num">71%</span><span class="case-metric-label">Fewer no-shows</span></div>
+          <div class="case-metric"><span class="case-metric-num">600+</span><span class="case-metric-label">Messages/week</span></div>
+          <div class="case-metric"><span class="case-metric-num">0</span><span class="case-metric-label">Staff time used</span></div>
+          <div class="case-metric"><span class="case-metric-num">1 wk</span><span class="case-metric-label">To deploy</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:48px">
+      <a href="/case-studies" class="btn btn-ghost">See All 6 Case Studies →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7: INDUSTRIES
+══════════════════════════════════════════════════ -->
+<section class="industries-section section">
+  <div class="container">
+    <div class="industries-header reveal">
+      <div class="chapter-label">Industries We Serve</div>
+      <h2 class="section-title">Built for your industry.</h2>
+    </div>
+    <div class="industries-grid" data-stagger>
+      <div class="industry-card"><div class="industry-icon">🛒</div><div class="industry-name">E-commerce &amp; D2C</div><div class="industry-stat">Avg 3.2x conversion lift</div></div>
+      <div class="industry-card"><div class="industry-icon">🏥</div><div class="industry-name">Healthcare &amp; Clinics</div><div class="industry-stat">71% fewer no-shows</div></div>
+      <div class="industry-card"><div class="industry-icon">⚖️</div><div class="industry-name">Law Firms</div><div class="industry-stat">60% less admin time</div></div>
+      <div class="industry-card"><div class="industry-icon">🏭</div><div class="industry-name">Manufacturing</div><div class="industry-stat">90% fewer stockouts</div></div>
+      <div class="industry-card"><div class="industry-icon">🚚</div><div class="industry-name">Logistics</div><div class="industry-stat">Real-time tracking auto</div></div>
+      <div class="industry-card"><div class="industry-icon">🏦</div><div class="industry-name">BFSI &amp; Finance</div><div class="industry-stat">Zero invoice errors</div></div>
+      <div class="industry-card"><div class="industry-icon">🏢</div><div class="industry-name">Real Estate</div><div class="industry-stat">5x faster lead follow-up</div></div>
+      <div class="industry-card"><div class="industry-icon">💼</div><div class="industry-name">Professional Services</div><div class="industry-stat">40% lower overhead</div></div>
+    </div>
+    <div style="text-align:center; margin-top:48px">
+      <a href="/industries" class="btn btn-ghost">See Industry-Specific Solutions →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8: TRUST + FOUNDER
+══════════════════════════════════════════════════ -->
+<section class="trust-section section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="trust-header reveal">
+      <div class="chapter-label">Why Trust Us</div>
+      <h2 class="section-title">Built by someone who has done this for 9 years.</h2>
+    </div>
+
+    <div class="trust-grid" data-stagger>
+      <div class="trust-card"><div class="trust-icon">🏆</div><h3>UiPath Certified</h3><p>Official UiPath certification — not a reseller, not a course grad. Real enterprise RPA deployments across India and the UK.</p></div>
+      <div class="trust-card"><div class="trust-icon">🔧</div><h3>9 Years Automation</h3><p>From legacy banking systems to modern SaaS stacks. We've automated workflows most agencies won't even attempt.</p></div>
+      <div class="trust-card"><div class="trust-icon">🌍</div><h3>6 Countries</h3><p>Clients across India, UK, UAE, US, Saudi Arabia and Singapore. We understand enterprise requirements globally.</p></div>
+      <div class="trust-card"><div class="trust-icon">⚡</div><h3>No-Bloat Delivery</h3><p>No 6-month project timelines, no enterprise pricing. We operate lean and ship fast — 2–4 weeks to live.</p></div>
+      <div class="trust-card"><div class="trust-icon">🔒</div><h3>Data Stays Yours</h3><p>All automations can run inside your infrastructure. We don't require third-party data sharing or cloud lock-in.</p></div>
+      <div class="trust-card"><div class="trust-icon">📞</div><h3>Direct Access</h3><p>You work directly with the founder — not a junior account manager. Every engagement gets senior attention from day one.</p></div>
+    </div>
+
+    <div class="founder-card reveal" style="margin-top:48px">
+      <div class="founder-avatar">👤</div>
+      <div class="founder-info">
+        <div class="founder-name">Jai</div>
+        <div class="founder-title">Founder, Agentic AI Automation</div>
+        <p class="founder-bio">11 years in Enterprise IT. 9 years in process automation. UiPath certified. Power Automate expert. I've automated workflows at banks, hospitals, law firms, and logistics companies across India, the UK and the Middle East. I built Agentic AI Automation because most businesses are still doing work that should have been automated years ago — and the big agencies are too expensive and too slow to help them.</p>
+        <div class="founder-tags">
+          <span class="tag">UiPath Certified</span>
+          <span class="tag">Power Automate</span>
+          <span class="tag">n8n Expert</span>
+          <span class="tag">AI Agent Development</span>
+          <span class="tag">11 Yrs Enterprise IT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 9: FAQ
+══════════════════════════════════════════════════ -->
+<section class="home-faq section">
+  <div class="container">
+    <div class="home-faq-inner">
+
+      <div class="home-faq-left">
+        <div class="chapter-label reveal">FAQ</div>
+        <h2 class="reveal">Every question you have before saying yes.</h2>
+        <p class="reveal">20 honest answers — no marketing fluff.</p>
+        <div class="reveal" style="margin-top:24px">
+          <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20AI%20automation." class="btn btn-wa" target="_blank" rel="noopener">
+            Ask Directly on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-question"><span>What exactly is an AI employee?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">An AI employee is a software system that handles a defined set of business tasks — like a human employee would — but autonomously, 24/7, at a fraction of the cost. It can respond to customers, process documents, send emails, update your CRM, generate reports, and much more. Unlike RPA (which follows rigid rules), AI employees can reason, understand natural language, and adapt to new situations.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>How is this different from a chatbot?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">A chatbot follows pre-defined decision trees — it can only handle questions you've explicitly programmed for. An AI employee uses large language models to understand intent, context and nuance — it can handle questions it's never seen before, take multi-step actions across systems (updating your CRM, sending an email, booking a calendar slot), and escalate intelligently when something is outside its scope.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What's the cost of deploying an AI workforce?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Projects typically start at ₹50,000–₹1.5L for a focused implementation (one AI employee, one process). Full AI workforce deployments (3–5 AI employees) run ₹2.5L–₹8L setup. All projects include a free process audit before any payment. Monthly maintenance is typically ₹15,000–₹40,000 depending on scale. Most clients are ROI positive within 45–60 days.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>How long does deployment take?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Our standard deployment is 4 weeks: Week 1 (discovery + design), Week 2 (build), Week 3 (testing), Week 4 (go-live). Simple single-process automations (like a WhatsApp response bot or invoice processor) can go live in 7–10 days. Complex multi-system AI workforce deployments may take 6–8 weeks for the most thorough implementation.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What systems does your AI integrate with?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">We integrate with virtually any system with an API or web interface: Tally, Zoho CRM, Salesforce, HubSpot, SAP, Microsoft 365, Google Workspace, Shopify, WooCommerce, Razorpay, WhatsApp Business API, Slack, Notion, Airtable, QuickBooks, and 200+ more. For legacy systems with no API, we use UiPath RPA to automate at the UI level.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Do you work with small businesses or only enterprises?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Both — and our pricing reflects this. We work with solo consultants, 10-person SMEs, mid-market companies (50–500 employees), and enterprise teams. The minimum viable project is usually a business handling 50+ repetitive tasks per week that can be automated. We've found this is the threshold where automation ROI becomes clear within 30 days.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What happens when the AI makes a mistake?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">All our AI employees are built with confidence thresholds. When the AI isn't confident about an action or response, it routes to a human for review instead of proceeding. We also build in full audit logs so every action is traceable. In practice, error rates are under 0.5% for well-defined processes — significantly lower than human error rates (typically 4–8% for manual data tasks).</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Is my business data safe?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Data security is taken seriously at every step. All automations can be deployed within your own infrastructure (your cloud, your servers) if data sovereignty is critical. We use encrypted connections, role-based access controls, and never store your customer data on shared systems. For regulated industries (BFSI, healthcare), we design specifically to meet compliance requirements (RBI guidelines, DPDP Act, HIPAA for international clients).</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Will this replace my employees?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">The goal isn't replacement — it's reallocation. AI employees handle repetitive, rules-based tasks so your human team can focus on judgment, relationships and growth. In our experience, businesses that automate well hire more humans over time, not fewer — because they can handle more business without proportional headcount growth.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Do you provide ongoing support after deployment?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Yes. Every deployment includes 2 weeks of post-go-live monitoring and optimisation at no additional cost. Beyond that, we offer monthly maintenance retainers that include performance monitoring, model updates as AI capabilities improve, integration maintenance, and priority support. We don't deploy and disappear.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What's the difference between RPA and AI agents?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">RPA follows exact, predefined steps — perfect for structured, repetitive tasks on legacy systems. AI agents can reason, understand unstructured inputs and adapt to situations they haven't explicitly been trained on. Many of our best solutions combine both: an AI agent that reasons and decides, feeding actions to an RPA bot that executes in legacy systems.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Can the AI work in Hindi?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Yes. We build multilingual AI employees that detect and respond in the customer's language — Hindi, English, or Hinglish. This is particularly powerful for WhatsApp automation targeting Tier 2 and Tier 3 Indian cities. The AI understands natural conversational Hindi, regional variations, and can switch languages mid-conversation.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>How do we start? What's the first step?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Book a free 45-minute process audit via Calendly or WhatsApp. We'll review your current workflows, identify the highest-ROI automation opportunities, and give you a clear implementation roadmap — with cost estimates, timelines and expected ROI. No pressure to proceed. The audit is yours to keep regardless.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Do I need a technical team to work with you?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">No. We handle all the technical implementation. You need to know your business process — we'll handle the rest. The only things we need from your side are: access to relevant systems (read-only initially), someone who can validate that the automation is working correctly, and feedback during the testing phase.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What tools and platforms do you work with?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">We work across the full automation stack: n8n (workflow automation), UiPath (enterprise RPA), Microsoft Power Automate (M365 businesses), WhatsApp Business API (customer communication), AI frameworks (LangChain, OpenAI, Claude), and custom Python/JavaScript solutions where needed. We're tool-agnostic — we recommend what's right for your situation.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Do you sign NDAs?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Yes — we sign mutual NDAs before any process discussion. We handle sensitive business information including financial data, customer data, and proprietary workflows. Confidentiality isn't optional — it's standard practice.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Can I see a demo before committing?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Absolutely. During your free audit, we'll walk through live demonstrations of relevant automation use cases — WhatsApp AI, invoice processing, lead qualification, or whatever's most relevant to you. For larger projects, we can build a proof-of-concept on a subset of your real data before full engagement.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What if I want to expand after the first deployment?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">We design every initial deployment as a foundation, not a one-off. The architecture supports adding more AI employees, more integrations and more workflow complexity over time. Most clients start with one focused automation, see results within 30 days, and expand to 3–5 additional processes within 6 months.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What is n8n and why do you use it?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">n8n is an open-source workflow automation platform — think Zapier but self-hostable, more powerful, and infinitely more flexible. We use n8n for businesses that need custom automation logic that Zapier can't handle, or for clients who need their automation running on their own servers for compliance reasons.</div></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What makes you different from other automation agencies?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Three things: first, the founder has 9 years of hands-on automation experience (not just sales experience). Second, we're tool-agnostic — we choose the right tool for your situation, not the one with the best referral commission. Third, we're fast — 2–4 weeks to live, not 6 months.</div></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 10: FINAL CTA
+══════════════════════════════════════════════════ -->
+<section class="final-cta section">
+  <div class="container">
+    <div class="final-cta-inner reveal">
+      <div class="chapter-label">Ready?</div>
+      <h2 class="section-title">Deploy your AI workforce in 4 weeks.</h2>
+      <p>45-minute free audit. No commitment. Your automation roadmap, yours to keep.</p>
+      <div class="final-cta-actions">
+        <a href="{{ calendly }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Book Free Audit →</a>
+        <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%20want%20to%20explore%20AI%20automation%20for%20my%20business." class="btn btn-wa btn-lg" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+      <p class="final-cta-note">We take 3–4 new clients per month. Next available slot: Book now to check availability.</p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+<script src="{{ url_for('static', filename='js/calculator.js') }}"></script>
 {% endblock %}

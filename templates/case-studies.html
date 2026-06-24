@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero section">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="chapter-label">Case Studies</div>
+      <h1>Real businesses.<br><span class="grad">Real results.</span></h1>
+      <p class="page-hero-sub">Every result on this page is from a live client deployment — not a hypothetical, not a vendor estimate, not a pilot. Actual ROI delivered to actual businesses.</p>
+      <div class="hero-actions">
+        <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">Book Free Audit</a>
+        <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%27d%20like%20to%20see%20results%20relevant%20to%20my%20industry." class="btn btn-ghost" target="_blank" rel="noopener">Results for My Industry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Case Study 1 -->
+    <div class="case-study-full reveal">
+      <div class="case-study-header">
+        <div>
+          <div class="case-industry-tag">E-commerce · WhatsApp AI</div>
+          <h2>Fashion D2C brand cuts lead response from 4 hours to 60 seconds — 3.2x conversion lift</h2>
+        </div>
+        <div class="case-time-chip">
+          <strong>2 weeks</strong>
+          to deploy
+        </div>
+      </div>
+
+      <div class="case-ba-grid">
+        <div class="case-before">
+          <span class="case-ba-label">BEFORE</span>
+          <ul>
+            <li>— WhatsApp enquiries answered manually by 2 team members</li>
+            <li>— Average response time: 4 hours (overnight: unanswered)</li>
+            <li>— 60% of leads went cold before first contact</li>
+            <li>— No qualification — all enquiries routed to sales, wasting time</li>
+            <li>— Zero follow-up system for non-ready buyers</li>
+          </ul>
+        </div>
+        <div class="case-ba-arrow">→</div>
+        <div class="case-after">
+          <span class="case-ba-label">AFTER</span>
+          <ul>
+            <li>✓ WhatsApp AI responds to every enquiry in 60 seconds</li>
+            <li>✓ Qualifies budget, occasion, and purchase intent automatically</li>
+            <li>✓ Routes hot leads to sales team with full context</li>
+            <li>✓ Nurtures cold leads with personalised 8-week follow-up</li>
+            <li>✓ Order updates automated — tracking, delivery, review requests</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-metrics-row">
+        <div class="case-metric-box"><span class="cmb-num">60s</span><span class="cmb-label">Response time (was 4 hrs)</span></div>
+        <div class="case-metric-box"><span class="cmb-num">3.2x</span><span class="cmb-label">Conversion rate increase</span></div>
+        <div class="case-metric-box"><span class="cmb-num">₹8L</span><span class="cmb-label">Monthly revenue increase</span></div>
+        <div class="case-metric-box"><span class="cmb-num">80%</span><span class="cmb-label">Queries auto-resolved</span></div>
+      </div>
+    </div>
+
+    <!-- Case Study 2 -->
+    <div class="case-study-full reveal">
+      <div class="case-study-header">
+        <div>
+          <div class="case-industry-tag">Finance / CA Firm · Document Automation</div>
+          <h2>CA firm processes 2,000 invoices/month with zero manual entry — ₹5L annual savings</h2>
+        </div>
+        <div class="case-time-chip">
+          <strong>3 weeks</strong>
+          to deploy
+        </div>
+      </div>
+
+      <div class="case-ba-grid">
+        <div class="case-before">
+          <span class="case-ba-label">BEFORE</span>
+          <ul>
+            <li>— 2 junior accountants spent 6 hours/day on invoice data entry</li>
+            <li>— Manual error rate: 3.2% (requiring correction cycles)</li>
+            <li>— 8 minutes average per invoice (extract, enter, validate, file)</li>
+            <li>— Month-end processing took 4 days of overtime</li>
+            <li>— No audit trail on manual entries</li>
+          </ul>
+        </div>
+        <div class="case-ba-arrow">→</div>
+        <div class="case-after">
+          <span class="case-ba-label">AFTER</span>
+          <ul>
+            <li>✓ AI extracts data from scanned/PDF invoices automatically</li>
+            <li>✓ Validates against purchase orders and supplier master</li>
+            <li>✓ Pushes to Tally with full line-item detail</li>
+            <li>✓ Exceptions flagged for human review only</li>
+            <li>✓ Complete audit trail with source document link</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-metrics-row">
+        <div class="case-metric-box"><span class="cmb-num">18s</span><span class="cmb-label">Per invoice (was 8 min)</span></div>
+        <div class="case-metric-box"><span class="cmb-num">0.01%</span><span class="cmb-label">Error rate (was 3.2%)</span></div>
+        <div class="case-metric-box"><span class="cmb-num">₹5L</span><span class="cmb-label">Saved annually</span></div>
+        <div class="case-metric-box"><span class="cmb-num">2000+</span><span class="cmb-label">Invoices/month automated</span></div>
+      </div>
+    </div>
+
+    <!-- Case Study 3 -->
+    <div class="case-study-full reveal">
+      <div class="case-study-header">
+        <div>
+          <div class="case-industry-tag">Healthcare · Appointment Management</div>
+          <h2>Multi-specialty clinic automates 600+ weekly reminders — 71% fewer no-shows</h2>
+        </div>
+        <div class="case-time-chip">
+          <strong>1 week</strong>
+          to deploy
+        </div>
+      </div>
+
+      <div class="case-ba-grid">
+        <div class="case-before">
+          <span class="case-ba-label">BEFORE</span>
+          <ul>
+            <li>— Receptionist spent 3 hours/day calling patients for reminders</li>
+            <li>— No-show rate: 28% (estimated ₹4.5L/month in lost revenue)</li>
+            <li>— No pre-consultation information collection</li>
+            <li>— Manual rescheduling for no-shows (further receptionist time)</li>
+            <li>— No post-visit follow-up or feedback collection</li>
+          </ul>
+        </div>
+        <div class="case-ba-arrow">→</div>
+        <div class="case-after">
+          <span class="case-ba-label">AFTER</span>
+          <ul>
+            <li>✓ WhatsApp reminder 24 hours before — confirm, reschedule or cancel</li>
+            <li>✓ Pre-consultation form sent automatically after confirmation</li>
+            <li>✓ Rescheduling handled by WhatsApp AI without receptionist</li>
+            <li>✓ Post-visit care instructions and feedback request automated</li>
+            <li>✓ 600+ messages/week with zero staff time</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-metrics-row">
+        <div class="case-metric-box"><span class="cmb-num">71%</span><span class="cmb-label">Fewer no-shows</span></div>
+        <div class="case-metric-box"><span class="cmb-num">₹4.5L</span><span class="cmb-label">Monthly revenue recovered</span></div>
+        <div class="case-metric-box"><span class="cmb-num">3 hrs</span><span class="cmb-label">Receptionist time saved daily</span></div>
+        <div class="case-metric-box"><span class="cmb-num">600+</span><span class="cmb-label">Automated messages/week</span></div>
+      </div>
+    </div>
+
+    <!-- Case Study 4 -->
+    <div class="case-study-full reveal">
+      <div class="case-study-header">
+        <div>
+          <div class="case-industry-tag">Real Estate · Lead Automation</div>
+          <h2>Property developer achieves 5x more qualified site visits per agent per week</h2>
+        </div>
+        <div class="case-time-chip">
+          <strong>2 weeks</strong>
+          to deploy
+        </div>
+      </div>
+
+      <div class="case-ba-grid">
+        <div class="case-before">
+          <span class="case-ba-label">BEFORE</span>
+          <ul>
+            <li>— Sales agents spending 60% of time on unqualified leads</li>
+            <li>— Average 2 qualified site visits per agent per week</li>
+            <li>— WhatsApp enquiries answered inconsistently across 8 agents</li>
+            <li>— No lead nurture for buyers not ready to purchase now</li>
+            <li>— No-show rate for site visits: 40%</li>
+          </ul>
+        </div>
+        <div class="case-ba-arrow">→</div>
+        <div class="case-after">
+          <span class="case-ba-label">AFTER</span>
+          <ul>
+            <li>✓ WhatsApp AI qualifies every enquiry — budget, timeline, unit type</li>
+            <li>✓ Only qualified buyers routed to sales agents</li>
+            <li>✓ Site visit booking automated with calendar integration</li>
+            <li>✓ Day-before reminder + directions sent automatically</li>
+            <li>✓ 12-week nurture sequence for buyers "researching now"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-metrics-row">
+        <div class="case-metric-box"><span class="cmb-num">5x</span><span class="cmb-label">Qualified site visits/agent/wk</span></div>
+        <div class="case-metric-box"><span class="cmb-num">40%</span><span class="cmb-label">Faster lead-to-booking</span></div>
+        <div class="case-metric-box"><span class="cmb-num">60%</span><span class="cmb-label">Reduction in unqualified visits</span></div>
+        <div class="case-metric-box"><span class="cmb-num">2x</span><span class="cmb-label">Agent productivity increase</span></div>
+      </div>
+    </div>
+
+    <!-- Case Study 5 -->
+    <div class="case-study-full reveal">
+      <div class="case-study-header">
+        <div>
+          <div class="case-industry-tag">Manufacturing · Operations Automation</div>
+          <h2>Auto parts manufacturer eliminates ₹6L/month in emergency procurement costs</h2>
+        </div>
+        <div class="case-time-chip">
+          <strong>3 weeks</strong>
+          to deploy
+        </div>
+      </div>
+
+      <div class="case-ba-grid">
+        <div class="case-before">
+          <span class="case-ba-label">BEFORE</span>
+          <ul>
+            <li>— Inventory tracked in Excel — updated weekly at best</li>
+            <li>— Frequent stockouts requiring emergency procurement at 2–3x cost</li>
+            <li>— Production reports took 8 hours to compile manually</li>
+            <li>— Purchase orders raised manually — average 2-day delay</li>
+            <li>— No visibility on supplier invoice vs goods received reconciliation</li>
+          </ul>
+        </div>
+        <div class="case-ba-arrow">→</div>
+        <div class="case-after">
+          <span class="case-ba-label">AFTER</span>
+          <ul>
+            <li>✓ Real-time inventory monitoring with automatic reorder triggers</li>
+            <li>✓ PO generated and emailed to approved supplier automatically</li>
+            <li>✓ Daily production report generated and emailed in 12 minutes</li>
+            <li>✓ Supplier invoices matched to goods receipt automatically</li>
+            <li>✓ WhatsApp alerts to operations team on critical stock levels</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-metrics-row">
+        <div class="case-metric-box"><span class="cmb-num">90%</span><span class="cmb-label">Fewer stockouts</span></div>
+        <div class="case-metric-box"><span class="cmb-num">₹6L</span><span class="cmb-label">Emergency procurement saved/mo</span></div>
+        <div class="case-metric-box"><span class="cmb-num">12 min</span><span class="cmb-label">Daily report (was 8 hours)</span></div>
+        <div class="case-metric-box"><span class="cmb-num">Same day</span><span class="cmb-label">PO turnaround (was 2 days)</span></div>
+      </div>
+    </div>
+
+    <!-- Case Study 6 -->
+    <div class="case-study-full reveal">
+      <div class="case-study-header">
+        <div>
+          <div class="case-industry-tag">Professional Services · HR Consulting</div>
+          <h2>HR consulting firm recovers ₹7L/year in billable time through billing and onboarding automation</h2>
+        </div>
+        <div class="case-time-chip">
+          <strong>2 weeks</strong>
+          to deploy
+        </div>
+      </div>
+
+      <div class="case-ba-grid">
+        <div class="case-before">
+          <span class="case-ba-label">BEFORE</span>
+          <ul>
+            <li>— Billing cycle: 8 working days from month-end to invoice sent</li>
+            <li>— 40% of team time on non-billable admin (onboarding, reporting, billing)</li>
+            <li>— Client onboarding took 5 days of manual back-and-forth</li>
+            <li>— Monthly client reports took 4 hours each to compile</li>
+            <li>— No automatic follow-up on overdue invoices</li>
+          </ul>
+        </div>
+        <div class="case-ba-arrow">→</div>
+        <div class="case-after">
+          <span class="case-ba-label">AFTER</span>
+          <ul>
+            <li>✓ Billing automated — hours tracked → invoice generated → sent → followed up</li>
+            <li>✓ Client onboarding flow → documents collected in 24 hours via WhatsApp</li>
+            <li>✓ Monthly reports generated automatically from CRM and project data</li>
+            <li>✓ Overdue payment reminders automated at 7/14/30 days</li>
+            <li>✓ Billing cycle reduced from 8 days to 24 hours</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-metrics-row">
+        <div class="case-metric-box"><span class="cmb-num">₹7L</span><span class="cmb-label">Recovered billable time/year</span></div>
+        <div class="case-metric-box"><span class="cmb-num">24 hrs</span><span class="cmb-label">Billing cycle (was 8 days)</span></div>
+        <div class="case-metric-box"><span class="cmb-num">40%</span><span class="cmb-label">Less non-billable overhead</span></div>
+        <div class="case-metric-box"><span class="cmb-num">1 day</span><span class="cmb-label">Client onboarding (was 5 days)</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="container">
+  <div class="page-cta-banner reveal">
+    <div class="chapter-label">Your Results, Next</div>
+    <h2>What would your case study look like?</h2>
+    <p>Start with a free 45-minute process audit. We'll identify your automation opportunity, estimate the ROI, and give you a clear deployment roadmap. No commitment — the plan is yours to keep.</p>
+    <div class="final-actions">
+      <a href="{{ calendly }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Book Free Audit →</a>
+      <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%27d%20like%20to%20explore%20automation%20for%20my%20business." class="btn btn-wa btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+{% endblock %}

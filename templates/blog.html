@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero section">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="chapter-label">Knowledge Hub</div>
+      <h1>Deep guides on<br><span class="grad">AI automation.</span></h1>
+      <p class="page-hero-sub">Written by someone who has deployed automation for 9 years — not a content team. Practical guides on AI agents, RPA, n8n, WhatsApp automation, and building your AI workforce.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="blog-tabs">
+      <button class="blog-tab active" data-category="all">All</button>
+      <button class="blog-tab" data-category="ai-agents">AI Agents</button>
+      <button class="blog-tab" data-category="rpa">RPA</button>
+      <button class="blog-tab" data-category="whatsapp">WhatsApp</button>
+      <button class="blog-tab" data-category="n8n">n8n</button>
+      <button class="blog-tab" data-category="strategy">Strategy</button>
+    </div>
+
+    <div class="blog-grid" data-stagger>
+
+      <div class="blog-card" data-category="ai-agents">
+        <div class="blog-card-img">🤖</div>
+        <div class="blog-card-body">
+          <div class="blog-category">AI Agents</div>
+          <h3>What is an AI Employee? The definitive guide for business owners</h3>
+          <p>The difference between a chatbot, an RPA bot, and a true AI employee — and why it matters for your automation strategy.</p>
+          <div class="blog-meta">
+            <span>8 min read</span>
+            <span>·</span>
+            <span>AI Agents</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-category="whatsapp">
+        <div class="blog-card-img">💬</div>
+        <div class="blog-card-body">
+          <div class="blog-category">WhatsApp Automation</div>
+          <h3>WhatsApp Business API vs App: Which does your business actually need?</h3>
+          <p>The complete breakdown of what each product can (and can't) do — with a framework for choosing the right option for your scale.</p>
+          <div class="blog-meta">
+            <span>6 min read</span>
+            <span>·</span>
+            <span>WhatsApp</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-category="rpa">
+        <div class="blog-card-img">🔄</div>
+        <div class="blog-card-body">
+          <div class="blog-category">RPA</div>
+          <h3>UiPath vs Power Automate vs n8n: Which automation tool fits your business?</h3>
+          <p>An honest comparison of the three most powerful automation platforms — no vendor bias, just the real differences that affect your decision.</p>
+          <div class="blog-meta">
+            <span>10 min read</span>
+            <span>·</span>
+            <span>RPA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-category="strategy">
+        <div class="blog-card-img">📊</div>
+        <div class="blog-card-body">
+          <div class="blog-category">Strategy</div>
+          <h3>How to calculate the ROI of AI automation for your Indian business</h3>
+          <p>A practical framework for estimating automation ROI — in rupees, using real benchmarks from Indian SMEs, not Western enterprise case studies.</p>
+          <div class="blog-meta">
+            <span>7 min read</span>
+            <span>·</span>
+            <span>Strategy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-category="n8n">
+        <div class="blog-card-img">⚡</div>
+        <div class="blog-card-body">
+          <div class="blog-category">n8n</div>
+          <h3>n8n vs Zapier: Why sophisticated automation teams are making the switch</h3>
+          <p>What n8n can do that Zapier can't — and why self-hosting your automation is increasingly important for compliance and cost control.</p>
+          <div class="blog-meta">
+            <span>8 min read</span>
+            <span>·</span>
+            <span>n8n</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-category="ai-agents">
+        <div class="blog-card-img">🏗️</div>
+        <div class="blog-card-body">
+          <div class="blog-category">AI Agents</div>
+          <h3>Building an AI Sales Agent: Everything that needs to go right (and wrong)</h3>
+          <p>A behind-the-scenes look at what it actually takes to build an AI sales agent that qualifies leads reliably — not just demos well.</p>
+          <div class="blog-meta">
+            <span>12 min read</span>
+            <span>·</span>
+            <span>AI Agents</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-category="whatsapp">
+        <div class="blog-card-img">🇮🇳</div>
+        <div class="blog-card-body">
+          <div class="blog-category">WhatsApp Automation</div>
+          <h3>WhatsApp automation for Indian D2C brands: The complete 2025 playbook</h3>
+          <p>From lead qualification to order updates to cart recovery — the exact WhatsApp automation stack that's working for Indian e-commerce brands right now.</p>
+          <div class="blog-meta">
+            <span>15 min read</span>
+            <span>·</span>
+            <span>WhatsApp</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-category="strategy">
+        <div class="blog-card-img">🗺️</div>
+        <div class="blog-card-body">
+          <div class="blog-category">Strategy</div>
+          <h3>The process audit: How to find your highest-ROI automation opportunities in 90 minutes</h3>
+          <p>The exact process we use in every client engagement to identify which automation projects will deliver the fastest, clearest ROI.</p>
+          <div class="blog-meta">
+            <span>9 min read</span>
+            <span>·</span>
+            <span>Strategy</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Coming soon note -->
+    <div style="text-align:center; margin-top:64px; padding:48px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-xl)">
+      <div class="chapter-label">More Coming</div>
+      <h3 style="margin-bottom:12px">New guides published weekly.</h3>
+      <p style="max-width:500px; margin:0 auto 24px">Follow us on LinkedIn or subscribe via WhatsApp to get notified when new automation guides are published.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
+        <a href="https://www.linkedin.com/company/agenticaiautomation/" class="btn btn-ghost" target="_blank" rel="noopener">Follow on LinkedIn</a>
+        <a href="https://wa.me/{{ wa }}?text=Hi%2C%20please%20add%20me%20to%20your%20automation%20guide%20updates." class="btn btn-wa" target="_blank" rel="noopener">Get WhatsApp Updates</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="container">
+  <div class="page-cta-banner reveal">
+    <div class="chapter-label">Ready to Apply This?</div>
+    <h2>Get a custom automation plan for your business.</h2>
+    <p>Reading about automation is the first step. The second is finding out exactly what it looks like for your specific business — which processes, which tools, which timeline, which ROI.</p>
+    <div class="final-actions">
+      <a href="{{ calendly }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Book Free Audit →</a>
+      <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%27ve%20been%20reading%20your%20blog%20and%20want%20to%20discuss%20automation%20for%20my%20business." class="btn btn-wa btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+{% endblock %}

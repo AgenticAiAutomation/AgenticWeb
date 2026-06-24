@@ -1,0 +1,515 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero section">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="chapter-label">Services</div>
+      <h1>Every automation service your<br><span class="grad">business needs.</span></h1>
+      <p class="page-hero-sub">10 specialised services across AI agent development, RPA, WhatsApp automation, workflow tools, and business operations. Tool-agnostic — we recommend what fits, not what we prefer to sell.</p>
+      <div class="hero-actions">
+        <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">Book Free Audit</a>
+        <a href="#services-list" class="btn btn-ghost">See All Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="services-list">
+
+<!-- ── 1. AI Agent Development ─────────────────────────────── -->
+<div class="service-block" id="ai-agents">
+  <div class="container">
+    <div class="service-block-inner">
+      <div class="service-block-left">
+        <div class="service-label">01 / AI Agents</div>
+        <h2>AI Agent Development</h2>
+        <p>Custom AI employees built for your specific business processes — not generic chatbots. AI agents that reason, take multi-step actions, use tools, and learn from your data.</p>
+        <p>We build agents that integrate directly with your systems — updating CRM records, sending emails, querying databases, booking calendar slots — autonomously, without human supervision.</p>
+        <div class="service-tools">
+          <span class="service-tool">LangChain</span>
+          <span class="service-tool">OpenAI</span>
+          <span class="service-tool">Anthropic Claude</span>
+          <span class="service-tool">Python</span>
+          <span class="service-tool">RAG Systems</span>
+        </div>
+        <div class="service-timeline-chip">⚡ Live in 2–4 weeks</div>
+      </div>
+      <div class="service-block-right">
+        <div class="service-detail-card">
+          <h4>Sales Qualification Agent</h4>
+          <p>Responds to every lead within 60 seconds, asks qualifying questions, scores intent, books demos for hot leads.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Avg ROI</span><span>3.2x conversion lift</span></div>
+            <div class="progress-track" data-percent="80"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Customer Support Agent</h4>
+          <p>Resolves 80%+ of tickets without human involvement. Handles returns, FAQs, complaints with natural conversation.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Avg ROI</span><span>80% auto-resolution</span></div>
+            <div class="progress-track" data-percent="80"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Internal Operations Agent</h4>
+          <p>Manages inter-department requests, data lookups, report generation — like an always-available operations analyst.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Avg ROI</span><span>40 hrs/mo saved per team</span></div>
+            <div class="progress-track" data-percent="70"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 2. RPA ──────────────────────────────────────────────── -->
+<div class="service-block" id="rpa">
+  <div class="container">
+    <div class="service-block-inner reverse">
+      <div class="service-block-left">
+        <div class="service-label">02 / RPA</div>
+        <h2>RPA Automation</h2>
+        <p>Robotic Process Automation for legacy systems, desktop software, and web workflows that don't have APIs. If a human can do it on a screen, a bot can do it faster, without errors, 24/7.</p>
+        <p>Perfect for government portals, Tally, SAP, legacy ERP systems, and any process involving repetitive form-filling, data entry, or report generation.</p>
+        <div class="service-tools">
+          <span class="service-tool">UiPath</span>
+          <span class="service-tool">Automation Anywhere</span>
+          <span class="service-tool">Python Selenium</span>
+          <span class="service-tool">Playwright</span>
+        </div>
+        <div class="service-timeline-chip">⚡ Live in 1–3 weeks</div>
+      </div>
+      <div class="service-block-right">
+        <div class="service-detail-card">
+          <h4>Data Entry Automation</h4>
+          <p>Extract from PDFs/Excel → populate legacy systems. 1,000 records per hour, zero errors.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Speed gain</span><span>23x faster</span></div>
+            <div class="progress-track" data-percent="95"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Government Portal Filing</h4>
+          <p>GST returns, MCA filings, EPF submissions — automated without any human clicking through portals.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Time saved</span><span>8 hrs/month per filing</span></div>
+            <div class="progress-track" data-percent="85"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Report Generation</h4>
+          <p>Pull from multiple systems, consolidate, format and email reports on schedule — daily, weekly or on demand.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>ROI</span><span>₹3–8L/yr labour saved</span></div>
+            <div class="progress-track" data-percent="75"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 3. WhatsApp AI ──────────────────────────────────────── -->
+<div class="service-block" id="whatsapp">
+  <div class="container">
+    <div class="service-block-inner">
+      <div class="service-block-left">
+        <div class="service-label">03 / WhatsApp AI</div>
+        <h2>WhatsApp AI Chatbots</h2>
+        <p>Official WhatsApp Business API — not the personal app. AI chatbots that qualify leads, handle support, send order updates, collect payments and run campaigns across 500 million Indian WhatsApp users.</p>
+        <p>We build bilingual (Hindi + English) AI agents, not button-click decision trees. Natural conversation. 24/7 availability. CRM integrated.</p>
+        <div class="service-tools">
+          <span class="service-tool">WhatsApp Business API</span>
+          <span class="service-tool">Meta Cloud API</span>
+          <span class="service-tool">360dialog</span>
+          <span class="service-tool">Wati</span>
+        </div>
+        <div class="service-timeline-chip">⚡ Live in 7–14 days</div>
+      </div>
+      <div class="service-block-right">
+        <div class="service-detail-card">
+          <h4>Lead Qualification Bot</h4>
+          <p>Responds to every WhatsApp enquiry in under 60 seconds. Qualifies intent, books demos, routes hot leads.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Avg result</span><span>3.2x conversion rate</span></div>
+            <div class="progress-track" data-percent="85"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Order &amp; Delivery Updates</h4>
+          <p>Automated order confirmations, tracking links, delivery alerts — zero manual messages.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Time saved</span><span>20+ hrs/week</span></div>
+            <div class="progress-track" data-percent="90"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Appointment Booking</h4>
+          <p>Customers book directly on WhatsApp. Calendar integrated. Reminders sent automatically.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>No-show reduction</span><span>71% fewer no-shows</span></div>
+            <div class="progress-track" data-percent="71"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 4. n8n Automation ───────────────────────────────────── -->
+<div class="service-block" id="n8n">
+  <div class="container">
+    <div class="service-block-inner reverse">
+      <div class="service-block-left">
+        <div class="service-label">04 / n8n</div>
+        <h2>n8n Workflow Automation</h2>
+        <p>Open-source, self-hostable, and infinitely more powerful than Zapier. We build complex multi-system automations with n8n — running on your infrastructure with full data control.</p>
+        <p>n8n is ideal for businesses that need custom logic, compliance-grade data handling, or workflows that mainstream tools simply can't execute.</p>
+        <div class="service-tools">
+          <span class="service-tool">n8n</span>
+          <span class="service-tool">Self-hosted</span>
+          <span class="service-tool">400+ connectors</span>
+          <span class="service-tool">Custom nodes</span>
+        </div>
+        <div class="service-timeline-chip">⚡ Live in 1–2 weeks</div>
+      </div>
+      <div class="service-block-right">
+        <div class="service-detail-card">
+          <h4>CRM + Email + Slack Automation</h4>
+          <p>New lead in CRM → email sequence triggered → Slack alert to sales team → task created in Notion. All automatic.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Setup cost</span><span>₹25K–₹80K one-time</span></div>
+            <div class="progress-track" data-percent="65"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>E-commerce Operations</h4>
+          <p>Shopify orders → WhatsApp notification → inventory update → supplier alert → fulfilment trigger. Zero manual steps.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Hours saved</span><span>30+ hrs/week</span></div>
+            <div class="progress-track" data-percent="80"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Finance &amp; Reporting Pipelines</h4>
+          <p>Pull financial data from multiple sources → aggregate → generate PDF report → email to CFO every Monday morning.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>ROI</span><span>₹2–5L/yr time saved</span></div>
+            <div class="progress-track" data-percent="70"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 5. UiPath ───────────────────────────────────────────── -->
+<div class="service-block" id="uipath">
+  <div class="container">
+    <div class="service-block-inner">
+      <div class="service-block-left">
+        <div class="service-label">05 / UiPath</div>
+        <h2>UiPath Consulting</h2>
+        <p>Certified UiPath implementation for enterprises with legacy systems. Attended and unattended bots, process mining, and centre-of-excellence setup for businesses scaling RPA across departments.</p>
+        <div class="service-tools">
+          <span class="service-tool">UiPath Studio</span>
+          <span class="service-tool">Orchestrator</span>
+          <span class="service-tool">Document Understanding</span>
+          <span class="service-tool">AI Center</span>
+        </div>
+        <div class="service-timeline-chip">⚡ POC in 2–3 weeks</div>
+      </div>
+      <div class="service-block-right">
+        <div class="service-detail-card">
+          <h4>SAP &amp; ERP Automation</h4>
+          <p>UiPath SAP connector for master data, AP/AR processing, and cross-system data sync without API cost.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Error reduction</span><span>94% fewer manual errors</span></div>
+            <div class="progress-track" data-percent="94"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Document Understanding</h4>
+          <p>AI-powered OCR extracts data from invoices, contracts, and forms — with 98%+ accuracy across varied templates.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Speed</span><span>18 seconds per document</span></div>
+            <div class="progress-track" data-percent="75"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Centre of Excellence Setup</h4>
+          <p>Full RPA CoE design — governance framework, bot monitoring, developer training, pipeline management.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Scale</span><span>Enterprise-grade</span></div>
+            <div class="progress-track" data-percent="60"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 6. Power Automate ──────────────────────────────────── -->
+<div class="service-block" id="power-automate">
+  <div class="container">
+    <div class="service-block-inner reverse">
+      <div class="service-block-left">
+        <div class="service-label">06 / Microsoft</div>
+        <h2>Microsoft Power Automate</h2>
+        <p>For businesses already on Microsoft 365 — Teams, SharePoint, Outlook, Dynamics — Power Automate is the most powerful automation tool you're already paying for. We unlock its full potential.</p>
+        <div class="service-tools">
+          <span class="service-tool">Power Automate</span>
+          <span class="service-tool">Power Apps</span>
+          <span class="service-tool">AI Builder</span>
+          <span class="service-tool">Dynamics 365</span>
+          <span class="service-tool">SharePoint</span>
+        </div>
+        <div class="service-timeline-chip">⚡ First flow live in 3–5 days</div>
+      </div>
+      <div class="service-block-right">
+        <div class="service-detail-card">
+          <h4>Approval Workflows</h4>
+          <p>Multi-level approval flows for purchase orders, leave requests, contracts — integrated with Teams and SharePoint.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Time saved</span><span>4 hrs/employee/week</span></div>
+            <div class="progress-track" data-percent="70"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Email Classification &amp; Routing</h4>
+          <p>Auto-classify Outlook emails by intent, create tasks in Planner, alert on Teams, reply to standard queries.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Efficiency gain</span><span>60% faster triage</span></div>
+            <div class="progress-track" data-percent="60"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>AI Builder Document Processing</h4>
+          <p>Extract structured data from invoices and forms using Power Automate's native AI — push to Dynamics or SharePoint.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Cost</span><span>Included in M365 licence</span></div>
+            <div class="progress-track" data-percent="65"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 7. Voice AI ─────────────────────────────────────────── -->
+<div class="service-block" id="voice">
+  <div class="container">
+    <div class="service-block-inner">
+      <div class="service-block-left">
+        <div class="service-label">07 / Voice</div>
+        <h2>AI Voice Agents</h2>
+        <p>AI-powered phone agents that handle inbound calls — appointment booking, order tracking, lead qualification, and first-line support — without a human picking up the phone.</p>
+        <p>Fully conversational. Natural-sounding. Integrated with your calendar and CRM. Available in Hindi and English.</p>
+        <div class="service-tools">
+          <span class="service-tool">Twilio</span>
+          <span class="service-tool">Retell AI</span>
+          <span class="service-tool">ElevenLabs</span>
+          <span class="service-tool">Custom LLM</span>
+        </div>
+        <div class="service-timeline-chip">⚡ Live in 2–3 weeks</div>
+      </div>
+      <div class="service-block-right">
+        <div class="service-detail-card">
+          <h4>Inbound Call Handling</h4>
+          <p>AI answers every call, qualifies the caller, books appointments or escalates to human — with zero hold time.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Capacity</span><span>Unlimited concurrent calls</span></div>
+            <div class="progress-track" data-percent="90"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Outbound Follow-up Calls</h4>
+          <p>AI calls leads who haven't responded to email/WhatsApp. Qualifies and books meetings at scale.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Connection rate</span><span>4x vs email follow-up</span></div>
+            <div class="progress-track" data-percent="80"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Appointment Reminders</h4>
+          <p>Automated voice calls the day before appointments — confirm, reschedule, or cancel. 71% reduction in no-shows.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>No-show reduction</span><span>71%</span></div>
+            <div class="progress-track" data-percent="71"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 8. Document Automation ─────────────────────────────── -->
+<div class="service-block" id="document">
+  <div class="container">
+    <div class="service-block-inner reverse">
+      <div class="service-block-left">
+        <div class="service-label">08 / Documents</div>
+        <h2>Document Automation</h2>
+        <p>Intelligent extraction, classification, and processing of documents — invoices, contracts, purchase orders, forms, and any structured document your business handles daily.</p>
+        <p>We combine AI-powered OCR, document understanding models, and validation logic to achieve 98%+ extraction accuracy at scale.</p>
+        <div class="service-tools">
+          <span class="service-tool">Azure Form Recognizer</span>
+          <span class="service-tool">Google Document AI</span>
+          <span class="service-tool">UiPath Doc Understanding</span>
+          <span class="service-tool">Custom OCR</span>
+        </div>
+        <div class="service-timeline-chip">⚡ POC in 1 week</div>
+      </div>
+      <div class="service-block-right">
+        <div class="service-detail-card">
+          <h4>Invoice Processing</h4>
+          <p>Extract vendor, amount, line items, GST — validate against PO — push to Tally/ERP. 18 seconds per invoice.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Accuracy</span><span>98.5% extraction accuracy</span></div>
+            <div class="progress-track" data-percent="98"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Contract Review Assistance</h4>
+          <p>AI reviews contracts for standard clauses, flags non-standard terms, summarises key obligations for legal review.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Time saved</span><span>3 hrs per contract</span></div>
+            <div class="progress-track" data-percent="70"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Form Digitisation</h4>
+          <p>Convert paper or scanned forms into structured database records — KYC, onboarding, surveys, application forms.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Speed</span><span>500+ forms/hour</span></div>
+            <div class="progress-track" data-percent="80"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 9. Business Process Outsourcing via AI ─────────────── -->
+<div class="service-block" id="bpo">
+  <div class="container">
+    <div class="service-block-inner">
+      <div class="service-block-left">
+        <div class="service-label">09 / Business Ops</div>
+        <h2>AI-Powered Business Operations</h2>
+        <p>We take entire business functions off your plate — not by adding headcount, but by deploying AI and automation systems that run them continuously.</p>
+        <p>From daily reporting to data management to compliance monitoring — we design, deploy, and maintain the AI systems that keep operations running without manual oversight.</p>
+        <div class="service-tools">
+          <span class="service-tool">Custom AI Systems</span>
+          <span class="service-tool">n8n</span>
+          <span class="service-tool">Data Pipelines</span>
+          <span class="service-tool">Monitoring &amp; Alerting</span>
+        </div>
+        <div class="service-timeline-chip">⚡ Scoped per engagement</div>
+      </div>
+      <div class="service-block-right">
+        <div class="service-detail-card">
+          <h4>Daily Ops Intelligence</h4>
+          <p>AI pulls data from every system every morning — generates a business intelligence brief and emails it to leadership.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Value</span><span>CEO gets 1 hr/day back</span></div>
+            <div class="progress-track" data-percent="70"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Compliance Monitoring</h4>
+          <p>AI monitors regulatory feeds, checks your processes against current requirements, alerts on compliance gaps.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Risk reduction</span><span>Continuous vs quarterly audit</span></div>
+            <div class="progress-track" data-percent="85"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Vendor &amp; Procurement Automation</h4>
+          <p>PO generation, vendor communications, invoice matching, and payment scheduling — all automated end-to-end.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Cost reduction</span><span>30–40% procurement overhead</span></div>
+            <div class="progress-track" data-percent="65"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 10. Website Development ────────────────────────────── -->
+<div class="service-block" id="website">
+  <div class="container">
+    <div class="service-block-inner reverse">
+      <div class="service-block-left">
+        <div class="service-label">10 / Web</div>
+        <h2>Website Development</h2>
+        <p>High-performance websites built to convert — not just to look good. We build with clean code, fast load times, SEO-first architecture, and automation built in from day one.</p>
+        <p>Every website we build connects to your AI systems — WhatsApp automation, lead capture pipelines, CRM integration, and automated follow-up sequences.</p>
+        <div class="service-tools">
+          <span class="service-tool">Flask / Python</span>
+          <span class="service-tool">Next.js</span>
+          <span class="service-tool">Pure CSS</span>
+          <span class="service-tool">SEO-first</span>
+          <span class="service-tool">VPS Deployment</span>
+        </div>
+        <div class="service-timeline-chip">⚡ Live in 1–2 weeks</div>
+      </div>
+      <div class="service-block-right">
+        <div class="service-detail-card">
+          <h4>Lead-Generation Website</h4>
+          <p>Built to rank and convert — SEO architecture, structured data, WhatsApp CTAs, Calendly integration, exit intent capture.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Avg result</span><span>2–5x more qualified leads</span></div>
+            <div class="progress-track" data-percent="75"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Automation-First Landing Pages</h4>
+          <p>Landing pages with integrated WhatsApp AI, lead scoring, automated email sequences, and CRM push.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Deploy time</span><span>5–7 days</span></div>
+            <div class="progress-track" data-percent="80"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="service-detail-card">
+          <h4>Full Business Website + AI Stack</h4>
+          <p>Website + WhatsApp bot + CRM integration + automated follow-up sequence — the complete digital presence package.</p>
+          <div class="service-roi-bar">
+            <div class="service-roi-label"><span>Scope</span><span>Full-stack delivery</span></div>
+            <div class="progress-track" data-percent="70"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /services-list -->
+
+<!-- CTA -->
+<div class="container">
+  <div class="page-cta-banner reveal">
+    <div class="chapter-label">Not sure where to start?</div>
+    <h2>We'll tell you exactly what to automate first.</h2>
+    <p>45-minute free process audit. We audit your current workflows, identify the highest-ROI opportunities, and give you a prioritised roadmap — no commitment required.</p>
+    <div class="final-actions">
+      <a href="{{ calendly }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Book Free Audit →</a>
+      <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%27d%20like%20to%20discuss%20automation%20services%20for%20my%20business." class="btn btn-wa btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+{% endblock %}

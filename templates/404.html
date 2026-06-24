@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="not-found">
+  <div class="container">
+    <div class="not-found-inner">
+      <div class="not-found-code">404</div>
+      <h1>This page doesn't exist.</h1>
+      <p>The page you were looking for has moved, been deleted, or never existed. But your automation journey doesn't have to end here.</p>
+      <div class="not-found-actions">
+        <a href="/" class="btn btn-primary btn-lg">Go Home →</a>
+        <a href="{{ calendly }}" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">Book Free Audit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

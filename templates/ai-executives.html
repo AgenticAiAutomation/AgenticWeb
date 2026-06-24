@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero section">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="chapter-label">AI Executives</div>
+      <h1>Meet your AI<br><span class="grad">Executive Team.</span></h1>
+      <p class="page-hero-sub">9 specialised AI Employees, each designed for a specific business function. Available 24/7, never on leave, trained on your processes. Deploy one or build your full AI workforce.</p>
+      <div class="hero-actions">
+        <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">Deploy My AI Team</a>
+        <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%27d%20like%20to%20know%20which%20AI%20executive%20is%20right%20for%20my%20business." class="btn btn-ghost" target="_blank" rel="noopener">Ask Which One Fits →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="execs-page-grid" data-stagger>
+
+      <!-- Alex — Sales -->
+      <div class="exec-page-card" style="--exec-color:#18E3FF">
+        <div class="exec-page-avatar">🤝</div>
+        <div class="exec-page-name">Alex</div>
+        <div class="exec-page-title">AI Sales Executive</div>
+        <p class="exec-page-desc">Alex handles the entire top-of-funnel sales process — responding to every inbound lead within 60 seconds, qualifying intent, booking demos for hot prospects, and nurturing long-term leads with personalised follow-up sequences. Alex never lets a lead go cold and works every channel your customers use.</p>
+        <div class="exec-integrations">
+          <span class="exec-integration">WhatsApp</span>
+          <span class="exec-integration">HubSpot</span>
+          <span class="exec-integration">Zoho CRM</span>
+          <span class="exec-integration">Salesforce</span>
+          <span class="exec-integration">Calendly</span>
+          <span class="exec-integration">Gmail</span>
+          <span class="exec-integration">Twilio SMS</span>
+        </div>
+        <div class="exec-stats-row">
+          <div class="exec-stat"><strong>2 weeks</strong>Deploy time</div>
+          <div class="exec-stat"><strong>60s</strong>Response time</div>
+          <div class="exec-stat"><strong>3.2x</strong>Conversion lift</div>
+          <div class="exec-stat"><strong>24/7</strong>Availability</div>
+        </div>
+      </div>
+
+      <!-- Maya — Support -->
+      <div class="exec-page-card" style="--exec-color:#7A5CFF">
+        <div class="exec-page-avatar">💬</div>
+        <div class="exec-page-name">Maya</div>
+        <div class="exec-page-title">AI Support Agent</div>
+        <p class="exec-page-desc">Maya resolves 80%+ of customer support queries without any human involvement. She handles returns, complaints, order status, FAQs, and billing queries — in Hindi and English — and escalates to your team with full context when something is genuinely complex. Maya reduces support costs while improving CSAT scores.</p>
+        <div class="exec-integrations">
+          <span class="exec-integration">WhatsApp</span>
+          <span class="exec-integration">Freshdesk</span>
+          <span class="exec-integration">Zendesk</span>
+          <span class="exec-integration">Intercom</span>
+          <span class="exec-integration">Shopify</span>
+          <span class="exec-integration">Gmail</span>
+        </div>
+        <div class="exec-stats-row">
+          <div class="exec-stat"><strong>1 week</strong>Deploy time</div>
+          <div class="exec-stat"><strong>80%</strong>Auto-resolution</div>
+          <div class="exec-stat"><strong>2 min</strong>Avg resolution</div>
+          <div class="exec-stat"><strong>Hindi + EN</strong>Bilingual</div>
+        </div>
+      </div>
+
+      <!-- Atlas — Operations -->
+      <div class="exec-page-card" style="--exec-color:#FFAA00">
+        <div class="exec-page-avatar">⚙️</div>
+        <div class="exec-page-name">Atlas</div>
+        <div class="exec-page-title">AI Operations Manager</div>
+        <p class="exec-page-desc">Atlas manages your business workflows, data pipelines, and system integrations — acting as the connective tissue between all your tools. Atlas monitors processes, triggers actions when thresholds are breached, generates operational reports, and ensures data flows correctly between every system in your stack.</p>
+        <div class="exec-integrations">
+          <span class="exec-integration">n8n</span>
+          <span class="exec-integration">Zapier</span>
+          <span class="exec-integration">Airtable</span>
+          <span class="exec-integration">Notion</span>
+          <span class="exec-integration">Slack</span>
+          <span class="exec-integration">Google Sheets</span>
+          <span class="exec-integration">Any REST API</span>
+        </div>
+        <div class="exec-stats-row">
+          <div class="exec-stat"><strong>3 weeks</strong>Deploy time</div>
+          <div class="exec-stat"><strong>99.9%</strong>Uptime</div>
+          <div class="exec-stat"><strong>24/7</strong>Monitoring</div>
+          <div class="exec-stat"><strong>200+</strong>Integrations</div>
+        </div>
+      </div>
+
+      <!-- Titan — Finance -->
+      <div class="exec-page-card" style="--exec-color:#18E3FF">
+        <div class="exec-page-avatar">💰</div>
+        <div class="exec-page-name">Titan</div>
+        <div class="exec-page-title">AI Finance Analyst</div>
+        <p class="exec-page-desc">Titan processes invoices, reconciles bank statements, flags expense anomalies, generates financial reports, and prepares data for CA review — all automatically. Titan replaces hours of manual accounting work with a system that runs continuously and delivers finance team output without the finance team overhead.</p>
+        <div class="exec-integrations">
+          <span class="exec-integration">Tally</span>
+          <span class="exec-integration">QuickBooks</span>
+          <span class="exec-integration">Zoho Books</span>
+          <span class="exec-integration">Razorpay</span>
+          <span class="exec-integration">SAP</span>
+          <span class="exec-integration">Excel</span>
+          <span class="exec-integration">UiPath</span>
+        </div>
+        <div class="exec-stats-row">
+          <div class="exec-stat"><strong>2 weeks</strong>Deploy time</div>
+          <div class="exec-stat"><strong>18s</strong>Per invoice</div>
+          <div class="exec-stat"><strong>0.01%</strong>Error rate</div>
+          <div class="exec-stat"><strong>2000+</strong>Invoices/mo</div>
+        </div>
+      </div>
+
+      <!-- Nova — Marketing -->
+      <div class="exec-page-card" style="--exec-color:#7A5CFF">
+        <div class="exec-page-avatar">📣</div>
+        <div class="exec-page-name">Nova</div>
+        <div class="exec-page-title">AI Marketing Executive</div>
+        <p class="exec-page-desc">Nova runs your marketing operations on autopilot — generating content, scheduling social posts, segmenting audiences, sending email and WhatsApp campaigns, and reporting on performance. Nova ensures your marketing engine keeps running regardless of team capacity or bandwidth.</p>
+        <div class="exec-integrations">
+          <span class="exec-integration">Mailchimp</span>
+          <span class="exec-integration">WhatsApp Campaigns</span>
+          <span class="exec-integration">HubSpot</span>
+          <span class="exec-integration">Buffer</span>
+          <span class="exec-integration">Google Analytics</span>
+          <span class="exec-integration">Meta Ads</span>
+        </div>
+        <div class="exec-stats-row">
+          <div class="exec-stat"><strong>2 weeks</strong>Deploy time</div>
+          <div class="exec-stat"><strong>24/7</strong>Campaigns</div>
+          <div class="exec-stat"><strong>4x</strong>Content output</div>
+          <div class="exec-stat"><strong>Auto</strong>Reporting</div>
+        </div>
+      </div>
+
+      <!-- Orion — HR -->
+      <div class="exec-page-card" style="--exec-color:#25D366">
+        <div class="exec-page-avatar">👥</div>
+        <div class="exec-page-name">Orion</div>
+        <div class="exec-page-title">AI HR Assistant</div>
+        <p class="exec-page-desc">Orion screens CVs, schedules interviews, sends offer letters, manages onboarding document collection, and answers routine HR policy queries from employees — freeing your HR team to focus on culture, complex employee matters, and strategic hiring rather than administrative processing.</p>
+        <div class="exec-integrations">
+          <span class="exec-integration">LinkedIn</span>
+          <span class="exec-integration">Naukri</span>
+          <span class="exec-integration">Darwinbox</span>
+          <span class="exec-integration">Keka</span>
+          <span class="exec-integration">Google Calendar</span>
+          <span class="exec-integration">WhatsApp</span>
+          <span class="exec-integration">Gmail</span>
+        </div>
+        <div class="exec-stats-row">
+          <div class="exec-stat"><strong>1 week</strong>Deploy time</div>
+          <div class="exec-stat"><strong>100+</strong>CVs screened/hr</div>
+          <div class="exec-stat"><strong>Zero</strong>Missed follow-ups</div>
+          <div class="exec-stat"><strong>Auto</strong>Onboarding</div>
+        </div>
+      </div>
+
+      <!-- Vega — Inventory -->
+      <div class="exec-page-card" style="--exec-color:#FFAA00">
+        <div class="exec-page-avatar">📦</div>
+        <div class="exec-page-name">Vega</div>
+        <div class="exec-page-title">AI Inventory Manager</div>
+        <p class="exec-page-desc">Vega monitors stock levels in real time, triggers reorders when thresholds are breached, reconciles supplier invoices against received goods, and alerts operations teams on discrepancies. Vega eliminates stockouts, reduces over-ordering, and keeps your supply chain data accurate without manual counts.</p>
+        <div class="exec-integrations">
+          <span class="exec-integration">Shopify</span>
+          <span class="exec-integration">WooCommerce</span>
+          <span class="exec-integration">Tally</span>
+          <span class="exec-integration">Unicommerce</span>
+          <span class="exec-integration">Vinculum</span>
+          <span class="exec-integration">Excel</span>
+          <span class="exec-integration">WhatsApp alerts</span>
+        </div>
+        <div class="exec-stats-row">
+          <div class="exec-stat"><strong>2 weeks</strong>Deploy time</div>
+          <div class="exec-stat"><strong>-90%</strong>Stockouts</div>
+          <div class="exec-stat"><strong>Real-time</strong>Monitoring</div>
+          <div class="exec-stat"><strong>Auto</strong>Reorder triggers</div>
+        </div>
+      </div>
+
+      <!-- Zeta — Data -->
+      <div class="exec-page-card" style="--exec-color:#18E3FF">
+        <div class="exec-page-avatar">📊</div>
+        <div class="exec-page-name">Zeta</div>
+        <div class="exec-page-title">AI Data Analyst</div>
+        <p class="exec-page-desc">Zeta pulls data from every system in your tech stack — CRM, ERP, marketing platforms, finance tools — aggregates it, identifies trends and anomalies, and delivers a business intelligence brief to leadership every morning. Zeta ensures decisions are made on fresh data, not last quarter's report.</p>
+        <div class="exec-integrations">
+          <span class="exec-integration">Google Analytics</span>
+          <span class="exec-integration">Looker</span>
+          <span class="exec-integration">Metabase</span>
+          <span class="exec-integration">BigQuery</span>
+          <span class="exec-integration">MySQL</span>
+          <span class="exec-integration">Excel</span>
+          <span class="exec-integration">Power BI</span>
+        </div>
+        <div class="exec-stats-row">
+          <div class="exec-stat"><strong>2 weeks</strong>Deploy time</div>
+          <div class="exec-stat"><strong>Daily</strong>Auto-reports</div>
+          <div class="exec-stat"><strong>Any</strong>Data source</div>
+          <div class="exec-stat"><strong>Real-time</strong>Anomaly alerts</div>
+        </div>
+      </div>
+
+      <!-- Echo — Compliance -->
+      <div class="exec-page-card" style="--exec-color:#7A5CFF">
+        <div class="exec-page-avatar">🔍</div>
+        <div class="exec-page-name">Echo</div>
+        <div class="exec-page-title">AI Compliance Monitor</div>
+        <p class="exec-page-desc">Echo monitors regulatory feeds, checks your internal processes against current compliance requirements (GST, RBI, SEBI, DPDP Act, IRDAI), flags gaps before they become penalties, and generates compliance reports on demand. Echo turns quarterly compliance audits into continuous real-time monitoring.</p>
+        <div class="exec-integrations">
+          <span class="exec-integration">MCA Portal</span>
+          <span class="exec-integration">GST Portal</span>
+          <span class="exec-integration">RBI Circulars</span>
+          <span class="exec-integration">SEBI</span>
+          <span class="exec-integration">Tally</span>
+          <span class="exec-integration">Internal databases</span>
+        </div>
+        <div class="exec-stats-row">
+          <div class="exec-stat"><strong>3 weeks</strong>Deploy time</div>
+          <div class="exec-stat"><strong>Real-time</strong>Monitoring</div>
+          <div class="exec-stat"><strong>Auto</strong>Compliance reports</div>
+          <div class="exec-stat"><strong>Multi-reg</strong>Coverage</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="container">
+  <div class="page-cta-banner reveal">
+    <div class="chapter-label">Build Your Team</div>
+    <h2>Deploy your first AI executive in 2–4 weeks.</h2>
+    <p>Start with the one that solves your biggest bottleneck. We'll audit your current process, recommend the right AI executive (or combination), and have it live within a month.</p>
+    <div class="final-actions">
+      <a href="{{ calendly }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Book Free Audit →</a>
+      <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%27d%20like%20to%20deploy%20an%20AI%20executive%20for%20my%20business." class="btn btn-wa btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+{% endblock %}

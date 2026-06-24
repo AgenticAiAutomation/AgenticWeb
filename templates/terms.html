@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero section">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="chapter-label">Legal</div>
+      <h1>Terms of Service</h1>
+      <p class="legal-last-updated">Last updated: January 2025</p>
+    </div>
+  </div>
+</section>
+
+<section class="legal-content section" style="padding-top:0">
+  <div class="container">
+    <div class="legal-body">
+
+      <div class="legal-section">
+        <h2>1. Agreement to Terms</h2>
+        <p>These Terms of Service ("Terms") govern your use of services provided by Agentic AI Automation ("Company", "we", "us", "our"). By engaging our services, submitting a project brief, or signing a service agreement, you ("Client", "you") agree to these Terms.</p>
+        <p>If you are entering into these Terms on behalf of a business, you represent that you have the authority to bind that business to these Terms.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>2. Services</h2>
+        <h3>2.1 Service Scope</h3>
+        <p>Agentic AI Automation provides AI automation consulting and implementation services including but not limited to: AI agent development, RPA automation (UiPath, Power Automate), n8n workflow automation, WhatsApp Business API integration, document automation, and website development.</p>
+        <h3>2.2 Project Agreement</h3>
+        <p>Each engagement begins with a scoped project agreement ("Project Brief") that specifies deliverables, timeline, cost, and acceptance criteria. The Project Brief, together with these Terms, constitutes the complete agreement for each project.</p>
+        <h3>2.3 Free Consultation</h3>
+        <p>Initial process audit consultations are provided at no charge and create no obligation for either party. Recommendations provided during consultations are general in nature and not a guarantee of specific outcomes.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>3. Payment Terms</h2>
+        <h3>3.1 Invoicing</h3>
+        <ul>
+          <li>Standard projects: 50% deposit upon project commencement, 50% upon delivery</li>
+          <li>Ongoing retainers: Monthly in advance on the 1st of each month</li>
+          <li>Projects over ₹2 Lakh: Milestone-based payment schedule as specified in the Project Brief</li>
+        </ul>
+        <h3>3.2 Payment Deadline</h3>
+        <p>Invoices are due within 7 business days of issue. Overdue invoices accrue interest at 1.5% per month on the outstanding balance. We reserve the right to pause work on overdue accounts.</p>
+        <h3>3.3 Refunds</h3>
+        <p>Deposits are non-refundable once project work has commenced. If we are unable to deliver the agreed scope due to our own failure, we will provide a full refund for undelivered work. Refunds are not provided for project cancellations after delivery of agreed deliverables.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>4. Intellectual Property</h2>
+        <h3>4.1 Client Ownership</h3>
+        <p>Upon receipt of full payment, all custom deliverables created specifically for your project transfer to your ownership. This includes automation workflows, AI configurations, custom code, and documentation written for your specific use case.</p>
+        <h3>4.2 Our Tools and Methods</h3>
+        <p>We retain ownership of our methodologies, frameworks, templates, and tools — including any proprietary systems, code libraries, or processes we develop independently. We grant you a perpetual, non-exclusive licence to use these within the deliverables provided to you.</p>
+        <h3>4.3 Third-Party Tools</h3>
+        <p>Projects may use third-party tools (UiPath, n8n, WhatsApp Business API, cloud services). Use of such tools is subject to their respective licence agreements, which the client must accept and maintain independently.</p>
+        <h3>4.4 Pre-existing IP</h3>
+        <p>Any intellectual property owned by the client prior to the engagement remains the client's property. We will not use client IP for any purpose outside of delivering your project.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>5. Confidentiality</h2>
+        <p>We treat all client information as strictly confidential. We will not disclose client business processes, data, financial information, or project details to any third party except as required by law or as necessary to deliver the project (with appropriate confidentiality obligations on sub-contractors).</p>
+        <p>We sign mutual NDAs before any detailed process discussion. The client agrees to maintain confidentiality regarding our proprietary methodologies, pricing, and internal tools.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>6. Data and Security</h2>
+        <h3>6.1 Client Data</h3>
+        <p>Client data shared for project purposes is used solely for that purpose and deleted upon project completion (unless retained for maintenance purposes with explicit agreement). We do not use client data for any other purpose.</p>
+        <h3>6.2 Data Handling</h3>
+        <p>We implement appropriate technical and organisational measures to protect data shared with us. For projects involving personal data, we will act as a data processor and comply with applicable data protection law.</p>
+        <h3>6.3 Client Responsibilities</h3>
+        <p>The client is responsible for ensuring they have the legal right to share any data provided to us for project purposes, including customer data, employee data, and business records.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>7. Project Delivery</h2>
+        <h3>7.1 Timeline</h3>
+        <p>Project timelines are estimates based on the information available at scoping. Delays caused by late client feedback, access provision issues, or scope changes are not our responsibility and may extend delivery timelines.</p>
+        <h3>7.2 Client Obligations</h3>
+        <p>To deliver projects on time, we require: timely access to systems and data, prompt feedback within agreed timeframes, a designated point of contact with authority to make decisions, and accurate information about existing systems and processes.</p>
+        <h3>7.3 Acceptance</h3>
+        <p>Deliverables are accepted when they meet the criteria specified in the Project Brief. If no formal acceptance criteria are defined, deliverables are accepted when the client confirms in writing that they meet expectations. Failure to provide feedback within 7 business days of delivery constitutes acceptance.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>8. Warranties and Limitations</h2>
+        <h3>8.1 Our Warranty</h3>
+        <p>We warrant that services will be performed professionally, with reasonable skill and care, in accordance with the Project Brief. We warrant that deliverables will function as specified for 30 days after acceptance (the "warranty period").</p>
+        <h3>8.2 Limitation of Liability</h3>
+        <p>To the maximum extent permitted by law, our total liability to you for any claim arising from our services is limited to the total fees paid for the specific project to which the claim relates.</p>
+        <p>We are not liable for: indirect or consequential losses, loss of profit or revenue, loss of data (beyond what we were contractually responsible for protecting), or third-party system failures outside our control.</p>
+        <h3>8.3 No Guarantee of Results</h3>
+        <p>While we provide ROI estimates based on industry benchmarks and our experience, we do not guarantee specific business outcomes. Results depend on client implementation, data quality, market conditions, and other factors outside our control.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>9. Termination</h2>
+        <h3>9.1 Termination by Client</h3>
+        <p>You may terminate an engagement with 14 days' written notice. Upon termination, you will pay for all work completed to the date of termination, plus any non-cancellable commitments made on your behalf. The deposit is non-refundable.</p>
+        <h3>9.2 Termination by Us</h3>
+        <p>We may terminate an engagement with 14 days' notice if: payment is more than 21 days overdue, the client engages in illegal or unethical practices, or circumstances outside our control make completion impossible. In such cases, we will refund any prepaid fees for undelivered work.</p>
+        <h3>9.3 Effect of Termination</h3>
+        <p>Upon termination, we will provide all work completed to date in a usable format. Confidentiality obligations survive termination indefinitely. IP ownership provisions apply to completed and paid deliverables.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>10. Governing Law</h2>
+        <p>These Terms are governed by the laws of India. For Indian clients, disputes shall be subject to the jurisdiction of courts in India. For international clients, disputes shall first be attempted to be resolved through good-faith negotiation, followed by binding arbitration under the Arbitration and Conciliation Act, 1996.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>11. Changes to Terms</h2>
+        <p>We may update these Terms from time to time. For existing clients, updated Terms apply to new projects commenced after the update date. We will provide 30 days' notice for material changes to Terms affecting active engagements.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>12. Contact</h2>
+        <p>For questions about these Terms:</p>
+        <ul>
+          <li>Email: <a href="mailto:{{ email }}">{{ email }}</a></li>
+          <li>Phone: {{ phone }}</li>
+          <li>WhatsApp: <a href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">+{{ wa }}</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
