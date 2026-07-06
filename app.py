@@ -24,8 +24,8 @@ def ctx(**kwargs):
 @app.route("/")
 def index():
     return render_template("index.html", **ctx(
-        title="Agentic AI Automation | AI Workforce Company — Deploy AI Employees",
-        description="Deploy AI Employees across Sales, Support, Operations and Finance. India's leading AI automation agency — RPA, AI Agents, WhatsApp Automation and more.",
+        title="AI Employees for Your Business — RPA, WhatsApp Automation, Lead Follow-Up & Invoice Processing | Agentic AI Automation",
+        description="We deploy AI employees that handle your leads, appointments, invoices and operations — 24/7, automatically. RPA + AI automation for businesses across India, UK, UAE and beyond. Live in 2 weeks.",
         canonical="https://agenticaiautomation.co/",
         page="home",
     ))
@@ -34,7 +34,7 @@ def index():
 @app.route("/about")
 def about():
     return render_template("about.html", **ctx(
-        title="About Agentic AI Automation | AI Workforce Company Founded by Jai",
+        title="About Agentic AI Automation | AI Workforce Company",
         description="Agentic AI Automation was built by Jai — 11 years enterprise IT, 9 years automation. We exist to give every business an AI workforce. Learn our story.",
         canonical="https://agenticaiautomation.co/about",
         page="about",
