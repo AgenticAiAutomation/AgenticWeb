@@ -8,7 +8,7 @@ SITE = {
     "name": "Agentic AI Automation",
     "url": "https://agenticaiautomation.co",
     "email": "Contact@agenticAiAutomation.co",
-    "phone": "+917982881739",
+    "phone": "",
     "wa": "917982881739",
     "calendly": "https://calendly.com/agenticaiautomation",
     "year": datetime.now().year,
@@ -35,7 +35,7 @@ def index():
 def about():
     return render_template("about.html", **ctx(
         title="About Agentic AI Automation | AI Workforce Company",
-        description="Agentic AI Automation was built by Jai — 11 years enterprise IT, 9 years automation. We exist to give every business an AI workforce. Learn our story.",
+        description="Agentic AI Automation was built by our founder — 11 years enterprise IT, 9 years automation. We exist to give every business an AI workforce. Learn our story.",
         canonical="https://agenticaiautomation.co/about",
         page="about",
     ))
