@@ -217,7 +217,7 @@ p { color: var(--text-muted); }
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   background: rgba(6,8,22,0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -302,7 +302,7 @@ p { color: var(--text-muted); }
   inset: 0;
   background: rgba(6,8,22,0.98);
   backdrop-filter: blur(20px);
-  z-index: 99;
+  z-index: 999;
   padding: calc(var(--nav-h) + 32px) var(--gutter) 48px;
   flex-direction: column;
   opacity: 0;
