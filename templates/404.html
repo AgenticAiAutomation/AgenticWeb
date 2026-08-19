@@ -1,23 +1,20 @@
 {% extends "base.html" %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
-{% endblock %}
-
 {% block content %}
-
-<section class="not-found">
-  <div class="container">
-    <div class="not-found-inner">
-      <div class="not-found-code">404</div>
-      <h1>This page doesn't exist.</h1>
-      <p>The page you were looking for has moved, been deleted, or never existed. But your automation journey doesn't have to end here.</p>
-      <div class="not-found-actions">
-        <a href="/" class="btn btn-primary btn-lg">Go Home →</a>
-        <a href="{{ calendly }}" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">Book Free Audit</a>
-      </div>
-    </div>
+<section class="section">
+  <div class="container container-narrow">
+    <span class="eyebrow">404</span>
+    <h1>That page is not here</h1>
+    <p class="lede" style="margin-top: var(--space-md)">
+      It may have moved, or it may never have existed. These are the pages people
+      usually want.
+    </p>
+    <ul class="footer-links" role="list" style="margin-top: var(--space-xl)">
+      <li><a href="/services">Automation services</a></li>
+      <li><a href="/case-studies">Case studies</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
   </div>
 </section>
-
 {% endblock %}

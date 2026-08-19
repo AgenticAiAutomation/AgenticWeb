@@ -1,0 +1,46 @@
+{# Organization — ships on every page. Spec 02 §1.
+   @id is the stable node other schema blocks reference; never change it. #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "{{ url }}/#organization",
+  "name": "Agentic AI Automation",
+  "alternateName": "Agentic AI",
+  "url": "{{ url }}",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "{{ url }}/static/images/logo-black.png",
+    "width": 512,
+    "height": 512
+  },
+  "description": "RPA and AI automation agency — WhatsApp automation, n8n workflows, UiPath migration, and AI agent development for SMEs in India and enterprises globally.",
+  "email": {{ email|tojson }},
+  "telephone": "+91-79828-81739",
+  "founder": {
+    "@type": "Person",
+    "@id": "{{ url }}/author/jai/#person",
+    "name": {{ founder_name|tojson }},
+    "jobTitle": "Founder & Automation Architect",
+    "url": "{{ url }}/author/jai"
+  },
+  "foundingDate": "2025-06",
+  "areaServed": [
+    {"@type": "Country", "name": "India"},
+    {"@type": "Country", "name": "United Kingdom"},
+    {"@type": "Country", "name": "United States"},
+    {"@type": "Country", "name": "United Arab Emirates"},
+    {"@type": "Country", "name": "Singapore"},
+    {"@type": "Country", "name": "Saudi Arabia"}
+  ],
+  "sameAs": {{ socials|map(attribute='url')|list|tojson }},
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+91-79828-81739",
+    "contactType": "sales",
+    "email": {{ email|tojson }},
+    "availableLanguage": ["English", "Hindi"],
+    "areaServed": ["IN", "GB", "US", "AE", "SG", "SA"]
+  }]
+}
+</script>

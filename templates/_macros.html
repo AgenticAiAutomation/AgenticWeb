@@ -1,0 +1,120 @@
+{# ==========================================================================
+   Shared Jinja macros — SEO head, breadcrumbs, images.
+   Implements spec 01 §1 (meta rules), §6 (images), §8 (breadcrumbs)
+   and spec 02 §4 (BreadcrumbList JSON-LD).
+
+   Length limits are enforced here rather than trusted to the caller, so a
+   long title in app.py cannot silently ship a truncated-by-Google SERP entry.
+   ========================================================================== #}
+
+{% macro seo_head(title, description, canonical, og_image=None, page_type='WebPage', noindex=false) -%}
+  <title>{{ title|truncate(60, killwords=false, end='') }}</title>
+  <meta name="description" content="{{ description|truncate(155, killwords=false, end='') }}">
+  <link rel="canonical" href="{{ canonical }}">
+  <meta name="robots" content="{% if noindex %}noindex, follow{% else %}index, follow, max-image-preview:large{% endif %}">
+
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:type" content="{{ 'article' if page_type == 'Article' else 'website' }}">
+  <meta property="og:image" content="{{ og_image or 'https://agenticaiautomation.co/static/images/og-default-v1.png' }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Agentic AI Automation">
+  <meta property="og:locale" content="en_IN">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@AgenticAIGlobal">
+  <meta name="twitter:creator" content="@AgenticAIGlobal">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ og_image or 'https://agenticaiautomation.co/static/images/og-default-v1.png' }}">
+{%- endmacro %}
+
+
+{# Visible breadcrumb trail. Required on every page except the homepage. #}
+{% macro breadcrumbs(items) -%}
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+  <ol>
+    {%- for item in items %}
+    <li>
+      {%- if not loop.last %}
+      <a href="{{ item.url }}">{{ item.name }}</a>
+      <span aria-hidden="true">/</span>
+      {%- else %}
+      <span aria-current="page">{{ item.name }}</span>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ol>
+</nav>
+{%- endmacro %}
+
+
+{# The JSON-LD twin of the above. Call both with the same list. #}
+{% macro breadcrumb_schema(items, base_url) -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {%- for item in items %}
+    {
+      "@type": "ListItem",
+      "position": {{ loop.index }},
+      "name": {{ item.name|tojson }}
+      {%- if item.url and not loop.last %},
+      "item": {{ (base_url ~ item.url)|tojson }}
+      {%- endif %}
+    }{{ "," if not loop.last }}
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endmacro %}
+
+
+{# width/height are mandatory arguments, not optional — omitting them is the
+   single most common cause of CLS on this site. #}
+{% macro img(src, alt, w, h, lazy=true, cls='') -%}
+<img src="{{ src }}" alt="{{ alt }}" width="{{ w }}" height="{{ h }}"
+     loading="{{ 'lazy' if lazy else 'eager' }}"
+     decoding="{{ 'async' if lazy else 'sync' }}"
+     {% if not lazy %}fetchpriority="high"{% endif %}
+     {% if cls %}class="{{ cls }}"{% endif %}>
+{%- endmacro %}
+
+
+{# FAQ block. Renders the visible accordion AND the FAQPage schema from one
+   source, so the two can never drift apart — drift here is a cloaking
+   penalty, per spec 02 §8. #}
+{% macro faq(items, heading='Frequently asked questions') -%}
+<section class="section section-rule" aria-labelledby="faq-heading">
+  <div class="container container-narrow">
+    <h2 id="faq-heading">{{ heading }}</h2>
+    <div class="stack" style="margin-top: var(--space-xl)">
+      {%- for item in items %}
+      <details class="faq-item"{% if loop.first %} open{% endif %}>
+        <summary>{{ item.q }}</summary>
+        <div><p>{{ item.a }}</p></div>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for item in items %}
+    {
+      "@type": "Question",
+      "name": {{ item.q|tojson }},
+      "acceptedAnswer": {"@type": "Answer", "text": {{ item.a|tojson }}}
+    }{{ "," if not loop.last }}
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endmacro %}

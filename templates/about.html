@@ -1,182 +1,105 @@
 {% extends "base.html" %}
+{% import "_macros.html" as m %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+{% block schema %}
+{{ m.breadcrumb_schema(crumbs, url) }}
+{# Person node for the founder. Spec 02 §7 asks for hasCredential and alumniOf;
+   both are omitted until the certifications and past employers are confirmed —
+   an unverifiable credential in schema is worse than a missing one. #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "{{ url }}/author/jai/#person",
+  "name": {{ founder_name|tojson }},
+  "givenName": "Jai",
+  "url": "{{ url }}/about",
+  "jobTitle": "Founder & Automation Architect",
+  "worksFor": {"@id": "{{ url }}/#organization"},
+  "description": "11 years in enterprise IT with 9 years building RPA and AI automation for banks, hospitals, law firms and logistics companies across India, the UK and the Middle East.",
+  "knowsAbout": [
+    "UiPath RPA",
+    "n8n Workflow Automation",
+    "WhatsApp Business API",
+    "AI Agent Development",
+    "Enterprise Automation Migration",
+    "Business Process Automation"
+  ],
+  "sameAs": ["https://www.linkedin.com/company/agenticaiautomation/"]
+}
+</script>
 {% endblock %}
 
 {% block content %}
 
-<section class="page-hero section">
-  <div class="container">
-    <div class="page-hero-inner">
-      <div class="chapter-label">About Us</div>
-      <h1>We exist to give every business an <span class="grad">AI workforce.</span></h1>
-      <p class="page-hero-sub">Not the Fortune 500. Not just enterprises with million-dollar IT budgets. Every business — from a 5-person startup to a 500-person manufacturer — deserves to stop doing work that machines can do better.</p>
-      <div class="hero-actions">
-        <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">Book Free Audit</a>
-        <a href="/services" class="btn btn-ghost">See Our Services</a>
-      </div>
+<div class="container">{{ m.breadcrumbs(crumbs) }}</div>
+
+<section class="section" style="padding-top: var(--space-md)">
+  <div class="container container-narrow">
+    <span class="eyebrow">About</span>
+    <h1>Built by someone who had to maintain it afterwards</h1>
+
+    <div class="prose" style="margin-top: var(--space-xl)">
+      <p>
+        Agentic AI Automation is run by Jai. Eleven years in enterprise IT, nine
+        of them building RPA for banks, hospitals, law firms and logistics
+        operators across India, the UK and the Middle East.
+      </p>
+      <p>
+        Most of those nine years were spent on the unglamorous half of
+        automation: keeping bots alive after the consultants left. That is where
+        the opinions on this site come from. A bot that works in a demo and dies
+        the first time a vendor changes a login screen is not automation, it is
+        a liability with a project code.
+      </p>
+
+      <h2>How that shapes the work</h2>
+      <p>
+        <strong>We scope narrow.</strong> One process, one price, one date. Broad
+        transformation programmes are where budgets go to die quietly over
+        eighteen months.
+      </p>
+      <p>
+        <strong>We say no.</strong> If discovery shows the process is too
+        unstable to automate, or that a ₹2,000-a-month tool already does it, we
+        say so on the call. That has cost us work and it is still the right
+        trade.
+      </p>
+      <p>
+        <strong>We build for handover from day one.</strong> Your repository,
+        your cloud accounts, your credentials. Documentation and a runbook are
+        deliverables, not an upsell. If you cannot fire us without the automation
+        breaking, we designed it badly.
+      </p>
+
+      <h2>What we are not</h2>
+      <p>
+        Not a staffing agency, not a reseller, and not a fifty-person shop. Small
+        team, senior people, a handful of engagements at a time. If you need
+        thirty developers next month, we are the wrong call and we will tell you
+        so in the first ten minutes.
+      </p>
+
+      <h2>Where we work</h2>
+      <p>
+        One office, in {{ location.city }}, {{ location.region }}. That is the
+        whole company &mdash; there is no overseas branch and no local partner
+        firm trading under our name.
+      </p>
+      <p>
+        Roughly half the work is for clients in the UK, US, UAE and Singapore,
+        delivered remotely from India. Contracts are in your currency and
+        jurisdiction, and we hold at least four hours of overlapping working
+        time with you each day. If a project genuinely needs someone in the
+        room, we will tell you to hire locally instead.
+      </p>
+    </div>
+
+    <div class="btn-row" style="margin-top: var(--space-2xl)">
+      <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">Book a 45-minute audit</a>
+      <a href="/services" class="btn btn-secondary">See what we build</a>
     </div>
   </div>
 </section>
 
-<!-- Mission -->
-<section class="about-mission section">
-  <div class="container">
-    <div class="about-mission-inner">
-      <div class="about-mission-left">
-        <div class="chapter-label reveal">Our Mission</div>
-        <h2 class="reveal">Automation shouldn't be a luxury.</h2>
-        <p class="reveal">The biggest companies in the world have had AI and automation working for them for a decade. Their teams don't manually enter data, manually respond to every customer, or manually file reports. Their processes run — 24/7, without human error, without sick days.</p>
-        <p class="reveal">The same capability is now available to every business. Not as an expensive enterprise software suite. Not as a 6-month IT project. As a focused deployment — scoped to your actual problems, built in weeks, delivering ROI in the first month.</p>
-        <p class="reveal">That's what we do. We deploy AI employees for businesses that want to scale without proportionally scaling their headcount — and we do it fast, without the enterprise price tag.</p>
-      </div>
-      <div class="about-mission-right">
-        <div class="stat-chip reveal">
-          <span class="stat-num" data-counter data-target="9" data-suffix="+" data-duration="1500">0</span>
-          <span class="stat-label">Years of automation experience</span>
-        </div>
-        <div class="stat-chip reveal reveal-delay-1" style="margin-top:16px">
-          <span class="stat-num" data-counter data-target="6" data-suffix=" countries" data-duration="1500">0</span>
-          <span class="stat-label">Clients served globally</span>
-        </div>
-        <div class="stat-chip reveal reveal-delay-2" style="margin-top:16px">
-          <span class="stat-num" data-counter data-target="200" data-suffix="+" data-duration="2000">0</span>
-          <span class="stat-label">Processes automated</span>
-        </div>
-        <div class="stat-chip reveal reveal-delay-3" style="margin-top:16px">
-          <span class="stat-num" data-counter data-target="4" data-suffix=" weeks" data-duration="1200">0</span>
-          <span class="stat-label">Average time to go live</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Core Beliefs -->
-<section class="about-beliefs section" style="background:var(--bg2)">
-  <div class="container">
-    <div class="reveal" style="text-align:center; margin-bottom:64px">
-      <div class="chapter-label">What We Believe</div>
-      <h2 class="section-title">Four principles that shape every project.</h2>
-    </div>
-
-    <div class="beliefs-grid">
-      <div class="belief-card reveal">
-        <div class="belief-num">01</div>
-        <h3>Speed over perfection</h3>
-        <p>A working automation in 2 weeks that evolves is infinitely more valuable than a perfect design that ships in 6 months. We bias toward shipping, testing with real data, and iterating fast.</p>
-      </div>
-      <div class="belief-card reveal reveal-delay-1">
-        <div class="belief-num">02</div>
-        <h3>Tool-agnostic honesty</h3>
-        <p>We don't have a preferred platform to push. We recommend n8n, UiPath, Power Automate, custom code, or a combination — based entirely on what's best for your situation, not what earns us the highest referral fee.</p>
-      </div>
-      <div class="belief-card reveal reveal-delay-2">
-        <div class="belief-num">03</div>
-        <h3>ROI before everything</h3>
-        <p>Every automation we build is evaluated on one metric: does it create measurable value faster than it costs? If the ROI isn't clear in the first 60 days, we've failed — and we own that.</p>
-      </div>
-      <div class="belief-card reveal reveal-delay-3">
-        <div class="belief-num">04</div>
-        <h3>Your team becomes stronger</h3>
-        <p>We don't sell automation as a headcount replacement. We sell it as headcount leverage. Your team should be able to take on more with the same (or fewer) people — doing work that matters, not data entry.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Founder Story -->
-<section class="section">
-  <div class="container">
-    <div class="chapter-label reveal" style="text-align:center">The Founder</div>
-    <h2 class="section-title reveal" style="text-align:center; margin-bottom:48px">9 years in automation.<br>Built to do it better.</h2>
-
-    <div class="founder-card reveal">
-      <div class="founder-avatar" style="font-size:3rem; width:110px; height:110px;">👤</div>
-      <div class="founder-info">
-        <div class="founder-name">Jai</div>
-        <div class="founder-title">Founder &amp; Principal Automation Architect</div>
-        <p class="founder-bio">I started in Enterprise IT in 2013 — implementing systems for banks, manufacturing companies, and government clients. In 2016, I discovered process automation and realised that the biggest opportunity wasn't in the technology itself, but in making it accessible to businesses that couldn't afford the enterprise route.</p>
-        <p class="founder-bio" style="margin-top:12px">Over 9 years, I've automated workflows for organisations ranging from 3-person accounting firms in Mumbai to 2,000-person logistics companies in the UK. I earned my UiPath certification, became a Power Automate specialist, and started building AI agent systems when that became viable.</p>
-        <p class="founder-bio" style="margin-top:12px">Agentic AI Automation exists because most businesses are still doing in 2025 what should have been automated in 2019. I want to change that — fast, affordably, and with honest results.</p>
-        <div class="founder-tags" style="margin-top:16px">
-          <span class="tag">UiPath Certified</span>
-          <span class="tag">Power Automate</span>
-          <span class="tag">n8n</span>
-          <span class="tag">AI Agents</span>
-          <span class="tag">Python</span>
-          <span class="tag">Enterprise IT (11 yrs)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Expertise -->
-<section class="expertise-section section">
-  <div class="container">
-    <div class="reveal" style="text-align:center; margin-bottom:56px">
-      <div class="chapter-label">Technical Expertise</div>
-      <h2 class="section-title">What we know deeply.</h2>
-    </div>
-
-    <div class="expertise-grid">
-      <div class="expertise-card reveal">
-        <div class="expertise-icon">🤖</div>
-        <h3>AI Agent Development</h3>
-        <p>LLM-powered agents with tool use, memory, and multi-step reasoning. Built with LangChain, OpenAI, Anthropic Claude.</p>
-        <div class="expertise-years">9 years · primary focus</div>
-      </div>
-      <div class="expertise-card reveal reveal-delay-1">
-        <div class="expertise-icon">🔄</div>
-        <h3>UiPath RPA</h3>
-        <p>Enterprise RPA for legacy systems, desktop automation, government portals, and complex multi-step workflows.</p>
-        <div class="expertise-years">UiPath Certified · 7 years</div>
-      </div>
-      <div class="expertise-card reveal reveal-delay-2">
-        <div class="expertise-icon">⚡</div>
-        <h3>n8n Workflow Automation</h3>
-        <p>Self-hosted, open-source automation for complex multi-system workflows. 400+ integrations. Full custom logic.</p>
-        <div class="expertise-years">5 years · preferred platform</div>
-      </div>
-      <div class="expertise-card reveal reveal-delay-3">
-        <div class="expertise-icon">📊</div>
-        <h3>Microsoft Power Automate</h3>
-        <p>Expert-level Power Automate for Microsoft 365 environments. SharePoint, Teams, Dynamics, and AI Builder.</p>
-        <div class="expertise-years">Power Automate Expert · 6 years</div>
-      </div>
-      <div class="expertise-card reveal reveal-delay-1">
-        <div class="expertise-icon">💬</div>
-        <h3>WhatsApp Business API</h3>
-        <p>Official WhatsApp Business API chatbots — AI-powered, multilingual, integrated with CRM and support systems.</p>
-        <div class="expertise-years">4 years · 50+ deployments</div>
-      </div>
-      <div class="expertise-card reveal reveal-delay-2">
-        <div class="expertise-icon">📄</div>
-        <h3>Document AI &amp; OCR</h3>
-        <p>Intelligent document processing — invoices, contracts, forms. Extract, validate, and push to any system.</p>
-        <div class="expertise-years">5 years · finance &amp; legal focus</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="container">
-  <div class="page-cta-banner reveal">
-    <div class="chapter-label">Work With Us</div>
-    <h2>Let's build your AI workforce.</h2>
-    <p>Start with a free 45-minute process audit. We'll show you exactly where automation creates the most value for your business — no sales pitch, no pressure.</p>
-    <div class="final-actions">
-      <a href="{{ calendly }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Book Free Audit →</a>
-      <a href="https://wa.me/{{ wa }}?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20working%20with%20Agentic%20AI%20Automation." class="btn btn-wa btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
-    </div>
-  </div>
-</div>
-
-{% endblock %}
-
-{% block extra_js %}
-<script src="{{ url_for('static', filename='js/animations.js') }}"></script>
 {% endblock %}

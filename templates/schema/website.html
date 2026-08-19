@@ -1,0 +1,14 @@
+{# WebSite — ships on every page. Spec 02 §2.
+   The SearchAction is omitted deliberately: there is no /search route yet, and
+   declaring a sitelinks search box that 404s is worse than declaring none. #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "{{ url }}/#website",
+  "url": "{{ url }}",
+  "name": "Agentic AI Automation",
+  "publisher": {"@id": "{{ url }}/#organization"},
+  "inLanguage": "en-IN"
+}
+</script>

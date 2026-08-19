@@ -1,5 +1,33 @@
+# {{ url }}/robots.txt
+
 User-agent: *
 Allow: /
-Disallow: /admin/
+Disallow: /thank-you
+Disallow: /search
+Disallow: /admin
+Disallow: /api/
+Disallow: /*?utm_
+Disallow: /*?gclid
+Disallow: /*?fbclid
 
-Sitemap: https://agenticaiautomation.co/sitemap.xml
+# AI crawlers that send referral traffic back are allowed. CCBot is a pure
+# training scrape with no discovery upside, so it is not.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Disallow: /
+
+Sitemap: {{ url }}/sitemap.xml

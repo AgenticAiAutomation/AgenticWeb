@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block schema %}
+{{ m.breadcrumb_schema(crumbs, url) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "url": "{{ canonical }}",
+  "mainEntity": {"@id": "{{ url }}/#organization"}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">{{ m.breadcrumbs(crumbs) }}</div>
+
+<section class="section" style="padding-top: var(--space-md)">
+  <div class="container container-narrow">
+    <span class="eyebrow">Contact</span>
+    <h1>Three ways to reach us</h1>
+    <p class="lede" style="margin-top: var(--space-md)">
+      All three reach the same two people. We reply within one business day, and
+      if the answer is that we are not the right fit, that is the reply you get.
+    </p>
+
+    <div class="stack-lg" style="margin-top: var(--space-2xl)">
+
+      <article class="card">
+        <h2 style="font-size: var(--step-2)">Book the automation audit</h2>
+        <p style="margin-top: var(--space-xs)">
+          Forty-five minutes on one process. You leave with a written scope and a
+          cost range whether or not you hire us. This is the fastest route to a
+          useful answer.
+        </p>
+        <p class="card-link">
+          <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">
+            Pick a time
+          </a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h2 style="font-size: var(--step-2)">WhatsApp</h2>
+        <p style="margin-top: var(--space-xs)">
+          Best for a quick question — whether we handle something, rough cost, or
+          whether a tool you already own would do the job.
+        </p>
+        <p class="card-link">
+          <a href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">+91 79828 81739</a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h2 style="font-size: var(--step-2)">Email</h2>
+        <p style="margin-top: var(--space-xs)">
+          Best for anything with a document attached — an RFP, a process map, or
+          an existing automation estate you want assessed.
+        </p>
+        <p class="card-link">
+          <a href="mailto:{{ email }}">{{ email }}</a>
+        </p>
+      </article>
+
+    </div>
+
+    <div class="section-rule" style="margin-top: var(--space-2xl); padding-top: var(--space-xl)">
+      <h2 style="font-size: var(--step-2)">Working hours</h2>
+      <p style="margin-top: var(--space-sm)">
+        Monday to Saturday, 10:00 to 19:00 IST. For UK, UAE and Singapore clients
+        we hold a fixed overlap window agreed at kickoff. US Pacific is handled
+        by early-morning IST calls.
+      </p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

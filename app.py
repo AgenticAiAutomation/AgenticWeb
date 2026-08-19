@@ -1,6 +1,17 @@
-from flask import Flask, render_template, abort
-from datetime import datetime
+"""Agentic AI Automation — marketing site.
+
+Routing, SEO endpoints and the shared context every template renders against.
+The WordPress blog lives separately at /blog (nginx proxies it to
+/var/www/blog); this app owns everything else.
+
+Content lives in content.py so that copy edits never touch routing.
+"""
 import os
+from datetime import datetime
+
+from flask import Flask, Response, redirect, render_template, request
+
+import content
 
 app = Flask(__name__)
 
@@ -11,93 +22,151 @@ SITE = {
     "phone": "+917982881739",
     "wa": "917982881739",
     "calendly": "https://calendly.com/agenticaiautomation",
-    "year": datetime.now().year,
+    # Schema 02 §1 wants a full legal name on the founder node. Until it is
+    # supplied the Person node stays first-name-only rather than fabricated.
+    "founder_name": "Jai",
+    "location": content.LOCATION,
+    "nav_items": content.NAV_ITEMS,
+    "services_nav": content.SERVICES_NAV,
+    "socials": content.SOCIALS,
 }
 
 
 def ctx(**kwargs):
-    d = dict(SITE)
-    d.update(kwargs)
-    return d
+    """Merge page context over the site-wide defaults."""
+    data = dict(SITE)
+    data["year"] = datetime.now().year
+    data.update(kwargs)
+    return data
 
 
+# ---------------------------------------------------------------------------
+# 301 redirects — spec 01 §2. Never break a live URL; add here, never delete.
+# ---------------------------------------------------------------------------
+REDIRECTS_301 = {
+    # The mascot page tested badly on trust — the audit called it out
+    # explicitly. Its equity folds into /services.
+    "/ai-executives": "/services",
+    "/index.html": "/",
+    "/services.html": "/services",
+    "/blog.html": "/blog",
+    "/about.html": "/about",
+}
+
+
+@app.before_request
+def apply_redirects():
+    path = request.path.rstrip("/") or "/"
+    if path in REDIRECTS_301:
+        return redirect(REDIRECTS_301[path], code=301)
+    # Canonicalise away trailing slashes so /services/ and /services are not
+    # two indexable URLs. Root is exempt.
+    if path != request.path and request.path != "/":
+        return redirect(path, code=301)
+    return None
+
+
+# ---------------------------------------------------------------------------
+# Pages
+# ---------------------------------------------------------------------------
 @app.route("/")
 def index():
     return render_template("index.html", **ctx(
-        title="Agentic AI Automation | AI Workforce Company — Deploy AI Employees",
-        description="Deploy AI Employees across Sales, Support, Operations and Finance. India's leading AI automation agency — RPA, AI Agents, WhatsApp Automation and more.",
-        canonical="https://agenticaiautomation.co/",
+        title="AI & RPA Automation Agency in India | Agentic AI Automation",
+        description="We build WhatsApp AI agents, n8n workflows and UiPath "
+                    "automation for teams in India and abroad. Book a 45-minute "
+                    "automation audit — no cost, no pitch deck.",
+        canonical=f"{SITE['url']}/",
         page="home",
-    ))
-
-
-@app.route("/about")
-def about():
-    return render_template("about.html", **ctx(
-        title="About Agentic AI Automation | AI Workforce Company Founded by Jai",
-        description="Agentic AI Automation was built by Jai — 11 years enterprise IT, 9 years automation. We exist to give every business an AI workforce. Learn our story.",
-        canonical="https://agenticaiautomation.co/about",
-        page="about",
+        hero=content.HERO,
+        credentials=content.CREDENTIALS,
+        results=content.RESULTS,
+        how_we_work=content.HOW_WE_WORK,
+        faqs=content.FAQS,
     ))
 
 
 @app.route("/services")
 def services():
     return render_template("services.html", **ctx(
-        title="AI Automation Services | RPA, AI Agents, WhatsApp, n8n, UiPath",
-        description="Every automation service your business needs — AI Agent Development, UiPath RPA, Power Automate, n8n, WhatsApp AI, Voice AI, Document Automation and more.",
-        canonical="https://agenticaiautomation.co/services",
+        title="Automation Services — WhatsApp AI, n8n, UiPath, RPA",
+        description="AI agent development, WhatsApp Business API automation, n8n "
+                    "workflow builds, UiPath RPA and document processing. See scope, "
+                    "timelines and what each engagement costs.",
+        canonical=f"{SITE['url']}/services",
         page="services",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "Services"}],
+        services=content.SERVICES,
     ))
 
 
 @app.route("/industries")
 def industries():
     return render_template("industries.html", **ctx(
-        title="Industry Automation Solutions | AI for E-commerce, Healthcare, Finance & More",
-        description="AI automation built for your industry — E-commerce, Healthcare, Law Firms, Manufacturing, Logistics, Finance, Real Estate and Professional Services.",
-        canonical="https://agenticaiautomation.co/industries",
+        title="Industry Automation — Healthcare, D2C, Legal, Logistics",
+        description="How automation actually lands in healthcare, e-commerce, law "
+                    "firms, manufacturing and logistics — the processes worth "
+                    "automating first and the ones that are not.",
+        canonical=f"{SITE['url']}/industries",
         page="industries",
-    ))
-
-
-@app.route("/ai-executives")
-def ai_executives():
-    return render_template("ai-executives.html", **ctx(
-        title="AI Executive Team | Deploy AI Employees | Agentic AI Automation",
-        description="Meet your AI Executive Team — Alex (Sales), Maya (Support), Atlas (Ops), Titan (Finance), Nova (Marketing), Orion (HR) and more. Deploy AI Employees in weeks.",
-        canonical="https://agenticaiautomation.co/ai-executives",
-        page="ai-executives",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "Industries"}],
+        industries=content.INDUSTRIES,
     ))
 
 
 @app.route("/case-studies")
 def case_studies():
     return render_template("case-studies.html", **ctx(
-        title="Automation Case Studies | Real Results | Agentic AI Automation",
-        description="Real automation results — from e-commerce lead qualification to finance invoice processing. See what AI employees deliver across industries.",
-        canonical="https://agenticaiautomation.co/case-studies",
+        title="Automation Case Studies | Agentic AI Automation",
+        description="Named clients, measured before-and-after numbers, and what we "
+                    "would do differently. Every figure here is signed off by the "
+                    "client it belongs to.",
+        canonical=f"{SITE['url']}/case-studies",
         page="case-studies",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "Case studies"}],
+        case_studies=content.CASE_STUDIES,
     ))
 
 
-@app.route("/blog")
-def blog():
-    return render_template("blog.html", **ctx(
-        title="AI Automation Blog | Knowledge Hub | Agentic AI Automation",
-        description="Deep guides on AI agents, RPA, workflow automation, n8n, UiPath, WhatsApp automation and building your AI workforce. Written by enterprise automation veterans.",
-        canonical="https://agenticaiautomation.co/blog",
-        page="blog",
+@app.route("/about")
+def about():
+    return render_template("about.html", **ctx(
+        title="About — Automation Built by Practitioners | Agentic AI",
+        description="Agentic AI Automation is run by Jai, 11 years in enterprise IT "
+                    "and 9 building RPA. Read how we scope, price and hand over "
+                    "automation work.",
+        canonical=f"{SITE['url']}/about",
+        page="about",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "About"}],
     ))
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html", **ctx(
+        title="Contact Agentic AI Automation | Book an Automation Audit",
+        description="Book a 45-minute automation audit, message us on WhatsApp, or "
+                    "email the team directly. We reply within one business day.",
+        canonical=f"{SITE['url']}/contact",
+        page="contact",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "Contact"}],
+    ))
+
+
+# NOTE: there is deliberately no /blog route here. nginx serves /blog/ from the
+# WordPress install at /var/www/blog (see infra/nginx-blog-subfolder.conf), so a
+# Flask route on that path could never fire. The nav links straight to /blog/.
 
 
 @app.route("/privacy")
 def privacy():
     return render_template("privacy.html", **ctx(
         title="Privacy Policy | Agentic AI Automation",
-        description="Privacy policy for Agentic AI Automation. How we collect, use and protect your data.",
-        canonical="https://agenticaiautomation.co/privacy",
+        description="How Agentic AI Automation collects, uses, stores and deletes "
+                    "your data, and how to request a copy or removal.",
+        canonical=f"{SITE['url']}/privacy",
         page="privacy",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "Privacy policy"}],
     ))
 
 
@@ -105,44 +174,90 @@ def privacy():
 def terms():
     return render_template("terms.html", **ctx(
         title="Terms of Service | Agentic AI Automation",
-        description="Terms of service for Agentic AI Automation. Service agreement, IP ownership, payment terms and governing law.",
-        canonical="https://agenticaiautomation.co/terms",
+        description="Service agreement, IP ownership, payment terms and governing "
+                    "law for Agentic AI Automation engagements.",
+        canonical=f"{SITE['url']}/terms",
         page="terms",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "Terms of service"}],
     ))
 
 
+# ---------------------------------------------------------------------------
+# SEO endpoints — spec 01 §3, §4
+# ---------------------------------------------------------------------------
+def _xml(body: str) -> Response:
+    return Response(body, mimetype="application/xml")
+
+
+def _url_entry(loc, lastmod, changefreq, priority):
+    return (f"  <url>\n"
+            f"    <loc>{loc}</loc>\n"
+            f"    <lastmod>{lastmod}</lastmod>\n"
+            f"    <changefreq>{changefreq}</changefreq>\n"
+            f"    <priority>{priority}</priority>\n"
+            f"  </url>")
+
+
 @app.route("/sitemap.xml")
-def sitemap():
-    pages = [
-        {"url": "/",               "priority": "1.0",  "changefreq": "weekly"},
-        {"url": "/services",       "priority": "0.9",  "changefreq": "monthly"},
-        {"url": "/case-studies",   "priority": "0.9",  "changefreq": "weekly"},
-        {"url": "/blog",           "priority": "0.9",  "changefreq": "daily"},
-        {"url": "/industries",     "priority": "0.85", "changefreq": "monthly"},
-        {"url": "/ai-executives",  "priority": "0.85", "changefreq": "monthly"},
-        {"url": "/about",          "priority": "0.8",  "changefreq": "monthly"},
-        {"url": "/privacy",        "priority": "0.3",  "changefreq": "yearly"},
-        {"url": "/terms",          "priority": "0.3",  "changefreq": "yearly"},
+def sitemap_index():
+    """Index only. Blog URLs live in WordPress, which emits its own sitemap
+    via Rank Math — we point at it rather than duplicating it, because two
+    sitemaps listing the same URL with different lastmod values is worse than
+    one."""
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    base = SITE["url"]
+    entries = [
+        f"{base}/sitemap-core.xml",
+        f"{base}/blog/sitemap_index.xml",
     ]
-    xml = render_template("sitemap.xml", pages=pages, base_url=SITE["url"])
-    return app.response_class(xml, mimetype="application/xml")
+    body = "\n".join(
+        f"  <sitemap><loc>{e}</loc><lastmod>{today}</lastmod></sitemap>"
+        for e in entries
+    )
+    return _xml('<?xml version="1.0" encoding="UTF-8"?>\n'
+                '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                f"{body}\n</sitemapindex>")
+
+
+@app.route("/sitemap-core.xml")
+def sitemap_core():
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    base = SITE["url"]
+    pages = [
+        ("/",             "weekly",  "1.0"),
+        ("/services",     "monthly", "0.9"),
+        ("/case-studies", "weekly",  "0.9"),
+        ("/industries",   "monthly", "0.8"),
+        ("/about",        "monthly", "0.8"),
+        ("/contact",      "yearly",  "0.6"),
+        ("/privacy",      "yearly",  "0.3"),
+        ("/terms",        "yearly",  "0.3"),
+    ]
+    body = "\n".join(
+        _url_entry(f"{base}{path}", today, freq, pri) for path, freq, pri in pages
+    )
+    return _xml('<?xml version="1.0" encoding="UTF-8"?>\n'
+                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                f"{body}\n</urlset>")
 
 
 @app.route("/robots.txt")
 def robots():
-    return app.response_class(render_template("robots.txt"), mimetype="text/plain")
+    return Response(render_template("robots.txt", url=SITE["url"]),
+                    mimetype="text/plain")
 
 
 @app.errorhandler(404)
-def not_found(e):
+def not_found(_):
     return render_template("404.html", **ctx(
-        title="Page Not Found | Agentic AI Automation",
-        description="The page you are looking for does not exist.",
-        canonical="https://agenticaiautomation.co/404",
+        title="Page not found | Agentic AI Automation",
+        description="That page does not exist. Browse services, case studies or "
+                    "the blog instead.",
+        canonical=f"{SITE['url']}/404",
         page="404",
+        noindex=True,
     )), 404
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=False)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
