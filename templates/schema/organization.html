@@ -8,13 +8,15 @@
   "name": "Agentic AI Automation",
   "alternateName": "Agentic AI",
   "url": "{{ url }}",
-  {# Dimensions must match the file, or Google reports the logo as invalid.
-     logo-black-v2.png is 252x160 — comfortably over the 112px minimum. #}
+  {# Dimensions must match the file or Google reports the logo as invalid.
+     The full-colour transparent mark is the one to expose here — it is what
+     appears in Google's knowledge panel and rich results. 377x270 is
+     comfortably over the 112px minimum. #}
   "logo": {
     "@type": "ImageObject",
-    "url": "{{ url }}/static/images/logo-black-v2.png",
-    "width": 252,
-    "height": 160
+    "url": "{{ url }}/static/images/logo-colour-v3.png",
+    "width": 377,
+    "height": 270
   },
   "description": "RPA and AI automation agency — WhatsApp automation, n8n workflows, UiPath migration, and AI agent development for SMEs in India and enterprises globally.",
   "email": {{ email|tojson }},

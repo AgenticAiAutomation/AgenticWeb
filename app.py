@@ -29,6 +29,7 @@ SITE = {
     # the organisation as publisher rather than naming a Person.
     "founder_name": "",
     "brand": content.BRAND,
+    "analytics": content.ANALYTICS,
     "blog_enabled": content.BLOG_ENABLED,
     "location": content.LOCATION,
     "nav_items": content.NAV_ITEMS,

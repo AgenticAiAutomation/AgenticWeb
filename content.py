@@ -10,6 +10,31 @@ omits them entirely rather than rendering a placeholder to the public.
 """
 
 # ---------------------------------------------------------------------------
+# Analytics
+#
+# Fill ONE of these, not both:
+#
+#   gtm_container_id   "GTM-XXXXXXX" — Google Tag Manager. Recommended. Put the
+#                      GA4 tag inside the container, then every future tag
+#                      (Ads, LinkedIn, Meta) is added from the GTM web UI with
+#                      no code change and no deploy.
+#
+#   ga4_measurement_id "G-XXXXXXXXXX" — GA4 loaded directly, no tag manager.
+#                      Lighter (~28 KB vs ~90 KB) but every new tag needs a
+#                      developer and a deploy.
+#
+# Both empty renders no analytics at all, which is the correct default: a
+# half-configured tag reports garbage that is worse than no data.
+#
+# The GSC verification meta tag is separate and lives in base.html. It is
+# unrelated to these and must not be removed.
+# ---------------------------------------------------------------------------
+ANALYTICS = {
+    "gtm_container_id": "",
+    "ga4_measurement_id": "",
+}
+
+# ---------------------------------------------------------------------------
 # Brand language — FIXED. Do not reword.
 #
 # The tagline is used verbatim across the website and every social profile, so

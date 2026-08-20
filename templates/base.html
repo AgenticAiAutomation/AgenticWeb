@@ -24,18 +24,45 @@
   {% include "schema/organization.html" %}
   {% include "schema/website.html" %}
   {% block schema %}{% endblock %}
+
+  {# Analytics. Renders nothing until an ID is set in content.ANALYTICS.
+     GTM takes precedence: if a container is configured, the GA4 tag belongs
+     inside it rather than loaded twice, which would double-count every hit. #}
+  {% if analytics.gtm_container_id %}
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ analytics.gtm_container_id }}');
+  </script>
+  {% elif analytics.ga4_measurement_id %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ analytics.ga4_measurement_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ analytics.ga4_measurement_id }}');
+  </script>
+  {% endif %}
 </head>
 <body class="page-{{ page }}">
+
+{% if analytics.gtm_container_id %}
+{# GTM's noscript fallback must be the first element inside <body>. #}
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ analytics.gtm_container_id }}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+{% endif %}
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
   <nav class="nav-inner" aria-label="Primary">
     <a href="/" class="nav-logo" aria-label="Agentic AI Automation — home">
-      {# Intrinsic size is 252x160; these keep that 1.575:1 ratio so the mark is
-         not squashed and the box is reserved before the image loads (no CLS). #}
-      <img src="{{ url_for('static', filename='images/logo-black-v2.png') }}"
-           alt="Agentic AI Automation" width="69" height="44">
+      {# Full-colour brand logo with the gradient mark, background removed so it
+         sits on the warm paper with no white card behind it. Intrinsic
+         377x270; these keep that 1.396:1 ratio and reserve the box (no CLS). #}
+      <img src="{{ url_for('static', filename='images/logo-colour-v3.png') }}"
+           alt="Agentic AI Automation" width="61" height="44">
     </a>
 
     <ul class="nav-links" id="navLinks" role="list">
@@ -76,13 +103,12 @@
 
       <div class="footer-col footer-brand">
         <a href="/" aria-label="Agentic AI Automation — home">
-          {# You asked for the wide LinkedIn wordmark here. It cannot be used on
-             this footer: primary_aaa_linkedin.png has a solid dark background
-             baked in, which would sit as a black slab on the light footer.
-             Supply a transparent-background version of that wordmark and this
-             swaps straight over. Same 1.575:1 ratio as the header. #}
-          <img src="{{ url_for('static', filename='images/logo-black-v2.png') }}"
-               alt="Agentic AI Automation" width="82" height="52">
+          {# The long graded wordmark, used at full quality. The footer ground
+             is set to this file's own background colour so there is no seam.
+             Intrinsic 762x251, ratio 3.036:1. #}
+          <img class="footer-wordmark"
+               src="{{ url_for('static', filename='images/logo-wordmark-dark-v3.png') }}"
+               alt="Agentic AI Automation" width="200" height="66">
         </a>
         {# Brand-fixed tagline, identical to every social profile. See BRAND
            in content.py before editing. #}

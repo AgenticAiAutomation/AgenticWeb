@@ -506,13 +506,43 @@ small  { font-size: var(--step--1); }
 /* --------------------------------------------------------------------------
    12. Footer
    -------------------------------------------------------------------------- */
+/* Dark footer. The ground is sampled from the brand wordmark itself
+   (rgb(1,10,25)), so logo-wordmark-dark-v3.png sits on it with no visible
+   edge — the artwork's own background and the footer are the same colour.
+   It also gives the light page a deliberate close instead of fading out.
+
+   Contrast on this ground: #e8ecf4 body text is 14.9:1, #9aa6bd muted is
+   6.4:1, #7fc4ff links are 8.1:1. All well past AA. */
 .site-footer {
+  --footer-ink:       #e8ecf4;
+  --footer-ink-muted: #9aa6bd;
+  --footer-link:      #7fc4ff;
+  --footer-rule:      rgba(255, 255, 255, 0.12);
+
   margin-top: var(--space-3xl);
   padding-block: var(--space-2xl) var(--space-xl);
-  background: var(--paper-sunk);
-  border-top: 1px solid var(--rule);
+  background: #010a19;
+  color: var(--footer-ink);
   font-size: var(--step--1);
 }
+
+.site-footer p { color: var(--footer-ink-muted); }
+.site-footer a { color: var(--footer-link); }
+.site-footer a:hover { color: #ffffff; }
+
+.site-footer .footer-col-title { color: var(--footer-ink); }
+.site-footer .footer-links a { color: var(--footer-ink-muted); }
+.site-footer .footer-links a:hover { color: #ffffff; }
+.site-footer .social-link { color: var(--footer-ink-muted); }
+.site-footer .social-link:hover { color: #ffffff; }
+.site-footer .footer-bottom {
+  border-top-color: var(--footer-rule);
+  color: var(--footer-ink-muted);
+}
+
+/* The wordmark is 762x251 and carries its own dark ground, so it needs no
+   padding or panel — it blends straight into the footer. */
+.footer-wordmark { width: 200px; height: auto; margin-bottom: var(--space-md); }
 
 .footer-grid {
   display: grid;
