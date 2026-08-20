@@ -17,13 +17,8 @@
   "description": "RPA and AI automation agency — WhatsApp automation, n8n workflows, UiPath migration, and AI agent development for SMEs in India and enterprises globally.",
   "email": {{ email|tojson }},
   "telephone": "+91-79828-81739",
-  "founder": {
-    "@type": "Person",
-    "@id": "{{ url }}/author/jai/#person",
-    "name": {{ founder_name|tojson }},
-    "jobTitle": "Founder & Automation Architect",
-    "url": "{{ url }}/author/jai"
-  },
+  {# No `founder` node: the founder's name is deliberately not published, and
+     naming an empty Person is worse than omitting the property. #}
   "foundingDate": "2025-06",
   "areaServed": [
     {"@type": "Country", "name": "India"},

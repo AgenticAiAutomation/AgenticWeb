@@ -19,12 +19,15 @@ SITE = {
     "name": "Agentic AI Automation",
     "url": "https://agenticaiautomation.co",
     "email": "Contact@agenticAiAutomation.co",
-    "phone": "+917982881739",
+    # Deliberately empty on main: the phone number is not shown publicly, and
+    # WhatsApp is the contact channel. Do not repopulate this.
+    "phone": "",
     "wa": "917982881739",
     "calendly": "https://calendly.com/agenticaiautomation",
-    # Schema 02 §1 wants a full legal name on the founder node. Until it is
-    # supplied the Person node stays first-name-only rather than fabricated.
-    "founder_name": "Jai",
+    # The founder's name is not published on the site — main removed it from
+    # the About page, titles and meta descriptions deliberately. Schema uses
+    # the organisation as publisher rather than naming a Person.
+    "founder_name": "",
     "location": content.LOCATION,
     "nav_items": content.NAV_ITEMS,
     "services_nav": content.SERVICES_NAV,
@@ -132,9 +135,9 @@ def case_studies():
 def about():
     return render_template("about.html", **ctx(
         title="About — Automation Built by Practitioners | Agentic AI",
-        description="Agentic AI Automation is run by Jai, 11 years in enterprise IT "
-                    "and 9 building RPA. Read how we scope, price and hand over "
-                    "automation work.",
+        description="Agentic AI Automation was built by our founder — 11 years in "
+                    "enterprise IT, 9 building RPA. Read how we scope, price and "
+                    "hand over automation work.",
         canonical=f"{SITE['url']}/about",
         page="about",
         crumbs=[{"name": "Home", "url": "/"}, {"name": "About"}],

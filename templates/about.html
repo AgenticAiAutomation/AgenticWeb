@@ -3,31 +3,13 @@
 
 {% block schema %}
 {{ m.breadcrumb_schema(crumbs, url) }}
-{# Person node for the founder. Spec 02 §7 asks for hasCredential and alumniOf;
-   both are omitted until the certifications and past employers are confirmed —
-   an unverifiable credential in schema is worse than a missing one. #}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "{{ url }}/author/jai/#person",
-  "name": {{ founder_name|tojson }},
-  "givenName": "Jai",
-  "url": "{{ url }}/about",
-  "jobTitle": "Founder & Automation Architect",
-  "worksFor": {"@id": "{{ url }}/#organization"},
-  "description": "11 years in enterprise IT with 9 years building RPA and AI automation for banks, hospitals, law firms and logistics companies across India, the UK and the Middle East.",
-  "knowsAbout": [
-    "UiPath RPA",
-    "n8n Workflow Automation",
-    "WhatsApp Business API",
-    "AI Agent Development",
-    "Enterprise Automation Migration",
-    "Business Process Automation"
-  ],
-  "sameAs": ["https://www.linkedin.com/company/agenticaiautomation/"]
-}
-</script>
+{# No Person node. Spec 02 §7 specifies one for the founder, but main removed
+   the founder's name from public display on purpose, and a Person node with an
+   empty `name` is worse than none — it asks Google to build an entity around a
+   blank. The Organization carries the E-E-A-T signal instead.
+
+   If the name is published later, restore the Person node from spec 02 §7 and
+   set founder_name in app.py. #}
 {% endblock %}
 
 {% block content %}
@@ -41,9 +23,9 @@
 
     <div class="prose" style="margin-top: var(--space-xl)">
       <p>
-        Agentic AI Automation is run by Jai. Eleven years in enterprise IT, nine
-        of them building RPA for banks, hospitals, law firms and logistics
-        operators across India, the UK and the Middle East.
+        Agentic AI Automation was built by our founder: eleven years in
+        enterprise IT, nine of them building RPA for banks, hospitals, law firms
+        and logistics operators across India, the UK and the Middle East.
       </p>
       <p>
         Most of those nine years were spent on the unglamorous half of

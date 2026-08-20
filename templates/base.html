@@ -6,6 +6,10 @@
 
   {{ m.seo_head(title, description, canonical, og_image, page_type|default('WebPage'), noindex|default(false)) }}
 
+  {# Google Search Console verification. Do not remove — removing it
+     un-verifies the property and drops access to Search Console data. #}
+  <meta name="google-site-verification" content="e4Vkf6NJ7MihEXOeeDO5q8NiCbvjPqTCLhRdEnuW4pw">
+
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
 
   {# Self-host later; for now preconnect so the font handshake overlaps HTML parse. #}
@@ -28,7 +32,7 @@
 <header class="site-header">
   <nav class="nav-inner" aria-label="Primary">
     <a href="/" class="nav-logo" aria-label="Agentic AI Automation — home">
-      <img src="{{ url_for('static', filename='images/logo-black.png') }}"
+      <img src="{{ url_for('static', filename='images/logo-v2.png') }}"
            alt="Agentic AI Automation" width="160" height="30">
     </a>
 
@@ -70,13 +74,16 @@
 
       <div class="footer-col footer-brand">
         <a href="/" aria-label="Agentic AI Automation — home">
-          <img src="{{ url_for('static', filename='images/logo-black.png') }}"
+          <img src="{{ url_for('static', filename='images/logo-v2.png') }}"
                alt="Agentic AI Automation" width="150" height="28">
         </a>
         <p>Automation built by people who ran it in production before they sold it.</p>
+        {# No phone number anywhere public — a deliberate decision on main
+           (commits 47b1329, 09c5b0c). WhatsApp is the contact channel; the
+           number only ever appears inside a wa.me link. #}
         <p style="margin-top: var(--space-md)">
           <a href="mailto:{{ email }}">{{ email }}</a><br>
-          <a href="tel:{{ phone }}">+91 79828 81739</a>
+          <a href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">WhatsApp us</a>
         </p>
         <div class="footer-socials">
           {% for s in socials %}
