@@ -28,6 +28,7 @@ SITE = {
     # the About page, titles and meta descriptions deliberately. Schema uses
     # the organisation as publisher rather than naming a Person.
     "founder_name": "",
+    "brand": content.BRAND,
     "location": content.LOCATION,
     "nav_items": content.NAV_ITEMS,
     "services_nav": content.SERVICES_NAV,
@@ -75,10 +76,13 @@ def apply_redirects():
 @app.route("/")
 def index():
     return render_template("index.html", **ctx(
-        title="AI & RPA Automation Agency in India | Agentic AI Automation",
-        description="We build WhatsApp AI agents, n8n workflows and UiPath "
-                    "automation for teams in India and abroad. Book a 45-minute "
-                    "automation audit — no cost, no pitch deck.",
+        # Keeps main's positioning ("AI Employees for Your Business") but fits
+        # the 60-char limit. The full 118-char version was truncated by Google
+        # mid-phrase, so the words after "Business" never reached a searcher.
+        title="AI Employees for Your Business | Agentic AI Automation",
+        description="AI employees that handle your leads, appointments, invoices "
+                    "and operations — 24/7, automatically. Live in 2 weeks. Book a "
+                    "free automation audit.",
         canonical=f"{SITE['url']}/",
         page="home",
         hero=content.HERO,

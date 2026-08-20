@@ -10,12 +10,28 @@ omits them entirely rather than rendering a placeholder to the public.
 """
 
 # ---------------------------------------------------------------------------
+# Brand language — FIXED. Do not reword.
+#
+# The tagline is used verbatim across the website and every social profile, so
+# it has to match character for character. Changing it here changes it in one
+# place on the site but nowhere else, which silently breaks that consistency.
+# If it ever does change, it changes on every profile on the same day.
+# ---------------------------------------------------------------------------
+BRAND = {
+    "tagline": "Build your AI workforce in weeks, not years.",
+    # The homepage H1 is part of the brand voice, not SEO copy to be tuned.
+    "h1": "Your business runs 24/7. Your team doesn't.",
+}
+
+# ---------------------------------------------------------------------------
 # Location — the single source of truth for NAP.
 #
-# `city` / `region` MUST match the Google Business Profile listing character for
-# character. A mismatch between the site, the GBP listing and directory
-# citations is the most common cause of a listing losing map-pack visibility,
-# and a fabricated address is grounds for suspension.
+# There is no Google Business Profile yet. When one is created it MUST use
+# these exact values, character for character — a mismatch between the site,
+# the GBP listing and directory citations is the most common cause of a listing
+# losing map-pack visibility, and a fabricated address is grounds for
+# suspension. Faridabad is the real office; everything in `served` is a service
+# area, not a location, and the copy must never imply otherwise.
 #
 # `served` lists countries we take clients in. These are areaServed, NOT
 # offices, and the copy must never imply otherwise: we have no staff outside
@@ -194,10 +210,12 @@ SOCIALS = [
 # Homepage
 # ---------------------------------------------------------------------------
 HERO = {
-    "h1": "Automation that survives contact with your actual business",
-    "lede": "We build WhatsApp AI agents, n8n workflows and RPA for teams who have "
-            "already tried automation once and watched it break. Scoped in a week, "
-            "in production in four, handed over with documentation you own.",
+    # Brand-fixed. Sourced from BRAND so the site and the social profiles
+    # cannot drift apart.
+    "h1": BRAND["h1"],
+    "lede": "We deploy AI employees that handle your leads, appointments, invoices "
+            "and operations — 24/7, automatically. Scoped in a week, in production "
+            "in four, handed over with documentation you own.",
 }
 
 # Claims that need no client permission because they describe us, not results.

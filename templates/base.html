@@ -32,8 +32,10 @@
 <header class="site-header">
   <nav class="nav-inner" aria-label="Primary">
     <a href="/" class="nav-logo" aria-label="Agentic AI Automation — home">
-      <img src="{{ url_for('static', filename='images/logo-v2.png') }}"
-           alt="Agentic AI Automation" width="160" height="30">
+      {# Intrinsic size is 252x160; these keep that 1.575:1 ratio so the mark is
+         not squashed and the box is reserved before the image loads (no CLS). #}
+      <img src="{{ url_for('static', filename='images/logo-black-v2.png') }}"
+           alt="Agentic AI Automation" width="69" height="44">
     </a>
 
     <ul class="nav-links" id="navLinks" role="list">
@@ -74,10 +76,17 @@
 
       <div class="footer-col footer-brand">
         <a href="/" aria-label="Agentic AI Automation — home">
-          <img src="{{ url_for('static', filename='images/logo-v2.png') }}"
-               alt="Agentic AI Automation" width="150" height="28">
+          {# You asked for the wide LinkedIn wordmark here. It cannot be used on
+             this footer: primary_aaa_linkedin.png has a solid dark background
+             baked in, which would sit as a black slab on the light footer.
+             Supply a transparent-background version of that wordmark and this
+             swaps straight over. Same 1.575:1 ratio as the header. #}
+          <img src="{{ url_for('static', filename='images/logo-black-v2.png') }}"
+               alt="Agentic AI Automation" width="82" height="52">
         </a>
-        <p>Automation built by people who ran it in production before they sold it.</p>
+        {# Brand-fixed tagline, identical to every social profile. See BRAND
+           in content.py before editing. #}
+        <p>{{ brand.tagline }}</p>
         {# No phone number anywhere public — a deliberate decision on main
            (commits 47b1329, 09c5b0c). WhatsApp is the contact channel; the
            number only ever appears inside a wa.me link. #}
