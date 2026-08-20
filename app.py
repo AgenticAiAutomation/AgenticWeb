@@ -29,6 +29,7 @@ SITE = {
     # the organisation as publisher rather than naming a Person.
     "founder_name": "",
     "brand": content.BRAND,
+    "blog_enabled": content.BLOG_ENABLED,
     "location": content.LOCATION,
     "nav_items": content.NAV_ITEMS,
     "services_nav": content.SERVICES_NAV,
@@ -213,10 +214,12 @@ def sitemap_index():
     one."""
     today = datetime.utcnow().strftime("%Y-%m-%d")
     base = SITE["url"]
-    entries = [
-        f"{base}/sitemap-core.xml",
-        f"{base}/blog/sitemap_index.xml",
-    ]
+    entries = [f"{base}/sitemap-core.xml"]
+    # Rank Math emits its own sitemap index. Only advertise it once WordPress
+    # is actually installed — submitting a sitemap URL that 404s gets the whole
+    # index flagged as an error in Search Console.
+    if content.BLOG_ENABLED:
+        entries.append(f"{base}/blog/sitemap_index.xml")
     body = "\n".join(
         f"  <sitemap><loc>{e}</loc><lastmod>{today}</lastmod></sitemap>"
         for e in entries

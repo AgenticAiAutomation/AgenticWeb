@@ -46,15 +46,26 @@ LOCATION = {
     "served": "India, the United Kingdom, the United States, the UAE and Singapore",
 }
 
+# The blog is WordPress at /blog/, served by nginx from /var/www/blog — not a
+# Flask route. WordPress is not installed on the VPS yet, so linking to it
+# would put a 404 in the main navigation of every page: bad for users, and
+# Google treats soft-404s reached from sitewide nav as a quality signal.
+#
+# Flip this to True in the same change that installs WordPress. The nav,
+# footer and sitemap all read it, so one edit turns the blog on everywhere.
+BLOG_ENABLED = False
+
 NAV_ITEMS = [
     {"key": "services",     "label": "Services",     "url": "/services"},
     {"key": "industries",   "label": "Industries",   "url": "/industries"},
     {"key": "case-studies", "label": "Case studies", "url": "/case-studies"},
-    # /blog/ is WordPress, served by nginx — not a Flask route. Trailing slash
-    # matters: bare /blog 301s, and a redirect on every nav click is waste.
-    {"key": "blog",         "label": "Blog",         "url": "/blog/"},
     {"key": "about",        "label": "About",        "url": "/about"},
 ]
+
+if BLOG_ENABLED:
+    # Trailing slash matters: bare /blog 301s to /blog/, and a redirect on
+    # every nav click is waste.
+    NAV_ITEMS.insert(3, {"key": "blog", "label": "Blog", "url": "/blog/"})
 
 # Footer service list. Anchors into /services rather than inventing leaf pages
 # that do not exist yet — a nav link to a 404 is a crawl budget leak.

@@ -120,7 +120,7 @@
         <ul class="footer-links" role="list">
           <li><a href="/about">About</a></li>
           <li><a href="/case-studies">Case studies</a></li>
-          <li><a href="/blog">Blog</a></li>
+          {% if blog_enabled %}<li><a href="/blog/">Blog</a></li>{% endif %}
           <li><a href="/industries">Industries</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
