@@ -432,6 +432,10 @@ SERVICES = [
 # ---------------------------------------------------------------------------
 # /industries
 # ---------------------------------------------------------------------------
+# `service` / `service_label` build the contextual cross-link from each industry
+# to the service that actually delivers it. This is the hub-and-spoke wiring
+# spec 01 section 7 asks for: industry pages are spokes that must point at the
+# service hub with descriptive anchor text, never "read more".
 INDUSTRIES = [
     {
         "name": "Healthcare and clinics",
@@ -440,6 +444,8 @@ INDUSTRIES = [
                "rate, which is a number the practice already tracks.",
         "caution": "Anything touching diagnosis or triage stays with a clinician. "
                    "We build the scheduling around them, not the decision.",
+        "service": "/services#whatsapp",
+        "service_label": "WhatsApp AI automation",
     },
     {
         "name": "E-commerce and D2C",
@@ -448,6 +454,8 @@ INDUSTRIES = [
                "factor in conversion, and it is measurable from day one.",
         "caution": "Returns and refunds involve money and emotion. Route them to a "
                    "person with the context attached.",
+        "service": "/services#whatsapp",
+        "service_label": "WhatsApp AI automation",
     },
     {
         "name": "Law firms",
@@ -456,6 +464,8 @@ INDUSTRIES = [
                "down before a human reads anything.",
         "caution": "Extraction assists review, it does not replace it. Every output "
                    "is checked and the audit trail says by whom.",
+        "service": "/services#documents",
+        "service_label": "document processing",
     },
     {
         "name": "Manufacturing",
@@ -464,6 +474,8 @@ INDUSTRIES = [
                "people reading PDFs against an ERP screen.",
         "caution": "Anything touching production line control is out of scope. "
                    "We stay in the back office.",
+        "service": "/services#uipath",
+        "service_label": "UiPath and RPA",
     },
     {
         "name": "Logistics",
@@ -472,6 +484,8 @@ INDUSTRIES = [
                "removes a data entry team's worth of work.",
         "caution": "Route optimisation is a solved problem with mature vendors. "
                    "Buy it, do not commission it.",
+        "service": "/services#documents",
+        "service_label": "document processing",
     },
     {
         "name": "Professional services",
@@ -480,6 +494,8 @@ INDUSTRIES = [
                "nobody owns.",
         "caution": "If the underlying process is undefined, automating it just makes "
                    "the mess arrive faster.",
+        "service": "/services#n8n",
+        "service_label": "n8n workflow builds",
     },
 ]
 

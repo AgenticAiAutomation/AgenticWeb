@@ -17,6 +17,12 @@
         one, and the area we deliberately stay out of. The exclusions are the
         useful part.
       </p>
+      <p style="margin-top: var(--space-md)">
+        If you would rather start from the capability than the sector, the
+        <a href="/services">full service list with timelines and pricing</a> covers
+        the same ground, and the <a href="/case-studies">case studies</a> show how
+        these land in practice.
+      </p>
     </div>
 
     <div class="stack-xl">
@@ -29,6 +35,11 @@
               <tr><th scope="row" style="width: 12rem">Start with</th><td>{{ i.first }}</td></tr>
               <tr><th scope="row">Why that one</th><td>{{ i.why }}</td></tr>
               <tr><th scope="row">What we avoid</th><td>{{ i.caution }}</td></tr>
+              {# Spoke -> hub link with descriptive anchor text. #}
+              <tr>
+                <th scope="row">Service that delivers it</th>
+                <td><a href="{{ i.service }}">{{ i.service_label }}</a></td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -40,8 +51,9 @@
       <h2>Your sector is not listed</h2>
       <p style="margin-top: var(--space-md)">
         The pattern holds anyway: find the highest-volume, lowest-judgement task
-        that someone already measures, and start there. Book an audit and we will
-        work out what that is for you.
+        that someone already measures, and start there.
+        <a href="/contact">Tell us the process</a> and we will work out which of the
+        <a href="/services">six services</a> applies, or that none of them do.
       </p>
       <p style="margin-top: var(--space-lg)">
         <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">Book a 45-minute audit</a>
