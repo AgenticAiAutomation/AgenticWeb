@@ -6,9 +6,11 @@
 
   {{ m.seo_head(title, description, canonical, og_image, page_type|default('WebPage'), noindex|default(false)) }}
 
-  {# Google Search Console verification. Do not remove — removing it
-     un-verifies the property and drops access to Search Console data. #}
-  <meta name="google-site-verification" content="e4Vkf6NJ7MihEXOeeDO5q8NiCbvjPqTCLhRdEnuW4pw">
+  {# Search engine ownership verification. Tokens live in content.VERIFICATION.
+     Do not remove either one — removing a tag un-verifies the property on the
+     engine's next check and cuts off its Search Console data. #}
+  <meta name="google-site-verification" content="{{ verification.google }}">
+  <meta name="msvalidate.01" content="{{ verification.bing }}">
 
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
 

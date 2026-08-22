@@ -10,6 +10,25 @@ omits them entirely rather than rendering a placeholder to the public.
 """
 
 # ---------------------------------------------------------------------------
+# Search engine ownership verification
+#
+# These meta tags prove to each search engine that we control the domain, which
+# is what unlocks Search Console / Webmaster Tools data. They are public by
+# design — they only identify the property, they grant nothing on their own.
+#
+# DO NOT REMOVE a token once its property is verified. Removing the tag
+# un-verifies the property on the engine's next check and cuts off the data,
+# and re-verifying starts the history over.
+# ---------------------------------------------------------------------------
+VERIFICATION = {
+    # Google Search Console. Present since commit 44e963d.
+    "google": "e4Vkf6NJ7MihEXOeeDO5q8NiCbvjPqTCLhRdEnuW4pw",
+    # Bing Webmaster Tools (msvalidate.01). Bing's index also feeds Microsoft
+    # Copilot, so this covers more than Bing search itself.
+    "bing": "440E57D5A2CF8BB74B78F97868A1AEDF",
+}
+
+# ---------------------------------------------------------------------------
 # Analytics
 #
 # Fill ONE of these, not both:
