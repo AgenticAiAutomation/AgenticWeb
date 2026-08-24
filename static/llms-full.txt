@@ -1,0 +1,590 @@
+# Agentic AI Automation — full site text
+
+Every page of https://agenticaiautomation.co in one file, generated from the
+live HTML at build time. Prices and timelines are the same ones published on
+the site. Last generated: 2026-08-24.
+
+
+
+========================================================================
+# Home — https://agenticaiautomation.co/
+========================================================================
+
+WhatsApp · AI agents · n8n · RPA · documents
+Your business runs 24/7.
+Your team doesn't.
+We build AI employees that answer your WhatsApp, read your documents and run the back office — scoped to one process, quoted at a fixed price, delivered to your repository. Eleven years in enterprise IT, nine of them keeping other people's bots alive after the consultants left.
+WhatsApp us
+Book the free audit
+Fixed price before we start — one process, one date
+Your repository , your cloud, your credentials
+30 days of defect fixing included
+Support is optional — never a dependency
+agents — live
+$ agents --now-running
+▸
+enquiry answered · 4s
+documents read · 11 of 11
+written to CRM · validated
+low confidence → review queue
+Sample thread
+A
+Your business agent · online
+Hi, are you open? Wanted to ask about your service. 9:40 PM
+Hi! Yes — happy to help. What are you looking for? 9:40 PM
+Need pricing and what documents you'll want. 9:41 PM
+Document list sent above. I've held 10:00 AM tomorrow for a callback — reply CHANGE if that doesn't suit. 9:41 PM
+One process, one price, one date
+Code in your repo from day one
+Self-hosted, no per-task metering
+Weekly demos, not status decks
+We tell you what not to automate
+Handover and exit documented
+One process, one price, one date
+Code in your repo from day one
+Self-hosted, no per-task metering
+Weekly demos, not status decks
+We tell you what not to automate
+Handover and exit documented
+Start here
+Most automation projects fail. You already suspected that.
+Four numbers from independent research — not from us. If you have been pitched AI before and it went nowhere, this is why, and it is the reason we work the way we do.
+95%
+of generative-AI pilots produced no measurable return on the P&L. 1
+MIT Project NANDA, 2025
+42%
+of companies scrapped most of their AI initiatives in 2025 — up from 17% the year before. 2
+S&P Global, n=1,000+
+30–50%
+of initial RPA projects fail outright, on EY's own observation. 3
+EY, Get Ready For Robots
+56%
+of executives report high regret over their biggest tech purchase of the last two years. 4
+Gartner, n=1,120
+Nine of our eleven years were spent on the unglamorous half of this industry: keeping bots alive after the consultants left. That experience is why we scope narrow, quote fixed, hand you the repository, and tell you which processes you should not automate at all.
+60-second self-check
+Tick every one that happens in your business.
+Nothing is sent anywhere. This is the same list we work through on the audit call — most teams tick four or more.
+WhatsApp works — it gets read, it gets replies — but somebody has to read every single message first.
+Enquiries that arrive after hours sit unanswered until the next working day.
+Half of someone's week goes on chasing clients for documents they already promised.
+The same data gets typed twice — once in a chat or form, again into the ERP or accounting software.
+Customer records still live in a spreadsheet sitting next to the CRM.
+You already have bots or workflows, and they break every time a screen or a login changes.
+Your automation bill climbs with volume because someone else is metering it per task.
+Growth means hiring more people to do more of exactly the same manual work.
+0
+Tick the ones you recognise. Every box is a process we have automated before.
+What we build
+Six services. Every one with a price, a date, and a list of who it is wrong for.
+We scope narrow on purpose. If a process is unstable or an off-the-shelf tool already covers it, we say so on the audit call rather than after the invoice.
+WhatsApp AI Automation Most asked for
+A WhatsApp number that answers, qualifies and books without a person reading every message first. Business API provisioning and Meta verification, conversation design reviewed against your actual message history, human handoff with full context when the agent is unsure, CRM write-back, and two weeks of post-launch tuning.
+₹50,000 – ₹1.5L 2–3 weeks
+Wrong for you if a human has to calculate a quote before any useful reply can be sent.
+AI Agent Development
+Agents scoped to one job with defined inputs, a defined output, and a human checkpoint where the cost of being wrong is high. Process mapping with the people currently doing the task, model selection and prompting against your own data, confidence thresholds, refusal paths, audit logging, and an evaluation dataset you keep.
+₹1.5L – ₹5L 4–6 weeks
+Wrong for you if the process has no written rules and no history of past decisions to learn from.
+n8n Workflow Builds
+Self-hosted on your infrastructure, versioned in your repository. Workflows exported as JSON to Git, error handling that identifies the exact step that failed, credentials managed separately from the workflows, and a runbook documenting the failure modes for each one.
+₹40,000 – ₹2L 1–3 weeks
+Wrong for you if it is a simple two-step integration — a stock SaaS connector is cheaper.
+UiPath & RPA
+New bots where the rules are stable, and rescue work on bots that keep breaking when a UI changes. Process discovery and feasibility assessment, attended or unattended development in UiPath or Power Automate, selector hardening, Orchestrator setup with exception queues, and a handover that lists the known issues instead of hiding them.
+₹1L – ₹6L 3–8 weeks
+Wrong for you if the process changes monthly — maintenance will cost more than it saves.
+Document Processing
+Invoices, claims, KYC packets and contracts turned into structured data — with a confidence threshold and a review queue for everything below it. Extraction tuned on your documents rather than a demo dataset, per-field confidence scoring, validation against master data before anything is written, and accuracy measured on a held-out set.
+₹1L – ₹4L 3–6 weeks
+Wrong for you if the data already arrives as a feed — an API, EDI or database export.
+RPA to AI Migration
+Moving the brittle parts of an existing estate to AI models while leaving the parts that work alone. Audit ranked by maintenance cost, a keep / migrate / retire recommendation with reasoning for every bot, one bot at a time, parallel running until parity, and a licence reduction plan where one applies.
+Quoted after audit 6–12 weeks
+Wrong for you if you have fewer than five bots and they are working fine.
+WhatsApp AI automation
+WhatsApp already works for you. It is just completely manual.
+It gets read. It gets replies. And every one of those replies costs a person's attention. Research on inbound leads has found average first-response times of around 42 hours, with roughly a quarter of enquiries never answered at all. 5 An agent on your number closes that gap without pretending to be a human.
+Answers, qualifies and books Conversation design built from your real message history, not a generic script.
+Collects documents in the chat Reads the photo the customer sends, spots what is missing, asks for exactly that.
+Hands over with full context When it is unsure, a named person gets the thread and the reason it stopped — it does not guess.
+Templates handled properly Meta verification, template categories and opt-in rules are part of setup, not your problem after launch.
+Build time 2–3 weeks
+Fixed price ₹50k–₹1.5L
+Post-launch 2 wks tuning
+Runs on Your number
+Data lands in Your CRM
+Best fit 50+ chats/day
+One thing we will not tell you
+Every WhatsApp agency quotes a 98% open rate . That figure originated in a vendor's own marketing and has never been published with a methodology or a sample size. Independent operator data puts real-world read rates closer to 60–80% , and far lower on unsegmented broadcasts. 6 We would rather measure yours after launch than quote a number neither of us can check.
+Built on the official WhatsApp Business Platform. Meta bills per delivered message; rates differ by country and India's marketing rate changed on 1 January 2026 — we walk you through your actual cost at audit. 7
+How an engagement runs
+Four steps. The first one is free and the last one is you not needing us.
+No discovery phase that bills for three months. No transformation programme. One process, taken all the way to done.
+01
+Audit
+Forty-five minutes on your most painful process. You leave with a straight answer on whether automating it is worth doing — including when the answer is no.
+45 min · free
+02
+Scope and fixed price
+One process, one price, one delivery date, written down before any work starts. If the scope changes, the price conversation happens before the work, not after.
+fixed, in writing
+03
+Build in the open
+Repository access from day one and a working demo every week. You watch it being built, so there is no reveal at the end that turns out to be a slide deck.
+weekly demos
+04
+Handover and exit
+Documentation and a runbook as standard deliverables, not upsells. Thirty days of defect fixing included. Ongoing support exists but is optional — by design.
+30 days included
+Three columns, one honest look
+Doing it manually. Hiring a typical AI agency. Working with us.
+The middle column is not a strawman — it describes how a large part of this industry actually operates, and it is why so many of these projects end up abandoned.
+Where it shows up
+Manual, today
+A typical AI agency
+Agentic AI Automation
+Who owns the code
+Nothing to own — it lives in people's heads
+Their platform, their account, their terms
+Your repository, your cloud, your credentials
+What it costs as volume grows
+Another hire, and another after that
+Metered per task; the bill climbs quietly
+Self-hosted, no per-task metering from us
+Price certainty
+Predictable, and permanently high
+Time and materials, scope creeping
+Fixed price and a date, before work starts
+Reply to an enquiry
+Next working day, if someone spots it
+Instant, but a scripted bot that annoys people
+Seconds, from your real message history
+When it is unsure
+A person asks a colleague — eventually
+Guesses confidently and you find out later
+Confidence threshold, refusal path, review queue
+Documents extracted
+Typed by hand from a photo on a phone
+OCR on a demo dataset; you re-check everything
+Tuned on your documents, accuracy measured on held-out data
+When something breaks
+Somebody notices, days later
+Silent failure — no error, nothing logged
+Step-level error handling and a runbook per workflow
+Proof it worked
+Nobody is measuring
+Anonymous case studies and round numbers
+Measurement agreed at scope; named case studies only
+The day it ends
+The person leaves and the knowledge goes too
+You lose access to what you paid for
+Documentation, runbook, and everything already yours
+Ask any vendor these
+Ten questions worth asking before you sign anything. Ours are answered below.
+Print this list and put it to every agency you speak to, us included. The answers tell you far more than a portfolio does.
+01 Who owns the code, and how do you hand it over? You do, from day one. It is built in your repository and your cloud account, not ours. There is nothing to transfer at the end because it was never held anywhere else.
+02 Whose name does the WhatsApp number sit under inside Meta? Yours. We do the Business API provisioning and Meta verification, but the number, the Business Manager and the assets stay in your name. You never need our permission to keep using your own channel.
+03 Who pays for the AI API, and whose key is it? Your account, your key, your bill — visible to you in real time. We do not resell tokens with a margin on top, and you can see exactly what a month of running actually costs.
+04 What happens the day we stop working together? Nothing stops. Documentation and a runbook are standard deliverables. Support is optional by design — if you never call us again, the thing we built keeps running.
+05 What does the agent do when it does not know the answer? It stops. Every build has a confidence threshold, a refusal path and a review queue underneath it. A named person gets the case with the full context and the reason it was escalated. It is designed to hand over, not to guess.
+06 How will we know whether this actually worked? The measurement method is agreed at scoping, before the build, using a number you already track. For document work, accuracy is measured on a held-out dataset you keep and can re-run yourself later.
+07 What does it cost to change something three months after go-live? Because the workflows are in your repository and documented, small changes are something your own team can make. Where you want us, it is quoted per change — we do not hold edits hostage to a retainer.
+08 What happens to the bill if our volume multiplies by five? Our fee does not move — it was fixed for the build. Self-hosted n8n has no per-task metering. What does scale is your model and messaging usage, billed directly by the provider at their published rates, which we walk you through at audit.
+09 Where are our customers' conversations stored? On infrastructure in your accounts, in a region you choose. We work with clients in India, the UK, the US, the UAE, Singapore and Saudi Arabia, and data residency is settled at scoping rather than discovered later.
+10 What are you recommending we do not automate? There is always something, and you will hear it on the free audit call. Processes that change monthly, work with no written rules, anything already handled by a tool you own. We turn work down when the maintenance would cost more than the saving.
+Where we have done this before
+Six sectors, and the one process we would start with in each.
+Banking, healthcare, law, logistics and manufacturing — the sectors behind eleven years of enterprise IT and nine years of RPA across India, the UK and the Middle East.
+Healthcare & clinics
+Pain No-shows and intake forms that eat the front desk's morning.
+Fix Appointment reminders and pre-consultation intake on WhatsApp. Controlled trials show two reminders beat one on attendance. 8
+E-commerce & D2C
+Pain Slow replies to enquiries and endless "where is my order" messages.
+Fix Enquiry qualification and order-status answering on WhatsApp, written back to your store and CRM.
+Law firms
+Pain Associates burning billable hours on first-pass document review.
+Fix Document intake, classification and clause extraction, with a review queue below the confidence threshold.
+Manufacturing
+Pain Three-way matching of purchase orders, invoices and goods receipts, by hand.
+Fix Purchase order and goods-receipt matching in UiPath or Power Automate, with an exception queue.
+Logistics
+Pain Paper proof-of-delivery re-keyed from photographs, days after the fact.
+Fix Proof-of-delivery capture and exception handling, validated against master data before it is written.
+Professional services
+Pain Revenue leaking through unbilled time and a pipeline nobody has updated.
+Fix Timesheet chasing, proposal assembly and CRM hygiene as self-hosted n8n workflows.
+What it costs
+Published, because you should not have to sit through a call to learn the range.
+Every engagement is quoted at a fixed price against a written scope. These are the bands almost everything lands inside.
+One focused process
+₹50,000 – ₹1.5L
+A single workflow taken end to end. WhatsApp automation and most n8n builds sit here. Typically delivered in 1–3 weeks; a narrow single-process build can be 7–10 days.
+Multi-process department build
+₹2.5L – ₹8L
+Several connected processes across a function — document pipeline plus review queue plus system write-back, or a bot estate migration. Typically 4–12 weeks.
+Ongoing support · optional
+₹15,000 – ₹40,000/mo
+Monitoring, tuning and change requests. Genuinely optional — 30 days of defect fixing is already included, and the runbook is written so your team can take it on instead.
+Typical delivery is four weeks. Model and messaging usage is billed to you directly by the provider at their published rates — we take no margin on it, and we walk you through the real monthly figure on the audit call before you commit to anything.
+We have no case studies published. That is deliberate, and it is temporary.
+Our rule is that a case study names the client, states how the result was measured, and carries written approval from that client before it goes online. Two engagements are in that approval process now. Until they clear it, this page stays empty rather than filling up with anonymous "a leading NBFC" stories and round numbers nobody can check.
+What we can do instead: on the audit call we will talk through comparable deployments in detail under NDA, including the parts that went badly. Given that 95% of AI pilots return nothing measurable 1 and more than half of tech buyers regret their last big purchase, 4 we would rather earn the first hour of your scepticism than spend it.
+Who you are actually hiring
+A small senior team in Faridabad. No branches, no bench.
+Not a staffing agency, not a reseller, not a large consultancy. We take a limited number of engagements at a time because the work is done by the people you meet on the audit call.
+India United Kingdom United States
+UAE Singapore Saudi Arabia
+Remote delivery with overlapping working hours by arrangement. One office, in Faridabad, Haryana.
+11 yrs in enterprise IT — banking, healthcare and logistics.
+9 yrs building RPA and automation for banks, hospitals, law firms and logistics operators across India, the UK and the Middle East.
+Tools UiPath, Power Automate, n8n , and the AI model layer on top of them.
+Why Most of those nine years went on the unglamorous half of automation: keeping bots alive after the consultants left. This company exists because that half is where projects are actually won or lost.
+We say no To unstable processes, to work an existing tool already covers, to anonymous case studies, and to anything that would make you permanently dependent on us.
+Straight answers
+The questions that come up on nearly every call.
+Will this replace our staff?
+Not in the engagements we run. We automate the copy-paste half — the retyping, the chasing, the "did anyone reply to this" half. Surveys put manual data entry alone at nine-plus hours per employee per week , with around 60% of people reporting burnout from repetitive data work. 9 That is the part we take. Judgement work still needs the person, and it gets more of their attention once the retyping stops.
+We tried automation before and it broke. Why is this different?
+Because that is the problem we were hired to fix for nine years before starting this. The failure mode is almost never the build — it is silent failure after handover: a schedule that stops firing, a token that expires and returns a polite empty response, a screen that changes and a selector that no longer matches. Every build we deliver has step-level error handling, an exception queue and a runbook that names the failure modes per workflow. Nothing goes out with only the happy path tested.
+Do we have to replace our existing software?
+No. Agents work on top of what you already use — your CRM, ERP, accounting software, shared drives and your existing WhatsApp number. Replacing a working system is usually the most expensive possible way to fix a process problem, and we will say so.
+What if the agent gives a customer wrong information — who is liable?
+You are, legally, and that is exactly why we build the way we do. In February 2024 a tribunal in British Columbia rejected an airline's argument that it was not responsible for what its own chatbot told a passenger. 10 Every agent we ship has a confidence threshold, a refusal path and a review queue, and the scope of what it is permitted to state on its own is agreed with you in writing before launch.
+How long does it take?
+Typical delivery is four weeks. A narrow single-process build can be 7–10 days. UiPath work runs 3–8 weeks and a bot-estate migration 6–12. You get the specific date in the scope document before any work begins — for context, Deloitte's survey of 400 firms found 63% of RPA projects missed their delivery deadlines , 11 which is precisely why we commit to one in writing.
+Is n8n really better than Zapier or Make?
+For some things, and not for others. Self-hosted n8n makes sense when you are paying meaningfully per task, when you need data to stay on your own infrastructure, or when you want the workflows in your Git repository. For a simple two-step integration, a stock SaaS connector is cheaper and we will tell you to use one.
+Can you work with our data protection and compliance requirements?
+It is settled at scoping, not discovered afterwards. Everything runs in your accounts, in a region you pick, with access scoped to the specific systems a workflow needs and every action logged. We work across India, the UK, the US, the UAE, Singapore and Saudi Arabia, so residency questions are a normal part of the conversation.
+What does the free audit actually involve?
+Forty-five minutes on one process — the one that hurts most. We map how it really works, not how the process document says it works. You leave with a straight recommendation, including the times the recommendation is "don't automate this, fix the process first" or "the tool you already pay for does this."
+Start with one process
+Show us the job nobody in your team wants to do.
+Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.
+WhatsApp +91 79828 81739
+Book the audit
+Email us
+Email Contact@agenticAiAutomation.co
+Office Faridabad, Haryana, India
+Serving India · UK · US · UAE · Singapore · Saudi Arabia
+Follow the build
+We publish what we learn, including the failures.
+Workflow teardowns, honest post-mortems, and the odd rant about per-task pricing. Pick your channel.
+WhatsApp
+LinkedIn
+X
+YouTube
+Instagram
+Facebook
+Pinterest
+Reddit
+Tumblr
+Email
+Email Contact@agenticAiAutomation.co
+WhatsApp +91 79828 81739
+Office Faridabad, Haryana, India
+Sources for every figure on this page
+MIT Project NANDA, The GenAI Divide: State of AI in Business 2025 — 95% of generative-AI pilots showed no measurable P&L return. Coverage
+S&P Global Market Intelligence, 2025, n=1,000+ — 42% of businesses scrapped most AI initiatives, up from 17% in 2024. CIO Dive
+EY, Get Ready For Robots — "we have seen as many as 30 to 50% of initial RPA projects fail." PDF
+Gartner, survey of 1,120 executives — 56% report high regret over their largest tech purchase in the last two years. Coverage
+Oldroyd, McElheran & Elkington, The Short Life of Online Sales Leads , Harvard Business Review, 2011 — 2,241 US companies audited; average first response 42 hours; 23% never responded. HBR
+Analysis of the "98% open rate" claim, which originates in vendor marketing with no published methodology; operator data across 40 campaigns puts real read rates at roughly 60–94% depending on list quality. Analysis
+Meta, WhatsApp Business Platform pricing — per-delivered-message billing since 1 July 2025; rates vary by country; India marketing rate increase effective 1 January 2026. Meta docs
+Randomised trial, 54,066 visits across 25 primary-care clinics — no-show rate 4.4% with two reminders vs 5.3–5.8% with one ( P <.001). AJMC
+QuestionPro for Parseur, July 2025, n=500 US professionals — 9+ hours per week on manual data transfer; ~60% report burnout from repetitive data tasks. Release
+Moffatt v. Air Canada , BC Civil Resolution Tribunal, 19 February 2024 — airline held responsible for information its chatbot provided. CBC
+Deloitte Global Robotics Survey, 400 firms — 63% did not meet RPA delivery deadlines. Forbes
+Chat with an agent
+Online now · replies in seconds
+Book the free 45-min audit
+Ask about WhatsApp automation
+Get pricing for one process
+Open WhatsApp
++91 79828 81739
+Message us — an agent answers in seconds
+Free 45-minute audit, no deck
+Nights, weekends, festival holidays
+Message us — an agent answers in seconds
+Free 45-minute audit, no deck
+Nights, weekends, festival holidays
+
+
+========================================================================
+# Services — https://agenticaiautomation.co/services
+========================================================================
+
+Services
+What we build
+Six services. Every one with a price, a date, and a list of who it is wrong for.
+We scope narrow on purpose. If a process is unstable, or an off-the-shelf tool already covers it, we say so on the audit call rather than after the invoice. Every engagement is fixed price against a written scope, delivered into your own repository.
+WhatsApp AI Automation
+A WhatsApp number that answers, qualifies and books without a person reading every message first.
+What is included
+Business API provisioning and Meta verification
+Conversation design reviewed against your actual message history
+Human handoff with full context when the agent is unsure
+CRM write-back
+Two weeks of post-launch tuning
+Price ₹50,000 – ₹1.5L
+Timeline 2–3 weeks
+Next step Free 45-min audit
+Wrong for you if a human has to calculate a quote before any useful reply can be sent.
+AI Agent Development
+Agents scoped to one job with defined inputs, a defined output, and a human checkpoint where the cost of being wrong is high.
+What is included
+Process mapping with the people currently doing the task
+Model selection and prompting against your own data
+Confidence thresholds and refusal paths
+Audit logging
+An evaluation dataset you keep
+Price ₹1.5L – ₹5L
+Timeline 4–6 weeks
+Next step Free 45-min audit
+Wrong for you if the process has no written rules and no history of past decisions to learn from.
+n8n Workflow Builds
+Self-hosted on your infrastructure, versioned in your repository.
+What is included
+Workflows exported as JSON to Git
+Error handling that identifies the exact step that failed
+Credentials managed separately from the workflows
+A runbook documenting the failure modes for each one
+No per-task metering from us
+Price ₹40,000 – ₹2L
+Timeline 1–3 weeks
+Next step Free 45-min audit
+Wrong for you if it is a simple two-step integration — a stock SaaS connector is cheaper.
+UiPath & RPA
+New bots where the rules are stable, and rescue work on bots that keep breaking when a UI changes.
+What is included
+Process discovery and feasibility assessment
+Attended or unattended development in UiPath or Power Automate
+Selector hardening
+Orchestrator setup with exception queues
+A handover that lists the known issues instead of hiding them
+Price ₹1L – ₹6L
+Timeline 3–8 weeks
+Next step Free 45-min audit
+Wrong for you if the process changes monthly — maintenance will cost more than it saves.
+Document Processing
+Invoices, claims, KYC packets and contracts turned into structured data — with a confidence threshold and a review queue for everything below it.
+What is included
+Extraction tuned on your documents rather than a demo dataset
+Per-field confidence scoring
+Validation against master data before anything is written
+Accuracy measured on a held-out set
+Price ₹1L – ₹4L
+Timeline 3–6 weeks
+Next step Free 45-min audit
+Wrong for you if the data already arrives as a feed — an API, EDI or database export.
+RPA to AI Migration
+Moving the brittle parts of an existing estate to AI models while leaving the parts that work alone.
+What is included
+Audit ranked by maintenance cost
+A keep / migrate / retire recommendation with reasoning for every bot
+One bot at a time
+Parallel running until parity
+A licence reduction plan where one applies
+Price Quoted after audit
+Timeline 6–12 weeks
+Next step Free 45-min audit
+Wrong for you if you have fewer than five bots and they are working fine.
+Pricing bands
+What engagements actually cost.
+Published because you should not have to sit through a call to find out whether we are in your range.
+One focused process ₹50,000 – ₹1.5L A single process, scoped narrow, quoted at a fixed price with a delivery date in writing before work starts.
+Multi-process department build ₹2.5L – ₹8L Several connected processes across one department. Typical delivery is four weeks per process, sequenced rather than run in parallel.
+Ongoing support (optional) ₹15,000 – ₹40,000/month Optional by design. Thirty days of defect fixing is already included in every build, and nothing we ship depends on a retainer to keep running.
+Typical delivery is four weeks. Model and messaging usage is billed to you directly by the provider, with no margin taken by us. Every engagement is quoted against one process, one price and one date, written down before work starts.
+Straight answers
+What clients ask before they commit.
+Who pays for the AI model usage?
+You do, directly to the provider. You use your own AI API key and receive your own bill — we take no margin on tokens and we do not resell usage.
+Who owns the code when the project ends?
+You do. Code goes into your repository, on your cloud, with your credentials, from day one — not at handover.
+Whose WhatsApp number and Meta account are they?
+Yours. The WhatsApp number and the Meta Business Manager stay in your name throughout, so nothing is stranded with us if you stop working with us.
+What happens after handover?
+Documentation and a runbook are standard deliverables, and thirty days of defect fixing is included. Ongoing support is optional by design, never a dependency.
+Will you ever tell us not to automate something?
+Yes, and we turn work down when maintenance would cost more than the saving. You get that answer on the free audit call rather than after the invoice.
+Is the n8n instance metered per task?
+No. We self-host n8n on your infrastructure, so there is no per-task metering from us and your bill does not climb with volume.
+Start with one process
+Bring us the job nobody in your team wants to do.
+Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.
+WhatsApp +91 79828 81739
+Book the audit
+See it by industry
+
+
+========================================================================
+# Industries — https://agenticaiautomation.co/industries
+========================================================================
+
+Industries
+Where this lands
+Six sectors, and the one process we would start with in each.
+Automation goes wrong when it is bought as a category rather than aimed at a process. These are the processes we would open with in each sector, and the service that delivers them. If your worst process is not on this list, it is still worth forty-five minutes.
+Healthcare & clinics
+The pain No-shows, and intake forms eating the front desk's morning.
+Where we start Appointment reminders and pre-consultation intake on WhatsApp.
+Service WhatsApp AI Automation
+An AJMC randomised trial across 54,066 appointments found two reminders beat one — 4.4% no-shows against 5.3–5.8%. It is a small margin, and it is the kind of number worth measuring on your own data rather than taking from a brochure.
+E-commerce & D2C
+The pain Slow replies, and an endless stream of “where is my order”.
+Where we start Enquiry qualification and order-status answering.
+Service WhatsApp AI Automation
+Harvard Business Review's study of B2B response times put the average first response at 42 hours, with 23% of companies never responding at all. Overnight enquiries are where most of that is lost.
+Law firms
+The pain Associates spending their week on first-pass document review.
+Where we start Document intake, classification and clause extraction.
+Service Document Processing
+Extraction runs with a per-field confidence score and a review queue underneath it. Anything the model is unsure about goes to a person rather than into the file.
+Manufacturing
+The pain Manual three-way purchase-order matching.
+Where we start Purchase order and goods-receipt matching in UiPath or Power Automate.
+Service UiPath & RPA
+Stable, rule-bound and high-volume — the conditions under which RPA actually holds up. If the process changes monthly we will tell you not to automate it.
+Logistics
+The pain Paper proof-of-delivery re-keyed from photographs.
+Where we start POD capture and exception handling.
+Service Document Processing
+The exception path matters more than the happy path here. Every build ships with an exception queue and a runbook naming the failure modes.
+Professional services
+The pain Unbilled time, and a pipeline that goes stale.
+Where we start Timesheet chasing, proposal assembly and CRM hygiene in n8n.
+Service n8n Workflow Builds
+Self-hosted on your own infrastructure and versioned in your repository, so the bill does not climb with volume.
+Start with one process
+Show us the job nobody in your team wants to do.
+Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.
+WhatsApp +91 79828 81739
+Book the audit
+See the six services
+
+
+========================================================================
+# About — https://agenticaiautomation.co/about
+========================================================================
+
+About
+Who you are hiring
+A small senior team in Faridabad. No branches, no bench.
+Agentic AI Automation is an automation studio in Faridabad, Haryana. One office. The people on the audit call are the people who do the work, which is the main reason we take a limited number of engagements at a time.
+Eleven years in enterprise IT. Nine of them on RPA.
+Banking, healthcare and logistics — across India, the UK and the Middle East. UiPath, Power Automate, n8n, and the AI model layer above them.
+Most of those nine years went on the unglamorous half of automation: keeping bots alive after the consultants left. That is the experience the whole studio is built around.
+Markets served
+India United Kingdom United States
+UAE Singapore Saudi Arabia
+What we commit to, in writing.
+01 Fixed price and a date , in writing, before work starts.
+02 Code in your repository , your cloud, your credentials — from day one, not at handover.
+03 The WhatsApp number and Meta Business Manager stay in your name .
+04 Your own AI API key and bill — no token reselling, no margin taken.
+05 Self-hosted n8n , with no per-task metering from us.
+06 Thirty days of defect fixing included; support optional, never a dependency.
+07 A confidence threshold, refusal path and review queue on every agent.
+08 The measurement method agreed at scoping , not argued about afterwards.
+How we work
+Four steps, and one of them is us saying no.
+1 Audit
+Forty-five minutes, free, on one process. A straight answer on whether automating it is worth doing — including when the answer is no.
+no charge
+2 Scope and fixed price
+One process, one price, one date. Written down before any work starts.
+in writing
+3 Build in the open
+Repository access from day one and a working demo every week. Not a status deck.
+weekly demo
+4 Handover and exit
+Documentation and a runbook as standard deliverables, with 30 days of defect fixing included. Ongoing support is optional by design.
+exit documented
+We will tell you what not to automate.
+We turn work down when maintenance would cost more than the saving. A process that changes every month, or one with no written rules and no history of past decisions, is not a good automation candidate — and saying so on the call is cheaper for both of us than discovering it in month three.
+There are also no published case studies on this site , deliberately. A case study should name the client, state how the result was measured, and carry written approval before it goes online. Ours are in that process. The full policy is here.
+Start with one process
+Show us the job nobody in your team wants to do.
+Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.
+WhatsApp +91 79828 81739
+Book the audit
+See the six services
+
+
+========================================================================
+# Case studies — https://agenticaiautomation.co/case-studies
+========================================================================
+
+Case studies
+The honest position
+We have no case studies published. That is deliberate, and it is temporary.
+Engagements are in the approval process. Until they clear it, there is nothing on this page pretending to be evidence.
+What we think a case study has to be.
+A case study names the client , states how the result was measured , and carries written approval before it goes online. If it does not do all three, it is marketing copy with a number in it.
+That standard rules out most of what the industry publishes. “A leading NBFC saw a 70% reduction in handling time” tells you nothing you can check: not who, not measured against what baseline, not over what period, not who decided what counted as handled. We are not going to write those.
+Why scepticism is reasonable
+The numbers that make buyers cautious are real.
+Four figures from independent research — the same four on our homepage. They are the reason a vendor asking you to trust an anonymous case study deserves a hard look.
+95% of generative-AI pilots produced no measurable return on the P&L.
+MIT Project NANDA, 2025
+42% of companies scrapped most of their AI initiatives in 2025 — up from 17% the year before.
+S&P Global, n=1,000+
+30–50% of initial RPA projects fail outright, on EY's own observation.
+EY, Get Ready For Robots
+56% of executives report high regret over their biggest tech purchase of the last two years.
+Gartner, n=1,120
+What we can do instead
+Ask us on the call, under NDA.
+Comparable deployments, discussed under NDA. On the audit call we will talk through builds close to yours — what was in scope, what broke, what we would do differently — without naming a client who has not agreed to be named.
+The architecture, in detail. How the confidence threshold, refusal path and review queue are wired, and what happens when the model is unsure.
+References, once approval clears. When a client signs off, their name and their measurement method go on this page together. Not one without the other.
+A straight answer about your process. Including “do not automate this, fix the process first” or “the tool you already pay for does this”.
+Start with one process
+Show us the job nobody in your team wants to do.
+Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.
+WhatsApp +91 79828 81739
+Book the audit
+See the six services
+
+
+========================================================================
+# Contact — https://agenticaiautomation.co/contact
+========================================================================
+
+Contact
+Book the audit
+Show us the job nobody in your team wants to do.
+Forty-five minutes, no charge, no deck. We map how the process really works, not how the process document says it works, and you leave with a straight recommendation — including the times that recommendation is “don't automate this”.
+WhatsApp
++91 79828 81739
+The fastest route. Message us and an agent answers — then a person takes over.
+Email
+Contact@agenticAiAutomation.co
+Send the process description and any screenshots. We reply within one business day.
+Book directly
+Pick a slot
+Choose a 45-minute audit slot on the calendar without emailing first.
+What the audit actually involves.
+One process, the one that hurts most. Not a tour of your whole operation — we go deep on a single workflow.
+We map how it really works. With the people currently doing it, not from the process document.
+A straight recommendation. Worth automating or not, what it would cost, and how long it would take.
+Written scope if you want to proceed. One process, one price, one date, before any work starts.
+Where we are
+Agentic AI Automation
+Faridabad, Haryana, India
+One office. No branches.
+Phone and WhatsApp: +91 79828 81739
+Email: Contact@agenticAiAutomation.co
+Serving India, the United Kingdom, the United States, the UAE, Singapore and Saudi Arabia.
+Working hours
+Monday to Saturday, 10:00 to 19:00 IST. For UK, UAE and Singapore clients we hold a fixed overlap window agreed at kickoff. US Pacific is handled by early-morning IST calls.
+An agent answers WhatsApp immediately, at any hour. A person replies within these hours, and within one business day at the latest.
+Working in English and Hindi. Data-residency and compliance questions are settled at scoping — they are a normal part of the conversation, not an afterthought.
+Start with one process
+Show us the job nobody in your team wants to do.
+Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.
+WhatsApp +91 79828 81739
+Book the audit
+See the six services

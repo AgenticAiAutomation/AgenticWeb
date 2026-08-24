@@ -1,177 +1,1001 @@
-{% extends "base.html" %}
-{% import "_macros.html" as m %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0908">
 
-{% block schema %}
-{# ProfessionalService — homepage only, per spec 02 §3.
-   address is intentionally absent: schema.org allows a service business with no
-   public premises to omit it, and a fabricated street address is a Google
-   Business Profile suspension waiting to happen. #}
-<script type="application/ld+json">
-{
+  <title>AI Automation Agency in India | Agentic AI Automation</title>
+  <meta name="description" content="WhatsApp AI agents, n8n workflows, RPA and document processing. Fixed price, fixed date, code in your repo. Free 45-minute audit.">
+  <link rel="canonical" href="https://agenticaiautomation.co/">
+
+  <meta name="google-site-verification" content="e4Vkf6NJ7MihEXOeeDO5q8NiCbvjPqTCLhRdEnuW4pw">
+  <meta name="msvalidate.01" content="440E57D5A2CF8BB74B78F97868A1AEDF">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Agentic AI Automation">
+  <meta property="og:title" content="AI Automation Agency in India | Agentic AI Automation">
+  <meta property="og:description" content="WhatsApp AI agents, n8n workflows, RPA and document processing. Fixed price, fixed date, code in your repo. Free 45-minute audit.">
+  <meta property="og:url" content="https://agenticaiautomation.co/">
+  <meta property="og:image" content="https://agenticaiautomation.co/static/images/og-default-v1.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Agentic AI Automation — AI employees for your business">
+  <meta property="og:locale" content="en_IN">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@AgenticAIGlobal">
+  <meta name="twitter:title" content="AI Automation Agency in India | Agentic AI Automation">
+  <meta name="twitter:description" content="WhatsApp AI agents, n8n workflows, RPA and document processing. Fixed price, fixed date, code in your repo. Free 45-minute audit.">
+  <meta name="twitter:image" content="https://agenticaiautomation.co/static/images/og-default-v1.png">
+
+  <link rel="icon" href="/static/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/static/images/favicon.png" type="image/png" sizes="132x132">
+  <link rel="apple-touch-icon" href="/static/images/favicon.png">
+  <link rel="manifest" href="/static/assets/site.webmanifest">
+
+  <!-- Both faces are preloaded deliberately. Dropping them frees bandwidth but
+       lets the fallback paint first and swap late, which measured as 0.142 CLS
+       and Performance 91. With them: CLS 0, Performance 96. -->
+  <link rel="preload" href="/static/assets/fonts/archivo-wght-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/assets/fonts/plexsans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets are render-blocking on purpose.
+
+       They were previously inlined-critical + preload/onload, which is faster on
+       paper. Measured live it was not: the deferred sheet landed ~200ms after
+       first paint and changed below-the-fold layout, shifting content by 0.179
+       CLS on /case-studies. On localhost the sheet arrived in ~1ms so the shift
+       never appeared - this only reproduces over a real network.
+
+       Blocking costs roughly 240ms of FCP while the CSS ships uncompressed
+       (gzip_types is off globally on this box). Enabling gzip for text/css
+       removes most of that; see deploy/nginx-gzip.conf.suggested. -->
+  <link rel="stylesheet" href="/static/assets/css/tokens.css">
+  <link rel="stylesheet" href="/static/assets/css/base.css">
+  <link rel="stylesheet" href="/static/assets/css/components.css">
+
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "{{ url }}/#localbusiness",
-  "name": "Agentic AI Automation",
-  "url": "{{ url }}",
-  "telephone": "+91-79828-81739",
-  "email": {{ email|tojson }},
-  "priceRange": "₹₹",
-  "areaServed": [
-    {"@type": "Country", "name": "India"},
-    {"@type": "Country", "name": "United Kingdom"},
-    {"@type": "Country", "name": "United States"},
-    {"@type": "Country", "name": "United Arab Emirates"},
-    {"@type": "Country", "name": "Singapore"}
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": {{ location.city|tojson }},
-    "addressRegion": {{ location.region|tojson }},
-    "addressCountry": "IN"
-  },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-    "opens": "10:00",
-    "closes": "19:00"
-  }],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Automation Services",
-    "itemListElement": [
-      {%- for s in services_nav %}
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": {{ s.label|tojson }}}}{{ "," if not loop.last }}
-      {%- endfor %}
-    ]
-  }
-}
-</script>
-{% endblock %}
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://agenticaiautomation.co/#organization",
+      "name": "Agentic AI Automation",
+      "url": "https://agenticaiautomation.co/",
+      "logo": "https://agenticaiautomation.co/static/images/og-default-v1.png",
+      "description": "Automation studio building WhatsApp AI agents, n8n workflows, UiPath RPA and document processing for businesses in India, the UK, the US, the UAE, Singapore and Saudi Arabia.",
+      "sameAs": [
+        "https://www.linkedin.com/company/agenticaiautomation/",
+        "https://x.com/AgenticAIGlobal",
+        "https://youtube.com/@agenticaiautomation",
+        "https://www.facebook.com/BestAgenticAIAutomationOfficial",
+        "https://www.instagram.com/agenticaiautomationofficial/",
+        "https://www.pinterest.com/agenticaiautomation/",
+        "https://www.reddit.com/user/agenticaiautomation/",
+        "https://www.tumblr.com/agenticaiautomation"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+917982881739",
+          "contactType": "sales",
+          "email": "Contact@agenticAiAutomation.co",
+          "availableLanguage": [
+            "en",
+            "hi"
+          ],
+          "areaServed": [
+            "IN",
+            "GB",
+            "US",
+            "AE",
+            "SG",
+            "SA"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://agenticaiautomation.co/#website",
+      "name": "Agentic AI Automation",
+      "url": "https://agenticaiautomation.co/",
+      "publisher": {
+        "@id": "https://agenticaiautomation.co/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://agenticaiautomation.co/#localbusiness",
+      "name": "Agentic AI Automation",
+      "url": "https://agenticaiautomation.co/",
+      "image": "https://agenticaiautomation.co/static/images/og-default-v1.png",
+      "telephone": "+917982881739",
+      "email": "Contact@agenticAiAutomation.co",
+      "priceRange": "₹₹",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Faridabad",
+        "addressRegion": "Haryana",
+        "addressCountry": "IN"
+      },
+      "areaServed": [
+        "IN",
+        "GB",
+        "US",
+        "AE",
+        "SG",
+        "SA"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "10:00",
+          "closes": "19:00"
+        }
+      ],
+      "parentOrganization": {
+        "@id": "https://agenticaiautomation.co/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Will this replace our staff?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not in the engagements we run. We automate the copy-paste half — the retyping, the chasing, the \"did anyone reply to this\" half. Surveys put manual data entry alone at nine-plus hours per employee per week, with around 60% of people reporting burnout from repetitive data work. That is the part we take. Judgement work still needs the person, and it gets more of their attention once the retyping stops."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "We tried automation before and it broke. Why is this different?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because that is the problem we were hired to fix for nine years before starting this. The failure mode is almost never the build — it is silent failure after handover: a schedule that stops firing, a token that expires and returns a polite empty response, a screen that changes and a selector that no longer matches. Every build we deliver has step-level error handling, an exception queue and a runbook that names the failure modes per workflow. Nothing goes out with only the happy path tested."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do we have to replace our existing software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Agents work on top of what you already use — your CRM, ERP, accounting software, shared drives and your existing WhatsApp number. Replacing a working system is usually the most expensive possible way to fix a process problem, and we will say so."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the agent gives a customer wrong information — who is liable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You are, legally, and that is exactly why we build the way we do. In February 2024 a tribunal in British Columbia rejected an airline's argument that it was not responsible for what its own chatbot told a passenger. Every agent we ship has a confidence threshold, a refusal path and a review queue, and the scope of what it is permitted to state on its own is agreed with you in writing before launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typical delivery is four weeks. A narrow single-process build can be 7–10 days. UiPath work runs 3–8 weeks and a bot-estate migration 6–12. You get the specific date in the scope document before any work begins — for context, Deloitte's survey of 400 firms found 63% of RPA projects missed their delivery deadlines, which is precisely why we commit to one in writing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is n8n really better than Zapier or Make?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For some things, and not for others. Self-hosted n8n makes sense when you are paying meaningfully per task, when you need data to stay on your own infrastructure, or when you want the workflows in your Git repository. For a simple two-step integration, a stock SaaS connector is cheaper and we will tell you to use one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you work with our data protection and compliance requirements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is settled at scoping, not discovered afterwards. Everything runs in your accounts, in a region you pick, with access scoped to the specific systems a workflow needs and every action logged. We work across India, the UK, the US, the UAE, Singapore and Saudi Arabia, so residency questions are a normal part of the conversation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the free audit actually involve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Forty-five minutes on one process — the one that hurts most. We map how it really works, not how the process document says it works. You leave with a straight recommendation, including the times the recommendation is \"don't automate this, fix the process first\" or \"the tool you already pay for does this.\""
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body class="page-home" data-market="india">
 
-{% block content %}
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true">A</span>
+      <span class="name">Agentic AI Automation<span>faridabad &middot; india</span></span>
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="/services">Services</a>
+      <a href="/industries">Industries</a>
+      <a href="/case-studies">Case studies</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <a href="https://calendly.com/agenticaiautomation" class="btn btn-hot">Free 45-min audit</a>
+  </div>
+</header>
 
+<main id="main">
+
+<!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-inner">
-      <h1>{{ hero.h1 }}</h1>
-      <p class="lede">{{ hero.lede }}</p>
-      <div class="btn-row">
-        <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">
-          Book a 45-minute audit
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker"><span class="pip"></span>WhatsApp · AI agents · n8n · RPA · documents</p>
+      <h1 class="display">Your business runs 24/7.<br><span class="hot">Your team doesn't.</span></h1>
+      <p class="lede">We build AI employees that answer your WhatsApp, read your documents and run the back office — scoped to one process, quoted at a fixed price, delivered to your repository. Eleven years in enterprise IT, nine of them keeping other people's bots alive after the consultants left.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/917982881739" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.23-.64.08-.3-.15-1.26-.46-2.39-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.2-.25-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35m-5.42 7.4a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.8 11.8 0 0 0-3.48-8.41"/></svg>
+          WhatsApp us
         </a>
-        <a href="/case-studies" class="btn btn-secondary">See how we work</a>
+        <a href="https://calendly.com/agenticaiautomation" class="btn btn-line">Book the free audit</a>
+      </div>
+      <div class="proofrow">
+        <div><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span><b>Fixed price</b> before we start — one process, one date</span></div>
+        <div><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span><b>Your repository</b>, your cloud, your credentials</span></div>
+        <div><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span><b>30 days</b> of defect fixing included</span></div>
+        <div><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span><b>Support is optional</b> — never a dependency</span></div>
       </div>
     </div>
 
-    {# Results block only renders when signed client numbers exist. Until then
-       the credentials block below carries the proof burden honestly. #}
-    {% if results %}
-    <div class="proof-strip">
-      {% for r in results %}
-      <div class="proof-item">
-        <span class="proof-figure">{{ r.figure }}</span>
-        <span class="proof-label">{{ r.label }}</span>
-        <span class="proof-source">{{ r.client }}</span>
-      </div>
-      {% endfor %}
-    </div>
-    {% else %}
-    <div class="proof-strip">
-      {% for c in credentials %}
-      <div class="proof-item">
-        <span class="proof-figure">{{ c.figure }}</span>
-        <span class="proof-label">{{ c.label }}</span>
-        <span class="proof-source">{{ c.note }}</span>
-      </div>
-      {% endfor %}
-    </div>
-    {% endif %}
-  </div>
-</section>
-
-<section class="section section-tint" aria-labelledby="services-heading">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">What we build</span>
-      <h2 id="services-heading">Six things, done properly</h2>
-      <p>We turn down work outside this list. A generalist automation shop is a
-         slow way to learn on your budget.</p>
-    </div>
-
-    <div class="grid">
-      {% for s in services_nav %}
-      <article class="card card-linked">
-        <h3><a href="{{ s.url }}">{{ s.label }}</a></h3>
-        <p>{{ s.blurb }}</p>
-      </article>
-      {% endfor %}
-    </div>
-
-    <p style="margin-top: var(--space-xl)">
-      <a href="/services" class="btn-quiet">Full scope, timelines and pricing for each</a>
-      &nbsp;·&nbsp;
-      <a href="/industries" class="btn-quiet">What to automate first in your sector</a>
-    </p>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="process-heading">
-  <div class="container container-narrow">
-    <div class="section-head">
-      <span class="eyebrow">How an engagement runs</span>
-      <h2 id="process-heading">Four steps, and you can stop after any of them</h2>
-    </div>
-
-    <ol class="steps">
-      {% for step in how_we_work %}
-      <li class="step">
-        <div>
-          <h3>{{ step.title }}</h3>
-          <p>{{ step.body }}</p>
+    <div class="stack">
+      <div class="laptop">
+        <div class="lid">
+          <div class="bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="path">agents — live</span>
+          </div>
+          <div class="term">
+            <div class="tline"><span class="pr">$</span><span>agents --now-running</span></div>
+            <div class="tline"><span class="pr">▸</span><span id="typed"></span></div>
+            <div class="stamps">
+              <span class="stamp"><span class="bx"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span>enquiry answered · 4s</span>
+              <span class="stamp"><span class="bx"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span>documents read · 11 of 11</span>
+              <span class="stamp"><span class="bx"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span>written to CRM · validated</span>
+              <span class="stamp warnline"><span class="bx"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="8" y1="3.5" x2="8" y2="9"/><line x1="8" y1="12" x2="8" y2="12.2"/></svg></span>low confidence → review queue</span>
+            </div>
+          </div>
         </div>
-      </li>
-      {% endfor %}
+        <div class="base"></div>
+      </div>
+
+      <div class="phone-wrap">
+        <span class="wa-caption">Sample thread</span>
+        <div class="phone">
+          <div class="wa-top">
+            <span class="wa-av">A</span>
+            <span class="wa-who">Your business<em>agent · online</em></span>
+          </div>
+          <div class="wa-body">
+            <div class="msg in">Hi, are you open? Wanted to ask about your service.<div class="meta">9:40 PM</div></div>
+            <div class="msg out">Hi! Yes — happy to help. What are you looking for?<div class="meta">9:40 PM <svg viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,6.5 4.2,10 10,2.5"/><polyline points="7.4,10 13.2,2.5"/></svg></div></div>
+            <div class="msg in">Need pricing and what documents you'll want.<div class="meta">9:41 PM</div></div>
+            <div class="msg out">Document list sent above. I've held 10:00 AM tomorrow for a callback — reply CHANGE if that doesn't suit.<div class="meta">9:41 PM <svg viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,6.5 4.2,10 10,2.5"/><polyline points="7.4,10 13.2,2.5"/></svg></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-group">
+      <span>One process, one price, one date</span>
+      <span>Code in your repo from day one</span>
+      <span>Self-hosted, no per-task metering</span>
+      <span>Weekly demos, not status decks</span>
+      <span>We tell you what not to automate</span>
+      <span>Handover and exit documented</span>
+    </div>
+    <div class="ticker-group">
+      <span>One process, one price, one date</span>
+      <span>Code in your repo from day one</span>
+      <span>Self-hosted, no per-task metering</span>
+      <span>Weekly demos, not status decks</span>
+      <span>We tell you what not to automate</span>
+      <span>Handover and exit documented</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= WHY MOST FAIL ================= -->
+<section class="stat-band" id="reality">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>Start here</p>
+      <h2 class="display">Most automation projects fail. You already suspected that.</h2>
+      <p>Four numbers from independent research — not from us. If you have been pitched AI before and it went nowhere, this is why, and it is the reason we work the way we do.</p>
+    </div>
+
+    <div class="stat-grid rv">
+      <div class="stat">
+        <b>95%</b>
+        <p>of generative-AI pilots produced no measurable return on the P&amp;L.<sup class="ref"><a href="#s1">1</a></sup></p>
+        <cite>MIT Project NANDA, 2025</cite>
+      </div>
+      <div class="stat">
+        <b>42%</b>
+        <p>of companies scrapped most of their AI initiatives in 2025 — up from 17% the year before.<sup class="ref"><a href="#s2">2</a></sup></p>
+        <cite>S&amp;P Global, n=1,000+</cite>
+      </div>
+      <div class="stat">
+        <b>30–50%</b>
+        <p>of initial RPA projects fail outright, on EY's own observation.<sup class="ref"><a href="#s3">3</a></sup></p>
+        <cite>EY, Get Ready For Robots</cite>
+      </div>
+      <div class="stat">
+        <b>56%</b>
+        <p>of executives report high regret over their biggest tech purchase of the last two years.<sup class="ref"><a href="#s4">4</a></sup></p>
+        <cite>Gartner, n=1,120</cite>
+      </div>
+    </div>
+
+    <div class="stat-after rv">
+      Nine of our eleven years were spent on the unglamorous half of this industry: keeping bots alive after the consultants left. That experience is why we scope narrow, quote fixed, hand you the repository, and <b>tell you which processes you should not automate at all.</b>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SELF CHECK ================= -->
+<div class="hot-block" id="leaks">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker"><span class="pip"></span>60-second self-check</p>
+      <h2 class="display">Tick every one that happens in your business.</h2>
+      <p class="sub">Nothing is sent anywhere. This is the same list we work through on the audit call — most teams tick four or more.</p>
+    </div>
+
+    <div class="check-grid" id="leakGrid">
+      <button class="leak" type="button" aria-pressed="false"><span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span><span>WhatsApp works — it gets read, it gets replies — but somebody has to read every single message first.</span></button>
+      <button class="leak" type="button" aria-pressed="false"><span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span><span>Enquiries that arrive after hours sit unanswered until the next working day.</span></button>
+      <button class="leak" type="button" aria-pressed="false"><span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span><span>Half of someone's week goes on chasing clients for documents they already promised.</span></button>
+      <button class="leak" type="button" aria-pressed="false"><span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span><span>The same data gets typed twice — once in a chat or form, again into the ERP or accounting software.</span></button>
+      <button class="leak" type="button" aria-pressed="false"><span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span><span>Customer records still live in a spreadsheet sitting next to the CRM.</span></button>
+      <button class="leak" type="button" aria-pressed="false"><span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span><span>You already have bots or workflows, and they break every time a screen or a login changes.</span></button>
+      <button class="leak" type="button" aria-pressed="false"><span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span><span>Your automation bill climbs with volume because someone else is metering it per task.</span></button>
+      <button class="leak" type="button" aria-pressed="false"><span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg></span><span>Growth means hiring more people to do more of exactly the same manual work.</span></button>
+    </div>
+
+    <div class="tally">
+      <span class="count" id="leakCount">0</span>
+      <span class="say" id="leakSay">Tick the ones you recognise. <b>Every box is a process we have automated before.</b></span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>What we build</p>
+      <h2 class="display">Six services. Every one with a price, a date, and a list of who it is wrong for.</h2>
+      <p>We scope narrow on purpose. If a process is unstable or an off-the-shelf tool already covers it, we say so on the audit call rather than after the invoice.</p>
+    </div>
+
+    <div class="svc-grid rv">
+      <div class="svc feature">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.7-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
+        <h3>WhatsApp AI Automation<span class="badge">Most asked for</span></h3>
+        <p>A WhatsApp number that answers, qualifies and books without a person reading every message first. Business API provisioning and Meta verification, conversation design reviewed against your actual message history, human handoff with full context when the agent is unsure, CRM write-back, and two weeks of post-launch tuning.</p>
+        <div class="spec"><span>₹50,000 – ₹1.5L</span><span><b>2–3 weeks</b></span></div>
+        <div class="notfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span>Wrong for you if a human has to calculate a quote before any useful reply can be sent.</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M12 7V4M9 4h6"/><circle cx="9" cy="13" r="1.2"/><circle cx="15" cy="13" r="1.2"/></svg></div>
+        <h3>AI Agent Development</h3>
+        <p>Agents scoped to one job with defined inputs, a defined output, and a human checkpoint where the cost of being wrong is high. Process mapping with the people currently doing the task, model selection and prompting against your own data, confidence thresholds, refusal paths, audit logging, and an evaluation dataset you keep.</p>
+        <div class="spec"><span>₹1.5L – ₹5L</span><span><b>4–6 weeks</b></span></div>
+        <div class="notfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span>Wrong for you if the process has no written rules and no history of past decisions to learn from.</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="6" r="2.4"/><circle cx="18.5" cy="12" r="2.4"/><circle cx="5.5" cy="18" r="2.4"/><path d="M7.9 7.2 16.1 11M16.1 13 7.9 16.8"/></svg></div>
+        <h3>n8n Workflow Builds</h3>
+        <p>Self-hosted on your infrastructure, versioned in your repository. Workflows exported as JSON to Git, error handling that identifies the exact step that failed, credentials managed separately from the workflows, and a runbook documenting the failure modes for each one.</p>
+        <div class="spec"><span>₹40,000 – ₹2L</span><span><b>1–3 weeks</b></span></div>
+        <div class="notfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span>Wrong for you if it is a simple two-step integration — a stock SaaS connector is cheaper.</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="8" cy="13.5" r="1.4"/><path d="M13 12.5h5M13 15h3"/></svg></div>
+        <h3>UiPath &amp; RPA</h3>
+        <p>New bots where the rules are stable, and rescue work on bots that keep breaking when a UI changes. Process discovery and feasibility assessment, attended or unattended development in UiPath or Power Automate, selector hardening, Orchestrator setup with exception queues, and a handover that lists the known issues instead of hiding them.</p>
+        <div class="spec"><span>₹1L – ₹6L</span><span><b>3–8 weeks</b></span></div>
+        <div class="notfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span>Wrong for you if the process changes monthly — maintenance will cost more than it saves.</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 16.5h4"/></svg></div>
+        <h3>Document Processing</h3>
+        <p>Invoices, claims, KYC packets and contracts turned into structured data — with a confidence threshold and a review queue for everything below it. Extraction tuned on your documents rather than a demo dataset, per-field confidence scoring, validation against master data before anything is written, and accuracy measured on a held-out set.</p>
+        <div class="spec"><span>₹1L – ₹4L</span><span><b>3–6 weeks</b></span></div>
+        <div class="notfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span>Wrong for you if the data already arrives as a feed — an API, EDI or database export.</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h11a4 4 0 0 1 0 8H9"/><polyline points="12,13 9,16 12,19"/><polyline points="7,5 4,8 7,11"/></svg></div>
+        <h3>RPA to AI Migration</h3>
+        <p>Moving the brittle parts of an existing estate to AI models while leaving the parts that work alone. Audit ranked by maintenance cost, a keep / migrate / retire recommendation with reasoning for every bot, one bot at a time, parallel running until parity, and a licence reduction plan where one applies.</p>
+        <div class="spec"><span>Quoted after audit</span><span><b>6–12 weeks</b></span></div>
+        <div class="notfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span>Wrong for you if you have fewer than five bots and they are working fine.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHATSAPP ================= -->
+<section class="wa-section" id="whatsapp">
+  <div class="wrap wa-grid">
+    <div class="rv">
+      <p class="kicker"><span class="pip"></span>WhatsApp AI automation</p>
+      <h2 class="display" style="margin-top:15px;">WhatsApp already works for you. It is just completely manual.</h2>
+      <p class="lede" style="margin-top:18px;">It gets read. It gets replies. And every one of those replies costs a person's attention. Research on inbound leads has found average first-response times of around 42 hours, with roughly a quarter of enquiries never answered at all.<sup class="ref"><a href="#s5">5</a></sup> An agent on your number closes that gap without pretending to be a human.</p>
+      <ul class="wa-list">
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,12.5 9.5,18 20,6"/></svg><span><b>Answers, qualifies and books</b>Conversation design built from your real message history, not a generic script.</span></li>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,12.5 9.5,18 20,6"/></svg><span><b>Collects documents in the chat</b>Reads the photo the customer sends, spots what is missing, asks for exactly that.</span></li>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,12.5 9.5,18 20,6"/></svg><span><b>Hands over with full context</b>When it is unsure, a named person gets the thread and the reason it stopped — it does not guess.</span></li>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,12.5 9.5,18 20,6"/></svg><span><b>Templates handled properly</b>Meta verification, template categories and opt-in rules are part of setup, not your problem after launch.</span></li>
+      </ul>
+    </div>
+    <div class="rv">
+      <div class="wa-facts">
+        <div><span>Build time</span><b>2–3 weeks</b></div>
+        <div><span>Fixed price</span><b>₹50k–₹1.5L</b></div>
+        <div><span>Post-launch</span><b>2 wks tuning</b></div>
+        <div><span>Runs on</span><b>Your number</b></div>
+        <div><span>Data lands in</span><b>Your CRM</b></div>
+        <div><span>Best fit</span><b>50+ chats/day</b></div>
+      </div>
+      <div class="myth">
+        <h3>One thing we will not tell you</h3>
+        <p>Every WhatsApp agency quotes a <b>98% open rate</b>. That figure originated in a vendor's own marketing and has never been published with a methodology or a sample size. Independent operator data puts real-world read rates closer to <b>60–80%</b>, and far lower on unsegmented broadcasts.<sup class="ref"><a href="#s6">6</a></sup> We would rather measure yours after launch than quote a number neither of us can check.</p>
+      </div>
+      <p style="margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--paper-faint);line-height:1.75;">Built on the official WhatsApp Business Platform. Meta bills per delivered message; rates differ by country and India's marketing rate changed on 1 January 2026 — we walk you through your actual cost at audit.<sup class="ref"><a href="#s7">7</a></sup></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW WE WORK ================= -->
+<section id="how">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>How an engagement runs</p>
+      <h2 class="display">Four steps. The first one is free and the last one is you not needing us.</h2>
+      <p>No discovery phase that bills for three months. No transformation programme. One process, taken all the way to done.</p>
+    </div>
+    <div class="steps rv">
+      <div class="step">
+        <span class="n">01</span>
+        <h3>Audit</h3>
+        <p>Forty-five minutes on your most painful process. You leave with a straight answer on whether automating it is worth doing — including when the answer is no.</p>
+        <span class="tag">45 min · free</span>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h3>Scope and fixed price</h3>
+        <p>One process, one price, one delivery date, written down before any work starts. If the scope changes, the price conversation happens before the work, not after.</p>
+        <span class="tag">fixed, in writing</span>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h3>Build in the open</h3>
+        <p>Repository access from day one and a working demo every week. You watch it being built, so there is no reveal at the end that turns out to be a slide deck.</p>
+        <span class="tag">weekly demos</span>
+      </div>
+      <div class="step">
+        <span class="n">04</span>
+        <h3>Handover and exit</h3>
+        <p>Documentation and a runbook as standard deliverables, not upsells. Thirty days of defect fixing included. Ongoing support exists but is optional — by design.</p>
+        <span class="tag">30 days included</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ================= COMPARISON ================= -->
+<section id="compare">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>Three columns, one honest look</p>
+      <h2 class="display">Doing it manually. Hiring a typical AI agency. Working with us.</h2>
+      <p>The middle column is not a strawman — it describes how a large part of this industry actually operates, and it is why so many of these projects end up abandoned.</p>
+    </div>
+
+    <div class="tbl-wrap rv">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th scope="col">Where it shows up</th>
+            <th scope="col">Manual, today</th>
+            <th scope="col">A typical AI agency</th>
+            <th scope="col" class="ours">Agentic AI Automation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dim">Who owns the code</td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Nothing to own — it lives in people's heads</span></td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Their platform, their account, their terms</span></td>
+            <td class="ours"><span class="mk yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg>Your repository, your cloud, your credentials</span></td>
+          </tr>
+          <tr>
+            <td class="dim">What it costs as volume grows</td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Another hire, and another after that</span></td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Metered per task; the bill climbs quietly</span></td>
+            <td class="ours"><span class="mk yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg>Self-hosted, no per-task metering from us</span></td>
+          </tr>
+          <tr>
+            <td class="dim">Price certainty</td>
+            <td class="them"><span class="mk mid"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="8" y1="3.5" x2="8" y2="9"/><line x1="8" y1="12" x2="8" y2="12.2"/></svg>Predictable, and permanently high</span></td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Time and materials, scope creeping</span></td>
+            <td class="ours"><span class="mk yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg>Fixed price and a date, before work starts</span></td>
+          </tr>
+          <tr>
+            <td class="dim">Reply to an enquiry</td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Next working day, if someone spots it</span></td>
+            <td class="them"><span class="mk mid"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="8" y1="3.5" x2="8" y2="9"/><line x1="8" y1="12" x2="8" y2="12.2"/></svg>Instant, but a scripted bot that annoys people</span></td>
+            <td class="ours"><span class="mk yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg>Seconds, from your real message history</span></td>
+          </tr>
+          <tr>
+            <td class="dim">When it is unsure</td>
+            <td class="them"><span class="mk mid"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="8" y1="3.5" x2="8" y2="9"/><line x1="8" y1="12" x2="8" y2="12.2"/></svg>A person asks a colleague — eventually</span></td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Guesses confidently and you find out later</span></td>
+            <td class="ours"><span class="mk yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg>Confidence threshold, refusal path, review queue</span></td>
+          </tr>
+          <tr>
+            <td class="dim">Documents extracted</td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Typed by hand from a photo on a phone</span></td>
+            <td class="them"><span class="mk mid"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="8" y1="3.5" x2="8" y2="9"/><line x1="8" y1="12" x2="8" y2="12.2"/></svg>OCR on a demo dataset; you re-check everything</span></td>
+            <td class="ours"><span class="mk yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg>Tuned on your documents, accuracy measured on held-out data</span></td>
+          </tr>
+          <tr>
+            <td class="dim">When something breaks</td>
+            <td class="them"><span class="mk mid"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="8" y1="3.5" x2="8" y2="9"/><line x1="8" y1="12" x2="8" y2="12.2"/></svg>Somebody notices, days later</span></td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Silent failure — no error, nothing logged</span></td>
+            <td class="ours"><span class="mk yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg>Step-level error handling and a runbook per workflow</span></td>
+          </tr>
+          <tr>
+            <td class="dim">Proof it worked</td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Nobody is measuring</span></td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>Anonymous case studies and round numbers</span></td>
+            <td class="ours"><span class="mk yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg>Measurement agreed at scope; named case studies only</span></td>
+          </tr>
+          <tr>
+            <td class="dim">The day it ends</td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>The person leaves and the knowledge goes too</span></td>
+            <td class="them"><span class="mk no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg>You lose access to what you paid for</span></td>
+            <td class="ours"><span class="mk yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8.2 6.4,12 13,4.2"/></svg>Documentation, runbook, and everything already yours</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ================= QUESTIONS ================= -->
+<section id="questions">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>Ask any vendor these</p>
+      <h2 class="display">Ten questions worth asking before you sign anything. Ours are answered below.</h2>
+      <p>Print this list and put it to every agency you speak to, us included. The answers tell you far more than a portfolio does.</p>
+    </div>
+
+    <div class="qlist rv">
+      <div class="qrow"><span class="qn">01</span><span class="q">Who owns the code, and how do you hand it over?</span><span class="ans">You do, from day one. It is built in <b>your</b> repository and <b>your</b> cloud account, not ours. There is nothing to transfer at the end because it was never held anywhere else.</span></div>
+      <div class="qrow"><span class="qn">02</span><span class="q">Whose name does the WhatsApp number sit under inside Meta?</span><span class="ans">Yours. We do the Business API provisioning and Meta verification, but the number, the Business Manager and the assets stay in your name. <b>You never need our permission to keep using your own channel.</b></span></div>
+      <div class="qrow"><span class="qn">03</span><span class="q">Who pays for the AI API, and whose key is it?</span><span class="ans">Your account, your key, your bill — visible to you in real time. We do not resell tokens with a margin on top, and you can see exactly what a month of running actually costs.</span></div>
+      <div class="qrow"><span class="qn">04</span><span class="q">What happens the day we stop working together?</span><span class="ans">Nothing stops. Documentation and a runbook are standard deliverables. <b>Support is optional by design</b> — if you never call us again, the thing we built keeps running.</span></div>
+      <div class="qrow"><span class="qn">05</span><span class="q">What does the agent do when it does not know the answer?</span><span class="ans">It stops. Every build has a confidence threshold, a refusal path and a review queue underneath it. A named person gets the case with the full context and the reason it was escalated. <b>It is designed to hand over, not to guess.</b></span></div>
+      <div class="qrow"><span class="qn">06</span><span class="q">How will we know whether this actually worked?</span><span class="ans">The measurement method is agreed at scoping, before the build, using a number you already track. For document work, accuracy is measured on a held-out dataset you keep and can re-run yourself later.</span></div>
+      <div class="qrow"><span class="qn">07</span><span class="q">What does it cost to change something three months after go-live?</span><span class="ans">Because the workflows are in your repository and documented, small changes are something your own team can make. Where you want us, it is quoted per change — <b>we do not hold edits hostage to a retainer.</b></span></div>
+      <div class="qrow"><span class="qn">08</span><span class="q">What happens to the bill if our volume multiplies by five?</span><span class="ans">Our fee does not move — it was fixed for the build. Self-hosted n8n has no per-task metering. What does scale is your model and messaging usage, billed directly by the provider at their published rates, which we walk you through at audit.</span></div>
+      <div class="qrow"><span class="qn">09</span><span class="q">Where are our customers' conversations stored?</span><span class="ans">On infrastructure in your accounts, in a region you choose. We work with clients in India, the UK, the US, the UAE, Singapore and Saudi Arabia, and data residency is settled at scoping rather than discovered later.</span></div>
+      <div class="qrow"><span class="qn">10</span><span class="q">What are you recommending we do <em>not</em> automate?</span><span class="ans">There is always something, and you will hear it on the free audit call. Processes that change monthly, work with no written rules, anything already handled by a tool you own. <b>We turn work down when the maintenance would cost more than the saving.</b></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ================= INDUSTRIES ================= -->
+<section id="industries">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>Where we have done this before</p>
+      <h2 class="display">Six sectors, and the one process we would start with in each.</h2>
+      <p>Banking, healthcare, law, logistics and manufacturing — the sectors behind eleven years of enterprise IT and nine years of RPA across India, the UK and the Middle East.</p>
+    </div>
+    <div class="ind-grid rv">
+      <div class="ind">
+        <h3>Healthcare &amp; clinics</h3>
+        <div class="pain"><span class="lbl">Pain</span><span>No-shows and intake forms that eat the front desk's morning.</span></div>
+        <div class="fix"><span class="lbl">Fix</span><span>Appointment reminders and pre-consultation intake on WhatsApp. Controlled trials show two reminders beat one on attendance.<sup class="ref"><a href="#s8">8</a></sup></span></div>
+      </div>
+      <div class="ind">
+        <h3>E-commerce &amp; D2C</h3>
+        <div class="pain"><span class="lbl">Pain</span><span>Slow replies to enquiries and endless "where is my order" messages.</span></div>
+        <div class="fix"><span class="lbl">Fix</span><span>Enquiry qualification and order-status answering on WhatsApp, written back to your store and CRM.</span></div>
+      </div>
+      <div class="ind">
+        <h3>Law firms</h3>
+        <div class="pain"><span class="lbl">Pain</span><span>Associates burning billable hours on first-pass document review.</span></div>
+        <div class="fix"><span class="lbl">Fix</span><span>Document intake, classification and clause extraction, with a review queue below the confidence threshold.</span></div>
+      </div>
+      <div class="ind">
+        <h3>Manufacturing</h3>
+        <div class="pain"><span class="lbl">Pain</span><span>Three-way matching of purchase orders, invoices and goods receipts, by hand.</span></div>
+        <div class="fix"><span class="lbl">Fix</span><span>Purchase order and goods-receipt matching in UiPath or Power Automate, with an exception queue.</span></div>
+      </div>
+      <div class="ind">
+        <h3>Logistics</h3>
+        <div class="pain"><span class="lbl">Pain</span><span>Paper proof-of-delivery re-keyed from photographs, days after the fact.</span></div>
+        <div class="fix"><span class="lbl">Fix</span><span>Proof-of-delivery capture and exception handling, validated against master data before it is written.</span></div>
+      </div>
+      <div class="ind">
+        <h3>Professional services</h3>
+        <div class="pain"><span class="lbl">Pain</span><span>Revenue leaking through unbilled time and a pipeline nobody has updated.</span></div>
+        <div class="fix"><span class="lbl">Fix</span><span>Timesheet chasing, proposal assembly and CRM hygiene as self-hosted n8n workflows.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ================= PRICING ================= -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>What it costs</p>
+      <h2 class="display">Published, because you should not have to sit through a call to learn the range.</h2>
+      <p>Every engagement is quoted at a fixed price against a written scope. These are the bands almost everything lands inside.</p>
+    </div>
+    <div class="price-grid rv">
+      <div class="price">
+        <span>One focused process</span>
+        <b>₹50,000 – ₹1.5L</b>
+        <p>A single workflow taken end to end. WhatsApp automation and most n8n builds sit here. Typically delivered in 1–3 weeks; a narrow single-process build can be 7–10 days.</p>
+      </div>
+      <div class="price">
+        <span>Multi-process department build</span>
+        <b>₹2.5L – ₹8L</b>
+        <p>Several connected processes across a function — document pipeline plus review queue plus system write-back, or a bot estate migration. Typically 4–12 weeks.</p>
+      </div>
+      <div class="price optional">
+        <span>Ongoing support · optional</span>
+        <b>₹15,000 – ₹40,000/mo</b>
+        <p>Monitoring, tuning and change requests. Genuinely optional — 30 days of defect fixing is already included, and the runbook is written so your team can take it on instead.</p>
+      </div>
+    </div>
+    <p class="price-note rv"><b>Typical delivery is four weeks.</b> Model and messaging usage is billed to you directly by the provider at their published rates — we take no margin on it, and we walk you through the real monthly figure on the audit call before you commit to anything.</p>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ================= HONESTY / CASE STUDIES ================= -->
+<section>
+  <div class="wrap">
+    <div class="honest rv">
+      <h3>We have no case studies published. That is deliberate, and it is temporary.</h3>
+      <p>Our rule is that a case study names the client, states how the result was measured, and carries written approval from that client before it goes online. <b>Two engagements are in that approval process now.</b> Until they clear it, this page stays empty rather than filling up with anonymous "a leading NBFC" stories and round numbers nobody can check.</p>
+      <p>What we can do instead: on the audit call we will talk through comparable deployments in detail under NDA, including the parts that went badly. Given that <b>95% of AI pilots return nothing measurable</b><sup class="ref"><a href="#s1">1</a></sup> and more than half of tech buyers regret their last big purchase,<sup class="ref"><a href="#s4">4</a></sup> we would rather earn the first hour of your scepticism than spend it.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ================= FOUNDER ================= -->
+<section id="about">
+  <div class="wrap founder-grid">
+    <div class="rv">
+      <p class="kicker"><span class="pip"></span>Who you are actually hiring</p>
+      <h2 class="display" style="margin-top:15px;">A small senior team in Faridabad. No branches, no bench.</h2>
+      <p class="lede" style="margin-top:18px;">Not a staffing agency, not a reseller, not a large consultancy. We take a limited number of engagements at a time because the work is done by the people you meet on the audit call.</p>
+      <div class="markets">
+        <span class="mpill">India</span><span class="mpill">United Kingdom</span><span class="mpill">United States</span>
+        <span class="mpill">UAE</span><span class="mpill">Singapore</span><span class="mpill">Saudi Arabia</span>
+      </div>
+      <p style="margin-top:18px;font-size:13.6px;color:var(--paper-faint);line-height:1.7;">Remote delivery with overlapping working hours by arrangement. One office, in Faridabad, Haryana.</p>
+    </div>
+    <div class="rv">
+      <ul class="creds">
+        <li><span class="yr">11 yrs</span><span class="txt">in <b>enterprise IT</b> — banking, healthcare and logistics.</span></li>
+        <li><span class="yr">9 yrs</span><span class="txt">building <b>RPA and automation</b> for banks, hospitals, law firms and logistics operators across India, the UK and the Middle East.</span></li>
+        <li><span class="yr">Tools</span><span class="txt"><b>UiPath, Power Automate, n8n</b>, and the AI model layer on top of them.</span></li>
+        <li><span class="yr">Why</span><span class="txt">Most of those nine years went on <b>the unglamorous half of automation: keeping bots alive after the consultants left.</b> This company exists because that half is where projects are actually won or lost.</span></li>
+        <li><span class="yr">We say no</span><span class="txt">To unstable processes, to work an existing tool already covers, to anonymous case studies, and to <b>anything that would make you permanently dependent on us.</b></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>Straight answers</p>
+      <h2 class="display">The questions that come up on nearly every call.</h2>
+    </div>
+    <div class="faq rv">
+      <details>
+        <summary>Will this replace our staff?</summary>
+        <p>Not in the engagements we run. We automate the copy-paste half — the retyping, the chasing, the "did anyone reply to this" half. Surveys put manual data entry alone at <b>nine-plus hours per employee per week</b>, with around 60% of people reporting burnout from repetitive data work.<sup class="ref"><a href="#s9">9</a></sup> That is the part we take. Judgement work still needs the person, and it gets more of their attention once the retyping stops.</p>
+      </details>
+      <details>
+        <summary>We tried automation before and it broke. Why is this different?</summary>
+        <p>Because that is the problem we were hired to fix for nine years before starting this. The failure mode is almost never the build — it is <b>silent failure</b> after handover: a schedule that stops firing, a token that expires and returns a polite empty response, a screen that changes and a selector that no longer matches. Every build we deliver has step-level error handling, an exception queue and a runbook that names the failure modes per workflow. Nothing goes out with only the happy path tested.</p>
+      </details>
+      <details>
+        <summary>Do we have to replace our existing software?</summary>
+        <p>No. Agents work on top of what you already use — your CRM, ERP, accounting software, shared drives and your existing WhatsApp number. Replacing a working system is usually the most expensive possible way to fix a process problem, and we will say so.</p>
+      </details>
+      <details>
+        <summary>What if the agent gives a customer wrong information — who is liable?</summary>
+        <p>You are, legally, and that is exactly why we build the way we do. In February 2024 a tribunal in British Columbia rejected an airline's argument that it was not responsible for what its own chatbot told a passenger.<sup class="ref"><a href="#s10">10</a></sup> Every agent we ship has a confidence threshold, a refusal path and a review queue, and the scope of what it is permitted to state on its own is agreed with you in writing before launch.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>Typical delivery is four weeks. A narrow single-process build can be 7–10 days. UiPath work runs 3–8 weeks and a bot-estate migration 6–12. You get the specific date in the scope document before any work begins — for context, Deloitte's survey of 400 firms found <b>63% of RPA projects missed their delivery deadlines</b>,<sup class="ref"><a href="#s11">11</a></sup> which is precisely why we commit to one in writing.</p>
+      </details>
+      <details>
+        <summary>Is n8n really better than Zapier or Make?</summary>
+        <p>For some things, and not for others. Self-hosted n8n makes sense when you are paying meaningfully per task, when you need data to stay on your own infrastructure, or when you want the workflows in your Git repository. For a simple two-step integration, a stock SaaS connector is cheaper and we will tell you to use one.</p>
+      </details>
+      <details>
+        <summary>Can you work with our data protection and compliance requirements?</summary>
+        <p>It is settled at scoping, not discovered afterwards. Everything runs in your accounts, in a region you pick, with access scoped to the specific systems a workflow needs and every action logged. We work across India, the UK, the US, the UAE, Singapore and Saudi Arabia, so residency questions are a normal part of the conversation.</p>
+      </details>
+      <details>
+        <summary>What does the free audit actually involve?</summary>
+        <p>Forty-five minutes on one process — the one that hurts most. We map how it really works, not how the process document says it works. You leave with a straight recommendation, including the times the recommendation is "don't automate this, fix the process first" or "the tool you already pay for does this."</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<div class="cta" id="contact">
+  <div class="wrap">
+    <p class="kicker"><span class="pip"></span>Start with one process</p>
+    <h2 class="display">Show us the job nobody in your team wants to do.</h2>
+    <p>Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.</p>
+    <div class="row">
+      <a href="https://wa.me/917982881739" class="btn btn-dark">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.23-.64.08-.3-.15-1.26-.46-2.39-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.2-.25-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35m-5.42 7.4a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.8 11.8 0 0 0-3.48-8.41"/></svg>
+        WhatsApp +91 79828 81739
+      </a>
+      <a href="https://calendly.com/agenticaiautomation" class="btn btn-dark">Book the audit</a>
+      <a href="mailto:Contact@agenticAiAutomation.co" class="btn btn-dark">Email us</a>
+    </div>
+    <div class="cta-meta">
+      <a href="mailto:Contact@agenticAiAutomation.co"><em>Email</em>Contact@agenticAiAutomation.co</a>
+      <span><em>Office</em>Faridabad, Haryana, India</span>
+      <span><em>Serving</em>India · UK · US · UAE · Singapore · Saudi Arabia</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SOCIAL DOCK ================= -->
+<div class="dock-band">
+  <div class="wrap">
+    <p class="kicker" style="justify-content:center;"><span class="pip"></span>Follow the build</p>
+    <h2 class="display">We publish what we learn, including the failures.</h2>
+    <p class="sub">Workflow teardowns, honest post-mortems, and the odd rant about per-task pricing. Pick your channel.</p>
+
+    <div class="dock-outer">
+      <div class="dock" id="socialDock">
+        <a class="dock-item" data-brand="whatsapp" href="https://wa.me/917982881739" aria-label="WhatsApp">
+          <span class="lbl">WhatsApp</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.23-.64.08-.3-.15-1.26-.46-2.39-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.2-.25-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35m-5.42 7.4a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.8 11.8 0 0 0-3.48-8.41"/></svg>
+        </a>
+        <a class="dock-item" data-brand="linkedin" href="https://www.linkedin.com/company/agenticaiautomation/" aria-label="LinkedIn">
+          <span class="lbl">LinkedIn</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+        <a class="dock-item" data-brand="x" href="https://x.com/AgenticAIGlobal" aria-label="X">
+          <span class="lbl">X</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93zm-1.29 19.49h2.04L6.49 3.24H4.3z"/></svg>
+        </a>
+        <a class="dock-item" data-brand="youtube" href="https://youtube.com/@agenticaiautomation" aria-label="YouTube">
+          <span class="lbl">YouTube</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81ZM9.55 15.57V8.43L15.82 12z"/></svg>
+        </a>
+        <a class="dock-item" data-brand="instagram" href="https://www.instagram.com/agenticaiautomationofficial/" aria-label="Instagram">
+          <span class="lbl">Instagram</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.71-2.13 1.38S.93 3.35.63 4.14c-.3.76-.5 1.64-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.71 1.46 1.38 2.13s1.34 1.08 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.71 2.13-1.38s1.08-1.34 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.71-1.46-1.38-2.13S20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0m0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32m0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0"/></svg>
+        </a>
+        <a class="dock-item" data-brand="facebook" href="https://www.facebook.com/BestAgenticAIAutomationOfficial" aria-label="Facebook">
+          <span class="lbl">Facebook</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07"/></svg>
+        </a>
+        <a class="dock-item" data-brand="pinterest" href="https://www.pinterest.com/agenticaiautomation/" aria-label="Pinterest">
+          <span class="lbl">Pinterest</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.43 7.62 11.18-.11-.95-.2-2.41.04-3.45.22-.94 1.4-5.96 1.4-5.96s-.36-.72-.36-1.78c0-1.67.97-2.91 2.17-2.91 1.02 0 1.52.77 1.52 1.69 0 1.03-.66 2.57-1 4-.28 1.19.6 2.16 1.77 2.16 2.12 0 3.76-2.24 3.76-5.47 0-2.86-2.06-4.86-5-4.86-3.41 0-5.41 2.56-5.41 5.2 0 1.03.4 2.13.89 2.73.1.12.11.22.08.34-.09.38-.29 1.19-.33 1.35-.05.22-.17.27-.4.16-1.5-.7-2.43-2.89-2.43-4.65 0-3.79 2.75-7.27 7.93-7.27 4.16 0 7.4 2.97 7.4 6.93 0 4.14-2.61 7.47-6.23 7.47-1.22 0-2.36-.63-2.75-1.38l-.75 2.85c-.27 1.04-1 2.35-1.49 3.15C9.57 23.81 10.76 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0"/></svg>
+        </a>
+        <a class="dock-item" data-brand="reddit" href="https://www.reddit.com/user/agenticaiautomation/" aria-label="Reddit">
+          <span class="lbl">Reddit</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <circle cx="2.9" cy="12.2" r="2.4"/><circle cx="21.1" cy="12.2" r="2.4"/><circle cx="17.3" cy="4.3" r="2"/>
+            <path d="m16.15 5.75.72 1.28-4.25 2.4-.72-1.28z"/>
+            <path fill-rule="evenodd" d="M12 7.6c-4.97 0-9 2.94-9 6.55S7.03 20.7 12 20.7s9-2.94 9-6.55-4.03-6.55-9-6.55m-2.62 5a1.55 1.55 0 1 1 0 3.1 1.55 1.55 0 0 1 0-3.1m5.24 0a1.55 1.55 0 1 1 0 3.1 1.55 1.55 0 0 1 0-3.1"/>
+          </svg>
+        </a>
+        <a class="dock-item" data-brand="tumblr" href="https://www.tumblr.com/agenticaiautomation" aria-label="Tumblr">
+          <span class="lbl">Tumblr</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.56 24c-5.09 0-7.03-3.76-7.03-6.41V9.75H5.12V6.65c3.63-1.31 4.51-4.6 4.71-6.47.01-.13.11-.18.17-.18h3.52v6.11h4.8v3.64h-4.82v7.47c.02 1 .38 2.37 2.21 2.37h.09c.63-.02 1.49-.2 1.94-.42l1.15 3.43c-.43.63-2.4 1.37-4.15 1.4z"/></svg>
+        </a>
+        <a class="dock-item" data-brand="email" href="mailto:Contact@agenticAiAutomation.co" aria-label="Email">
+          <span class="lbl">Email</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6.5 9 6.5 9-6.5"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="dock-contact">
+      <a href="mailto:Contact@agenticAiAutomation.co"><span>Email</span><b>Contact@agenticAiAutomation.co</b></a>
+      <a href="https://wa.me/917982881739"><span>WhatsApp</span><b>+91 79828 81739</b></a>
+      <p><span>Office</span><b>Faridabad, Haryana, India</b></p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SOURCES ================= -->
+<div class="sources">
+  <div class="wrap">
+    <h2 class="src-h">Sources for every figure on this page</h2>
+    <ol>
+      <li id="s1">MIT Project NANDA, <em>The GenAI Divide: State of AI in Business 2025</em> — 95% of generative-AI pilots showed no measurable P&amp;L return. <a href="https://virtualizationreview.com/articles/2025/08/19/mit-report-finds-most-ai-business-investments-fail-reveals-genai-divide.aspx">Coverage</a></li>
+      <li id="s2">S&amp;P Global Market Intelligence, 2025, n=1,000+ — 42% of businesses scrapped most AI initiatives, up from 17% in 2024. <a href="https://www.ciodive.com/news/AI-project-fail-data-SPGlobal/742590/">CIO Dive</a></li>
+      <li id="s3">EY, <em>Get Ready For Robots</em> — "we have seen as many as 30 to 50% of initial RPA projects fail." <a href="https://eyfs.ie/wp-content/uploads/2016/11/ey-get-ready-for-robots.pdf">PDF</a></li>
+      <li id="s4">Gartner, survey of 1,120 executives — 56% report high regret over their largest tech purchase in the last two years. <a href="https://www.theregister.com/2022/07/15/buyers_remose_it_departments/">Coverage</a></li>
+      <li id="s5">Oldroyd, McElheran &amp; Elkington, <em>The Short Life of Online Sales Leads</em>, Harvard Business Review, 2011 — 2,241 US companies audited; average first response 42 hours; 23% never responded. <a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads">HBR</a></li>
+      <li id="s6">Analysis of the "98% open rate" claim, which originates in vendor marketing with no published methodology; operator data across 40 campaigns puts real read rates at roughly 60–94% depending on list quality. <a href="https://www.skolbot.ai/en-US/blog/whatsapp-98-percent-open-rate-myth">Analysis</a></li>
+      <li id="s7">Meta, WhatsApp Business Platform pricing — per-delivered-message billing since 1 July 2025; rates vary by country; India marketing rate increase effective 1 January 2026. <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing">Meta docs</a></li>
+      <li id="s8">Randomised trial, 54,066 visits across 25 primary-care clinics — no-show rate 4.4% with two reminders vs 5.3–5.8% with one (<em>P</em>&lt;.001). <a href="https://www.ajmc.com/view/optimizing-number-and-timing-of-appointment-reminders-a-randomized-trial">AJMC</a></li>
+      <li id="s9">QuestionPro for Parseur, July 2025, n=500 US professionals — 9+ hours per week on manual data transfer; ~60% report burnout from repetitive data tasks. <a href="https://www.prnewswire.com/news-releases/survey-manual-data-entry-costs-american-companies-more-than-28-000-per-employee-each-year-302516867.html">Release</a></li>
+      <li id="s10"><em>Moffatt v. Air Canada</em>, BC Civil Resolution Tribunal, 19 February 2024 — airline held responsible for information its chatbot provided. <a href="https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416">CBC</a></li>
+      <li id="s11">Deloitte Global Robotics Survey, 400 firms — 63% did not meet RPA delivery deadlines. <a href="https://www.forbes.com/sites/cognitiveworld/2018/12/02/the-big-rpa-bubble/">Forbes</a></li>
     </ol>
   </div>
-</section>
+</div>
 
-<section class="section section-tint" aria-labelledby="proof-heading">
-  <div class="container container-narrow">
-    <span class="eyebrow">Proof</span>
-    <h2 id="proof-heading">We would rather show you one real deployment than ten logos</h2>
-    <p style="margin-top: var(--space-md)">
-      Case studies on this site name the client, state the measurement method, and
-      are published only with written sign-off. That means there are fewer of them
-      than you will see elsewhere. It also means the numbers are real, and you can
-      call the client and ask.
-    </p>
-    <p style="margin-top: var(--space-lg)">
-      <a href="/case-studies" class="btn btn-secondary">Read the case studies</a>
-    </p>
-  </div>
-</section>
+</main>
 
-{{ m.faq(faqs) }}
-
-<section class="section section-rule" aria-labelledby="cta-heading">
-  <div class="container container-narrow">
-    <h2 id="cta-heading">Start with the audit</h2>
-    <p style="margin-top: var(--space-md)">
-      Forty-five minutes on one process you already know is broken. You get a
-      written scope and a cost range at the end of it, whether or not you hire us.
-      Prefer email or WhatsApp? <a href="/contact">All three ways to reach us</a>
-      are on the contact page, and <a href="/about">who you would be working with</a>
-      is on the about page.
-    </p>
-    <div class="btn-row" style="margin-top: var(--space-lg)">
-      <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">
-        Book the audit
-      </a>
-      <a href="https://wa.me/{{ wa }}" class="btn btn-secondary" target="_blank" rel="noopener">
-        Ask a question on WhatsApp
-      </a>
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span class="name">Agentic AI Automation<span>faridabad &middot; india</span></span></a>
+        <p class="fdesc">AI agents, WhatsApp automation, n8n, RPA and document processing. One process, one price, one date &mdash; and the code is yours.</p>
+        <p class="fnudge">No case studies published yet &mdash; that is deliberate. <a href="/case-studies">See why.</a></p>
+        <ul class="fsocials" aria-label="Agentic AI Automation on social platforms">
+        <li><a class="fsocial" href="https://www.linkedin.com/company/agenticaiautomation/" rel="me noopener" target="_blank" aria-label="LinkedIn" data-brand="linkedin"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></li>
+        <li><a class="fsocial" href="https://x.com/AgenticAIGlobal" rel="me noopener" target="_blank" aria-label="X" data-brand="x"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93zm-1.29 19.49h2.04L6.49 3.24H4.3z"/></svg></a></li>
+        <li><a class="fsocial" href="https://youtube.com/@agenticaiautomation" rel="me noopener" target="_blank" aria-label="YouTube" data-brand="youtube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81ZM9.55 15.57V8.43L15.82 12z"/></svg></a></li>
+        <li><a class="fsocial" href="https://www.instagram.com/agenticaiautomationofficial/" rel="me noopener" target="_blank" aria-label="Instagram" data-brand="instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.71-2.13 1.38S.93 3.35.63 4.14c-.3.76-.5 1.64-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.71 1.46 1.38 2.13s1.34 1.08 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.71 2.13-1.38s1.08-1.34 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.71-1.46-1.38-2.13S20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0m0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32m0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0"/></svg></a></li>
+        <li><a class="fsocial" href="https://www.facebook.com/BestAgenticAIAutomationOfficial" rel="me noopener" target="_blank" aria-label="Facebook" data-brand="facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07"/></svg></a></li>
+        <li><a class="fsocial" href="https://www.pinterest.com/agenticaiautomation/" rel="me noopener" target="_blank" aria-label="Pinterest" data-brand="pinterest"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.43 7.62 11.18-.11-.95-.2-2.41.04-3.45.22-.94 1.4-5.96 1.4-5.96s-.36-.72-.36-1.78c0-1.67.97-2.91 2.17-2.91 1.02 0 1.52.77 1.52 1.69 0 1.03-.66 2.57-1 4-.28 1.19.6 2.16 1.77 2.16 2.12 0 3.76-2.24 3.76-5.47 0-2.86-2.06-4.86-5-4.86-3.41 0-5.41 2.56-5.41 5.2 0 1.03.4 2.13.89 2.73.1.12.11.22.08.34-.09.38-.29 1.19-.33 1.35-.05.22-.17.27-.4.16-1.5-.7-2.43-2.89-2.43-4.65 0-3.79 2.75-7.27 7.93-7.27 4.16 0 7.4 2.97 7.4 6.93 0 4.14-2.61 7.47-6.23 7.47-1.22 0-2.36-.63-2.75-1.38l-.75 2.85c-.27 1.04-1 2.35-1.49 3.15C9.57 23.81 10.76 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0"/></svg></a></li>
+        <li><a class="fsocial" href="https://www.reddit.com/user/agenticaiautomation/" rel="me noopener" target="_blank" aria-label="Reddit" data-brand="reddit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <circle cx="2.9" cy="12.2" r="2.4"/><circle cx="21.1" cy="12.2" r="2.4"/><circle cx="17.3" cy="4.3" r="2"/> <path d="m16.15 5.75.72 1.28-4.25 2.4-.72-1.28z"/> <path fill-rule="evenodd" d="M12 7.6c-4.97 0-9 2.94-9 6.55S7.03 20.7 12 20.7s9-2.94 9-6.55-4.03-6.55-9-6.55m-2.62 5a1.55 1.55 0 1 1 0 3.1 1.55 1.55 0 0 1 0-3.1m5.24 0a1.55 1.55 0 1 1 0 3.1 1.55 1.55 0 0 1 0-3.1"/> </svg></a></li>
+        <li><a class="fsocial" href="https://www.tumblr.com/agenticaiautomation" rel="me noopener" target="_blank" aria-label="Tumblr" data-brand="tumblr"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.56 24c-5.09 0-7.03-3.76-7.03-6.41V9.75H5.12V6.65c3.63-1.31 4.51-4.6 4.71-6.47.01-.13.11-.18.17-.18h3.52v6.11h4.8v3.64h-4.82v7.47c.02 1 .38 2.37 2.21 2.37h.09c.63-.02 1.49-.2 1.94-.42l1.15 3.43c-.43.63-2.4 1.37-4.15 1.4z"/></svg></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/services#whatsapp">WhatsApp AI automation</a></li>
+          <li><a href="/services#agents">AI agent development</a></li>
+          <li><a href="/services#n8n">n8n workflow builds</a></li>
+          <li><a href="/services#rpa">UiPath &amp; RPA</a></li>
+          <li><a href="/services#documents">Document processing</a></li>
+          <li><a href="/services#migration">RPA to AI migration</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li><a href="/case-studies">Case studies</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy policy</a></li>
+          <li><a href="/terms">Terms of service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get in touch</h3>
+        <ul>
+          <li><a href="https://wa.me/917982881739">WhatsApp +91 79828 81739</a></li>
+          <li><a href="tel:+917982881739">Call +91 79828 81739</a></li>
+          <li><a href="mailto:Contact@agenticAiAutomation.co">Contact@agenticAiAutomation.co</a></li>
+          <li><a href="https://calendly.com/agenticaiautomation">Book the free audit</a></li>
+        </ul>
+        <p class="fhours"><span>Working hours</span>Mon–Sat, 10:00–19:00 IST</p>
+      </div>
+    </div>
+    <p class="fmarkets">Serving India · United Kingdom · United States · UAE · Singapore · Saudi Arabia</p>
+    <div class="fbot">
+      <address class="fnap">Agentic AI Automation &middot; Faridabad, Haryana, India &middot; +91 79828 81739</address>
+      <span class="flegal"><a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/sitemap.xml">Sitemap</a></span>
+      <span>Built with agents. Reviewed by humans.</span>
     </div>
   </div>
-</section>
+</footer>
 
-{% endblock %}
+<div class="wa-shutter" id="waShutter">
+  <div class="wa-panel" id="waPanel">
+    <div class="slats"></div>
+    <div class="wa-panel-inner">
+      <h4>Chat with an agent</h4>
+      <p class="sub">Online now · replies in seconds</p>
+      <div class="wa-chips">
+        <a href="https://wa.me/917982881739?text=Hi%20—%20I'd%20like%20to%20book%20the%20free%2045-minute%20audit.">Book the free 45-min audit</a>
+        <a href="https://wa.me/917982881739?text=Hi%20—%20I'm%20interested%20in%20WhatsApp%20automation%20for%20my%20business.">Ask about WhatsApp automation</a>
+        <a href="https://wa.me/917982881739?text=Hi%20—%20could%20you%20send%20pricing%20for%20a%20single%20process%20build%3F">Get pricing for one process</a>
+      </div>
+      <a class="wa-cta" href="https://wa.me/917982881739">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.23-.64.08-.3-.15-1.26-.46-2.39-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.2-.25-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35m-5.42 7.4a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.8 11.8 0 0 0-3.48-8.41"/></svg>
+        Open WhatsApp
+      </a>
+      <p class="wa-num">+91 79828 81739</p>
+    </div>
+  </div>
+
+  <button class="wa-handle" id="waHandle" type="button" aria-expanded="false" aria-controls="waPanel">
+    <span class="grip"></span>
+    <span class="wa-ic">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.23-.64.08-.3-.15-1.26-.46-2.39-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.2-.25-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35m-5.42 7.4a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.8 11.8 0 0 0-3.48-8.41"/></svg>
+    </span>
+    <span class="wa-tag">
+      <span class="wa-tag-track">
+        <span>Message us — an agent answers in seconds</span>
+        <span>Free 45-minute audit, no deck</span>
+        <span>Nights, weekends, festival holidays</span>
+        <span>Message us — an agent answers in seconds</span>
+        <span>Free 45-minute audit, no deck</span>
+        <span>Nights, weekends, festival holidays</span>
+      </span>
+    </span>
+    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,14.5 12,8.5 18,14.5"/></svg>
+  </button>
+</div>
+
+<script src="/static/assets/js/site.js" defer></script>
+</body>
+</html>

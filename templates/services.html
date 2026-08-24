@@ -1,109 +1,677 @@
-{% extends "base.html" %}
-{% import "_macros.html" as m %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0908">
 
-{% block schema %}
-{{ m.breadcrumb_schema(crumbs, url) }}
-{# One Service node per offering. Prices are ranges because that is what they
-   genuinely are — a single made-up figure would rank the same and mislead. #}
-<script type="application/ld+json">
-{
+  <title>WhatsApp AI Automation, n8n & RPA Services | Prices Listed</title>
+  <meta name="description" content="Six automation services with published prices and timelines — and who each one is wrong for. WhatsApp agents from ₹50,000, delivered in 2–3 weeks.">
+  <link rel="canonical" href="https://agenticaiautomation.co/services">
+
+  <meta name="google-site-verification" content="e4Vkf6NJ7MihEXOeeDO5q8NiCbvjPqTCLhRdEnuW4pw">
+  <meta name="msvalidate.01" content="440E57D5A2CF8BB74B78F97868A1AEDF">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Agentic AI Automation">
+  <meta property="og:title" content="WhatsApp AI Automation, n8n & RPA Services | Prices Listed">
+  <meta property="og:description" content="Six automation services with published prices and timelines — and who each one is wrong for. WhatsApp agents from ₹50,000, delivered in 2–3 weeks.">
+  <meta property="og:url" content="https://agenticaiautomation.co/services">
+  <meta property="og:image" content="https://agenticaiautomation.co/static/images/og-default-v1.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Six automation services with published prices and timelines">
+  <meta property="og:locale" content="en_IN">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@AgenticAIGlobal">
+  <meta name="twitter:title" content="WhatsApp AI Automation, n8n & RPA Services | Prices Listed">
+  <meta name="twitter:description" content="Six automation services with published prices and timelines — and who each one is wrong for. WhatsApp agents from ₹50,000, delivered in 2–3 weeks.">
+  <meta name="twitter:image" content="https://agenticaiautomation.co/static/images/og-default-v1.png">
+
+  <link rel="icon" href="/static/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/static/images/favicon.png" type="image/png" sizes="132x132">
+  <link rel="apple-touch-icon" href="/static/images/favicon.png">
+  <link rel="manifest" href="/static/assets/site.webmanifest">
+
+  <!-- Both faces are preloaded deliberately. Dropping them frees bandwidth but
+       lets the fallback paint first and swap late, which measured as 0.142 CLS
+       and Performance 91. With them: CLS 0, Performance 96. -->
+  <link rel="preload" href="/static/assets/fonts/archivo-wght-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/assets/fonts/plexsans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets are render-blocking on purpose.
+
+       They were previously inlined-critical + preload/onload, which is faster on
+       paper. Measured live it was not: the deferred sheet landed ~200ms after
+       first paint and changed below-the-fold layout, shifting content by 0.179
+       CLS on /case-studies. On localhost the sheet arrived in ~1ms so the shift
+       never appeared - this only reproduces over a real network.
+
+       Blocking costs roughly 240ms of FCP while the CSS ships uncompressed
+       (gzip_types is off globally on this box). Enabling gzip for text/css
+       removes most of that; see deploy/nginx-gzip.conf.suggested. -->
+  <link rel="stylesheet" href="/static/assets/css/tokens.css">
+  <link rel="stylesheet" href="/static/assets/css/base.css">
+  <link rel="stylesheet" href="/static/assets/css/components.css">
+
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
-    {%- for s in services %}
+    {
+      "@type": "Organization",
+      "@id": "https://agenticaiautomation.co/#organization",
+      "name": "Agentic AI Automation",
+      "url": "https://agenticaiautomation.co/",
+      "logo": "https://agenticaiautomation.co/static/images/og-default-v1.png",
+      "description": "Automation studio building WhatsApp AI agents, n8n workflows, UiPath RPA and document processing for businesses in India, the UK, the US, the UAE, Singapore and Saudi Arabia.",
+      "sameAs": [
+        "https://www.linkedin.com/company/agenticaiautomation/",
+        "https://x.com/AgenticAIGlobal",
+        "https://youtube.com/@agenticaiautomation",
+        "https://www.facebook.com/BestAgenticAIAutomationOfficial",
+        "https://www.instagram.com/agenticaiautomationofficial/",
+        "https://www.pinterest.com/agenticaiautomation/",
+        "https://www.reddit.com/user/agenticaiautomation/",
+        "https://www.tumblr.com/agenticaiautomation"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+917982881739",
+          "contactType": "sales",
+          "email": "Contact@agenticAiAutomation.co",
+          "availableLanguage": [
+            "en",
+            "hi"
+          ],
+          "areaServed": [
+            "IN",
+            "GB",
+            "US",
+            "AE",
+            "SG",
+            "SA"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://agenticaiautomation.co/#website",
+      "name": "Agentic AI Automation",
+      "url": "https://agenticaiautomation.co/",
+      "publisher": {
+        "@id": "https://agenticaiautomation.co/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://agenticaiautomation.co/#localbusiness",
+      "name": "Agentic AI Automation",
+      "url": "https://agenticaiautomation.co/",
+      "image": "https://agenticaiautomation.co/static/images/og-default-v1.png",
+      "telephone": "+917982881739",
+      "email": "Contact@agenticAiAutomation.co",
+      "priceRange": "₹₹",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Faridabad",
+        "addressRegion": "Haryana",
+        "addressCountry": "IN"
+      },
+      "areaServed": [
+        "IN",
+        "GB",
+        "US",
+        "AE",
+        "SG",
+        "SA"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "10:00",
+          "closes": "19:00"
+        }
+      ],
+      "parentOrganization": {
+        "@id": "https://agenticaiautomation.co/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://agenticaiautomation.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who pays for the AI model usage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do, directly to the provider. You use your own AI API key and receive your own bill — we take no margin on tokens and we do not resell usage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns the code when the project ends?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do. Code goes into your repository, on your cloud, with your credentials, from day one — not at handover."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Whose WhatsApp number and Meta account are they?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yours. The WhatsApp number and the Meta Business Manager stay in your name throughout, so nothing is stranded with us if you stop working with us."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after handover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Documentation and a runbook are standard deliverables, and thirty days of defect fixing is included. Ongoing support is optional by design, never a dependency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will you ever tell us not to automate something?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and we turn work down when maintenance would cost more than the saving. You get that answer on the free audit call rather than after the invoice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the n8n instance metered per task?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. We self-host n8n on your infrastructure, so there is no per-task metering from us and your bill does not climb with volume."
+          }
+        }
+      ]
+    },
     {
       "@type": "Service",
-      "@id": "{{ url }}/services#{{ s.id }}",
-      "name": {{ s.name|tojson }},
-      "serviceType": {{ s.name|tojson }},
-      "description": {{ s.summary|tojson }},
-      "url": "{{ url }}/services#{{ s.id }}",
-      "provider": {"@id": "{{ url }}/#organization"},
-      "areaServed": ["IN", "GB", "US", "AE", "SG"],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Deliverables",
-        "itemListElement": [
-          {%- for item in s.includes %}
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": {{ item|tojson }}}}{{ "," if not loop.last }}
-          {%- endfor %}
-        ]
+      "name": "WhatsApp AI Automation",
+      "description": "A WhatsApp number that answers, qualifies and books without a person reading every message first.",
+      "serviceType": "WhatsApp AI Automation",
+      "provider": {
+        "@id": "https://agenticaiautomation.co/#organization"
+      },
+      "areaServed": [
+        "IN",
+        "GB",
+        "US",
+        "AE",
+        "SG",
+        "SA"
+      ],
+      "url": "https://agenticaiautomation.co/services#whatsapp",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "INR",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": 50000,
+          "maxPrice": 150000
+        }
       }
-    }{{ "," if not loop.last }}
-    {%- endfor %}
+    },
+    {
+      "@type": "Service",
+      "name": "AI Agent Development",
+      "description": "Agents scoped to one job with defined inputs, a defined output, and a human checkpoint where the cost of being wrong is high.",
+      "serviceType": "AI Agent Development",
+      "provider": {
+        "@id": "https://agenticaiautomation.co/#organization"
+      },
+      "areaServed": [
+        "IN",
+        "GB",
+        "US",
+        "AE",
+        "SG",
+        "SA"
+      ],
+      "url": "https://agenticaiautomation.co/services#agents",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "INR",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": 150000,
+          "maxPrice": 500000
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "n8n Workflow Builds",
+      "description": "Self-hosted on your infrastructure, versioned in your repository.",
+      "serviceType": "n8n Workflow Builds",
+      "provider": {
+        "@id": "https://agenticaiautomation.co/#organization"
+      },
+      "areaServed": [
+        "IN",
+        "GB",
+        "US",
+        "AE",
+        "SG",
+        "SA"
+      ],
+      "url": "https://agenticaiautomation.co/services#n8n",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "INR",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": 40000,
+          "maxPrice": 200000
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "UiPath & RPA",
+      "description": "New bots where the rules are stable, and rescue work on bots that keep breaking when a UI changes.",
+      "serviceType": "UiPath & RPA",
+      "provider": {
+        "@id": "https://agenticaiautomation.co/#organization"
+      },
+      "areaServed": [
+        "IN",
+        "GB",
+        "US",
+        "AE",
+        "SG",
+        "SA"
+      ],
+      "url": "https://agenticaiautomation.co/services#rpa",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "INR",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": 100000,
+          "maxPrice": 600000
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Document Processing",
+      "description": "Invoices, claims, KYC packets and contracts turned into structured data — with a confidence threshold and a review queue for everything below it.",
+      "serviceType": "Document Processing",
+      "provider": {
+        "@id": "https://agenticaiautomation.co/#organization"
+      },
+      "areaServed": [
+        "IN",
+        "GB",
+        "US",
+        "AE",
+        "SG",
+        "SA"
+      ],
+      "url": "https://agenticaiautomation.co/services#documents",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "INR",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": 100000,
+          "maxPrice": 400000
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "RPA to AI Migration",
+      "description": "Moving the brittle parts of an existing estate to AI models while leaving the parts that work alone.",
+      "serviceType": "RPA to AI Migration",
+      "provider": {
+        "@id": "https://agenticaiautomation.co/#organization"
+      },
+      "areaServed": [
+        "IN",
+        "GB",
+        "US",
+        "AE",
+        "SG",
+        "SA"
+      ],
+      "url": "https://agenticaiautomation.co/services#migration",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "INR",
+        "description": "Quoted after audit"
+      }
+    }
   ]
-}
-</script>
-{% endblock %}
+}</script>
+</head>
+<body class="page-services" data-market="india">
 
-{% block content %}
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true">A</span>
+      <span class="name">Agentic AI Automation<span>faridabad &middot; india</span></span>
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="/services" aria-current="page">Services</a>
+      <a href="/industries">Industries</a>
+      <a href="/case-studies">Case studies</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <a href="https://calendly.com/agenticaiautomation" class="btn btn-hot">Free 45-min audit</a>
+  </div>
+</header>
 
-<div class="container">{{ m.breadcrumbs(crumbs) }}</div>
+<main id="main">
 
-<section class="section" style="padding-top: var(--space-md)">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Services</span>
-      <h1>Six things, and what each one actually costs</h1>
-      <p class="lede" style="margin-top: var(--space-md)">
-        Every service below lists what is included, how long it takes, what it
-        costs, and who it is wrong for. The last one matters most — a bad fit
-        wastes your money and our reputation.
-      </p>
-      <p style="margin-top: var(--space-md)">
-        Prefer to start from your sector? The
-        <a href="/industries">industry guide</a> names the process worth automating
-        first in healthcare, e-commerce, legal, manufacturing and logistics. For how
-        we scope and hand over, read <a href="/about">how we work</a>.
-      </p>
-    </div>
+<div class="wrap">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Home</a> <span class="sep" aria-hidden="true">/</span></li>
+      <li><span aria-current="page">Services</span></li>
+    </ol>
+  </nav>
+</div>
 
-    <div class="stack-xl">
-      {% for s in services %}
-      <article id="{{ s.id }}" class="section-rule" style="padding-top: var(--space-xl)">
-        <h2>{{ s.name }}</h2>
-        <p class="lede" style="margin-top: var(--space-sm)">{{ s.summary }}</p>
+<section class="page-head">
+  <div class="wrap">
+    <p class="kicker"><span class="pip"></span>What we build</p>
+    <h1 class="display">Six services. Every one with a price, a date, and a list of who it is wrong for.</h1>
+    <p class="lede">We scope narrow on purpose. If a process is unstable, or an off-the-shelf tool already covers it, we say so on the audit call rather than after the invoice. Every engagement is fixed price against a written scope, delivered into your own repository.</p>
+  </div>
+</section>
 
-        <div class="grid-2" style="margin-top: var(--space-lg)">
-          <div>
-            <h3 style="font-size: var(--step-1)">What is included</h3>
-            <ul class="footer-links" role="list" style="margin-top: var(--space-sm)">
-              {% for item in s.includes %}
-              <li>{{ item }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-
-          <div>
-            <div class="table-scroll">
-              <table class="result-table">
-                <tbody>
-                  <tr><th scope="row">Timeline</th><td>{{ s.timeline }}</td></tr>
-                  <tr><th scope="row">Typical cost</th><td class="numeric">{{ s.price }}</td></tr>
-                  <tr><th scope="row">Good fit</th><td>{{ s.good_fit }}</td></tr>
-                  <tr><th scope="row">Not a fit</th><td>{{ s.bad_fit }}</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+<section>
+  <div class="wrap">
+      <article class="svc-detail rv" id="whatsapp">
+        <h2 class="display">WhatsApp AI Automation</h2>
+        <p class="lede">A WhatsApp number that answers, qualifies and books without a person reading every message first.</p>
+        <h3 class="sr-head">What is included</h3>
+        <ul class="inc">
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Business API provisioning and Meta verification</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Conversation design reviewed against your actual message history</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Human handoff with full context when the agent is unsure</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>CRM write-back</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Two weeks of post-launch tuning</span></li>
+        </ul>
+        <div class="facts">
+          <div><span>Price</span><b>₹50,000 – ₹1.5L</b></div>
+          <div><span>Timeline</span><b>2–3 weeks</b></div>
+          <div><span>Next step</span><b><a href="https://calendly.com/agenticaiautomation">Free 45-min audit</a></b></div>
         </div>
+        <p class="wrongfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span><b>Wrong for you if</b> a human has to calculate a quote before any useful reply can be sent.</span></p>
       </article>
-      {% endfor %}
-    </div>
 
-    <div class="section-rule" style="margin-top: var(--space-2xl); padding-top: var(--space-xl)">
-      <h2>Not sure which of these you need?</h2>
-      <p style="margin-top: var(--space-md)">
-        That is what the audit is for. Bring one process that is causing pain and
-        we will tell you which of the above applies, or that none of them do. You
-        can also <a href="/contact">reach us on WhatsApp or email</a> if a quick
-        question is all you need.
-      </p>
-      <div class="btn-row" style="margin-top: var(--space-lg)">
-        <a href="{{ calendly }}" class="btn btn-primary" target="_blank" rel="noopener">Book the audit</a>
-        <a href="/case-studies" class="btn btn-secondary">See past work</a>
-      </div>
+      <article class="svc-detail rv" id="agents">
+        <h2 class="display">AI Agent Development</h2>
+        <p class="lede">Agents scoped to one job with defined inputs, a defined output, and a human checkpoint where the cost of being wrong is high.</p>
+        <h3 class="sr-head">What is included</h3>
+        <ul class="inc">
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Process mapping with the people currently doing the task</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Model selection and prompting against your own data</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Confidence thresholds and refusal paths</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Audit logging</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>An evaluation dataset you keep</span></li>
+        </ul>
+        <div class="facts">
+          <div><span>Price</span><b>₹1.5L – ₹5L</b></div>
+          <div><span>Timeline</span><b>4–6 weeks</b></div>
+          <div><span>Next step</span><b><a href="https://calendly.com/agenticaiautomation">Free 45-min audit</a></b></div>
+        </div>
+        <p class="wrongfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span><b>Wrong for you if</b> the process has no written rules and no history of past decisions to learn from.</span></p>
+      </article>
+
+      <article class="svc-detail rv" id="n8n">
+        <h2 class="display">n8n Workflow Builds</h2>
+        <p class="lede">Self-hosted on your infrastructure, versioned in your repository.</p>
+        <h3 class="sr-head">What is included</h3>
+        <ul class="inc">
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Workflows exported as JSON to Git</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Error handling that identifies the exact step that failed</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Credentials managed separately from the workflows</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>A runbook documenting the failure modes for each one</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>No per-task metering from us</span></li>
+        </ul>
+        <div class="facts">
+          <div><span>Price</span><b>₹40,000 – ₹2L</b></div>
+          <div><span>Timeline</span><b>1–3 weeks</b></div>
+          <div><span>Next step</span><b><a href="https://calendly.com/agenticaiautomation">Free 45-min audit</a></b></div>
+        </div>
+        <p class="wrongfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span><b>Wrong for you if</b> it is a simple two-step integration — a stock SaaS connector is cheaper.</span></p>
+      </article>
+
+      <article class="svc-detail rv" id="rpa">
+        <h2 class="display">UiPath &amp; RPA</h2>
+        <p class="lede">New bots where the rules are stable, and rescue work on bots that keep breaking when a UI changes.</p>
+        <h3 class="sr-head">What is included</h3>
+        <ul class="inc">
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Process discovery and feasibility assessment</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Attended or unattended development in UiPath or Power Automate</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Selector hardening</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Orchestrator setup with exception queues</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>A handover that lists the known issues instead of hiding them</span></li>
+        </ul>
+        <div class="facts">
+          <div><span>Price</span><b>₹1L – ₹6L</b></div>
+          <div><span>Timeline</span><b>3–8 weeks</b></div>
+          <div><span>Next step</span><b><a href="https://calendly.com/agenticaiautomation">Free 45-min audit</a></b></div>
+        </div>
+        <p class="wrongfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span><b>Wrong for you if</b> the process changes monthly — maintenance will cost more than it saves.</span></p>
+      </article>
+
+      <article class="svc-detail rv" id="documents">
+        <h2 class="display">Document Processing</h2>
+        <p class="lede">Invoices, claims, KYC packets and contracts turned into structured data — with a confidence threshold and a review queue for everything below it.</p>
+        <h3 class="sr-head">What is included</h3>
+        <ul class="inc">
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Extraction tuned on your documents rather than a demo dataset</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Per-field confidence scoring</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Validation against master data before anything is written</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Accuracy measured on a held-out set</span></li>
+        </ul>
+        <div class="facts">
+          <div><span>Price</span><b>₹1L – ₹4L</b></div>
+          <div><span>Timeline</span><b>3–6 weeks</b></div>
+          <div><span>Next step</span><b><a href="https://calendly.com/agenticaiautomation">Free 45-min audit</a></b></div>
+        </div>
+        <p class="wrongfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span><b>Wrong for you if</b> the data already arrives as a feed — an API, EDI or database export.</span></p>
+      </article>
+
+      <article class="svc-detail rv" id="migration">
+        <h2 class="display">RPA to AI Migration</h2>
+        <p class="lede">Moving the brittle parts of an existing estate to AI models while leaving the parts that work alone.</p>
+        <h3 class="sr-head">What is included</h3>
+        <ul class="inc">
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Audit ranked by maintenance cost</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>A keep / migrate / retire recommendation with reasoning for every bot</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>One bot at a time</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>Parallel running until parity</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8.2 6.4,12 13,4.2"/></svg><span>A licence reduction plan where one applies</span></li>
+        </ul>
+        <div class="facts">
+          <div><span>Price</span><b>Quoted after audit</b></div>
+          <div><span>Timeline</span><b>6–12 weeks</b></div>
+          <div><span>Next step</span><b><a href="https://calendly.com/agenticaiautomation">Free 45-min audit</a></b></div>
+        </div>
+        <p class="wrongfor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3.5" y1="3.5" x2="12.5" y2="12.5"/><line x1="12.5" y1="3.5" x2="3.5" y2="12.5"/></svg><span><b>Wrong for you if</b> you have fewer than five bots and they are working fine.</span></p>
+      </article>
+
+  </div>
+</section>
+
+<section class="stat-band" id="pricing">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>Pricing bands</p>
+      <h2 class="display">What engagements actually cost.</h2>
+      <p>Published because you should not have to sit through a call to find out whether we are in your range.</p>
+    </div>
+    <div class="price-grid rv">
+        <div class="price"><span>One focused process</span><b>₹50,000 – ₹1.5L</b><p>A single process, scoped narrow, quoted at a fixed price with a delivery date in writing before work starts.</p></div>
+        <div class="price"><span>Multi-process department build</span><b>₹2.5L – ₹8L</b><p>Several connected processes across one department. Typical delivery is four weeks per process, sequenced rather than run in parallel.</p></div>
+        <div class="price optional"><span>Ongoing support (optional)</span><b>₹15,000 – ₹40,000/month</b><p>Optional by design. Thirty days of defect fixing is already included in every build, and nothing we ship depends on a retainer to keep running.</p></div>
+    </div>
+    <p class="price-note">Typical delivery is four weeks. Model and messaging usage is billed to you directly by the provider, with <b>no margin taken</b> by us. Every engagement is quoted against one process, one price and one date, written down before work starts.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>Straight answers</p>
+      <h2 class="display">What clients ask before they commit.</h2>
+    </div>
+    <div class="faq rv">
+        <details>
+          <summary>Who pays for the AI model usage?</summary>
+          <p>You do, directly to the provider. You use your own AI API key and receive your own bill — we take no margin on tokens and we do not resell usage.</p>
+        </details>
+        <details>
+          <summary>Who owns the code when the project ends?</summary>
+          <p>You do. Code goes into your repository, on your cloud, with your credentials, from day one — not at handover.</p>
+        </details>
+        <details>
+          <summary>Whose WhatsApp number and Meta account are they?</summary>
+          <p>Yours. The WhatsApp number and the Meta Business Manager stay in your name throughout, so nothing is stranded with us if you stop working with us.</p>
+        </details>
+        <details>
+          <summary>What happens after handover?</summary>
+          <p>Documentation and a runbook are standard deliverables, and thirty days of defect fixing is included. Ongoing support is optional by design, never a dependency.</p>
+        </details>
+        <details>
+          <summary>Will you ever tell us not to automate something?</summary>
+          <p>Yes, and we turn work down when maintenance would cost more than the saving. You get that answer on the free audit call rather than after the invoice.</p>
+        </details>
+        <details>
+          <summary>Is the n8n instance metered per task?</summary>
+          <p>No. We self-host n8n on your infrastructure, so there is no per-task metering from us and your bill does not climb with volume.</p>
+        </details>
     </div>
   </div>
 </section>
 
-{% endblock %}
+<div class="cta">
+  <div class="wrap">
+    <p class="kicker"><span class="pip"></span>Start with one process</p>
+    <h2 class="display">Bring us the job nobody in your team wants to do.</h2>
+    <p>Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.</p>
+    <div class="row">
+      <a href="https://wa.me/917982881739" class="btn btn-dark">WhatsApp +91 79828 81739</a>
+      <a href="https://calendly.com/agenticaiautomation" class="btn btn-dark">Book the audit</a>
+      <a href="/industries" class="btn btn-dark">See it by industry</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span class="name">Agentic AI Automation<span>faridabad &middot; india</span></span></a>
+        <p class="fdesc">AI agents, WhatsApp automation, n8n, RPA and document processing. One process, one price, one date &mdash; and the code is yours.</p>
+        <p class="fnudge">No case studies published yet &mdash; that is deliberate. <a href="/case-studies">See why.</a></p>
+        <ul class="fsocials" aria-label="Agentic AI Automation on social platforms">
+        <li><a class="fsocial" href="https://www.linkedin.com/company/agenticaiautomation/" rel="me noopener" target="_blank" aria-label="LinkedIn" data-brand="linkedin"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></li>
+        <li><a class="fsocial" href="https://x.com/AgenticAIGlobal" rel="me noopener" target="_blank" aria-label="X" data-brand="x"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93zm-1.29 19.49h2.04L6.49 3.24H4.3z"/></svg></a></li>
+        <li><a class="fsocial" href="https://youtube.com/@agenticaiautomation" rel="me noopener" target="_blank" aria-label="YouTube" data-brand="youtube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81ZM9.55 15.57V8.43L15.82 12z"/></svg></a></li>
+        <li><a class="fsocial" href="https://www.instagram.com/agenticaiautomationofficial/" rel="me noopener" target="_blank" aria-label="Instagram" data-brand="instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.71-2.13 1.38S.93 3.35.63 4.14c-.3.76-.5 1.64-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.71 1.46 1.38 2.13s1.34 1.08 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.71 2.13-1.38s1.08-1.34 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.71-1.46-1.38-2.13S20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0m0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32m0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0"/></svg></a></li>
+        <li><a class="fsocial" href="https://www.facebook.com/BestAgenticAIAutomationOfficial" rel="me noopener" target="_blank" aria-label="Facebook" data-brand="facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07"/></svg></a></li>
+        <li><a class="fsocial" href="https://www.pinterest.com/agenticaiautomation/" rel="me noopener" target="_blank" aria-label="Pinterest" data-brand="pinterest"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.43 7.62 11.18-.11-.95-.2-2.41.04-3.45.22-.94 1.4-5.96 1.4-5.96s-.36-.72-.36-1.78c0-1.67.97-2.91 2.17-2.91 1.02 0 1.52.77 1.52 1.69 0 1.03-.66 2.57-1 4-.28 1.19.6 2.16 1.77 2.16 2.12 0 3.76-2.24 3.76-5.47 0-2.86-2.06-4.86-5-4.86-3.41 0-5.41 2.56-5.41 5.2 0 1.03.4 2.13.89 2.73.1.12.11.22.08.34-.09.38-.29 1.19-.33 1.35-.05.22-.17.27-.4.16-1.5-.7-2.43-2.89-2.43-4.65 0-3.79 2.75-7.27 7.93-7.27 4.16 0 7.4 2.97 7.4 6.93 0 4.14-2.61 7.47-6.23 7.47-1.22 0-2.36-.63-2.75-1.38l-.75 2.85c-.27 1.04-1 2.35-1.49 3.15C9.57 23.81 10.76 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0"/></svg></a></li>
+        <li><a class="fsocial" href="https://www.reddit.com/user/agenticaiautomation/" rel="me noopener" target="_blank" aria-label="Reddit" data-brand="reddit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <circle cx="2.9" cy="12.2" r="2.4"/><circle cx="21.1" cy="12.2" r="2.4"/><circle cx="17.3" cy="4.3" r="2"/> <path d="m16.15 5.75.72 1.28-4.25 2.4-.72-1.28z"/> <path fill-rule="evenodd" d="M12 7.6c-4.97 0-9 2.94-9 6.55S7.03 20.7 12 20.7s9-2.94 9-6.55-4.03-6.55-9-6.55m-2.62 5a1.55 1.55 0 1 1 0 3.1 1.55 1.55 0 0 1 0-3.1m5.24 0a1.55 1.55 0 1 1 0 3.1 1.55 1.55 0 0 1 0-3.1"/> </svg></a></li>
+        <li><a class="fsocial" href="https://www.tumblr.com/agenticaiautomation" rel="me noopener" target="_blank" aria-label="Tumblr" data-brand="tumblr"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.56 24c-5.09 0-7.03-3.76-7.03-6.41V9.75H5.12V6.65c3.63-1.31 4.51-4.6 4.71-6.47.01-.13.11-.18.17-.18h3.52v6.11h4.8v3.64h-4.82v7.47c.02 1 .38 2.37 2.21 2.37h.09c.63-.02 1.49-.2 1.94-.42l1.15 3.43c-.43.63-2.4 1.37-4.15 1.4z"/></svg></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/services#whatsapp">WhatsApp AI automation</a></li>
+          <li><a href="/services#agents">AI agent development</a></li>
+          <li><a href="/services#n8n">n8n workflow builds</a></li>
+          <li><a href="/services#rpa">UiPath &amp; RPA</a></li>
+          <li><a href="/services#documents">Document processing</a></li>
+          <li><a href="/services#migration">RPA to AI migration</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li><a href="/case-studies">Case studies</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy policy</a></li>
+          <li><a href="/terms">Terms of service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get in touch</h3>
+        <ul>
+          <li><a href="https://wa.me/917982881739">WhatsApp +91 79828 81739</a></li>
+          <li><a href="tel:+917982881739">Call +91 79828 81739</a></li>
+          <li><a href="mailto:Contact@agenticAiAutomation.co">Contact@agenticAiAutomation.co</a></li>
+          <li><a href="https://calendly.com/agenticaiautomation">Book the free audit</a></li>
+        </ul>
+        <p class="fhours"><span>Working hours</span>Mon–Sat, 10:00–19:00 IST</p>
+      </div>
+    </div>
+    <p class="fmarkets">Serving India · United Kingdom · United States · UAE · Singapore · Saudi Arabia</p>
+    <div class="fbot">
+      <address class="fnap">Agentic AI Automation &middot; Faridabad, Haryana, India &middot; +91 79828 81739</address>
+      <span class="flegal"><a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/sitemap.xml">Sitemap</a></span>
+      <span>Built with agents. Reviewed by humans.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/static/assets/js/site.js" defer></script>
+</body>
+</html>

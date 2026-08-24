@@ -1,0 +1,13 @@
+{
+  "name": "Agentic AI Automation",
+  "short_name": "Agentic AI",
+  "description": "AI agents, WhatsApp automation, n8n, RPA and document processing.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0908",
+  "theme_color": "#0a0908",
+  "icons": [
+    { "src": "/static/assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/static/images/favicon.png", "sizes": "132x132", "type": "image/png" }
+  ]
+}
