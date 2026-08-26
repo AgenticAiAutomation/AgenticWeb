@@ -597,3 +597,104 @@ table.cmp tbody tr:hover td.ours{background:rgba(255,90,0,.1)}
 .flegal a{text-decoration:none}
 .flegal a:hover{color:var(--paper)}
 .fbot{margin-top:20px}
+
+/* ---- blog: index and article (docs/08) ----------------------------------
+   Colour rules for this dark theme, matching .legal above:
+     --paper      #faf7f1  headings and emphasis   ~19:1 on --void
+     --paper-dim  #a99d89  body copy and metadata  ~7.4:1
+     --orange-hi  #ff7d33  links and accents       ~7.7:1
+     --yellow     #ffd400  link hover              ~13:1
+   --ink (#170800) is a near-black meant for text ON bright fills such as the
+   orange button. Using it on a dark surface renders the text invisible; that
+   is what broke the first published article's headings and FAQ summaries. */
+
+.postlist{list-style:none;margin:0;padding:0}
+.postcard{padding:26px 0;border-bottom:1px solid var(--hair)}
+.postcard:last-child{border-bottom:none}
+.postmeta{margin:0;font-family:"IBM Plex Mono","Plex Mono Fallback",monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper-dim)}
+.postmeta .sep{margin:0 7px;opacity:.55}
+.postcard h2{font-family:"Archivo","Archivo Fallback",sans-serif;font-weight:800;font-size:clamp(19px,2.2vw,24px);letter-spacing:-.02em;line-height:1.22;margin:10px 0 0}
+.postcard h2 a{color:var(--paper);text-decoration:none}
+.postcard h2 a:hover{color:var(--orange-hi)}
+.postdesc{margin:10px 0 0;font-size:15px;color:var(--paper-dim);line-height:1.7;max-width:70ch}
+.postmore{margin:12px 0 0;font-size:14px}
+.postmore a{color:var(--orange-hi);text-decoration:underline;text-decoration-color:var(--hair-3);text-underline-offset:3px}
+.postmore a:hover{color:var(--yellow)}
+
+/* ---- article body ---- */
+.posthero{width:100%;height:auto;border-radius:12px;border:1px solid var(--hair);margin:0 0 30px}
+.postbody{max-width:78ch;font-size:16px;line-height:1.75;color:var(--paper-dim)}
+.postbody>*+*{margin-top:16px}
+.postbody p{color:var(--paper-dim)}
+.postbody strong,.postbody b{color:var(--paper);font-weight:600}
+
+/* Section headings carry an accent rule so they read as landmarks when
+   scanning. The numbered h3s are the seven solutions in the first article. */
+.postbody h2{font-family:"Archivo","Archivo Fallback",sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,26px);letter-spacing:-.02em;line-height:1.22;color:var(--paper);margin:42px 0 0;padding-left:14px;border-left:3px solid var(--orange)}
+.postbody h3{font-family:"Archivo","Archivo Fallback",sans-serif;font-weight:700;font-size:18px;line-height:1.3;color:var(--paper);margin:32px 0 0;padding-left:12px;border-left:2px solid var(--orange-hi)}
+.postbody h4{font-size:15.5px;font-weight:600;color:var(--paper);margin:24px 0 0}
+
+.postbody a{color:var(--orange-hi);text-decoration:underline;text-decoration-color:var(--hair-3);text-underline-offset:3px}
+.postbody a:hover{color:var(--yellow);text-decoration-color:var(--yellow)}
+
+/* Steps and bullets. The marker takes the accent so a numbered sequence is
+   followable at a glance while the text keeps full reading contrast. */
+.postbody ul,.postbody ol{padding-left:24px;color:var(--paper-dim)}
+.postbody li{margin-bottom:10px;line-height:1.7}
+.postbody li::marker{color:var(--orange-hi);font-weight:700}
+.postbody ol li::marker{font-family:"IBM Plex Mono","Plex Mono Fallback",monospace}
+.postbody li>strong:first-child{color:var(--paper)}
+
+.postbody blockquote{margin:0;padding:4px 0 4px 18px;border-left:2px solid var(--orange);color:var(--paper)}
+.postbody code{font-family:"IBM Plex Mono","Plex Mono Fallback",monospace;font-size:13.5px;color:var(--paper);background:var(--carbon-2);border:1px solid var(--hair-2);border-radius:5px;padding:1px 5px}
+.postbody pre{background:var(--carbon-2);border:1px solid var(--hair-2);border-radius:10px;padding:16px;overflow-x:auto}
+.postbody pre code{background:none;border:0;padding:0}
+.postbody img{width:100%;height:auto;border-radius:10px;border:1px solid var(--hair)}
+.postbody table{width:100%;border-collapse:collapse;font-size:14.5px}
+.postbody th,.postbody td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--hair);color:var(--paper-dim)}
+.postbody th{color:var(--paper);font-weight:600}
+
+.fromauthor{margin:42px 0 0;padding:20px 22px;background:var(--carbon-2);border:1px solid var(--hair-2);border-left:3px solid var(--orange);border-radius:10px}
+.fromauthor .kicker{margin:0}
+.fromauthor p:last-child{margin:10px 0 0;color:var(--paper);line-height:1.7}
+
+/* ---- FAQs ---- */
+.postfaq{margin:46px 0 0;padding-top:26px;border-top:1px solid var(--hair)}
+.postfaq h2{font-family:"Archivo","Archivo Fallback",sans-serif;font-weight:800;font-size:clamp(19px,2.2vw,24px);letter-spacing:-.02em;color:var(--paper);margin:0 0 14px}
+.postfaq .faq{border-bottom:1px solid var(--hair)}
+.postfaq .faq summary{list-style:none;cursor:pointer;padding:15px 0;font-size:16px;font-weight:600;color:var(--paper);display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.postfaq .faq summary::-webkit-details-marker{display:none}
+.postfaq .faq summary:hover{color:var(--orange-hi)}
+.postfaq .faq summary::after{content:"+";font-family:"IBM Plex Mono","Plex Mono Fallback",monospace;font-size:17px;color:var(--orange-hi);flex:none}
+.postfaq .faq[open] summary{color:var(--orange-hi)}
+.postfaq .faq[open] summary::after{content:"\2212"}
+.postfaq .faq>div{padding:0 0 16px}
+.postfaq .faq p{margin:0;font-size:15px;color:var(--paper-dim);line-height:1.75}
+
+.postnext{margin:42px 0 0;padding-top:24px;border-top:1px solid var(--hair)}
+.postnext h2{font-family:"Archivo","Archivo Fallback",sans-serif;font-weight:800;font-size:19px;color:var(--paper);margin:0 0 12px}
+.postnext ul{list-style:none;margin:0;padding:0}
+.postnext li+li{margin-top:9px}
+.postnext a{color:var(--orange-hi);text-decoration:underline;text-decoration-color:var(--hair-3);text-underline-offset:3px}
+.postnext a:hover{color:var(--yellow)}
+
+.postcta{margin:42px 0 0;padding:24px;background:var(--carbon-2);border:1px solid var(--hair-2);border-radius:12px}
+.postcta h2{font-family:"Archivo","Archivo Fallback",sans-serif;font-weight:800;font-size:21px;color:var(--paper);margin:0}
+.postcta p{margin:10px 0 0;font-size:15px;color:var(--paper-dim);line-height:1.7}
+.postcta a:not(.btn){color:var(--orange-hi);text-decoration:underline;text-decoration-color:var(--hair-3);text-underline-offset:3px}
+.postcta a:not(.btn):hover{color:var(--yellow)}
+
+.draftnote{margin:0 0 20px;padding:12px 16px;font-size:14px;line-height:1.6;color:var(--warn);background:rgba(255,162,58,.10);border:1px solid rgba(255,162,58,.32);border-radius:9px}
+.draftnote strong{color:var(--warn)}
+.postmeta .updated-on{color:var(--orange-hi)}
+
+/* ---- Google Preferred Sources button ------------------------------------
+   Google injects the button asynchronously into the empty div, so the box is
+   reserved up front to keep the footer from jumping when it lands. The height
+   below is measured from the rendered control, not guessed. */
+.pref-source { margin: 2rem 0; }
+.pref-source__label { font-size: .875rem; opacity: .7; margin: 0 0 .5rem; }
+.pref-source > div[google-add-preferred-source-btn] {
+  min-height: 60px;      /* measured: Google's injected iframe renders 60px tall */
+  display: inline-block;
+}

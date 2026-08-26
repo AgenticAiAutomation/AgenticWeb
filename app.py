@@ -12,9 +12,15 @@ from datetime import datetime
 
 from flask import Flask, Response, abort, redirect, render_template, request
 
+import blog
 import content
 
 app = Flask(__name__)
+
+# Google Preferred Sources. Read through config.get() in templates so a missing
+# key degrades to the button simply not rendering, rather than raising.
+# See https://developers.google.com/search/docs/appearance/preferred-sources
+app.config["PREFERRED_SOURCES_ENABLED"] = True
 
 SITE = {
     "name": "Agentic AI Automation",
@@ -213,6 +219,108 @@ def terms():
     ))
 
 
+
+# ---------------------------------------------------------------------------
+# Blog
+#
+# Articles are written by the dashboard into its published/ directory as JSON
+# and read from there. No database, no CMS and no API call in the request path
+# - the blog's only dependency is a directory this app reads and never writes.
+# ---------------------------------------------------------------------------
+@app.route("/blog")
+def blog_index():
+    articles = blog.all_articles()
+    title = "Automation Blog - n8n, UiPath, WhatsApp API | Agentic AI"
+    description = ("Workflow teardowns, RPA migration post-mortems and practical "
+                   "write-ups on n8n, UiPath and WhatsApp automation, written from "
+                   "production deployments.")
+    return render_template("blog.html", **ctx(
+        title=title,
+        description=description,
+        page_title=title,
+        page_description=description,
+        canonical=f"{SITE['url']}/blog",
+        og_image=f"{SITE['url']}/static/images/og-default-v1.png",
+        og_type="website",
+        noindex=False,
+        page="blog",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "Blog"}],
+        articles=articles,
+        blog=blog,
+    ))
+
+
+@app.route("/blog/<slug>")
+def blog_post(slug):
+    # Drafts are reachable by direct URL so they can be previewed before
+    # go-live, but they carry noindex and appear in neither the blog index nor
+    # the sitemap.
+    article = blog.get(slug, include_drafts=True)
+    if article is None:
+        abort(404)
+
+    title = article.get("meta_title") or article["title"]
+    description = article.get("meta_description") or ""
+    image = (f"{SITE['url']}/static/blog/" + article["featured_image"].replace("blog/", "")
+             if article.get("featured_image")
+             else f"{SITE['url']}/static/images/og-default-v1.png")
+
+    return render_template("blog-post.html", **ctx(
+        title=title,
+        description=description,
+        page_title=title,
+        page_description=description,
+        canonical=f"{SITE['url']}/blog/{slug}",
+        og_image=image,
+        og_type="article",
+        noindex=bool(article.get("is_draft")),
+        page="blog",
+        crumbs=[{"name": "Home", "url": "/"},
+                {"name": "Blog", "url": "/blog"},
+                {"name": article["title"]}],
+        article=article,
+        related=blog.related(article),
+        blog=blog,
+    ))
+
+
+# ---------------------------------------------------------------------------
+# Market pages - spec 09. Explicit routes, not a "/<slug>" converter, which
+# would swallow every unmatched path and turn 404s into 500s.
+#
+# These are service pages of the same India-based company. There is no local
+# office, entity or team in any of these markets and no page claims one.
+# ---------------------------------------------------------------------------
+@app.route("/uk")
+def market_uk():
+    return render_template("uk.html", **ctx(
+        title="AI Automation for UK Businesses | Agentic AI Automation",
+        canonical=f"{SITE['url']}/uk",
+        page="market-uk",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "United Kingdom"}],
+    ))
+
+
+@app.route("/uae")
+def market_uae():
+    return render_template("uae.html", **ctx(
+        title="AI Automation for UAE Businesses | Agentic AI Automation",
+        canonical=f"{SITE['url']}/uae",
+        page="market-uae",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "United Arab Emirates"}],
+    ))
+
+
+@app.route("/singapore")
+def market_singapore():
+    return render_template("singapore.html", **ctx(
+        title="AI Automation for Singapore Businesses | Agentic AI",
+        canonical=f"{SITE['url']}/singapore",
+        page="market-singapore",
+        crumbs=[{"name": "Home", "url": "/"}, {"name": "Singapore"}],
+    ))
+
+
 # ---------------------------------------------------------------------------
 # SEO endpoints — spec 01 §3, §4
 # ---------------------------------------------------------------------------
@@ -231,18 +339,15 @@ def _url_entry(loc, lastmod, changefreq, priority):
 
 @app.route("/sitemap.xml")
 def sitemap_index():
-    """Index only. Blog URLs live in WordPress, which emits its own sitemap
-    via Rank Math — we point at it rather than duplicating it, because two
-    sitemaps listing the same URL with different lastmod values is worse than
-    one."""
+    """Index only. Points at the core sitemap and, once anything is published,
+    the blog sitemap."""
     today = datetime.utcnow().strftime("%Y-%m-%d")
     base = SITE["url"]
     entries = [f"{base}/sitemap-core.xml"]
-    # Rank Math emits its own sitemap index. Only advertise it once WordPress
-    # is actually installed — submitting a sitemap URL that 404s gets the whole
-    # index flagged as an error in Search Console.
-    if content.BLOG_ENABLED:
-        entries.append(f"{base}/blog/sitemap_index.xml")
+    # Only advertise the blog sitemap once something is published. A sitemap
+    # that resolves to an empty urlset gets flagged in Search Console.
+    if blog.all_articles():
+        entries.append(f"{base}/sitemap-blog.xml")
     body = "\n".join(
         f"  <sitemap><loc>{e}</loc><lastmod>{today}</lastmod></sitemap>"
         for e in entries
@@ -262,9 +367,14 @@ def sitemap_core():
         ("/case-studies", "weekly",  "0.9"),
         ("/industries",   "monthly", "0.8"),
         ("/about",        "monthly", "0.8"),
+        ("/blog",         "daily",   "0.8"),
         ("/contact",      "yearly",  "0.6"),
         ("/privacy",      "yearly",  "0.3"),
         ("/terms",        "yearly",  "0.3"),
+        # Market pages (spec 09). Phase 2 - /us and /saudi-arabia - not yet built.
+        ("/uk",           "monthly", "0.8"),
+        ("/uae",          "monthly", "0.8"),
+        ("/singapore",    "monthly", "0.8"),
         # Plain-text discovery files, listed so crawlers and models find them
         # without having to guess the convention.
         ("/llms.txt",      "weekly",  "0.5"),
@@ -299,6 +409,21 @@ def _static_plain(filename):
         abort(404)
     with io.open(path, encoding="utf-8") as fh:
         return Response(fh.read(), mimetype="text/plain")
+
+
+@app.route("/sitemap-blog.xml")
+def sitemap_blog():
+    """Every published article. Drafts are excluded by blog.all_articles()."""
+    base = SITE["url"]
+    body = "\n".join(
+        _url_entry(f"{base}/blog/{a['slug']}",
+                   blog.iso_date(a, "updated_at") or blog.iso_date(a),
+                   "monthly", "0.7")
+        for a in blog.all_articles()
+    )
+    return _xml('<?xml version="1.0" encoding="UTF-8"?>\n'
+                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                f"{body}\n</urlset>")
 
 
 @app.route("/llms.txt")

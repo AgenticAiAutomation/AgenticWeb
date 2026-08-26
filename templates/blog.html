@@ -5,30 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a0908">
 
-  <title>Case Studies | Why Ours Are Not Published Yet</title>
-  <meta name="description" content="A case study should name the client, state how the result was measured, and carry written approval. Ours are in that process. Here is what we can share.">
-  <link rel="canonical" href="https://agenticaiautomation.co/case-studies">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description }}">
+  <link rel="canonical" href="{{ canonical }}">
 
 
   <meta name="google-site-verification" content="e4Vkf6NJ7MihEXOeeDO5q8NiCbvjPqTCLhRdEnuW4pw">
   <meta name="msvalidate.01" content="440E57D5A2CF8BB74B78F97868A1AEDF">
 
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="{{ og_type }}">
   <meta property="og:site_name" content="Agentic AI Automation">
-  <meta property="og:title" content="Case Studies | Why Ours Are Not Published Yet">
-  <meta property="og:description" content="A case study should name the client, state how the result was measured, and carry written approval. Ours are in that process. Here is what we can share.">
-  <meta property="og:url" content="https://agenticaiautomation.co/case-studies">
-  <meta property="og:image" content="https://agenticaiautomation.co/static/images/og-default-v1.png">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ page_description }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ og_image }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Why Agentic AI Automation publishes no case studies yet">
+  <meta property="og:image:alt" content="Agentic AI Automation — automation studio in Faridabad, India">
   <meta property="og:locale" content="en_IN">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@AgenticAIGlobal">
-  <meta name="twitter:title" content="Case Studies | Why Ours Are Not Published Yet">
-  <meta name="twitter:description" content="A case study should name the client, state how the result was measured, and carry written approval. Ours are in that process. Here is what we can share.">
-  <meta name="twitter:image" content="https://agenticaiautomation.co/static/images/og-default-v1.png">
+  <meta name="twitter:title" content="{{ page_title }}">
+  <meta name="twitter:description" content="{{ page_description }}">
+  <meta name="twitter:image" content="{{ og_image }}">
 
   <link rel="icon" href="/static/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/static/images/favicon.png" type="image/png" sizes="132x132">
@@ -56,117 +56,21 @@
   <link rel="stylesheet" href="/static/assets/css/base.css">
   <link rel="stylesheet" href="/static/assets/css/components.css">
 
-  <script type="application/ld+json">{
+  {% block schema %}
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://agenticaiautomation.co/#organization",
-      "name": "Agentic AI Automation",
-      "url": "https://agenticaiautomation.co/",
-      "logo": "https://agenticaiautomation.co/static/images/og-default-v1.png",
-      "description": "Automation studio building WhatsApp AI agents, n8n workflows, UiPath RPA and document processing for businesses in India, the UK, the US, the UAE, Singapore and Saudi Arabia.",
-      "sameAs": [
-        "https://www.linkedin.com/company/agenticaiautomation/",
-        "https://x.com/AgenticAIGlobal",
-        "https://youtube.com/@agenticaiautomation",
-        "https://www.facebook.com/BestAgenticAIAutomationOfficial",
-        "https://www.instagram.com/agenticaiautomationofficial/",
-        "https://www.pinterest.com/agenticaiautomation/",
-        "https://www.reddit.com/user/agenticaiautomation/",
-        "https://www.tumblr.com/agenticaiautomation"
-      ],
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "+917982881739",
-          "contactType": "sales",
-          "email": "Contact@agenticAiAutomation.co",
-          "availableLanguage": [
-            "en",
-            "hi"
-          ],
-          "areaServed": [
-            "IN",
-            "GB",
-            "US",
-            "AE",
-            "SG",
-            "SA"
-          ]
-        }
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://agenticaiautomation.co/#website",
-      "name": "Agentic AI Automation",
-      "url": "https://agenticaiautomation.co/",
-      "publisher": {
-        "@id": "https://agenticaiautomation.co/#organization"
-      },
-      "inLanguage": "en"
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://agenticaiautomation.co/#localbusiness",
-      "name": "Agentic AI Automation",
-      "url": "https://agenticaiautomation.co/",
-      "image": "https://agenticaiautomation.co/static/images/og-default-v1.png",
-      "telephone": "+917982881739",
-      "email": "Contact@agenticAiAutomation.co",
-      "priceRange": "₹₹",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Faridabad",
-        "addressRegion": "Haryana",
-        "addressCountry": "IN"
-      },
-      "areaServed": [
-        "IN",
-        "GB",
-        "US",
-        "AE",
-        "SG",
-        "SA"
-      ],
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday"
-          ],
-          "opens": "10:00",
-          "closes": "19:00"
-        }
-      ],
-      "parentOrganization": {
-        "@id": "https://agenticaiautomation.co/#organization"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://agenticaiautomation.co/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Case studies"
-        }
-      ]
-    }
-  ]
-}</script>
+  "@type": "CollectionPage",
+  "@id": "{{ canonical }}#page",
+  "url": "{{ canonical }}",
+  "name": {{ page_title|tojson }},
+  "description": {{ page_description|tojson }},
+  "isPartOf": {"@id": "https://agenticaiautomation.co/#website"}
+}
+</script>
+{% endblock %}
+
+  {% if noindex %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
 
   {# Google Preferred Sources library. These templates are standalone,
      so the tag is repeated per page rather than living in a shared head.
@@ -175,7 +79,7 @@
   <script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
   {% endif %}
 </head>
-<body class="page-case-studies" data-market="india">
+<body class="page-blog" data-market="india">
 
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site">
@@ -187,7 +91,7 @@
     <nav class="navlinks" aria-label="Primary">
       <a href="/services">Services</a>
       <a href="/industries">Industries</a>
-      <a href="/case-studies" aria-current="page">Case studies</a>
+      <a href="/case-studies">Case studies</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
     </nav>
@@ -197,76 +101,67 @@
 
 <main id="main">
 
-<div class="wrap">
+<div class="narrow">
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <ol>
       <li><a href="/">Home</a> <span class="sep" aria-hidden="true">/</span></li>
-      <li><span aria-current="page">Case studies</span></li>
+      <li><span aria-current="page">Blog</span></li>
     </ol>
   </nav>
 </div>
 
 <section class="page-head">
-  <div class="wrap">
-    <p class="kicker"><span class="pip"></span>The honest position</p>
-    <h1 class="display">We have no case studies published. That is deliberate, and it is temporary.</h1>
-    <p class="lede">Engagements are in the approval process. Until they clear it, there is nothing on this page pretending to be evidence.</p>
+  <div class="narrow">
+    <p class="kicker"><span class="pip"></span>Blog</p>
+    <h1 class="display">Written from deployments, not documentation</h1>
+    <p class="sub">Workflow teardowns, migration post-mortems and what the
+      vendor documentation leaves out. Every article carries a production story
+      from the person who built the thing.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="honest rv">
-      <h2 class="display" style="font-size:clamp(20px,2.4vw,27px)">What we think a case study has to be.</h2>
-      <p>A case study <b>names the client</b>, <b>states how the result was measured</b>, and <b>carries written approval</b> before it goes online. If it does not do all three, it is marketing copy with a number in it.</p>
-      <p>That standard rules out most of what the industry publishes. &ldquo;A leading NBFC saw a 70% reduction in handling time&rdquo; tells you nothing you can check: not who, not measured against what baseline, not over what period, not who decided what counted as handled. We are not going to write those.</p>
+<section style="padding-top:8px">
+  <div class="narrow">
+    {% if articles %}
+    <ul class="postlist">
+      {% for a in articles %}
+      <li class="postcard">
+        <p class="postmeta">
+          <time datetime="{{ blog.iso_date(a) }}">{{ blog.display_date(a) }}</time>
+          <span class="sep" aria-hidden="true">&middot;</span>
+          {{ blog.reading_minutes(a) }} min read
+        </p>
+        <h2><a href="/blog/{{ a.slug }}">{{ a.title }}</a></h2>
+        {% if a.meta_description %}
+        <p class="postdesc">{{ a.meta_description }}</p>
+        {% endif %}
+        <p class="postmore"><a href="/blog/{{ a.slug }}">Read {{ a.title }}</a></p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+    {# Honest empty state. Saying nothing is published costs less than a page of
+       placeholder cards, and the routes and sitemap are ready for the moment
+       the first article lands. #}
+    <div class="legal">
+      <div class="legal-section">
+        <h2>Nothing published yet</h2>
+        <p>Articles here clear the same gate as everything else on this site: a
+          named author, a real production story with numbers, FAQs sourced from
+          questions people actually asked, and a scoring threshold that has to be
+          met before anything goes live. That is slower than publishing weekly
+          filler, and it is the point.</p>
+        <p>In the meantime the detail is on
+          <a href="/services">the services page</a>, the
+          <a href="/industries">industry guide</a> names what to automate first in
+          your sector, and <a href="/contact">the audit call</a> gets you a written
+          scope faster than any article would.</p>
+      </div>
     </div>
+    {% endif %}
   </div>
 </section>
-
-<section class="stat-band">
-  <div class="wrap">
-    <div class="head rv">
-      <p class="kicker"><span class="pip"></span>Why scepticism is reasonable</p>
-      <h2 class="display">The numbers that make buyers cautious are real.</h2>
-      <p>Four figures from independent research — the same four on our homepage. They are the reason a vendor asking you to trust an anonymous case study deserves a hard look.</p>
-    </div>
-    <div class="stat-grid rv">
-      <div class="stat"><b>95%</b><p>of generative-AI pilots produced no measurable return on the P&amp;L.</p><cite>MIT Project NANDA, 2025</cite></div>
-      <div class="stat"><b>42%</b><p>of companies scrapped most of their AI initiatives in 2025 — up from 17% the year before.</p><cite>S&amp;P Global, n=1,000+</cite></div>
-      <div class="stat"><b>30–50%</b><p>of initial RPA projects fail outright, on EY's own observation.</p><cite>EY, Get Ready For Robots</cite></div>
-      <div class="stat"><b>56%</b><p>of executives report high regret over their biggest tech purchase of the last two years.</p><cite>Gartner, n=1,120</cite></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="head rv">
-      <p class="kicker"><span class="pip"></span>What we can do instead</p>
-      <h2 class="display">Ask us on the call, under NDA.</h2>
-    </div>
-    <ol class="audit rv">
-      <li><b>Comparable deployments, discussed under NDA.</b> On the audit call we will talk through builds close to yours — what was in scope, what broke, what we would do differently — without naming a client who has not agreed to be named.</li>
-      <li><b>The architecture, in detail.</b> How the confidence threshold, refusal path and review queue are wired, and what happens when the model is unsure.</li>
-      <li><b>References, once approval clears.</b> When a client signs off, their name and their measurement method go on this page together. Not one without the other.</li>
-      <li><b>A straight answer about your process.</b> Including &ldquo;do not automate this, fix the process first&rdquo; or &ldquo;the tool you already pay for does this&rdquo;.</li>
-    </ol>
-  </div>
-</section>
-
-<div class="cta">
-  <div class="wrap">
-    <p class="kicker"><span class="pip"></span>Start with one process</p>
-    <h2 class="display">Show us the job nobody in your team wants to do.</h2>
-    <p>Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.</p>
-    <div class="row">
-      <a href="https://wa.me/917982881739" class="btn btn-dark">WhatsApp +91 79828 81739</a>
-      <a href="https://calendly.com/agenticaiautomation" class="btn btn-dark">Book the audit</a>
-      <a href="/services" class="btn btn-dark">See the six services</a>
-    </div>
-  </div>
-</div>
 
 </main>
 

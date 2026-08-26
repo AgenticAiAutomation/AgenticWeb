@@ -9,6 +9,7 @@
   <meta name="description" content="Book a free 45-minute audit on your most painful process. WhatsApp +91 79828 81739, email, or pick a slot directly. Straight answer, no deck.">
   <link rel="canonical" href="https://agenticaiautomation.co/contact">
 
+
   <meta name="google-site-verification" content="e4Vkf6NJ7MihEXOeeDO5q8NiCbvjPqTCLhRdEnuW4pw">
   <meta name="msvalidate.01" content="440E57D5A2CF8BB74B78F97868A1AEDF">
 
@@ -166,6 +167,13 @@
     }
   ]
 }</script>
+
+  {# Google Preferred Sources library. These templates are standalone,
+     so the tag is repeated per page rather than living in a shared head.
+     https://developers.google.com/search/docs/appearance/preferred-sources #}
+  {% if config.get('PREFERRED_SOURCES_ENABLED') %}
+  <script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
+  {% endif %}
 </head>
 <body class="page-contact" data-market="india">
 
@@ -289,6 +297,8 @@
         <li><a class="fsocial" href="https://www.reddit.com/user/agenticaiautomation/" rel="me noopener" target="_blank" aria-label="Reddit" data-brand="reddit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <circle cx="2.9" cy="12.2" r="2.4"/><circle cx="21.1" cy="12.2" r="2.4"/><circle cx="17.3" cy="4.3" r="2"/> <path d="m16.15 5.75.72 1.28-4.25 2.4-.72-1.28z"/> <path fill-rule="evenodd" d="M12 7.6c-4.97 0-9 2.94-9 6.55S7.03 20.7 12 20.7s9-2.94 9-6.55-4.03-6.55-9-6.55m-2.62 5a1.55 1.55 0 1 1 0 3.1 1.55 1.55 0 0 1 0-3.1m5.24 0a1.55 1.55 0 1 1 0 3.1 1.55 1.55 0 0 1 0-3.1"/> </svg></a></li>
         <li><a class="fsocial" href="https://www.tumblr.com/agenticaiautomation" rel="me noopener" target="_blank" aria-label="Tumblr" data-brand="tumblr"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.56 24c-5.09 0-7.03-3.76-7.03-6.41V9.75H5.12V6.65c3.63-1.31 4.51-4.6 4.71-6.47.01-.13.11-.18.17-.18h3.52v6.11h4.8v3.64h-4.82v7.47c.02 1 .38 2.37 2.21 2.37h.09c.63-.02 1.49-.2 1.94-.42l1.15 3.43c-.43.63-2.4 1.37-4.15 1.4z"/></svg></a></li>
         </ul>
+        {% include 'partials/preferred_source.html' %}
+
       </div>
       <div>
         <h3>Services</h3>
@@ -323,7 +333,7 @@
         <p class="fhours"><span>Working hours</span>Mon–Sat, 10:00–19:00 IST</p>
       </div>
     </div>
-    <p class="fmarkets">Serving India · United Kingdom · United States · UAE · Singapore · Saudi Arabia</p>
+    <p class="fmarkets">Serving <a href="/">India</a> · <a href="/uk">United Kingdom</a> · United States · <a href="/uae">UAE</a> · <a href="/singapore">Singapore</a> · Saudi Arabia</p>
     <div class="fbot">
       <address class="fnap">Agentic AI Automation &middot; Faridabad, Haryana, India &middot; +91 79828 81739</address>
       <span class="flegal"><a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/sitemap.xml">Sitemap</a></span>
