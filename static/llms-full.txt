@@ -588,3 +588,201 @@ Forty-five minutes, no charge, no deck. You will get a straight answer on whethe
 WhatsApp +91 79828 81739
 Book the audit
 See the six services
+
+
+========================================================================
+# United Kingdom — https://agenticaiautomation.co/uk
+========================================================================
+
+United Kingdom
+Automation for UK businesses, built by people who have worked your market.
+We are not a UK company and we will not pretend to be one. We are an automation studio in Faridabad, India, and nine of our eleven years were spent building and maintaining RPA for banks, hospitals, law firms and logistics operators across India, the UK and the Middle East. The UK half of that is why this page exists.
+WhatsApp +91 79828 81739
+Book the free audit
+What the UK experience actually means
+Nine years building RPA and automation for banks, hospitals, law firms and logistics operators — work that spanned India, the UK and the Middle East.
+Most of those years went on the unglamorous half: keeping bots alive after the consultants left. UK enterprises are where a great deal of that maintenance work sits.
+That is operating history, not a UK office. Everything is delivered remotely and the contracting entity is Indian.
+Delivered remotely. Working-hours overlap arranged for United Kingdom clients.
+Working-hours overlap, in real hours
+We work Monday to Saturday, 10:00–19:00 IST. Against a 09:00–17:00 UK day that is a 09:00–14:30 overlap during British Summer Time , and 09:00–13:30 in winter — so a UK morning always has live cover. Anything later is handled asynchronously, and the WhatsApp agent answers at any hour.
+Compliance
+What your compliance team will ask, and the honest answer
+UK buyers run automation past legal before it goes near customer data. The relevant regime is the UK GDPR alongside the Data Protection Act 2018 , regulated by the ICO . The questions that follow are always the same three.
+01 Where is the data processed, and by whom? In your own cloud tenancy, under your own credentials. We do not host your data. Self-hosted n8n runs on your infrastructure, and the AI model calls use your own API key and your own bill — so the processor relationship is between you and the model provider, not routed through us.
+02 Who are the subprocessors? For the build itself, none that you have not chosen. The code lives in your repository from day one. That is deliberate, and it is the same answer we give every client regardless of market.
+03 What happens to the WhatsApp number? It stays in your name, in your Meta Business Manager, throughout. Nothing is stranded with us if you stop working with us.
+None of that is a claim to be UK GDPR compliant on your behalf — no vendor can make that claim for you. It is a description of how the work is structured, so your own assessment has something concrete to assess.
+Pricing
+The same published prices, wherever you are.
+We do not price by postcode. A United Kingdom client pays what an Indian client pays for the same scope.
+Service Price Timeline
+WhatsApp AI Automation
+₹50,000 – ₹1.5L
+2–3 weeks
+AI Agent Development
+₹1.5L – ₹5L
+4–6 weeks
+n8n Workflow Builds
+₹40,000 – ₹2L
+1–3 weeks
+UiPath & RPA
+₹1L – ₹6L
+3–8 weeks
+Document Processing
+₹1L – ₹4L
+3–6 weeks
+RPA to AI Migration
+Quoted after audit
+6–12 weeks
+Scroll the table sideways to see timelines.
+Quoted and invoiced in Indian rupees ; your bank converts at the rate on the day. Model and messaging usage is billed to you directly by the provider, with no margin taken by us. Every engagement is one process, one price, one date, written down before work starts.
+Straight answers
+What United Kingdom buyers ask first.
+Are you a UK company?
+No. We are an automation studio based in Faridabad, Haryana, India, and we work with UK clients remotely. We do not have a UK office, a UK team or a UK entity, and we will not claim one.
+Do you have UK experience or just UK clients?
+Operating history. Nine of our eleven years were spent building and maintaining RPA for banks, hospitals, law firms and logistics operators across India, the UK and the Middle East.
+Can you sign a DPA?
+That is a scoping conversation, and it is a normal one. Because the code, the cloud, the credentials and the model API key all stay yours, the data-processing surface is far smaller than it is with a typical hosted vendor.
+Are prices in pounds?
+Prices are published in Indian rupees, which is what we quote and invoice in. Your bank handles the conversion at the rate on the day. We would rather publish one honest number than a converted one that is out of date by the time you read it.
+Start with one process
+Show us the job nobody in your team wants to do.
+Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.
+WhatsApp +91 79828 81739
+Book the audit
+See the six services
+Also serving United Arab Emirates · Singapore · India
+
+
+========================================================================
+# United Arab Emirates — https://agenticaiautomation.co/uae
+========================================================================
+
+United Arab Emirates
+Automation for UAE businesses, from a team that has worked the Gulf.
+We are an automation studio in Faridabad, India. Nine of our eleven years were spent building and maintaining RPA across India, the UK and the Middle East — the Gulf half of that is real operating history, and it is why this page is not just the homepage with a flag on it.
+WhatsApp +91 79828 81739
+Book the free audit
+What the Middle East experience actually means
+Nine years of RPA and automation delivery for banks, hospitals, law firms and logistics operators across India, the UK and the Middle East.
+Gulf operations tend to run lean teams against high transaction volume — the exact conditions where a bot that fails silently costs the most. Keeping bots alive after the consultants left is the work we know best.
+That is operating history, not a UAE office. We have no local entity and we will not claim one.
+Delivered remotely. Working-hours overlap arranged for United Arab Emirates clients.
+Working-hours overlap, in real hours
+We work Monday to Saturday, 10:00–19:00 IST. Gulf Standard Time is 90 minutes behind, so that is 08:30–17:30 GST — effectively a full working-day overlap with a UAE office. Of the markets we serve, this is the easiest one to run live.
+Compliance
+What your compliance team will ask, and the honest answer
+The UAE's federal regime is Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data (the PDPL ). If you operate inside the DIFC or ADGM free zones, those have their own separate data protection regulations and your counsel will tell you which applies. The practical questions are the same either way.
+01 Where does the data physically sit? Wherever you choose. Everything runs in your own cloud tenancy under your own credentials, so the region is your decision, not ours. Self-hosted n8n runs on your infrastructure. If a build needs to stay in-region, it stays in-region.
+02 Does our data leave the country to reach your team? We access your systems to build and support them, and that access is scoped to the specific systems a workflow needs, with every action logged. We do not take copies of your data onto our own infrastructure.
+03 Whose AI provider account is used? Yours. Your own API key, your own bill, no margin taken by us. That keeps the model provider's terms a matter between you and them.
+This is a description of how the work is structured, not a claim to be PDPL compliant on your behalf. Residency and compliance questions are settled at scoping rather than discovered afterwards.
+Pricing
+The same published prices, wherever you are.
+We do not price by postcode. A United Arab Emirates client pays what an Indian client pays for the same scope.
+Service Price Timeline
+WhatsApp AI Automation
+₹50,000 – ₹1.5L
+2–3 weeks
+AI Agent Development
+₹1.5L – ₹5L
+4–6 weeks
+n8n Workflow Builds
+₹40,000 – ₹2L
+1–3 weeks
+UiPath & RPA
+₹1L – ₹6L
+3–8 weeks
+Document Processing
+₹1L – ₹4L
+3–6 weeks
+RPA to AI Migration
+Quoted after audit
+6–12 weeks
+Scroll the table sideways to see timelines.
+Quoted and invoiced in Indian rupees ; your bank converts at the rate on the day. Model and messaging usage is billed to you directly by the provider, with no margin taken by us. Every engagement is one process, one price, one date, written down before work starts.
+Straight answers
+What United Arab Emirates buyers ask first.
+Are you a UAE company?
+No. We are based in Faridabad, Haryana, India, and work with UAE clients remotely. There is no local office, no local team and no local entity.
+Can the build stay inside the UAE?
+Yes, if you want it to. Everything runs in your cloud tenancy under your credentials, so the region is your choice. Self-hosted n8n runs wherever you put it.
+Do you understand DIFC and ADGM rules?
+We know they are separate regimes from the federal PDPL and that which one applies changes the answer. Your counsel decides which you fall under; we build to whatever constraint that produces, agreed at scoping.
+Are prices in dirhams?
+Prices are published in Indian rupees, which is what we quote and invoice in. Your bank converts at the rate on the day. One honest number beats a stale converted one.
+Start with one process
+Show us the job nobody in your team wants to do.
+Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.
+WhatsApp +91 79828 81739
+Book the audit
+See the six services
+Also serving United Kingdom · Singapore · India
+
+
+========================================================================
+# Singapore — https://agenticaiautomation.co/singapore
+========================================================================
+
+Singapore
+Automation for Singapore businesses, with a real overlap and a straight answer on the PDPA.
+We are an automation studio in Faridabad, India, working with Singapore clients remotely. We will be straight with you about one thing up front: unlike the UK and the Gulf, Singapore is not part of our operating history. What we bring here is the same engineering discipline, a genuinely workable time overlap, and a clear position on the PDPA.
+WhatsApp +91 79828 81739
+Book the free audit
+What we are not claiming
+Our nine years of RPA delivery span India, the UK and the Middle East. Singapore is a market we serve, not one we have a track record in, and pretending otherwise would be the first thing you found out was untrue.
+What does carry across is the failure mode we were hired to fix for nine years: bots that break silently after handover. That is not market-specific.
+No Singapore office, no local team, no local case studies.
+Delivered remotely. Working-hours overlap arranged for Singapore clients.
+Working-hours overlap, in real hours
+We work Monday to Saturday, 10:00–19:00 IST. Singapore is 2.5 hours ahead, so our day is 12:30–21:30 SGT . Against a 09:00–18:00 Singapore day that is a solid 12:30–18:00 afternoon overlap — your afternoon is our morning. Mornings in Singapore are handled asynchronously, and the WhatsApp agent answers at any hour.
+Compliance
+What your compliance team will ask, and the honest answer
+Singapore's regime is the Personal Data Protection Act 2012 ( PDPA ), overseen by the PDPC , built around consent, purpose limitation and reasonable security. If WhatsApp outreach is in scope, the Do Not Call provisions matter too and are worth raising before the build, not after.
+01 Who holds the data? You do. Everything runs in your own cloud tenancy under your own credentials, and self-hosted n8n runs on your infrastructure. We do not keep copies on ours.
+02 How is consent handled on WhatsApp? The number and the Meta Business Manager stay in your name, so the consent relationship is between you and your customer. We build the flow; the opt-in record is yours and stays yours.
+03 What about automated decisions that affect a customer? Every agent ships with a confidence threshold, a refusal path and a review queue. Anything the model is unsure about goes to a person rather than out to your customer. The scope of what an agent may state on its own is agreed with you in writing before launch.
+As everywhere else on this site: that is how the work is structured, not a claim to be PDPA compliant on your behalf.
+Pricing
+The same published prices, wherever you are.
+We do not price by postcode. A Singapore client pays what an Indian client pays for the same scope.
+Service Price Timeline
+WhatsApp AI Automation
+₹50,000 – ₹1.5L
+2–3 weeks
+AI Agent Development
+₹1.5L – ₹5L
+4–6 weeks
+n8n Workflow Builds
+₹40,000 – ₹2L
+1–3 weeks
+UiPath & RPA
+₹1L – ₹6L
+3–8 weeks
+Document Processing
+₹1L – ₹4L
+3–6 weeks
+RPA to AI Migration
+Quoted after audit
+6–12 weeks
+Scroll the table sideways to see timelines.
+Quoted and invoiced in Indian rupees ; your bank converts at the rate on the day. Model and messaging usage is billed to you directly by the provider, with no margin taken by us. Every engagement is one process, one price, one date, written down before work starts.
+Straight answers
+What Singapore buyers ask first.
+Do you have Singapore clients already?
+Singapore is a market we serve. Our nine years of RPA delivery span India, the UK and the Middle East, not Singapore, and we would rather say that plainly than imply a track record we do not have.
+When can we actually talk to a person?
+Between 12:30 and 18:00 Singapore time on any working day, which is most of your afternoon. Outside that the WhatsApp agent answers immediately and a person picks it up the next working morning.
+Does the PDPA stop us using an AI agent on WhatsApp?
+No, but it shapes how. Consent, purpose limitation and the Do Not Call provisions all need settling before the flow is built. We raise them at scoping.
+Are prices in Singapore dollars?
+Prices are published in Indian rupees, which is what we quote and invoice in. Your bank converts at the rate on the day.
+Start with one process
+Show us the job nobody in your team wants to do.
+Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.
+WhatsApp +91 79828 81739
+Book the audit
+See the six services
+Also serving United Kingdom · United Arab Emirates · India

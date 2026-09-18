@@ -13,6 +13,13 @@
 - [Document Processing](https://agenticaiautomation.co/services#documents): ₹1L–₹4L, 3–6 weeks
 - [RPA to AI Migration](https://agenticaiautomation.co/services#migration): quoted after audit, 6–12 weeks
 
+## Markets
+Service pages for a single India-based company. No local office, entity or team in any market.
+- [United Kingdom](https://agenticaiautomation.co/uk): UK GDPR / ICO questions answered; 09:00-14:30 BST overlap; nine years of UK RPA operating history
+- [UAE](https://agenticaiautomation.co/uae): Federal Decree-Law 45/2021 (PDPL), DIFC and ADGM noted; 08:30-17:30 GST, a full working-day overlap
+- [Singapore](https://agenticaiautomation.co/singapore): PDPA and PDPC, Do Not Call provisions; 12:30-18:00 SGT afternoon overlap
+Prices are quoted and invoiced in Indian rupees in every market.
+
 ## Pages
 - [Industries](https://agenticaiautomation.co/industries)
 - [About](https://agenticaiautomation.co/about)

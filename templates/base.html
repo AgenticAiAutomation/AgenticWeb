@@ -10,6 +10,7 @@
      Do not remove either one — removing a tag un-verifies the property on the
      engine's next check and cuts off its Search Console data. #}
   <meta name="google-site-verification" content="{{ verification.google }}">
+  {% include 'partials/analytics.html' %}
   <meta name="msvalidate.01" content="{{ verification.bing }}">
 
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
