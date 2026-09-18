@@ -10,7 +10,7 @@ import io
 import os
 from datetime import datetime
 
-from flask import Flask, Response, abort, redirect, render_template, request
+from flask import Flask, Response, abort, redirect, render_template, request, send_file
 
 import blog
 import content
@@ -250,8 +250,33 @@ def blog_index():
     ))
 
 
+# Blog Visual Engine v2. Off by default. When on, an article the dashboard has
+# pre-rendered to <content dir>/<slug>/index.html is served as that file —
+# no template work per request — and everything else falls through to the
+# legacy path below unchanged. Flip the flag off and the site behaves exactly
+# as it did before; the rendered files are simply ignored.
+BLOG_ENGINE_V2 = os.environ.get("BLOG_ENGINE_V2", "false").strip().lower() in ("1", "true", "yes", "on")
+
+
+def _prerendered_path(slug):
+    if not BLOG_ENGINE_V2 or "/" in slug or ".." in slug:
+        return None
+    path = os.path.join(blog.CONTENT_DIR, slug, "index.html")
+    return path if os.path.isfile(path) else None
+
+
 @app.route("/blog/<slug>")
 def blog_post(slug):
+    prerendered = _prerendered_path(slug)
+    if prerendered:
+        # HTML is revalidated on every request (ETag from mtime/size, which
+        # send_file sets), so a republish shows immediately; the assets it
+        # references are content-hashed and cached for a year by nginx.
+        response = send_file(prerendered, mimetype="text/html", conditional=True,
+                             max_age=0, etag=True, last_modified=os.path.getmtime(prerendered))
+        response.headers["Cache-Control"] = "max-age=0, must-revalidate"
+        return response
+
     # Drafts are reachable by direct URL so they can be previewed before
     # go-live, but they carry noindex and appear in neither the blog index nor
     # the sitemap.
