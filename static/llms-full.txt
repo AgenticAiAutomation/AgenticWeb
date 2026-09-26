@@ -227,8 +227,8 @@ Ongoing support · optional
 ₹15,000 – ₹40,000/mo
 Monitoring, tuning and change requests. Genuinely optional — 30 days of defect fixing is already included, and the runbook is written so your team can take it on instead.
 Typical delivery is four weeks. Model and messaging usage is billed to you directly by the provider at their published rates — we take no margin on it, and we walk you through the real monthly figure on the audit call before you commit to anything.
-We have no case studies published. That is deliberate, and it is temporary.
-Our rule is that a case study names the client, states how the result was measured, and carries written approval from that client before it goes online. Two engagements are in that approval process now. Until they clear it, this page stays empty rather than filling up with anonymous "a leading NBFC" stories and round numbers nobody can check.
+The work is real. The numbers go up when the client signs them off.
+Our rule is that a case study names the client, states how the result was measured, and carries written approval from that client before it goes online. Four builds are documented in full on the portfolio page — the workflow, the architecture, the failure paths and the capacity each was sized for — and none of them carries an outcome figure a client has not approved. Two engagements are in that approval process now. Until they clear it, no anonymous "a leading NBFC" stories and no round numbers nobody can check.
 What we can do instead: on the audit call we will talk through comparable deployments in detail under NDA, including the parts that went badly. Given that 95% of AI pilots return nothing measurable 1 and more than half of tech buyers regret their last big purchase, 4 we would rather earn the first hour of your scepticism than spend it.
 Who you are actually hiring
 A small senior team in Faridabad. No branches, no bench.
@@ -519,8 +519,8 @@ See the six services
 
 Case studies
 The honest position
-We have no case studies published. That is deliberate, and it is temporary.
-Engagements are in the approval process. Until they clear it, there is nothing on this page pretending to be evidence.
+The work is real. The numbers go up when the client signs them off.
+Four builds are documented in full on the portfolio page — what was scoped, how it was wired, what the staff on the other side of the counter see. What you will not find on them is an outcome figure no client has approved. Those engagements are still in the approval process.
 What we think a case study has to be.
 A case study names the client , states how the result was measured , and carries written approval before it goes online. If it does not do all three, it is marketing copy with a number in it.
 That standard rules out most of what the industry publishes. “A leading NBFC saw a 70% reduction in handling time” tells you nothing you can check: not who, not measured against what baseline, not over what period, not who decided what counted as handled. We are not going to write those.
@@ -546,8 +546,43 @@ Show us the job nobody in your team wants to do.
 Forty-five minutes, no charge, no deck. You will get a straight answer on whether it is worth automating — and if it isn't, you will get that answer too.
 WhatsApp +91 79828 81739
 Book the audit
+See the portfolio
 See the six services
 
+
+========================================================================
+# Portfolio — https://agenticaiautomation.co/portfolio
+========================================================================
+
+Portfolio — four automation builds, end to end
+We turn your busiest, most manual workflow into one WhatsApp message.
+Booking, payments, queues, claims, follow-ups — built end to end and wired straight into the systems you already run on. No app to download, no new screen for staff to learn.
+Every build below runs on the same backbone — WhatsApp on the front end, automation underneath.
+
+Kaushik Diagnostics — healthcare, diagnostics and OPD
+A multi-department diagnostic clinic running walk-in and appointment OPD. The waiting room was the bottleneck: patients arrived early with no idea of their turn, the front desk fielded the same "how long now" call all day, and empty no-show slots sat unfilled. The brief was to move the entire wait out of the building.
+Six steps: book and pay (slot booked, prep/fasting instructions sent automatically) → one status link, opened when the patient wants, with no repeat pings → reminders at 24h and 2h with one-tap reschedule and no-show recovery → report delivery to the patient, auto-copied to the referring doctor → TPA / corporate desk for cashless support on empanelled corporate health packages → CRM logging plus thank-you and annual re-test reminders.
+Diagnostic centers do not process insurance claims the way hospitals do, so that step is scoped to corporate/TPA cashless tie-ups for packages, not claim adjudication.
+Staff side: front desk gets a live board of every token, wait time and status, with manual override — bump an emergency or elderly walk-in to the front in one tap, check in patients without a smartphone manually into the same queue, and a doctor's report queue where the radiologist approves before anything reaches the patient.
+Built on: WhatsApp Business API, n8n orchestration, Razorpay / UPI, clinic CRM, insurer eligibility check.
+Designed capacity 300+ patients/day per branch, sized to the branch's real peak morning rush. Every automated step can be paused or overridden by staff. If WhatsApp or the system has downtime, the front desk switches to a documented fallback SOP.
+
+CA firm network — financial compliance document automation
+Chartered accountancy firms handling repeat compliance filings. Staff were retyping the same numbers from client PDFs and Excel sheets into filing systems every cycle. The goal was to remove the retyping entirely without asking clients to change how they send documents.
+Three steps: intake as-is (PDFs, scans and Excel, no new format required) → extract and validate, with fields cross-checked and mismatches flagged → filing-ready data queued for staff sign-off, then filed.
+Built on: PDF/Excel extraction, low-code RPA, a human review checkpoint.
+
+WhatsApp lead funnel — sales and lead qualification
+A B2B service business fielding inbound enquiries on WhatsApp. Every message, tyre-kickers and serious buyers alike, landed in the founder's personal chat. The ask was a filter.
+Three steps: first contact triggers an in-chat qualifying form → score and route, with qualified leads going straight to the founder → CRM sync logging the lead, score and conversation.
+Built on: WhatsApp Business API, n8n scoring logic, CRM auto-sync.
+
+Settlement document automation — insurance operations
+Insurance settlement processing for claims-heavy accounts. Settlement teams were reading every claim document by hand to pull the numbers that decide payout. The task was structured, checkable data out of unstructured paperwork.
+Three steps: capture claim PDFs and scans as they arrive → extract key figures, flagging ambiguous fields → hand off clean data directly into the settlement system.
+Built on: PDF/Excel extraction, regex-based parsing, confidence flagging. Ambiguous fields are flagged, never silently guessed.
+
+These are described as designed and scoped builds. Case studies with client-approved, signed-off outcome numbers are published only once the client approves them — see https://agenticaiautomation.co/case-studies for that standard.
 
 ========================================================================
 # Contact — https://agenticaiautomation.co/contact

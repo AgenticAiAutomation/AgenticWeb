@@ -24,7 +24,8 @@ Prices are quoted and invoiced in Indian rupees in every market.
 - [Industries](https://agenticaiautomation.co/industries)
 - [About](https://agenticaiautomation.co/about)
 - [Contact](https://agenticaiautomation.co/contact)
-- [Case studies](https://agenticaiautomation.co/case-studies): why none are published yet
+- [Case studies](https://agenticaiautomation.co/case-studies): the standard we hold a case study to — named client, stated measurement, written approval
+- [Portfolio](https://agenticaiautomation.co/portfolio): four automation builds described end to end — diagnostics clinic WhatsApp booking and live queue, CA compliance document automation, WhatsApp lead qualification, insurance settlement extraction
 
 ## Contact
 WhatsApp +91 79828 81739 · Contact@agenticAiAutomation.co · Faridabad, Haryana, India

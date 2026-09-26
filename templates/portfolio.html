@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E7A5F">
+
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ canonical }}">
+
+{# Search engine ownership verification — same tokens as every other page.
+   Removing either un-verifies the property on the engine's next check. #}
+<meta name="google-site-verification" content="{{ verification.google }}">
+{% include 'partials/analytics.html' %}
+<meta name="msvalidate.01" content="{{ verification.bing }}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ name }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ url }}/static/images/og-default-v1.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Four automation builds by Agentic AI Automation">
+<meta property="og:locale" content="en_IN">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@AgenticAIGlobal">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ url }}/static/images/og-default-v1.png">
+
+<link rel="icon" href="/static/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/static/images/favicon.png" type="image/png" sizes="132x132">
+<link rel="apple-touch-icon" href="/static/images/favicon.png">
+<link rel="manifest" href="/static/assets/site.webmanifest">
+
+{# IBM Plex Sans and Mono are already self-hosted for /case-studies — reuse
+   those files rather than pulling the same families off Google a second time.
+   Fraunces is the one face this page adds; it has no self-hosted copy yet. #}
+<link rel="preload" href="/static/assets/fonts/plexsans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet">
+
+{% include "schema/organization.html" %}
+{% include "schema/website.html" %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ url }}/"},
+    {"@type": "ListItem", "position": 2, "name": "Case studies", "item": "{{ url }}/case-studies"},
+    {"@type": "ListItem", "position": 3, "name": "Portfolio", "item": "{{ url }}/portfolio"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Automation builds",
+  "itemListOrder": "https://schema.org/ItemListUnordered",
+  "numberOfItems": 4,
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Kaushik Diagnostics — WhatsApp booking, live queue and report delivery", "url": "{{ url }}/portfolio#kaushik"},
+    {"@type": "ListItem", "position": 2, "name": "CA firm network — compliance document automation", "url": "{{ url }}/portfolio#ca-firms"},
+    {"@type": "ListItem", "position": 3, "name": "WhatsApp lead qualification funnel", "url": "{{ url }}/portfolio#leadfunnel"},
+    {"@type": "ListItem", "position": 4, "name": "Insurance settlement document automation", "url": "{{ url }}/portfolio#insurance"}
+  ]
+}
+</script>
+
+{# FAQPage mirrors the six answers rendered below. If you edit the copy in the
+   .faq block, edit it here too — schema that disagrees with the visible page
+   is a structured-data violation, not just a stale string. #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Won't patients get flooded with WhatsApp pings?",
+      "acceptedAnswer": {"@type": "Answer", "text": "No — that's a deliberate design choice, not a hope. Patients get one message with a link to a live status page they check on their own time. The system doesn't push repeat updates; it answers when asked."}
+    },
+    {
+      "@type": "Question",
+      "name": "What CRM does this plug into?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Whatever you already run — Zoho, a custom system, anything with an API or webhook. We connect to your CRM, we don't ask you to replace it."}
+    },
+    {
+      "@type": "Question",
+      "name": "How much patient volume can it actually handle?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Sized to your branch's peak load before we build — typically 300+ patients/day per branch, with capacity planned around your real morning-rush numbers, not a generic estimate."}
+    },
+    {
+      "@type": "Question",
+      "name": "What about emergencies, VIPs, or elderly patients without a smartphone?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Front desk can bump any token to the front in one tap, and check in patients manually — they're still tracked in the same queue, no app required on their end."}
+    },
+    {
+      "@type": "Question",
+      "name": "What if the system doesn't work properly?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Every automated step has a manual override, and there's a documented fallback SOP your staff can switch to instantly if WhatsApp or the system has downtime. No patient is ever left untracked."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does insurance actually work for a diagnostic center?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Not the way it works for a hospital. We scope it correctly: cashless support for corporate/TPA-empanelled health packages, not full claims adjudication — because that's what a diagnostics workflow actually needs."}
+    }
+  ]
+}
+</script>
+
+{# Every .case-card starts at opacity:0 and is revealed by IntersectionObserver.
+   With JS off that is a blank page — all four case studies are in .reveal
+   blocks. This unhides them for that case; the animation is pure decoration. #}
+<noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+{% if config.get('PREFERRED_SOURCES_ENABLED') %}
+<script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
+{% endif %}
+
+<style>
+  /* Self-hosted faces, already shipped for /case-studies. Latin subset, woff2.
+     Fraunces comes off Google (see the link tag above); these do not. */
+  @font-face {
+    font-family: "IBM Plex Sans";
+    src: url("/static/assets/fonts/plexsans-var-latin.woff2") format("woff2-variations"),
+         url("/static/assets/fonts/plexsans-var-latin.woff2") format("woff2");
+    font-weight: 100 700; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "IBM Plex Mono";
+    src: url("/static/assets/fonts/plexmono-600-latin.woff2") format("woff2");
+    font-weight: 500 600; font-style: normal; font-display: swap;
+  }
+  :root {
+    --paper: #FFFFFF;
+    --cream: #FBF8F1;
+    --panel: #F3EFE1;
+    --ink: #16241E;
+    --ink-soft: #55635A;
+    --teal: #0E7A5F;
+    --teal-deep: #0A5A46;
+    --teal-bright: #17A67F;
+    --amber: #E0813E;
+    --amber-soft: #FCEBDA;
+    --line: #E4DFCC;
+    --whatsapp: #25D366;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: calc(78px + env(safe-area-inset-top, 0px)); }
+  * { box-sizing: border-box; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .display { font-family: 'Fraunces', Georgia, serif; font-weight: 650; letter-spacing: -0.01em; margin: 0; }
+  a { color: inherit; }
+  code, .mono { font-family: 'IBM Plex Mono', monospace; }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+  img, svg { max-width: 100%; }
+
+  /* ================= TOP BAR ================= */
+  .topbar {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner { max-width: 1220px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--teal-deep); color: #fff; padding: 12px 18px; border-radius: 0 0 8px 0; text-decoration: none; font-weight: 600; }
+  .skip-link:focus { left: 0; }
+  .brand-mark { width: 34px; height: 34px; border-radius: 9px; background: linear-gradient(135deg, var(--teal-bright), var(--teal-deep)); display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Fraunces',serif; font-weight:700; font-size:1.05rem; flex:none; }
+  .brand-name { font-family: 'Fraunces', serif; font-weight: 650; font-size: 1.12rem; }
+  .brand-name span { display:block; color: var(--ink-soft); font-weight: 400; font-size: 0.78rem; font-family:'IBM Plex Sans',sans-serif; margin-top: 1px; }
+  .topnav { display: flex; gap: 24px; font-size: 0.88rem; align-items:center; }
+  .topnav a { text-decoration: none; color: var(--ink-soft); font-weight: 500; }
+  .topnav a:hover { color: var(--teal-deep); }
+  .cta-btn { background: var(--teal); color: #fff !important; padding: 10px 20px; border-radius: 8px; font-weight: 600 !important; box-shadow: 0 4px 14px -4px rgba(14,122,95,0.5); }
+  .cta-btn:hover { background: var(--teal-deep); }
+  @media (max-width: 860px) { .topnav a:not(.cta-btn) { display: none; } }
+
+  /* ================= HERO ================= */
+  .hero {
+    position: relative;
+    background: radial-gradient(circle at 15% 0%, #E7F5EE 0%, var(--cream) 45%, #FFFFFF 100%);
+    overflow: hidden;
+  }
+  .hero-inner { max-width: 1220px; margin: 0 auto; padding: 80px 24px 60px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; }
+  @media (max-width: 980px) { .hero-inner { grid-template-columns: 1fr; padding-top: 48px; } }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 1px solid var(--line); padding: 7px 14px 7px 8px; border-radius: 999px;
+    font-size: 0.82rem; font-weight: 600; color: var(--teal-deep);
+    box-shadow: 0 2px 8px -4px rgba(0,0,0,0.08);
+  }
+  .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--whatsapp); animation: pulse-dot 1.8s ease-in-out infinite; }
+  @keyframes pulse-dot { 0%,100%{ box-shadow: 0 0 0 0 rgba(37,211,102,0.5);} 50%{ box-shadow: 0 0 0 6px rgba(37,211,102,0);} }
+
+  .hero h1 { font-size: clamp(2.3rem, 4.4vw, 3.6rem); line-height: 1.07; margin-top: 20px; max-width: 16ch; }
+  .hero h1 .accent { color: var(--teal); }
+  .hero-sub { margin-top: 22px; font-size: 1.14rem; color: var(--ink-soft); max-width: 50ch; line-height: 1.6; }
+  .hero-ctas { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--teal); color: #fff; padding: 15px 26px; border-radius: 9px; text-decoration: none; font-weight: 600; font-size: 1rem; box-shadow: 0 10px 24px -8px rgba(14,122,95,0.55); transition: transform 0.15s ease; }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-ghost { border: 1.5px solid var(--line); color: var(--ink); padding: 15px 26px; border-radius: 9px; text-decoration: none; font-weight: 600; font-size: 1rem; background:#fff; }
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal-deep); }
+
+  .trust-row { margin-top: 40px; display: flex; gap: 26px; flex-wrap: wrap; color: var(--ink-soft); font-size: 0.86rem; }
+  .trust-row b { color: var(--ink); font-family:'Fraunces',serif; font-size: 1.15rem; display:block; }
+
+  /* ---- live demo phone ---- */
+  /* column, not the flex default row: .phone-caption sets margin-top and
+     text-align:center, i.e. it is meant to sit under the phone. As a row it
+     rendered beside it and overflowed the grid column past 1200px. */
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .phone {
+    width: 300px; max-width: 84vw; background: #111813; border-radius: 34px; padding: 12px;
+    box-shadow: 0 30px 60px -20px rgba(20,40,30,0.35), 0 0 0 1px rgba(0,0,0,0.06);
+    transform: rotate(2deg);
+  }
+  .phone-screen { background: #E9EDE4; border-radius: 24px; overflow: hidden; height: 560px; display: flex; flex-direction: column; }
+  .phone-head { background: var(--teal-deep); color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+  .phone-avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg,#fff,#cfe9df); flex:none; display:flex; align-items:center; justify-content:center; font-size:1rem; }
+  .phone-head-name { font-weight: 600; font-size: 0.92rem; }
+  .phone-head-sub { font-size: 0.72rem; opacity: 0.8; }
+  .phone-body { flex: 1; padding: 16px 12px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px); background-size: 14px 14px; }
+  .bubble { max-width: 84%; padding: 10px 13px; border-radius: 13px; font-size: 0.82rem; line-height: 1.4; opacity: 0; animation: bubble-in 0.5s ease forwards; box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
+  .bubble.in { background: #fff; border-bottom-left-radius: 4px; align-self: flex-start; }
+  .bubble.out { background: #DCF8C6; border-bottom-right-radius: 4px; align-self: flex-end; }
+  .bubble.b1 { animation-delay: 0.3s; } .bubble.b2 { animation-delay: 1.0s; } .bubble.b3 { animation-delay: 1.7s; } .bubble.b4 { animation-delay: 2.5s; }
+  @keyframes bubble-in { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
+
+  .queue-card { margin-top: auto; background: #fff; border-radius: 12px; padding: 12px 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); opacity: 0; animation: bubble-in 0.5s ease forwards; animation-delay: 3.3s; }
+  .queue-card .qtitle { font-size: 0.7rem; color: var(--ink-soft); font-weight: 600; text-transform: none; }
+  .queue-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; }
+  .queue-token { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--teal-deep); }
+  .queue-eta { font-family: 'IBM Plex Mono', monospace; font-size: 0.95rem; font-weight: 500; color: var(--amber); }
+  .queue-bar { margin-top: 8px; height: 6px; background: var(--panel); border-radius: 4px; overflow: hidden; }
+  .queue-bar-fill { height: 100%; width: 70%; background: linear-gradient(90deg, var(--teal-bright), var(--teal)); animation: queue-progress 8s ease-in-out infinite; }
+  @keyframes queue-progress { 0%{width:88%;} 50%{width:22%;} 100%{width:88%;} }
+  .phone-caption { text-align: center; margin-top: 16px; font-size: 0.82rem; color: var(--ink-soft); font-weight: 500; }
+
+  /* ================= STATS STRIP ================= */
+  .stats-strip { background: var(--teal-deep); }
+  .stats-inner { max-width: 1220px; margin: 0 auto; padding: 40px 24px; display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+  @media (max-width: 720px) { .stats-inner { grid-template-columns: repeat(2,1fr); } }
+  .stat-item { text-align: left; color: #fff; padding: 6px 18px; border-left: 1px solid rgba(255,255,255,0.18); }
+  .stat-item:first-child { border-left: none; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: clamp(1.8rem,3vw,2.4rem); font-weight: 700; }
+  .stat-label { font-size: 0.82rem; opacity: 0.82; margin-top: 4px; }
+
+  /* ================= SECTION HEADERS ================= */
+  .section-head { max-width: 1220px; margin: 0 auto; padding: 90px 24px 0; text-align: center; }
+  .section-kicker { color: var(--teal); font-weight: 600; font-size: 0.9rem; }
+  .section-head h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin-top: 14px; max-width: 26ch; margin-left:auto; margin-right:auto; line-height:1.15; }
+  .section-head p { margin-top: 16px; color: var(--ink-soft); max-width: 52ch; margin-left: auto; margin-right: auto; font-size: 1.02rem; }
+
+  .index { max-width: 1220px; margin: 34px auto 0; padding: 0 24px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .index a { text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--teal-deep); background: var(--amber-soft); border: 1px solid #F0D2AF; padding: 8px 16px; border-radius: 999px; }
+  .index a:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+  /* ================= CASE STUDIES ================= */
+  .case { max-width: 1220px; margin: 0 auto; padding: 64px 24px; scroll-margin-top: 90px; }
+  .case-card { background: var(--cream); border: 1px solid var(--line); border-radius: 22px; padding: clamp(28px, 4vw, 56px); }
+  .case-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; }
+  .case-domain { display:inline-block; background: #fff; border:1px solid var(--line); color: var(--teal-deep); font-size: 0.78rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; }
+  .case-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); margin-top: 14px; line-height: 1.15; max-width: 20ch; }
+  .case-client { margin-top: 8px; color: var(--ink-soft); font-size: 0.92rem; }
+  .case-badge { text-align: right; }
+  .case-badge .big { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 700; color: var(--teal); line-height:1; }
+  .case-badge .small { font-size: 0.78rem; color: var(--ink-soft); margin-top: 4px; max-width: 16ch; }
+
+  .case-problem { margin-top: 28px; font-size: 1.04rem; line-height: 1.65; max-width: 76ch; }
+  .case-problem strong { color: var(--teal-deep); }
+
+  /* ---- flow diagram ---- */
+  .flow-wrap { margin-top: 36px; overflow-x: auto; padding-bottom: 6px; }
+  .flow { display: flex; align-items: stretch; gap: 0; min-width: max-content; }
+  .flow-node {
+    background: #fff; border: 1.5px solid var(--line); border-radius: 14px; padding: 16px 18px; width: 172px; flex: none;
+    box-shadow: 0 2px 8px -4px rgba(20,40,30,0.08);
+  }
+  .flow-node .icon { width: 34px; height: 34px; border-radius: 9px; background: var(--panel); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+  .flow-node .ftitle { margin-top: 10px; font-weight: 700; font-size: 0.86rem; line-height: 1.3; }
+  .flow-node .fdesc { margin-top: 4px; font-size: 0.76rem; color: var(--ink-soft); line-height: 1.4; }
+  .flow-connector { width: 46px; flex: none; display: flex; align-items: center; justify-content: center; position: relative; }
+  .flow-connector svg { overflow: visible; }
+  .flow-connector .dash { stroke: var(--line); stroke-width: 2; }
+  .flow-connector .runner { fill: var(--amber); }
+  .flow-runner-anim { offset-path: path('M0,1 L46,1'); animation: run-along 2.6s linear infinite; }
+  @keyframes run-along { from { offset-distance: 0%; opacity:0; } 8% { opacity:1; } 92% { opacity:1; } to { offset-distance: 100%; opacity:0; } }
+  .flow-node.highlight { border-color: var(--teal-bright); box-shadow: 0 0 0 3px rgba(23,166,127,0.12), 0 2px 8px -4px rgba(20,40,30,0.08); }
+  .flow-note { margin-top: 14px; font-size: 0.82rem; color: var(--ink-soft); background: var(--amber-soft); border-left: 3px solid var(--amber); padding: 10px 14px; border-radius: 0 8px 8px 0; max-width: 70ch; }
+
+  /* ---- stack + outcomes ---- */
+  .stack-row { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .stack-row .label { font-size: 0.78rem; color: var(--ink-soft); font-weight: 600; margin-right: 6px; }
+  .chip { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; background: #fff; border: 1px solid var(--line); padding: 6px 11px; border-radius: 6px; }
+
+  .outcomes { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 720px) { .outcomes { grid-template-columns: 1fr; } }
+  .outcome { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: flex; gap: 10px; align-items: flex-start; }
+  .outcome .check { width: 22px; height: 22px; border-radius: 50%; background: var(--teal); color: #fff; flex: none; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+  .outcome span.txt { font-size: 0.9rem; line-height: 1.45; }
+
+  /* ---- before/after ---- */
+  .compare { margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 680px) { .compare { grid-template-columns: 1fr; } }
+  .compare-col { border-radius: 14px; padding: 20px 22px; }
+  .compare-col.old { background: #FBF1EC; border: 1px solid #F0D6C6; }
+  .compare-col.new { background: #EAF6EF; border: 1px solid #C9E9D6; }
+  .compare-col h4 { font-family: 'Fraunces', serif; font-size: 1.05rem; }
+  .compare-col.old h4 { color: #B15A2B; }
+  .compare-col.new h4 { color: var(--teal-deep); }
+  .compare-col ul { margin: 12px 0 0; padding-left: 18px; font-size: 0.88rem; line-height: 1.7; color: var(--ink-soft); }
+
+  /* ---- control room (staff view) ---- */
+  .control-room { margin-top: 40px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: clamp(20px,3vw,32px); display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+  @media (max-width: 860px) { .control-room { grid-template-columns: 1fr; } }
+  .control-room-text h3 { font-size: 1.2rem; margin-top: 8px; }
+  .control-room-text p { margin-top: 10px; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.55; }
+  .control-list { margin: 14px 0 0; padding-left: 18px; font-size: 0.88rem; line-height: 1.7; color: var(--ink); }
+  .control-panel { background: #16241E; border-radius: 12px; padding: 14px; font-family: 'IBM Plex Mono', monospace; }
+  .cp-head { color: #fff; font-size: 0.82rem; display: flex; justify-content: space-between; padding: 4px 6px 10px; }
+  .cp-live { color: #6FE0A8; }
+  .cp-row { display: grid; grid-template-columns: 34px 1fr auto auto; gap: 8px; align-items: center; background: #1F2D26; padding: 9px 10px; border-radius: 7px; margin-top: 6px; font-size: 0.78rem; }
+  .cp-row.highlight-row { background: #27392F; border: 1px solid var(--teal-bright); }
+  .cp-token { color: #6FE0A8; font-weight: 600; }
+  .cp-name { color: #E3E8E0; }
+  .cp-status { font-size: 0.7rem; padding: 3px 8px; border-radius: 999px; text-align: center; }
+  .status-in { background: rgba(111,224,168,0.18); color: #6FE0A8; }
+  .status-wait { background: rgba(224,129,62,0.18); color: #E0AB7E; }
+  .status-manual { background: rgba(255,255,255,0.1); color: #B9C2BC; }
+  .cp-btn { background: var(--amber); color: #fff; border: none; padding: 4px 9px; border-radius: 6px; font-family: 'IBM Plex Sans',sans-serif; font-size: 0.72rem; font-weight: 600; }
+
+  /* ---- system specs strip ---- */
+  .specs { margin-top: 34px; display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+  @media (max-width: 780px) { .specs { grid-template-columns: repeat(2,1fr); } }
+  .spec-item { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 16px; }
+  .spec-item .sv { font-family:'Fraunces',serif; font-weight:700; font-size: 1.3rem; color: var(--teal-deep); }
+  .spec-item .sl { margin-top: 4px; font-size: 0.8rem; color: var(--ink-soft); line-height: 1.4; }
+
+  /* ================= WHY US ================= */
+  .why { max-width: 1220px; margin: 30px auto 0; padding: 0 24px 90px; display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+  @media (max-width: 900px) { .why { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 540px) { .why { grid-template-columns: 1fr; } }
+  .why-card { border: 1px solid var(--line); border-radius: 16px; padding: 26px 22px; background: #fff; transition: box-shadow .2s ease, transform .2s ease; }
+  .why-card:hover { box-shadow: 0 16px 30px -14px rgba(20,40,30,0.18); transform: translateY(-3px); }
+  .why-card .icon { font-size: 1.6rem; }
+  .why-card h3 { font-size: 1.02rem; margin-top: 12px; }
+  .why-card p { margin-top: 8px; color: var(--ink-soft); font-size: 0.88rem; line-height: 1.55; }
+
+  /* ================= FAQ ================= */
+  .faq { max-width: 1220px; margin: 30px auto 0; padding: 0 24px 90px; display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+  @media (max-width: 760px) { .faq { grid-template-columns: 1fr; } }
+  .faq-item { border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; background: var(--cream); }
+  .faq-item h3 { font-family: 'Fraunces', serif; font-size: 1.02rem; font-weight: 600; }
+  .faq-item p { margin-top: 8px; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.6; }
+
+  /* ================= CLOSING ================= */
+  .closing { background: linear-gradient(160deg, var(--teal-deep), var(--teal)); border-radius: 28px; max-width: 1220px; margin: 0 auto 90px; padding: clamp(40px,6vw,72px) 24px; text-align: center; color: #fff; }
+  .closing h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); max-width: 22ch; margin: 0 auto; }
+  .closing p { margin-top: 16px; color: rgba(255,255,255,0.85); max-width: 54ch; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  .closing-ctas { margin-top: 30px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .closing-ctas .btn-primary { background: #fff; color: var(--teal-deep); box-shadow: 0 10px 24px -8px rgba(0,0,0,0.3); }
+  .closing-ctas .btn-ghost { border-color: rgba(255,255,255,0.4); color: #fff; background: transparent; }
+  .closing-contact { margin-top: 26px; display: flex; gap: 26px; justify-content: center; flex-wrap: wrap; font-size: 0.92rem; }
+  .closing-contact a { text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 2px; }
+
+  /* ================= SITE FOOTER =================
+     A full footer rather than a one-line credit: without it this page is a
+     dead end — nothing below the fold links back into the site. */
+  .site-foot { border-top: 1px solid var(--line); background: var(--cream); margin-top: 20px; }
+  .foot-inner { max-width: 1220px; margin: 0 auto; padding: 54px 24px 34px; display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 36px; }
+  @media (max-width: 900px) { .foot-inner { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .foot-inner { grid-template-columns: 1fr; gap: 28px; } }
+  .foot-desc { margin-top: 14px; color: var(--ink-soft); font-size: 0.86rem; line-height: 1.6; max-width: 42ch; }
+  .foot-note { margin-top: 14px; font-size: 0.82rem; color: var(--ink-soft); line-height: 1.55; max-width: 42ch; }
+  .foot-note a { color: var(--teal-deep); font-weight: 600; }
+  .foot-col h2 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin: 0 0 14px; }
+  .foot-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+  .foot-col a { color: var(--ink-soft); text-decoration: none; font-size: 0.86rem; }
+  .foot-col a:hover { color: var(--teal-deep); text-decoration: underline; }
+  .foot-hours { margin-top: 16px; font-size: 0.8rem; color: var(--ink-soft); }
+  .foot-hours span { display: block; font-weight: 600; color: var(--ink); }
+  .foot-bot { max-width: 1220px; margin: 0 auto; padding: 18px 24px calc(30px + env(safe-area-inset-bottom,0px)); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: space-between; font-size: 0.78rem; color: var(--ink-soft); }
+  .foot-bot a { color: var(--ink-soft); }
+  .foot-bot address { font-style: normal; }
+
+  /* scroll reveal (single orchestrated pass, not per-hover) */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.shown { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body class="page-portfolio">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+{# Real site nav, not in-page anchors. The four build anchors live in the
+   .index strip below the section head instead — someone who lands here from
+   a cold link needs a route into the rest of the site.
+   Faridabad, not Gurugram: the NAP on every other page and in the
+   LocalBusiness schema says Faridabad, and an inconsistent one costs
+   local-pack trust. #}
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/" aria-label="Agentic AI Automation — home">
+      <div class="brand-mark" aria-hidden="true">A</div>
+      <div class="brand-name">Agentic AI Automation<span>RPA &amp; automation agency — Faridabad</span></div>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="/services">Services</a>
+      <a href="/industries">Industries</a>
+      <a href="/case-studies">Case studies</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="{{ calendly }}" class="cta-btn" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="pill"><span class="dot"></span> Built on the WhatsApp Business API</div>
+      <h1>We turn your busiest, most manual workflow into <span class="accent">one WhatsApp message.</span></h1>
+      <p class="hero-sub">Booking, payments, queues, claims, follow-ups — built end to end and wired straight into the systems you already run on. No app to download. No new screen for your staff to learn.</p>
+      <div class="hero-ctas">
+        <a href="#closing" class="btn-primary">See it built for your business →</a>
+        <a href="#kaushik" class="btn-ghost">Watch how it works</a>
+      </div>
+      <div class="trust-row">
+        <div><b>4</b>Sectors automated</div>
+        <div><b>5</b>Engineers on build</div>
+        <div><b>9 yrs</b>RPA &amp; automation</div>
+        <div><b>6</b>Countries served</div>
+      </div>
+    </div>
+
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-head">
+            <div class="phone-avatar">🏥</div>
+            <div>
+              <div class="phone-head-name">Kaushik Diagnostics</div>
+              <div class="phone-head-sub">online</div>
+            </div>
+          </div>
+          <div class="phone-body">
+            <div class="bubble in b1">Hi! I'd like to book a blood test appointment.</div>
+            <div class="bubble out b2">Sure — Dr. Mehta has a 4:30 PM slot today. ₹300, pay now to confirm ✅</div>
+            <div class="bubble in b3">Paid ✅</div>
+            <div class="bubble out b4">You're confirmed. We'll message your live turn — no need to wait at the clinic.</div>
+            <div class="queue-card">
+              <div class="qtitle">YOUR LIVE QUEUE STATUS</div>
+              <div class="queue-row"><span class="queue-token">Token #7</span><span class="queue-eta">~22 min</span></div>
+              <div class="queue-bar"><div class="queue-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">One message with a live link — not a stream of pings.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Apps patients need to install</div></div>
+    <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Booking, reminders &amp; payments running</div></div>
+    <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">Message to book, pay and track turn</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Of visits logged straight to your CRM</div></div>
+  </div>
+</section>
+
+<!-- ================= SECTION HEAD ================= -->
+<div class="section-head">
+  <div class="section-kicker">Selected builds</div>
+  <h2>Four workflows we've designed, end to end</h2>
+  <p>Every build below runs on the same backbone — WhatsApp on the front end, automation underneath, nothing new for your team to learn.</p>
+  <div class="index">
+    <a href="#kaushik">🏥 Kaushik Diagnostics</a>
+    <a href="#ca-firms">📄 CA firm network</a>
+    <a href="#leadfunnel">💬 Lead qualification funnel</a>
+    <a href="#insurance">🛡️ Insurance claims automation</a>
+  </div>
+</div>
+
+<!-- ================= CASE 1: HEALTHCARE ================= -->
+<section class="case" id="kaushik">
+  <div class="case-card reveal">
+    <div class="case-top">
+      <div>
+        <span class="case-domain">Healthcare — diagnostics &amp; OPD</span>
+        <h2 class="case-title">Kaushik Diagnostics</h2>
+        <div class="case-client">Multi-department diagnostic clinic running walk-in and appointment OPD</div>
+      </div>
+      <div class="case-badge">
+        <div class="big">6-step</div>
+        <div class="small">system from first message to repeat visit</div>
+      </div>
+    </div>
+
+    <p class="case-problem">
+      The waiting room was the bottleneck: patients arrived early with no idea of their turn, the front desk fielded the same "how long now" call all day, and empty no-show slots sat unfilled. <strong>The brief was to move the entire wait out of the building</strong> — patients know their exact turn, pay before they arrive, and never have to ask twice.
+    </p>
+
+    <div class="flow-wrap">
+      <div class="flow">
+        <div class="flow-node highlight"><div class="icon">💬</div><div class="ftitle">Book &amp; pay</div><div class="fdesc">Slot booked, prep/fasting instructions sent automatically</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">🔗</div><div class="ftitle">One status link</div><div class="fdesc">A single link, opened whenever the patient wants — no repeat pings</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">⏰</div><div class="ftitle">Reminders</div><div class="fdesc">24h + 2h nudges, 1-tap reschedule, no-show recovery</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">🧾</div><div class="ftitle">Report delivery</div><div class="fdesc">PDF report sent to patient, auto-copied to the referring doctor</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">🏢</div><div class="ftitle">TPA / corporate desk</div><div class="fdesc">Cashless support, only for empanelled corporate health packages</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">🗂️</div><div class="ftitle">CRM + after-visit</div><div class="fdesc">Every step logged; thank-you and annual re-test reminders sent</div></div>
+      </div>
+      <div class="flow-note">Diagnostic centers don't process insurance claims the way hospitals do — this step is scoped to what actually applies: corporate/TPA cashless tie-ups for packages, not claim adjudication.</div>
+    </div>
+
+    <div class="compare">
+      <div class="compare-col old">
+        <h4>The old way</h4>
+        <ul>
+          <li>Patients sit in a packed lobby, no idea of their turn</li>
+          <li>Reports called out or handed over the counter; referring doctor gets nothing</li>
+          <li>No-show slots sit empty for the rest of the day</li>
+          <li>Follow-ups depend on someone remembering to call</li>
+        </ul>
+      </div>
+      <div class="compare-col new">
+        <h4>With the system live</h4>
+        <ul>
+          <li>Patients wait wherever they like — one link tells them when</li>
+          <li>Report reaches the patient and the referring doctor at the same moment</li>
+          <li>No-show slots trigger same-day re-engagement</li>
+          <li>Every follow-up and revisit is scheduled by the system</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="control-room">
+      <div class="control-room-text">
+        <div class="section-kicker" style="text-align:left;">The other side of the counter</div>
+        <h3>What the receptionist and doctor actually see</h3>
+        <p>The patient view is only half the system. Front desk gets a live board of every token, wait time and status — with full manual override for walk-ins, emergencies and VIP priority. Nothing here is automation-only; a human can always step in and change it.</p>
+        <ul class="control-list">
+          <li><b>Bump to front</b> — emergency or elderly walk-in jumps the queue in one tap</li>
+          <li><b>Manual check-in</b> — patients without a smartphone are added by staff, still tracked in the same queue</li>
+          <li><b>Doctor's report queue</b> — radiologist approves before anything goes out to the patient</li>
+        </ul>
+      </div>
+      <div class="control-panel">
+        <div class="cp-head">Front desk — Live queue <span class="cp-live">● Live</span></div>
+        <div class="cp-row"><span class="cp-token">#5</span><span class="cp-name">Sharma, R.</span><span class="cp-status status-in">In room</span></div>
+        <div class="cp-row"><span class="cp-token">#6</span><span class="cp-name">Verma, A.</span><span class="cp-status status-wait">Waiting</span></div>
+        <div class="cp-row highlight-row"><span class="cp-token">#7</span><span class="cp-name">Iyer, P.</span><span class="cp-status status-wait">Waiting</span><button class="cp-btn">Bump ↑</button></div>
+        <div class="cp-row"><span class="cp-token">#8</span><span class="cp-name">Walk-in (manual)</span><span class="cp-status status-manual">No app</span></div>
+        <div class="cp-row"><span class="cp-token">#9</span><span class="cp-name">Khan, S.</span><span class="cp-status status-wait">Waiting</span></div>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="label">Built on</span>
+      <span class="chip">WhatsApp Business API</span>
+      <span class="chip">n8n orchestration</span>
+      <span class="chip">Razorpay / UPI</span>
+      <span class="chip">Clinic CRM</span>
+      <span class="chip">Insurer eligibility check</span>
+    </div>
+
+    <div class="outcomes">
+      <div class="outcome"><div class="check">✓</div><span class="txt">Waiting-room crowding cut — patients arrive at their turn, not before it</span></div>
+      <div class="outcome"><div class="check">✓</div><span class="txt">Front desk freed from repeat status &amp; insurance calls</span></div>
+      <div class="outcome"><div class="check">✓</div><span class="txt">No-show slots recovered the same day instead of sitting empty</span></div>
+    </div>
+
+    <div class="specs">
+      <div class="spec-item"><div class="sv">300+/day</div><div class="sl">Designed patient-load capacity per branch, sized to your peak morning rush</div></div>
+      <div class="spec-item"><div class="sv">Manual override</div><div class="sl">Every automated step can be paused or overridden by staff at any time</div></div>
+      <div class="spec-item"><div class="sv">No-app fallback</div><div class="sl">Patients without a smartphone are checked in manually, same queue</div></div>
+      <div class="spec-item"><div class="sv">Fallback SOP</div><div class="sl">If WhatsApp or the system has downtime, front desk switches to a documented manual process — no patient goes untracked</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE 2: CA FIRMS ================= -->
+<section class="case" id="ca-firms">
+  <div class="case-card reveal">
+    <div class="case-top">
+      <div>
+        <span class="case-domain">Financial compliance</span>
+        <h2 class="case-title">CA firm network — document automation</h2>
+        <div class="case-client">Chartered accountancy firms handling repeat compliance filings</div>
+      </div>
+      <div class="case-badge"><div class="big">3-step</div><div class="small">pipeline from raw document to filing</div></div>
+    </div>
+    <p class="case-problem">
+      Staff were retyping the same numbers from client PDFs and Excel sheets into filing systems, every cycle. <strong>The goal was to remove the retyping entirely</strong> — without asking clients to change how they send documents.
+    </p>
+    <div class="flow-wrap">
+      <div class="flow">
+        <div class="flow-node highlight"><div class="icon">📥</div><div class="ftitle">Intake, as-is</div><div class="fdesc">PDFs, scans and Excel — no new format required</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">🔍</div><div class="ftitle">Extract &amp; validate</div><div class="fdesc">Fields pulled, cross-checked, mismatches flagged</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">✅</div><div class="ftitle">Filing-ready</div><div class="fdesc">Verified data queued for staff sign-off, then filed</div></div>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="label">Built on</span>
+      <span class="chip">PDF/Excel extraction</span>
+      <span class="chip">Low-code RPA</span>
+      <span class="chip">Human review checkpoint</span>
+    </div>
+    <div class="outcomes">
+      <div class="outcome"><div class="check">✓</div><span class="txt">Manual re-entry removed from a repeat monthly task</span></div>
+      <div class="outcome"><div class="check">✓</div><span class="txt">Mismatches surfaced before filing, not after</span></div>
+      <div class="outcome"><div class="check">✓</div><span class="txt">Zero change required to how clients submit documents</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE 3: LEAD FUNNEL ================= -->
+<section class="case" id="leadfunnel">
+  <div class="case-card reveal">
+    <div class="case-top">
+      <div>
+        <span class="case-domain">Sales &amp; lead qualification</span>
+        <h2 class="case-title">WhatsApp lead funnel</h2>
+        <div class="case-client">B2B service business fielding inbound enquiries on WhatsApp</div>
+      </div>
+      <div class="case-badge"><div class="big">3-step</div><div class="small">from inbound message to scored lead</div></div>
+    </div>
+    <p class="case-problem">
+      Every inbound message — tyre-kickers and serious buyers alike — landed straight in the founder's personal chat. <strong>The ask was a filter</strong>: qualify first, only surface the leads worth a conversation.
+    </p>
+    <div class="flow-wrap">
+      <div class="flow">
+        <div class="flow-node highlight"><div class="icon">📩</div><div class="ftitle">First contact</div><div class="fdesc">Inbound message triggers an in-chat qualifying form</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">🎯</div><div class="ftitle">Score &amp; route</div><div class="fdesc">Qualified leads go straight to the founder</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">🗂️</div><div class="ftitle">CRM sync</div><div class="fdesc">Lead, score and conversation logged automatically</div></div>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="label">Built on</span>
+      <span class="chip">WhatsApp Business API</span>
+      <span class="chip">n8n scoring logic</span>
+      <span class="chip">CRM auto-sync</span>
+    </div>
+    <div class="outcomes">
+      <div class="outcome"><div class="check">✓</div><span class="txt">Founder's personal chat protected from unqualified traffic</span></div>
+      <div class="outcome"><div class="check">✓</div><span class="txt">Every lead scored the same way, every time</span></div>
+      <div class="outcome"><div class="check">✓</div><span class="txt">Pipeline visible without anyone manually logging it</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE 4: INSURANCE ================= -->
+<section class="case" id="insurance">
+  <div class="case-card reveal">
+    <div class="case-top">
+      <div>
+        <span class="case-domain">Insurance operations</span>
+        <h2 class="case-title">Settlement document automation</h2>
+        <div class="case-client">Insurance settlement processing for claims-heavy accounts</div>
+      </div>
+      <div class="case-badge"><div class="big">3-step</div><div class="small">from raw claim to settlement-ready data</div></div>
+    </div>
+    <p class="case-problem">
+      Settlement teams were reading every claim document by hand to pull the numbers that decide payout. <strong>The task was to get structured, checkable data</strong> out of unstructured paperwork fast enough that the team could focus on judgment, not typing.
+    </p>
+    <div class="flow-wrap">
+      <div class="flow">
+        <div class="flow-node highlight"><div class="icon">📎</div><div class="ftitle">Capture</div><div class="fdesc">Claim PDFs and scans pulled in as they arrive</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">🔎</div><div class="ftitle">Extract</div><div class="fdesc">Key figures pulled out, ambiguous fields flagged</div></div>
+        <div class="flow-connector"><svg width="46" height="2"><line class="dash" x1="0" y1="1" x2="46" y2="1" stroke-dasharray="4 4"/><circle class="runner flow-runner-anim" r="3"/></svg></div>
+        <div class="flow-node"><div class="icon">📤</div><div class="ftitle">Handoff</div><div class="fdesc">Clean data lands directly in the settlement system</div></div>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="label">Built on</span>
+      <span class="chip">PDF/Excel extraction</span>
+      <span class="chip">Regex-based parsing</span>
+      <span class="chip">Confidence flagging</span>
+    </div>
+    <div class="outcomes">
+      <div class="outcome"><div class="check">✓</div><span class="txt">Manual reading time cut on every claim document</span></div>
+      <div class="outcome"><div class="check">✓</div><span class="txt">Ambiguous fields flagged, never silently guessed</span></div>
+      <div class="outcome"><div class="check">✓</div><span class="txt">Analysts spend time on judgment, not transcription</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY US ================= -->
+<div class="section-head" style="padding-top:20px;">
+  <div class="section-kicker">Why teams pick us</div>
+  <h2>Built for people who don't have time to learn new software</h2>
+</div>
+<div class="why">
+  <div class="why-card"><div class="icon">💬</div><h3>Runs where your patients already are</h3><p>WhatsApp — no app to install, no login to forget, no training needed on either side.</p></div>
+  <div class="why-card"><div class="icon">🔌</div><h3>Wired into what you already use</h3><p>Your CRM, your payment gateway, your existing records — we connect to them, not replace them.</p></div>
+  <div class="why-card"><div class="icon">🛠️</div><h3>9 years building this exact thing</h3><p>RPA and WhatsApp automation, not a general dev shop learning on your project.</p></div>
+  <div class="why-card"><div class="icon">🌍</div><h3>Built for scale, from day one</h3><p>Same systems serving clients across India, UK, UAE, Singapore, Saudi Arabia and the US.</p></div>
+</div>
+
+<!-- ================= FAQ / OBJECTIONS ================= -->
+<div class="section-head" style="padding-top:20px;">
+  <div class="section-kicker">Before you ask</div>
+  <h2>The questions every prospect asks us first</h2>
+</div>
+<div class="faq">
+  <div class="faq-item">
+    <h3>Won't patients get flooded with WhatsApp pings?</h3>
+    <p>No — that's a deliberate design choice, not a hope. Patients get one message with a link to a live status page they check on their own time. The system doesn't push repeat updates; it answers when asked.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What CRM does this plug into?</h3>
+    <p>Whatever you already run — Zoho, a custom system, anything with an API or webhook. We connect to your CRM, we don't ask you to replace it.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How much patient volume can it actually handle?</h3>
+    <p>Sized to your branch's peak load before we build — typically 300+ patients/day per branch, with capacity planned around your real morning-rush numbers, not a generic estimate.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What about emergencies, VIPs, or elderly patients without a smartphone?</h3>
+    <p>Front desk can bump any token to the front in one tap, and check in patients manually — they're still tracked in the same queue, no app required on their end.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What if the system doesn't work properly?</h3>
+    <p>Every automated step has a manual override, and there's a documented fallback SOP your staff can switch to instantly if WhatsApp or the system has downtime. No patient is ever left untracked.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does insurance actually work for a diagnostic center?</h3>
+    <p>Not the way it works for a hospital. We scope it correctly: cashless support for corporate/TPA-empanelled health packages, not full claims adjudication — because that's what a diagnostics workflow actually needs.</p>
+  </div>
+</div>
+
+<!-- ================= CLOSING ================= -->
+<section class="closing" id="closing">
+  <h2>Show your patients — and your board — what this looks like live.</h2>
+  <p>We'll map your exact workflow, the way we mapped Kaushik Diagnostics', and show you the WhatsApp flow before you commit to anything.</p>
+  <div class="closing-ctas">
+    <a href="mailto:Contact@agenticAiAutomation.co" class="btn-primary">Book a walkthrough</a>
+    <a href="https://wa.me/{{ wa }}" class="btn-ghost" target="_blank" rel="noopener">WhatsApp +91 79828 81739</a>
+  </div>
+  <div class="closing-contact">
+    <a href="mailto:Contact@agenticAiAutomation.co">Contact@agenticAiAutomation.co</a>
+    <a href="https://calendly.com/agenticaiautomation" target="_blank" rel="noopener">calendly.com/agenticaiautomation</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div>
+      <a class="brand" href="/" aria-label="Agentic AI Automation — home">
+        <div class="brand-mark" aria-hidden="true">A</div>
+        <div class="brand-name">Agentic AI Automation<span>faridabad &middot; india</span></div>
+      </a>
+      <p class="foot-desc">{{ brand.tagline }}</p>
+      <p class="foot-note">These are builds, described as designed and scoped. Case studies with
+        signed-off numbers go up only once the client approves them —
+        <a href="/case-studies">here is the standard we hold them to</a>.</p>
+    </div>
+
+    <div class="foot-col">
+      <h2>Services</h2>
+      <ul>
+        {% for item in services_nav %}<li><a href="{{ item.url }}">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h2>Company</h2>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/industries">Industries</a></li>
+        <li><a href="/case-studies">Case studies</a></li>
+        <li><a href="/portfolio" aria-current="page">Portfolio</a></li>
+        <li><a href="/contact">Contact</a></li>
+        {% if blog_enabled %}<li><a href="/blog/">Blog</a></li>{% endif %}
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h2>Get in touch</h2>
+      <ul>
+        <li><a href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">WhatsApp +91 79828 81739</a></li>
+        <li><a href="mailto:{{ email }}">{{ email }}</a></li>
+        <li><a href="{{ calendly }}" target="_blank" rel="noopener">Book the free audit</a></li>
+      </ul>
+      <p class="foot-hours"><span>Working hours</span>Mon–Sat, 10:00–19:00 IST</p>
+    </div>
+  </div>
+
+  <div class="foot-bot">
+    <address>&copy; {{ year }} {{ name }} &middot; {{ location.city }}, {{ location.country }}</address>
+    <span><a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/sitemap.xml">Sitemap</a></span>
+  </div>
+</footer>
+
+<script>
+  try {
+    var els = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function(el){ io.observe(el); });
+    } else {
+      els.forEach(function(el){ el.classList.add('shown'); });
+    }
+  } catch (e) {}
+</script>
+
+</body>
+</html>

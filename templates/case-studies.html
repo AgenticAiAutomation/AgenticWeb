@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a0908">
 
-  <title>Case Studies | Why Ours Are Not Published Yet</title>
-  <meta name="description" content="A case study should name the client, state how the result was measured, and carry written approval. Ours are in that process. Here is what we can share.">
+  <title>Case Studies | The Work, and the Standard We Publish By</title>
+  <meta name="description" content="Four automation builds you can read in full — and the standard we hold a case study to: named client, stated measurement, written approval.">
   <link rel="canonical" href="https://agenticaiautomation.co/case-studies">
 
 
@@ -16,19 +16,19 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Agentic AI Automation">
-  <meta property="og:title" content="Case Studies | Why Ours Are Not Published Yet">
-  <meta property="og:description" content="A case study should name the client, state how the result was measured, and carry written approval. Ours are in that process. Here is what we can share.">
+  <meta property="og:title" content="Case Studies | The Work, and the Standard We Publish By">
+  <meta property="og:description" content="Four automation builds you can read in full — and the standard we hold a case study to: named client, stated measurement, written approval.">
   <meta property="og:url" content="https://agenticaiautomation.co/case-studies">
   <meta property="og:image" content="https://agenticaiautomation.co/static/images/og-default-v1.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Why Agentic AI Automation publishes no case studies yet">
+  <meta property="og:image:alt" content="Agentic AI Automation — four automation builds and our case study standard">
   <meta property="og:locale" content="en_IN">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@AgenticAIGlobal">
-  <meta name="twitter:title" content="Case Studies | Why Ours Are Not Published Yet">
-  <meta name="twitter:description" content="A case study should name the client, state how the result was measured, and carry written approval. Ours are in that process. Here is what we can share.">
+  <meta name="twitter:title" content="Case Studies | The Work, and the Standard We Publish By">
+  <meta name="twitter:description" content="Four automation builds you can read in full — and the standard we hold a case study to: named client, stated measurement, written approval.">
   <meta name="twitter:image" content="https://agenticaiautomation.co/static/images/og-default-v1.png">
 
   <link rel="icon" href="/static/assets/img/favicon.svg" type="image/svg+xml">
@@ -172,6 +172,22 @@
   {# Google Preferred Sources library. These templates are standalone,
      so the tag is repeated per page rather than living in a shared head.
      https://developers.google.com/search/docs/appearance/preferred-sources #}
+  <style>
+    /* "SEE OUR WORK" banner into /portfolio.
+
+       Restyled from the supplied snippet, which shipped a teal gradient taken
+       from the portfolio page's own palette. On this page's --void ground that
+       reads as a pasted-in ad, so it uses the site tokens instead. The glowing
+       text-pulse is dropped too: the .kicker pip already carries a live-signal
+       animation, and two competing pulses on one banner is noise. */
+    .sow { border: 1px solid var(--hair-2); border-left: 3px solid var(--orange);
+           background: var(--carbon); padding: clamp(28px,4vw,44px) clamp(20px,3vw,38px);
+           margin: 26px 0 6px; }
+    .sow .display { font-size: clamp(30px,5.4vw,56px); margin: 10px 0 0; }
+    .sow-sub { margin: 14px 0 0; color: var(--paper-dim); max-width: 58ch; line-height: 1.6; }
+    .sow .btn { margin-top: 24px; }
+  </style>
+
   {% if config.get('PREFERRED_SOURCES_ENABLED') %}
   <script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
   {% endif %}
@@ -189,6 +205,7 @@
       <a href="/services">Services</a>
       <a href="/industries">Industries</a>
       <a href="/case-studies" aria-current="page">Case studies</a>
+      <a href="/portfolio">Portfolio</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
     </nav>
@@ -207,11 +224,24 @@
   </nav>
 </div>
 
+<div class="wrap">
+  <section class="sow" aria-labelledby="sow-h">
+    <p class="kicker"><span class="pip"></span>Client builds, designed end to end</p>
+    <h2 class="display" id="sow-h">SEE OUR WORK</h2>
+    <p class="sow-sub">Four automations, built end to end — the flows, the staff-side
+      control room, the capacity limits, and what each one deliberately does not do.</p>
+    <a href="/portfolio" class="btn btn-hot">View the full portfolio &darr;</a>
+  </section>
+</div>
+
 <section class="page-head">
   <div class="wrap">
     <p class="kicker"><span class="pip"></span>The honest position</p>
-    <h1 class="display">We have no case studies published. That is deliberate, and it is temporary.</h1>
-    <p class="lede">Engagements are in the approval process. Until they clear it, there is nothing on this page pretending to be evidence.</p>
+    <h1 class="display">The work is real. The numbers go up when the client signs them off.</h1>
+    <p class="lede">Four builds are documented in full on the portfolio page — what was
+      scoped, how it was wired, what the staff on the other side of the counter see. What
+      you will not find on them is an outcome figure no client has approved. Those
+      engagements are still in the approval process.</p>
   </div>
 </section>
 
@@ -221,6 +251,10 @@
       <h2 class="display" style="font-size:clamp(20px,2.4vw,27px)">What we think a case study has to be.</h2>
       <p>A case study <b>names the client</b>, <b>states how the result was measured</b>, and <b>carries written approval</b> before it goes online. If it does not do all three, it is marketing copy with a number in it.</p>
       <p>That standard rules out most of what the industry publishes. &ldquo;A leading NBFC saw a 70% reduction in handling time&rdquo; tells you nothing you can check: not who, not measured against what baseline, not over what period, not who decided what counted as handled. We are not going to write those.</p>
+      <p>So the portfolio describes the <b>build</b> — the workflow, the architecture,
+        the failure paths, the capacity it was sized for. It claims no percentage that a
+        client has not put their name to. When one does, their name and their measurement
+        method go up here together.</p>
     </div>
   </div>
 </section>
@@ -264,6 +298,7 @@
     <div class="row">
       <a href="https://wa.me/917982881739" class="btn btn-dark">WhatsApp +91 79828 81739</a>
       <a href="https://calendly.com/agenticaiautomation" class="btn btn-dark">Book the audit</a>
+      <a href="/portfolio" class="btn btn-dark">See the portfolio</a>
       <a href="/services" class="btn btn-dark">See the six services</a>
     </div>
   </div>
@@ -277,7 +312,7 @@
       <div>
         <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span class="name">Agentic AI Automation<span>faridabad &middot; india</span></span></a>
         <p class="fdesc">AI agents, WhatsApp automation, n8n, RPA and document processing. One process, one price, one date &mdash; and the code is yours.</p>
-        <p class="fnudge">No case studies published yet &mdash; that is deliberate. <a href="/case-studies">See why.</a></p>
+        <p class="fnudge">Four automation builds, end to end. <a href="/portfolio">See the portfolio.</a></p>
         <ul class="fsocials" aria-label="Agentic AI Automation on social platforms">
         <li><a class="fsocial" href="https://www.linkedin.com/company/agenticaiautomation/" rel="me noopener" target="_blank" aria-label="LinkedIn" data-brand="linkedin"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></li>
         <li><a class="fsocial" href="https://x.com/AgenticAIGlobal" rel="me noopener" target="_blank" aria-label="X" data-brand="x"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93zm-1.29 19.49h2.04L6.49 3.24H4.3z"/></svg></a></li>
@@ -308,6 +343,7 @@
           <li><a href="/about">About</a></li>
           <li><a href="/industries">Industries</a></li>
           <li><a href="/case-studies">Case studies</a></li>
+          <li><a href="/portfolio">Portfolio</a></li>
           <li><a href="/contact">Contact</a></li>
           <li><a href="/privacy">Privacy policy</a></li>
           <li><a href="/terms">Terms of service</a></li>
