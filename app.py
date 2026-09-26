@@ -164,6 +164,29 @@ def case_studies():
     ))
 
 
+@app.route("/portfolio")
+def portfolio():
+    """The build portfolio: four automations, described as designed and scoped.
+
+    Deliberately a sibling of /case-studies rather than a replacement for it.
+    /case-studies argues what a case study has to be (named client, stated
+    measurement, written approval) and links here; this page is the work
+    itself, with no outcome number that a client has not signed off on. Keep
+    that split — collapsing the two is how the honest positioning gets lost.
+    """
+    return render_template("portfolio.html", **ctx(
+        title="Portfolio — Four Automation Builds, End to End | Agentic AI",
+        description="Four automation builds, end to end: WhatsApp booking and live "
+                    "patient queues, CA compliance document processing, lead "
+                    "qualification, and insurance claim extraction.",
+        canonical=f"{SITE['url']}/portfolio",
+        page="portfolio",
+        crumbs=[{"name": "Home", "url": "/"},
+                {"name": "Case studies", "url": "/case-studies"},
+                {"name": "Portfolio"}],
+    ))
+
+
 @app.route("/about")
 def about():
     return render_template("about.html", **ctx(
@@ -365,6 +388,7 @@ def sitemap_core():
         ("/",             "weekly",  "1.0"),
         ("/services",     "monthly", "0.9"),
         ("/case-studies", "weekly",  "0.9"),
+        ("/portfolio",    "monthly", "0.9"),
         ("/industries",   "monthly", "0.8"),
         ("/about",        "monthly", "0.8"),
         ("/blog",         "daily",   "0.8"),
