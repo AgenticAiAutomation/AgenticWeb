@@ -10,6 +10,7 @@ site, while steady traffic costs one stat() per file rather than a parse.
 """
 import json
 import os
+import re
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
@@ -132,3 +133,55 @@ def related(document: Dict[str, Any], limit: int = 2) -> List[Dict[str, Any]]:
     """
     others = [a for a in all_articles() if a.get("slug") != document.get("slug")]
     return others[:limit]
+
+
+# ---------------------------------------------------------------------------
+# Blog Playbook styling hooks
+#
+# Playbook posts mark their TL;DR, audience line, callouts, real example and
+# CTA as blockquotes that open with a bold label ("> **Tip:** ..."). This
+# filter gives those blockquotes a class so components.css can style them.
+# It never changes text, only adds class attributes and a scroll wrapper
+# around tables. A post without a TL;DR block — every post written before the
+# Playbook — is returned as the identical string, and any error returns the
+# input untouched.
+# ---------------------------------------------------------------------------
+PLAYBOOK_CLASSES = {
+    "tl;dr": "pb-tldr",
+    "who this is for": "pb-who",
+    "tip": "pb-tip",
+    "watch out": "pb-warn",
+    "pro tip": "pb-tip",
+    "real example": "pb-example",
+    "flow": "pb-flow",
+    "next step": "pb-cta",
+}
+
+_LABELLED_QUOTE = re.compile(r"<blockquote>(\s*<p>\s*<strong>([^<]{1,40})</strong>)")
+_TABLE = re.compile(r"<table>.*?</table>", re.DOTALL)
+
+
+def playbook_html(html: Optional[str]) -> Optional[str]:
+    """Jinja filter: {{ article.html | playbook_html | safe }}."""
+    if not html or "<blockquote>" not in html:
+        return html
+    try:
+        def label_of(match: "re.Match[str]") -> str:
+            return match.group(2).strip().rstrip(":").strip().lower()
+
+        # A Playbook post always opens with a TL;DR block. Without one this is
+        # an older post, even if it happens to contain a "**Tip:**" quote, and
+        # it is returned exactly as it came in.
+        if not any(label_of(m) == "tl;dr" for m in _LABELLED_QUOTE.finditer(html)):
+            return html
+
+        def classify(match: "re.Match[str]") -> str:
+            css = PLAYBOOK_CLASSES.get(label_of(match))
+            if css is None:
+                return match.group(0)
+            return f'<blockquote class="{css}">{match.group(1)}'
+
+        styled = _LABELLED_QUOTE.sub(classify, html)
+        return _TABLE.sub(lambda m: f'<div class="table-scroll">{m.group(0)}</div>', styled)
+    except Exception:
+        return html

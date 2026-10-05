@@ -654,6 +654,34 @@ table.cmp tbody tr:hover td.ours{background:rgba(255,90,0,.1)}
 .postbody th,.postbody td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--hair);color:var(--paper-dim)}
 .postbody th{color:var(--paper);font-weight:600}
 
+/* ---- Blog Playbook blocks ----
+   blog.playbook_html adds these classes to labelled blockquotes in Playbook
+   posts only ("> **TL;DR**", "> **Tip:** ..."). Older posts never carry them,
+   so nothing below can change how they look. Site tokens only. */
+.postbody .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.postbody .table-scroll table{min-width:520px}
+.postbody blockquote[class^="pb-"] p{color:var(--paper);margin:0}
+.postbody blockquote[class^="pb-"] p+p{margin-top:8px}
+.postbody blockquote[class^="pb-"] ul{margin:10px 0 0}
+.postbody blockquote[class^="pb-"] li:last-child{margin-bottom:0}
+.postbody blockquote.pb-tldr,.postbody blockquote.pb-example{padding:16px 20px;background:var(--carbon-2);border:1px solid var(--hair-2);border-left:3px solid var(--orange);border-radius:10px}
+.postbody blockquote.pb-tldr>p:first-child strong,.postbody blockquote.pb-example>p:first-child strong:first-child{font-family:"IBM Plex Mono","Plex Mono Fallback",monospace;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-hi)}
+.postbody blockquote.pb-tldr li{color:var(--paper)}
+.postbody blockquote.pb-who{padding:2px 0 2px 16px;border-left:2px solid var(--hair-3)}
+.postbody blockquote.pb-who p{color:var(--paper-dim)}
+.postbody blockquote.pb-tip,.postbody blockquote.pb-warn{padding:12px 16px;border-radius:0 8px 8px 0}
+.postbody blockquote.pb-tip{background:rgba(47,208,127,.08);border-left:3px solid var(--good)}
+.postbody blockquote.pb-tip strong:first-child{color:var(--good)}
+.postbody blockquote.pb-warn{background:rgba(255,162,58,.08);border-left:3px solid var(--warn)}
+.postbody blockquote.pb-warn strong:first-child{color:var(--warn)}
+.postbody blockquote.pb-flow{padding:12px 16px;background:var(--carbon-2);border:1px dashed var(--hair-3);border-radius:8px;font-family:"IBM Plex Mono","Plex Mono Fallback",monospace;font-size:14px;line-height:1.7}
+.postbody blockquote.pb-flow strong:first-child{color:var(--orange-hi)}
+.postbody blockquote.pb-cta{padding:16px 20px;background:var(--carbon-3);border:1px solid var(--orange);border-radius:10px}
+.postbody blockquote.pb-cta a{color:var(--yellow);font-weight:600}
+@media (max-width:479px){
+  .postbody blockquote.pb-tldr,.postbody blockquote.pb-example,.postbody blockquote.pb-cta{padding:14px 14px}
+}
+
 .fromauthor{margin:42px 0 0;padding:20px 22px;background:var(--carbon-2);border:1px solid var(--hair-2);border-left:3px solid var(--orange);border-radius:10px}
 .fromauthor .kicker{margin:0}
 .fromauthor p:last-child{margin:10px 0 0;color:var(--paper);line-height:1.7}

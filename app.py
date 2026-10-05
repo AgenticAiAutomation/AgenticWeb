@@ -16,6 +16,8 @@ import blog
 import content
 
 app = Flask(__name__)
+# Blog Playbook: classes for TL;DR/callout blockquotes (blog.playbook_html).
+app.add_template_filter(blog.playbook_html, "playbook_html")
 
 # Google Preferred Sources. Read through config.get() in templates so a missing
 # key degrades to the button simply not rendering, rather than raising.
