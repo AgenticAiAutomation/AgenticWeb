@@ -90,14 +90,11 @@ LOCATION = {
     "served": "India, the United Kingdom, the United States, the UAE and Singapore",
 }
 
-# The blog is WordPress at /blog/, served by nginx from /var/www/blog — not a
-# Flask route. WordPress is not installed on the VPS yet, so linking to it
-# would put a 404 in the main navigation of every page: bad for users, and
-# Google treats soft-404s reached from sitewide nav as a quality signal.
-#
-# Flip this to True in the same change that installs WordPress. The nav,
-# footer and sitemap all read it, so one edit turns the blog on everywhere.
-BLOG_ENABLED = False
+# The blog is this app's /blog route (blog.py), fed by the dashboard's
+# published JSON. Live with posts since 2026-10, but nothing linked to it, so
+# its posts were orphans. On (2026-11-10): base.html and portfolio.html read
+# this; the standalone templates carry a hardcoded Blog link in nav + footer.
+BLOG_ENABLED = True
 
 NAV_ITEMS = [
     {"key": "services",     "label": "Services",     "url": "/services"},
@@ -107,9 +104,8 @@ NAV_ITEMS = [
 ]
 
 if BLOG_ENABLED:
-    # Trailing slash matters: bare /blog 301s to /blog/, and a redirect on
-    # every nav click is waste.
-    NAV_ITEMS.insert(3, {"key": "blog", "label": "Blog", "url": "/blog/"})
+    # No trailing slash: /blog is the canonical and /blog/ 301s to it.
+    NAV_ITEMS.insert(3, {"key": "blog", "label": "Blog", "url": "/blog"})
 
 # Footer service list. Anchors into /services rather than inventing leaf pages
 # that do not exist yet — a nav link to a 404 is a crawl budget leak.

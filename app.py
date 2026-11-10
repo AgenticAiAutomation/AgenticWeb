@@ -1,8 +1,8 @@
 """Agentic AI Automation — marketing site.
 
 Routing, SEO endpoints and the shared context every template renders against.
-The WordPress blog lives separately at /blog (nginx proxies it to
-/var/www/blog); this app owns everything else.
+The blog is served here too (/blog, /blog/<slug>, blog.py), from the
+articles the dashboard publishes.
 
 Content lives in content.py so that copy edits never touch routing.
 """
@@ -65,9 +65,8 @@ REDIRECTS_301 = {
     "/ai-executives": "/services",
     "/index.html": "/",
     "/services.html": "/services",
-    # No blog exists. BLOG_ENABLED is False and nginx has no /blog location,
-    # so this used to 301 into a 404. Points at the homepage instead.
-    "/blog.html": "/",
+    # The blog lives at /blog (Flask). Was "/" while no blog existed.
+    "/blog.html": "/blog",
     "/about.html": "/about",
 }
 
@@ -217,10 +216,8 @@ def contact():
     ))
 
 
-# NOTE: there is deliberately no /blog route here, and there is no blog. The
-# WordPress install this once described was never created: /var/www/blog does
-# not exist, nginx has no /blog location, and infra/nginx-blog-subfolder.conf
-# is not on disk. content.BLOG_ENABLED stays False and nothing links to /blog.
+# The WordPress blog this file once described was never installed. The blog
+# is the Flask route further down (# Blog), linked from every nav and footer.
 
 
 @app.route("/privacy")

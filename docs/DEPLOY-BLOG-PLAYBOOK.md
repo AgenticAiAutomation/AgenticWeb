@@ -83,3 +83,12 @@ already serves as `/static/blog/` for featured images — no nginx change.
 their HTML; author boxes and FAQ HTML simply stop showing.
 
 Tests: `python -m pytest tests -q` (22 pass).
+
+## Blog in the navigation (2026-11-10)
+
+`/blog` was live with posts but linked from nowhere, so every post was an
+orphan. Now: **Blog** in the primary nav and the footer "Company" list of all
+14 standalone templates (after Case studies; `aria-current` on `/blog`
+itself), `content.BLOG_ENABLED = True` for `base.html` / `portfolio.html`,
+and `/blog.html` 301s to `/blog` (was `/`). Links use `/blog`, the canonical —
+`/blog/` is a 301. Homepage also carries "Latest from the blog" before the FAQ.

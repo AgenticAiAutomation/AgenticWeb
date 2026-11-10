@@ -154,3 +154,22 @@ def test_stylesheet_carries_the_v2_rules():
     css = (ROOT / "static/assets/css/components.css").read_text(encoding="utf-8")
     for rule in (".pb-callout", ".pb-figure", ".authorbox", ".homeposts"):
         assert rule in css, rule
+
+
+# ------------------------------------------------- Blog in nav + footer
+@pytest.mark.parametrize("path", ["/", "/services", "/industries", "/case-studies",
+                                  "/about", "/contact", "/privacy", "/terms",
+                                  "/portfolio", "/blog"])
+def test_every_page_links_to_the_blog(site, path):
+    client, _ = site
+    page = client.get(path)
+    assert page.status_code == 200, path
+    body = page.get_data(as_text=True)
+    assert body.count('href="/blog"') + body.count('href="/blog" aria-current="page"') >= 1, path
+    assert 'href="/blog/"' not in body, path          # /blog/ is a 301; link the canonical
+
+
+def test_blog_html_redirects_to_the_blog(site):
+    client, _ = site
+    page = client.get("/blog.html")
+    assert page.status_code == 301 and page.headers["Location"].endswith("/blog")
