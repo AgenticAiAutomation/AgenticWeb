@@ -761,6 +761,40 @@
 
 <hr class="rule" />
 
+{% if latest_posts %}
+<!-- ================= BLOG ================= -->
+{# Server-side, cached 10 min (blog.latest). Hidden when nothing is
+   published or the content directory cannot be read. #}
+<section id="blog">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker"><span class="pip"></span>Latest from the blog</p>
+      <h2 class="display">Written by the people who build it.</h2>
+    </div>
+    <ul class="homeposts rv">
+      {% for a in latest_posts %}
+      <li class="homepost">
+        <a href="/blog/{{ a.slug }}">
+          {% if a.featured_image %}
+          <img src="/static/blog/{{ a.featured_image | replace('blog/', '') }}"
+               alt="{{ a.featured_image_alt }}" width="1200" height="630"
+               loading="lazy" decoding="async">
+          {% endif %}
+          <span class="homepost-title">{{ a.title }}</span>
+        </a>
+        <p class="postmeta">
+          {{ a.author }}<span class="sep" aria-hidden="true">&middot;</span><time datetime="{{ blog.iso_date(a) }}">{{ blog.display_date(a) }}</time>
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="postmore"><a href="/blog">View all posts</a></p>
+  </div>
+</section>
+
+<hr class="rule" />
+
+{% endif %}
 <!-- ================= FAQ ================= -->
 <section id="faq">
   <div class="wrap">

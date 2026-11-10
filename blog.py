@@ -11,6 +11,7 @@ site, while steady traffic costs one stat() per file rather than a parse.
 import json
 import os
 import re
+import time
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
@@ -157,6 +158,11 @@ PLAYBOOK_CLASSES = {
     "next step": "pb-cta",
 }
 
+# Labels the format itself uses. Any other bold label on a blockquote in a
+# Playbook post is the article's one free-text callout (Playbook v2).
+RESERVED_LABELS = {"tl;dr", "who this is for", "real example", "before", "after",
+                   "flow", "next step"}
+
 _LABELLED_QUOTE = re.compile(r"<blockquote>(\s*<p>\s*<strong>([^<]{1,40})</strong>)")
 _TABLE = re.compile(r"<table>.*?</table>", re.DOTALL)
 
@@ -176,7 +182,9 @@ def playbook_html(html: Optional[str]) -> Optional[str]:
             return html
 
         def classify(match: "re.Match[str]") -> str:
-            css = PLAYBOOK_CLASSES.get(label_of(match))
+            label = label_of(match)
+            css = PLAYBOOK_CLASSES.get(label) or (
+                None if label in RESERVED_LABELS else "pb-callout")
             if css is None:
                 return match.group(0)
             return f'<blockquote class="{css}">{match.group(1)}'
@@ -185,3 +193,27 @@ def playbook_html(html: Optional[str]) -> Optional[str]:
         return _TABLE.sub(lambda m: f'<div class="table-scroll">{m.group(0)}</div>', styled)
     except Exception:
         return html
+
+
+# ---------------------------------------------------------------------------
+# Homepage "Latest from the blog"
+# ---------------------------------------------------------------------------
+LATEST_TTL_SECONDS = 600
+_latest: Dict[str, Any] = {"at": 0.0, "posts": []}
+
+
+def latest(limit: int = 3) -> List[Dict[str, Any]]:
+    """The newest published posts for the homepage, cached for 10 minutes.
+
+    Never raises: any problem reading the content directory returns [] and
+    the homepage simply hides the section.
+    """
+    now = time.monotonic()
+    if now - _latest["at"] < LATEST_TTL_SECONDS:
+        return _latest["posts"][:limit]
+    try:
+        posts = all_articles()[:limit]
+    except Exception:
+        posts = []
+    _latest.update(at=now, posts=posts)
+    return posts

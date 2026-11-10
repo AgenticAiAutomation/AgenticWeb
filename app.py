@@ -121,6 +121,9 @@ def index():
         results=content.RESULTS,
         how_we_work=content.HOW_WE_WORK,
         faqs=content.FAQS,
+        # "Latest from the blog": hidden when empty or the source fails.
+        latest_posts=blog.latest(3),
+        blog=blog,
     ))
 
 

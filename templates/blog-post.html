@@ -190,13 +190,36 @@
     </aside>
     {% endif %}
 
+    {# Playbook v2 author extras. The *_html values are built by the dashboard
+       from bold/links only, with everything else escaped. #}
+    {% set extras = article.author_extras or {} %}
+    {% if extras.best_pick %}
+    <aside class="authorbox authorbox-pick">
+      <p class="kicker"><span class="pip"></span>Best pick</p>
+      <p class="authorbox-pick-name">{{ extras.best_pick.option }}</p>
+      {{ extras.best_pick.reason_html | safe }}
+    </aside>
+    {% endif %}
+    {% if extras.notice_html %}
+    <aside class="authorbox authorbox-notice">
+      <p class="kicker"><span class="pip"></span>Notice from the author</p>
+      {{ extras.notice_html | safe }}
+    </aside>
+    {% endif %}
+    {% if extras.must_do_html %}
+    <aside class="authorbox authorbox-must">
+      <p class="kicker"><span class="pip"></span>Must do</p>
+      <ol>{% for item in extras.must_do_html %}<li>{{ item | safe }}</li>{% endfor %}</ol>
+    </aside>
+    {% endif %}
+
     {% if article.faqs %}
     <section class="postfaq" aria-labelledby="faq-heading">
       <h2 id="faq-heading">Frequently asked questions</h2>
       {% for f in article.faqs %}
       <details class="faq"{% if loop.first %} open{% endif %}>
         <summary>{{ f.question }}</summary>
-        <div><p>{{ f.answer }}</p></div>
+        {% if f.answer_html %}<div>{{ f.answer_html | safe }}</div>{% else %}<div><p>{{ f.answer }}</p></div>{% endif %}
       </details>
       {% endfor %}
     </section>
